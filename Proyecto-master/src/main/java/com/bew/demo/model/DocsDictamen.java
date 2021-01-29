@@ -33,19 +33,31 @@ public class DocsDictamen implements Serializable {
     
     @Lob
     private byte[] data;
-
-
-    public DocsDictamen() {}
     
-    public DocsDictamen (String fileName, String fileType, byte[] data) {
+    @Column(name = "id_dictamen")
+    private Integer idDictamen;
+
+
+
+	public DocsDictamen() {}
+    
+    public DocsDictamen (String fileName, String fileType, byte[] data,Integer idDictamen) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
-        //this.fileId = fileId;     
+        this.idDictamen=idDictamen;     
     }
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_dictamen",insertable=false)
+	@JoinColumn(name="id_dictamen",insertable=false, updatable = false)
 	private Dictamen dictamen;
+
+	public Integer getIdDictamen() {
+		return idDictamen;
+	}
+
+	public void setIdDictamen(Integer idDictamen) {
+		this.idDictamen = idDictamen;
+	}
 
 	public Integer getFileId() {
 		return fileId;

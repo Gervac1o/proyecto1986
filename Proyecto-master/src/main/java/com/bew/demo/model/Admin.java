@@ -36,17 +36,28 @@ public class Admin implements Serializable{
 	
 	@Column(name="telefono")
 	private Integer telefono;
+	
+	@Column(name="id_usuario")
+	private Integer idUsuario;
+	
 
 	public Admin() {}
-	public Admin( Integer idAdmin, String nombre, String apellidos, Integer telefono) {
+	public Admin( Integer idAdmin, String nombre, String apellidos, Integer telefono,Integer idUsuario) {
 
 		this.nombre=nombre;	
 		this.idAdmin=idAdmin;
 		this.apellidos=apellidos;
 		this.telefono=telefono;
+		this.idUsuario=idUsuario;
 }
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_usuario",insertable=false)
+	@JoinColumn(name="id_usuario",insertable=false, updatable = false)
 	private Usuario usuario;
 	
 	public Integer getIdAdmin() {

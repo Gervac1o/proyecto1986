@@ -40,11 +40,20 @@ public class Alumno implements Serializable{
 	@Column(name="boleta")
 	private Integer boleta;
 	
+	@Column(name="id_usuario")
+	private Integer idUsuario;
+	
 
 	
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 	public Alumno() {}
 	public Alumno( Integer idAlumno, String nombre, String apellidoPaterno, String apellidoMaterno, 
-			Integer boleta) {
+			Integer boleta, Integer idUsuario) {
 		
 		
 		this.nombre=nombre;	
@@ -52,10 +61,11 @@ public class Alumno implements Serializable{
 		this.apellidoPaterno=apellidoPaterno;
 		this.apellidoMaterno=apellidoMaterno;
 		this.boleta=boleta;
+		this.idUsuario=idUsuario;
 		
 }
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_usuario",insertable=false)
+	@JoinColumn(name="id_usuario", insertable=false, updatable = false)
 	private Usuario usuario;
 	
 	public Integer getIdAlumno() {

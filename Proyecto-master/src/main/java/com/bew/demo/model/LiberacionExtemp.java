@@ -59,10 +59,19 @@ public class LiberacionExtemp implements Serializable{
 
 	@Column(name="sexo")
 	private String sexo;
+	
+	@Column(name="id_alumno")
+	private Integer idAlumno;
 
+	public Integer getIdAlumno() {
+		return idAlumno;
+	}
+	public void setIdAlumno(Integer idAlumno) {
+		this.idAlumno = idAlumno;
+	}
 	public LiberacionExtemp() {}
 	public LiberacionExtemp( Integer idLiberacion, String programaAcademico, Integer semestre, Boolean egresado, String registroSS, 
-	String prestatario, String programaSS, Date fechaInicio, Date fechaTermino, Integer telefono, String sexo) {
+	String prestatario, String programaSS, Date fechaInicio, Date fechaTermino, Integer telefono, String sexo,Integer idAlumno) {
 
 		this.idLiberacion=idLiberacion;
 		this.programaAcademico=programaAcademico;
@@ -75,9 +84,10 @@ public class LiberacionExtemp implements Serializable{
 		this.fechaTermino=fechaTermino;
 		this.telefono=telefono;
 		this.sexo=sexo;
+		this.idAlumno=idAlumno;
 }
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_alumno",insertable=false)
+	@JoinColumn(name="id_alumno",insertable=false, updatable = false)
 	private Alumno alumno;
 
 	public Integer getIdLiberacion() {

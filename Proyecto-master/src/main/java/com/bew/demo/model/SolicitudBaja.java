@@ -59,10 +59,13 @@ public class SolicitudBaja implements Serializable{
 
 	@Column(name="sexo")
 	private String sexo;
+	
+	@Column(name="id_alumno")
+	private Integer idAlumno;
 
 	public SolicitudBaja() {}
 	public SolicitudBaja( Integer idSolicitud, String tipoDeBaja, String programaAcademico, Integer semestre, Boolean egresado, String registroSS, 
-	String prestatario, String programaSS, Date fechaInicio, Date fechaTermino, String sexo) {
+	String prestatario, String programaSS, Date fechaInicio, Date fechaTermino, String sexo, Integer idAlumno) {
 
 		this.idSolicitud=idSolicitud;
 		this.tipoDeBaja=tipoDeBaja;
@@ -75,9 +78,10 @@ public class SolicitudBaja implements Serializable{
 		this.fechaInicio=fechaInicio;
 		this.fechaTermino=fechaTermino;
 		this.sexo=sexo;
+		this.idAlumno=idAlumno;
 }
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_alumno",insertable=false)
+	@JoinColumn(name="id_alumno",insertable=false, updatable = false)
 	private Alumno alumno;
 
 	public Integer getIdSolicitud() {
@@ -152,5 +156,12 @@ public class SolicitudBaja implements Serializable{
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
 	}
+	public Integer getIdAlumno() {
+		return idAlumno;
+	}
+	public void setIdAlumno(Integer idAlumno) {
+		this.idAlumno = idAlumno;
+	}
+	
 	
 }

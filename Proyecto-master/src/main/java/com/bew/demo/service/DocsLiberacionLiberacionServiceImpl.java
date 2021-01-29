@@ -1,37 +1,32 @@
 package com.bew.demo.service;
 
-//import org.springframework.http.MediaType;
-
 import javax.transaction.Transactional;
 
-//import org.apache.tomcat.util.http.parser.MediaType;
-import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.bew.demo.dao.FileImageRepository;
-import com.bew.demo.exception.EmptyResultException;
-import com.bew.demo.model.FileImage;
 import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+import com.bew.demo.dao.DocsLiberacionExtempRepository;
+import com.bew.demo.exception.EmptyResultException;
 
-
+import com.bew.demo.model.DocsLiberacion;
 
 @Service
 @Transactional
+public class DocsLiberacionLiberacionServiceImpl implements DocsLiberacionService {
 
-public class FileServiceImpl implements FileImageService{
 	@Autowired
-	FileImageRepository fileImageRepository;
+	DocsLiberacionExtempRepository docsLiberacionExtempRepository;
 	
 	@Override
     public void store(MultipartFile file) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		try  {FileImage dbFile = new FileImage( fileName, file.getContentType(), file.getBytes());
-		fileImageRepository.save(dbFile);
+		try  {DocsLiberacion dbFile = new DocsLiberacion( fileName, file.getContentType(), file.getBytes(), null);
+		docsLiberacionExtempRepository.save(dbFile);
 
 		  }
 		catch(Exception e) {
@@ -43,7 +38,7 @@ public class FileServiceImpl implements FileImageService{
 
 	@Override
 	public ResponseEntity<ByteArrayResource> load(Integer idFile) throws EmptyResultException {
-		FileImage file = fileImageRepository.findById(idFile).orElseThrow(() -> new   EmptyResultException("File not found with id " + idFile));
+		DocsLiberacion file = docsLiberacionExtempRepository.findById(idFile).orElseThrow(() -> new   EmptyResultException("File not found with id " + idFile));
 	
 
         return  ResponseEntity.ok()
@@ -54,4 +49,5 @@ public class FileServiceImpl implements FileImageService{
         
     
     }
+
 }

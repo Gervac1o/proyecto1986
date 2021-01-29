@@ -10,9 +10,14 @@ public class AlumnoDTO implements Serializable{
 	private String apellidoPaterno;
 	private String apellidoMaterno;
 	private Integer boleta;
-	//private String email;
-	//private String contraseña;
+	private Integer idUsuario;
 	
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 	public Integer getIdAlumno() {
 		return idAlumno;
 	}

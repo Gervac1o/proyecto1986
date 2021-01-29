@@ -34,8 +34,11 @@ public class Dictamen implements Serializable{
 	@Column(name = "semestre")
 	private Integer semestre;
 	
-	@Column(name = "programa")
-	private String programa;
+	@Column(name = "programa_academico")
+	private String programaAcademico;
+	
+	@Column(name = "id_alumno")
+	private Integer idAlumno;
 	
 	@Column(name = "sexo")
 	private String sexo;
@@ -43,16 +46,17 @@ public class Dictamen implements Serializable{
 	public Dictamen () {}
 	
 	public Dictamen (Integer idDictamen , Long porcentajeCreditos ,Integer semestre,
-			String programa,  String sexo) {
+			String programaAcademico,  String sexo, Integer idAlumno) {
 		this.idDictamen=idDictamen;
 		this.porcentajeCreditos=porcentajeCreditos;
 		this.semestre=semestre;
-		this.programa=programa;
+		this.programaAcademico=programaAcademico;
 		this.sexo=sexo;
+		this.idAlumno=idAlumno;
 	}
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_alumno",insertable=false)
+	@JoinColumn(name="id_alumno",insertable=false, updatable = false)
 	private Alumno alumno;
 
 	public Long getPorcentajeCreditos() {
@@ -71,12 +75,12 @@ public class Dictamen implements Serializable{
 		this.semestre = semestre;
 	}
 
-	public String getPrograma() {
-		return programa;
+	public String getprogramaAcademico() {
+		return programaAcademico;
 	}
 
-	public void setPrograma(String programa) {
-		this.programa = programa;
+	public void setprogramaAcademico(String programaAcademico) {
+		this.programaAcademico = programaAcademico;
 	}
 
 	public String getSexo() {
@@ -95,7 +99,13 @@ public class Dictamen implements Serializable{
 		this.idDictamen = idDictamen;
 	}
 	
-	
+	public Integer getIdAlumno() {
+		return idAlumno;
+	}
+
+	public void setIdAlumno(Integer idAlumno) {
+		this.idAlumno = idAlumno;
+	}
 	
 	
 
