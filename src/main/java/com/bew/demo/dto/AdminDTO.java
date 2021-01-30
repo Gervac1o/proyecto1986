@@ -11,12 +11,7 @@ public class AdminDTO implements Serializable{
 	private Integer telefono;
 	private Integer idUsuario;
 	
-	public Integer getIdUsuario() {
-		return idUsuario;
-	}
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
-	}
+	
 	public Integer getIdAdmin() {
 		return idAdmin;
 	}

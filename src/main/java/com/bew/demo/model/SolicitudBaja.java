@@ -62,9 +62,6 @@ public class SolicitudBaja implements Serializable{
 	
 	@Column(name="id_alumno")
 	private Integer idAlumno;
-
-	@Column(name="id_alumno")
-	private Integer idAlumno;
 	
 	public SolicitudBaja() {}
 	public SolicitudBaja( Integer idSolicitud, String tipoDeBaja, String programaAcademico, Integer semestre, Boolean egresado, String registroSS, 
@@ -152,12 +149,6 @@ public class SolicitudBaja implements Serializable{
 	}
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
-	}
-	public Integer getIdAlumno() {
-		return idAlumno;
-	}
-	public void setIdAlumno(Integer idAlumno) {
-		this.idAlumno = idAlumno;
 	}
 	public Integer getIdAlumno() {
 		return idAlumno;
