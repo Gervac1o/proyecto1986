@@ -9,6 +9,6 @@ import com.bew.demo.exception.EmptyResultException;
 public interface DocsDictamenService {
 	
 	ResponseEntity<ByteArrayResource> load(Integer fileId) throws EmptyResultException;
-	void store(MultipartFile file) throws EmptyResultException;
+	void store(MultipartFile file, Integer idDictamen) throws EmptyResultException;
 
 }

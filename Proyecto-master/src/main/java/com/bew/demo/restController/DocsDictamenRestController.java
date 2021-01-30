@@ -25,10 +25,10 @@ public class DocsDictamenRestController {
 	@Autowired
 	DocsDictamenService docsDictamenService;
 	
-    @PostMapping(path = "/upload")
-    public void FileUpload(@RequestParam("file") MultipartFile file)  throws EmptyResultException {
+    @PostMapping(path = "/upload/{idDictamen}")
+    public void FileUpload(@RequestParam("file") MultipartFile file, @PathVariable Integer idDictamen)  throws EmptyResultException {
 
-    	docsDictamenService.store(file);
+    	docsDictamenService.store(file,idDictamen);
 
        // return ResponseEntity.ok().build();
     }
