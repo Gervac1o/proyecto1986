@@ -24,6 +24,7 @@ public class DocsLiberacionLiberacionServiceImpl implements DocsLiberacionServic
 	
 	@Override
 <<<<<<< HEAD
+<<<<<<< HEAD
     public void store(MultipartFile file,Integer idLiberacion) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		try  {DocsLiberacion dbFile = new DocsLiberacion( fileName, file.getContentType(), file.getBytes(), idLiberacion);
@@ -32,6 +33,11 @@ public class DocsLiberacionLiberacionServiceImpl implements DocsLiberacionServic
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		try  {DocsLiberacion dbFile = new DocsLiberacion( fileName, file.getContentType(), file.getBytes(), null);
 >>>>>>> 040db90 (no message)
+=======
+    public void store(MultipartFile file,Integer idLiberacion) throws EmptyResultException    {
+		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		try  {DocsLiberacion dbFile = new DocsLiberacion( fileName, file.getContentType(), file.getBytes(), idLiberacion);
+>>>>>>> dc9fa98 (se termino los seervicios rest para subir documentos)
 		docsLiberacionExtempRepository.save(dbFile);
 
 		  }

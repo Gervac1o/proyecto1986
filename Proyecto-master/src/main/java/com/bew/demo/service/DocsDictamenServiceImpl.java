@@ -30,6 +30,7 @@ public class DocsDictamenServiceImpl implements DocsDictamenService {
 	
 	@Override
 <<<<<<< HEAD
+<<<<<<< HEAD
     public void store(MultipartFile file, Integer idDictamen) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		try  {DocsDictamen dbFile = new DocsDictamen( fileName, file.getContentType(), file.getBytes(), idDictamen);
@@ -38,6 +39,11 @@ public class DocsDictamenServiceImpl implements DocsDictamenService {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		try  {DocsDictamen dbFile = new DocsDictamen( fileName, file.getContentType(), file.getBytes(), null);
 >>>>>>> 040db90 (no message)
+=======
+    public void store(MultipartFile file, Integer idDictamen) throws EmptyResultException    {
+		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		try  {DocsDictamen dbFile = new DocsDictamen( fileName, file.getContentType(), file.getBytes(), idDictamen);
+>>>>>>> dc9fa98 (se termino los seervicios rest para subir documentos)
 		docsDictamenRepository.save(dbFile);
 
 		  }
