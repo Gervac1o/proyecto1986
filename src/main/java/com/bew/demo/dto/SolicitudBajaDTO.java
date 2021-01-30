@@ -21,12 +21,6 @@ public class SolicitudBajaDTO implements Serializable {
 	private Integer idAlumno;
 	
 	
-	public Integer getIdAlumno() {
-		return idAlumno;
-	}
-	public void setIdAlumno(Integer idAlumno) {
-		this.idAlumno = idAlumno;
-	}
 	public Integer getIdSolicitud() {
 		return idSolicitud;
 	}
