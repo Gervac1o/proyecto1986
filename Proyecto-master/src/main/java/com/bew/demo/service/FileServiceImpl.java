@@ -24,13 +24,14 @@ import org.springframework.util.StringUtils;
 @Transactional
 
 public class FileServiceImpl implements FileImageService{
+
 	@Autowired
 	FileImageRepository fileImageRepository;
 	
 	@Override
-    public void store(MultipartFile file) throws EmptyResultException    {
+    public void store(MultipartFile file, Integer idDictamen) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		try  {FileImage dbFile = new FileImage( fileName, file.getContentType(), file.getBytes());
+		try  {FileImage dbFile = new FileImage( fileName, file.getContentType(), file.getBytes(), idDictamen);
 		fileImageRepository.save(dbFile);
 
 		  }
@@ -50,8 +51,5 @@ public class FileServiceImpl implements FileImageService{
                 .contentType(MediaType.parseMediaType(file.getFileType()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
                 .body(new ByteArrayResource(file.getData()));
-        
-        
-    
-    }
+}
 }
