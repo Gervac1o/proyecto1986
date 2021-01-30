@@ -1,17 +1,12 @@
 package com.bew.demo.restController;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,19 +14,21 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bew.demo.exception.EmptyResultException;
-import com.bew.demo.service.FileImageService;
+import com.bew.demo.service.DocsDictamenService;
 
 @RestController
-@RequestMapping("/file")
+@RequestMapping("/docDictamen")
 @CrossOrigin("*")
-public class FileRestController {
+
+public class DocsDictamenRestController {
+
 	@Autowired
-	FileImageService fileService;
+	DocsDictamenService docsDictamenService;
 	
     @PostMapping(path = "/upload/{idDictamen}")
     public void FileUpload(@RequestParam("file") MultipartFile file, @PathVariable Integer idDictamen)  throws EmptyResultException {
 
-    	fileService.store(file,idDictamen );
+    	docsDictamenService.store(file,idDictamen);
 
        // return ResponseEntity.ok().build();
     }
@@ -39,10 +36,8 @@ public class FileRestController {
     @GetMapping("/getFile/{idFile}")
     @ResponseBody
     public ResponseEntity<ByteArrayResource> serveFile(@PathVariable Integer idFile) throws EmptyResultException {
-        return  fileService.load(idFile);
+
+   	
+        return  docsDictamenService.load(idFile);
     }
-    
-
-    	
-
 }

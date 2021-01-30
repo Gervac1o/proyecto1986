@@ -6,7 +6,9 @@ import com.bew.demo.model.FileImage;
 
 
 @Repository
-public interface FileImageRepository extends JpaRepository <FileImage,Integer >{
+public interface FileImageRepository extends JpaRepository <FileImage, Integer  >{
+
+	//void save(Integer idDictamen);
 
 
 	}

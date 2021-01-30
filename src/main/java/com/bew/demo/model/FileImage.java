@@ -5,6 +5,7 @@ package com.bew.demo.model;
 import javax.persistence.Column;
 
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,15 +33,20 @@ public class FileImage  {
     
     @Lob
     private byte[] data;
-
-
-    public FileImage() {}
     
-    public FileImage (String fileName, String fileType, byte[] data) {
+    
+    @Column(name = "id_dictamen")
+    private Integer idDictamen;
+
+
+
+	public FileImage() {}
+    
+    public FileImage (String fileName, String fileType, byte[] data,Integer idDictamen) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
-        //this.fileId = fileId;
+        this.idDictamen=idDictamen;
         
     }
 
@@ -69,7 +75,13 @@ public class FileImage  {
 		this.data = data;
 	}
     
-    
+    public Integer getIdDictamen() {
+		return idDictamen;
+	}
+
+	public void setIdDictamen(Integer idDictamen) {
+		this.idDictamen = idDictamen;
+	}
 	
 	
 	

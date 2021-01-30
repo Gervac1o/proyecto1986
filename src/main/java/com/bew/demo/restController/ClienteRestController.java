@@ -48,17 +48,9 @@ public class ClienteRestController {
 	public ResponseEntity<?> save(@RequestBody ClienteDTO clienteDTO
 									){
 		
-		//Cliente cliente = new Cliente();
-		clienteService.saveCliente (clienteDTO);
-		/*Usuario us = new Usuario();
-		us.setNombre(cliente.getNombre());
-		us.setId(cliente.getId());
-		us.setClave(cliente.getClave());
 		
-		System.out.println(us.getNombre());
-		System.out.println(us.getId());
-		usuarioRepository.save(us);
-		*/
+		clienteService.saveCliente (clienteDTO);
+		
 		
 		   return ResponseEntity.ok().build();
 			

@@ -4,10 +4,13 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,18 +31,32 @@ public class DocsBaja implements Serializable {
     @Column(name = "type")
     private String fileType;
     
+    @Column(name = "id_solicitud")
+    private Integer idSulicitud;
+    
     @Lob
     private byte[] data;
 
 
     public DocsBaja() {}
     
-    public DocsBaja (String fileName, String fileType, byte[] data) {
+    public DocsBaja (String fileName, String fileType, byte[] data, Integer idSulicitud) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
+        this.idSulicitud=idSulicitud;
         //this.fileId = fileId;
     }
+	public Integer getIdSulicitud() {
+		return idSulicitud;
+	}
+
+	public void setIdSulicitud(Integer idSulicitud) {
+		this.idSulicitud = idSulicitud;
+	}
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id_solicitud",insertable=false, updatable = false)
+	private SolicitudBaja solicitudBaja;
 
 	public Integer getFileId() {
 		return fileId;
