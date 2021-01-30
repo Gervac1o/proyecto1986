@@ -23,9 +23,15 @@ public class DocsLiberacionLiberacionServiceImpl implements DocsLiberacionServic
 	DocsLiberacionExtempRepository docsLiberacionExtempRepository;
 	
 	@Override
+<<<<<<< HEAD
     public void store(MultipartFile file,Integer idLiberacion) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		try  {DocsLiberacion dbFile = new DocsLiberacion( fileName, file.getContentType(), file.getBytes(), idLiberacion);
+=======
+    public void store(MultipartFile file) throws EmptyResultException    {
+		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		try  {DocsLiberacion dbFile = new DocsLiberacion( fileName, file.getContentType(), file.getBytes(), null);
+>>>>>>> 040db90 (no message)
 		docsLiberacionExtempRepository.save(dbFile);
 
 		  }

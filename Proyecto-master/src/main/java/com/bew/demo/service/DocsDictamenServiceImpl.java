@@ -29,9 +29,15 @@ public class DocsDictamenServiceImpl implements DocsDictamenService {
 	DocsDictamenRepository docsDictamenRepository;
 	
 	@Override
+<<<<<<< HEAD
     public void store(MultipartFile file, Integer idDictamen) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		try  {DocsDictamen dbFile = new DocsDictamen( fileName, file.getContentType(), file.getBytes(), idDictamen);
+=======
+    public void store(MultipartFile file) throws EmptyResultException    {
+		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		try  {DocsDictamen dbFile = new DocsDictamen( fileName, file.getContentType(), file.getBytes(), null);
+>>>>>>> 040db90 (no message)
 		docsDictamenRepository.save(dbFile);
 
 		  }

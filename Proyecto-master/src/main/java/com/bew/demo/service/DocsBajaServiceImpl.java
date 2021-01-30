@@ -22,9 +22,15 @@ public class DocsBajaServiceImpl implements DocsBajaService {
 	DocsBajaRepository docsBajaRepository;
 	
 	@Override
+<<<<<<< HEAD
     public void store(MultipartFile file, Integer idSulicitud) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		try  {DocsBaja dbFile = new DocsBaja( fileName, file.getContentType(), file.getBytes(), idSulicitud);
+=======
+    public void store(MultipartFile file) throws EmptyResultException    {
+		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+		try  {DocsBaja dbFile = new DocsBaja( fileName, file.getContentType(), file.getBytes(), null);
+>>>>>>> 040db90 (no message)
 		docsBajaRepository.save(dbFile);
 
 		  }

@@ -9,5 +9,9 @@ import com.bew.demo.exception.EmptyResultException;
 public interface DocsLiberacionService {
 
 	ResponseEntity<ByteArrayResource> load(Integer fileId) throws EmptyResultException;
+<<<<<<< HEAD
 	void store(MultipartFile file, Integer idLiberacion) throws EmptyResultException;
+=======
+	void store(MultipartFile file) throws EmptyResultException;
+>>>>>>> 040db90 (no message)
 }

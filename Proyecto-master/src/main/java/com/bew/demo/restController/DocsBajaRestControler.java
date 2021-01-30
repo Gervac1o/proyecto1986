@@ -23,10 +23,17 @@ public class DocsBajaRestControler {
 	@Autowired
 	DocsBajaService DocsBajaService;
 	
+<<<<<<< HEAD
     @PostMapping(path = "/upload/{idSulicitud}")
     public void FileUpload(@RequestParam("file") MultipartFile file,@PathVariable Integer idSulicitud)  throws EmptyResultException {
 
     	DocsBajaService.store(file,idSulicitud);
+=======
+    @PostMapping(path = "/upload")
+    public void FileUpload(@RequestParam("file") MultipartFile file)  throws EmptyResultException {
+
+    	DocsBajaService.store(file);
+>>>>>>> 040db90 (no message)
 
        // return ResponseEntity.ok().build();
     }
