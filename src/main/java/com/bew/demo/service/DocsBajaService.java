@@ -9,6 +9,8 @@ import com.bew.demo.exception.EmptyResultException;
 public interface DocsBajaService {
 	
 	ResponseEntity<ByteArrayResource> load(Integer fileId) throws EmptyResultException;
+
 	void store(MultipartFile file, Integer idSulicitud) throws EmptyResultException;
+
 
 }

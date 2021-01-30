@@ -17,19 +17,21 @@ import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.service.DocsLiberacionService;
 
 @RestController
+
 @RequestMapping("/docLiberacion")
+
 @CrossOrigin("*")
 public class DocsLiberacionRestController {
 	
 	@Autowired
 	DocsLiberacionService docsLiberacionService;
 	
+
     @PostMapping(path = "/upload/{idLiberacion}")
     public void FileUpload(@RequestParam("file") MultipartFile file, @PathVariable Integer idLiberacion)  throws EmptyResultException {
 
     	docsLiberacionService.store(file,idLiberacion);
 
-       // return ResponseEntity.ok().build();
     }
     
     @GetMapping("/getFile/{idFile}")

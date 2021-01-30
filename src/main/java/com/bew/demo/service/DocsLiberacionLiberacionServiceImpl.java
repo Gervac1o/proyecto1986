@@ -23,9 +23,11 @@ public class DocsLiberacionLiberacionServiceImpl implements DocsLiberacionServic
 	DocsLiberacionExtempRepository docsLiberacionExtempRepository;
 	
 	@Override
+
     public void store(MultipartFile file,Integer idLiberacion) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		try  {DocsLiberacion dbFile = new DocsLiberacion( fileName, file.getContentType(), file.getBytes(), idLiberacion);
+
 		docsLiberacionExtempRepository.save(dbFile);
 
 		  }
@@ -40,7 +42,7 @@ public class DocsLiberacionLiberacionServiceImpl implements DocsLiberacionServic
 	public ResponseEntity<ByteArrayResource> load(Integer idFile) throws EmptyResultException {
 		DocsLiberacion file = docsLiberacionExtempRepository.findById(idFile).orElseThrow(() -> new   EmptyResultException("File not found with id " + idFile));
 	
-
+	
         return  ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(file.getFileType()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
