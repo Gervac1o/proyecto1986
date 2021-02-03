@@ -2,6 +2,7 @@ package com.bew.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -14,6 +15,7 @@ import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.model.Alumno;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
+
 
 @Service
 @Transactional
@@ -38,10 +40,17 @@ public class AlumnoServiceImpl implements AlumnoService {
 
 	@Override
 	public AlumnoDTO findById(Integer idAlumno) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		AlumnoDTO alumnoDTO = new AlumnoDTO(); 
+		Alumno alumno = null;
+		Optional<Alumno> opAlumno = alumnoRepository.findById(idAlumno);
+		alumno = opAlumno.get();
+		
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+    	alumnoDTO = ( mapper.map(alumno, AlumnoDTO.class));
+		
+		return alumnoDTO;
 	}
-
 	@Override
 	public void saveAlumno(AlumnoDTO alumnoDTO) {
 		// TODO Auto-generated method stub
