@@ -50,8 +50,7 @@ public class ClienteRestController {
 		
 		
 		clienteService.saveCliente (clienteDTO);
-		
-		
+
 		   return ResponseEntity.ok().build();
 			
 	}
@@ -67,6 +66,16 @@ public class ClienteRestController {
 		return ResponseEntity.ok().build();
 	}
 
+		
+	
+	@GetMapping(path = "/findNombre/{nombre}", produces = "application/json")
+	public ResponseEntity<?>find(@PathVariable("nombre") String nombre){
+		ClienteDTO clienteDTO;
+		clienteDTO = clienteService.ClienteNombre(nombre);
+		//System.out.print(nombre);
+		
+		return ResponseEntity.ok(clienteDTO);
+	}
 
 	
 	

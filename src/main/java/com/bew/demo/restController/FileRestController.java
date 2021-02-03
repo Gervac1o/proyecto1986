@@ -28,7 +28,7 @@ public class FileRestController {
 	@Autowired
 	FileImageService fileService;
 	
-    @PostMapping(path = "/upload/{idDictamen}")
+    @PostMapping(path = "/upload")
     public void FileUpload(@RequestParam("file") MultipartFile file)  throws EmptyResultException {
 
     	fileService.store(file );

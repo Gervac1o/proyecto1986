@@ -14,5 +14,7 @@ public interface ClienteService {
 	void saveCliente(ClienteDTO clienteDTO);
     void updateCliente(ClienteDTO clienteDTO)throws EmptyResultException;
     void deleteCliente(Integer idCliente) throws EmptyResultException;
+    ClienteDTO ClienteNombre (String nombre);
+     
 
 }

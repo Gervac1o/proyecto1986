@@ -11,6 +11,7 @@ public class ClienteDTO implements Serializable{
 	private Integer idCliente;
 	private String nombre;
 	
+	
 	public Integer getIdCliente() {
 		return idCliente;
 	}
