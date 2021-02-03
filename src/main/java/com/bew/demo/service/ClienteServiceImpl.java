@@ -89,6 +89,23 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 
+
+	
+
+		@Override
+		public ClienteDTO ClienteNombre(String nombre) {
+			
+			ClienteDTO clienteDTO = new ClienteDTO(); 
+			Cliente cliente = null;
+			Optional<Cliente> opcliente = clienteRepository.findByNombre(nombre);
+			cliente = opcliente.get();
+			
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+	    	clienteDTO = ( mapper.map(cliente, ClienteDTO.class));
+	    	System.out.print(nombre);
+	    	System.out.print(nombre);
+			return clienteDTO;
+		}
 	
 
 }
