@@ -9,4 +9,7 @@ public interface UsuarioService {
 	void saveUsuario(UsuarioDTO usuarioDTO);
 	void updateUsuario(UsuarioDTO usuarioDTO)throws EmptyResultException;
 	void deleteUsuario(Integer idUsuario)throws EmptyResultException;
+	UsuarioDTO UsuarioEmail (String email);
+	UsuarioDTO UsuarioContraseña (String contraseña);
+	UsuarioDTO UsuarioTipo (Boolean tipoUsuario);
 }

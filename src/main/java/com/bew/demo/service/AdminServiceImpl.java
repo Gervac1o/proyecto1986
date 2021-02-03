@@ -2,6 +2,7 @@ package com.bew.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -37,10 +38,54 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public AdminDTO findById(Integer idAdmin) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		AdminDTO adminDTO = new AdminDTO(); 
+		Admin admin = null;
+		Optional<Admin> opAdmin = adminRepository.findById(idAdmin);
+		admin = opAdmin.get();
+		
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+    	adminDTO = ( mapper.map(admin, AdminDTO.class));
+		
+		return adminDTO;
 	}
-
+	@Override
+	public AdminDTO AdminNombre(String nombre) {
+			
+		AdminDTO adminDTO = new AdminDTO(); 
+		Admin admin = null;
+		Optional<Admin> opadmin  = adminRepository.findByNombre(nombre);
+		admin = opadmin.get();
+			
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+	    adminDTO = ( mapper.map(admin , AdminDTO.class));
+		return adminDTO;
+	}
+	@Override
+	public AdminDTO AdminApellidos(String apellidos) {
+			
+		AdminDTO adminDTO = new AdminDTO(); 
+		Admin admin = null;
+		Optional<Admin> opadmin  = adminRepository.findByApellidos(apellidos);
+		admin = opadmin.get();
+			
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+	    adminDTO = ( mapper.map(admin , AdminDTO.class));
+		return adminDTO;
+	}
+	
+	@Override
+	public AdminDTO AdminTelefono(Integer telefono) {
+			
+		AdminDTO adminDTO = new AdminDTO(); 
+		Admin admin = null;
+		Optional<Admin> opadmin  = adminRepository.findByTelefono(telefono);
+		admin = opadmin.get();
+			
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+	    adminDTO = ( mapper.map(admin , AdminDTO.class));
+		return adminDTO;
+	}
 	@Override
 	public void saveAdmin(AdminDTO adminDTO) {
 		// TODO Auto-generated method stub

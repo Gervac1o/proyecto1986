@@ -2,6 +2,7 @@ package com.bew.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -37,8 +38,15 @@ public class SolicitudBajaServiceImpl implements SolicitudBajaService {
 
 	@Override
 	public SolicitudBajaDTO findById(Integer idSolicitud) {
-		// TODO Auto-generated method stub
-		return null;
+		SolicitudBajaDTO solicitudDTO = new SolicitudBajaDTO(); 
+		SolicitudBaja solicitud = null;
+		Optional<SolicitudBaja> opSolicitud = solicitudRepository.findById(idSolicitud);
+		solicitud = opSolicitud.get();
+		
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+		solicitudDTO = ( mapper.map(solicitud, SolicitudBajaDTO.class));
+		
+		return solicitudDTO;
 	}
 
 	@Override
