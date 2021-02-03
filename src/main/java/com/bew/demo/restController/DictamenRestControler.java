@@ -31,6 +31,12 @@ public class DictamenRestControler {
 		dictamen = dictamenService.findAll();
 		return ResponseEntity.ok(dictamen);
 	}
+	@GetMapping(path = "/find/{idDictamen}", produces = "application/json")
+	public ResponseEntity<?>find(@PathVariable("idDictamen") Integer idDictamen){
+		DictamenDTO dictamenDTO;
+		dictamenDTO = dictamenService.findById(idDictamen);
+		return ResponseEntity.ok(dictamenDTO);		
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody DictamenDTO dictamenDTO){
 		dictamenService.saveDictamen (dictamenDTO);

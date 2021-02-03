@@ -32,6 +32,33 @@ public class AdminRestController {
 		admins = adminService.findAll();
 		return ResponseEntity.ok(admins);
 	}
+	@GetMapping(path = "/find/{idAdmin}", produces = "application/json")
+	public ResponseEntity<?>find(@PathVariable("idAdmin") Integer idAdmin){
+		AdminDTO adminDTO;
+		adminDTO = adminService.findById(idAdmin);
+		return ResponseEntity.ok(adminDTO);		
+	}
+	@GetMapping(path = "/findNombre/{nombre}", produces = "application/json")
+	public ResponseEntity<?>findN(@PathVariable("nombre") String nombre){
+		AdminDTO adminDTO;
+		adminDTO = adminService.AdminNombre(nombre);
+		
+		return ResponseEntity.ok(adminDTO);
+	}
+	@GetMapping(path = "/findApellidos/{apellidos}", produces = "application/json")
+	public ResponseEntity<?>findA(@PathVariable("apellidos") String apellidos){
+		AdminDTO adminDTO;
+		adminDTO = adminService.AdminApellidos(apellidos);
+		
+		return ResponseEntity.ok(adminDTO);
+	}
+	@GetMapping(path = "/findTelefono/{telefono}", produces = "application/json")
+	public ResponseEntity<?>findT(@PathVariable("telefono") Integer telefono){
+		AdminDTO adminDTO;
+		adminDTO = adminService.AdminTelefono(telefono);
+		
+		return ResponseEntity.ok(adminDTO);
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody AdminDTO adminDTO){
 	adminService.saveAdmin (adminDTO);

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
@@ -89,24 +88,20 @@ public class ClienteServiceImpl implements ClienteService {
 		clienteRepository.deleteById(idCliente);
 	}
 
-
-
-	
-
-		@Override
-		public ClienteDTO ClienteNombre(String nombre) {
+	@Override
+	public ClienteDTO ClienteNombre(String nombre) {
 			
-			ClienteDTO clienteDTO = new ClienteDTO(); 
-			Cliente cliente = null;
-			Optional<Cliente> opcliente = clienteRepository.findByNombre(nombre);
-			cliente = opcliente.get();
+		ClienteDTO clienteDTO = new ClienteDTO(); 
+		Cliente cliente = null;
+		Optional<Cliente> opcliente = clienteRepository.findByNombre(nombre);
+		cliente = opcliente.get();
 			
-			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-	    	clienteDTO = ( mapper.map(cliente, ClienteDTO.class));
-	    	System.out.print(nombre);
-	    	System.out.print(nombre);
-			return clienteDTO;
-		}
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+	    clienteDTO = ( mapper.map(cliente, ClienteDTO.class));
+	    System.out.print(nombre);
+	    System.out.print(nombre);
+		return clienteDTO;
+	}
 	
 
 }

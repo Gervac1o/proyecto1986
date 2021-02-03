@@ -31,11 +31,17 @@ public class ServicioSocialRestController {
 		servicios = servicioService.findAll();
 		return ResponseEntity.ok(servicios);
 	}
+	@GetMapping(path = "/find/{idServicio}", produces = "application/json")
+	public ResponseEntity<?>find(@PathVariable("idServicio") Integer idServicio){
+	ServicioSocialDTO servicioDTO;
+	servicioDTO = servicioService.findById(idServicio);
+	return ResponseEntity.ok(servicioDTO);		
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody ServicioSocialDTO servicioDTO){
 	servicioService.saveServicioSocial (servicioDTO);
 	return ResponseEntity.ok().build();
-}
+	}
 	@PatchMapping(path = "/update", consumes = "application/json")
 	public ResponseEntity<?> update(@RequestBody ServicioSocialDTO servicioDTO)throws EmptyResultException{
 	servicioService.updateServicioSocial(servicioDTO);

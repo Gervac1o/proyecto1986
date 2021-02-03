@@ -31,11 +31,45 @@ public class AlumnoRestController {
 		alumnos = alumnoService.findAll();
 		return ResponseEntity.ok(alumnos);
 	}
+	@GetMapping(path = "/find/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?>find(@PathVariable("idAlumno") Integer idAlumno){
+		AlumnoDTO alumnoDTO;
+		alumnoDTO = alumnoService.findById(idAlumno);
+		return ResponseEntity.ok(alumnoDTO);		
+	}
+	@GetMapping(path = "/findNombre/{nombre}", produces = "application/json")
+	public ResponseEntity<?>findN(@PathVariable("nombre") String nombre){
+		AlumnoDTO alumnoDTO;
+		alumnoDTO = alumnoService.AlumnoNombre(nombre);
+		
+		return ResponseEntity.ok(alumnoDTO);
+	}
+	@GetMapping(path = "/findApellidoPaterno/{apellidoPaterno}", produces = "application/json")
+	public ResponseEntity<?>find(@PathVariable("apellidoPaterno") String apellidoPaterno){
+		AlumnoDTO alumnoDTO;
+		alumnoDTO = alumnoService.AlumnoApellidoPaterno(apellidoPaterno);
+		
+		return ResponseEntity.ok(alumnoDTO);
+	}
+	@GetMapping(path = "/findApellidoMaterno/{apellidoMaterno}", produces = "application/json")
+	public ResponseEntity<?>findAM(@PathVariable("apellidoMaterno") String apellidoMaterno){
+		AlumnoDTO alumnoDTO;
+		alumnoDTO = alumnoService.AlumnoApellidoMaterno(apellidoMaterno);
+		
+		return ResponseEntity.ok(alumnoDTO);
+	}
+	@GetMapping(path = "/findBoleta/{boleta}", produces = "application/json")
+	public ResponseEntity<?>findB(@PathVariable("boleta") Integer boleta){
+		AlumnoDTO alumnoDTO;
+		alumnoDTO = alumnoService.AlumnoBoleta(boleta);
+		
+		return ResponseEntity.ok(alumnoDTO);
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody AlumnoDTO alumnoDTO){
 	alumnoService.saveAlumno (alumnoDTO);
 	return ResponseEntity.ok().build();
-}
+	}
 	@PatchMapping(path = "/update", consumes = "application/json")
 	public ResponseEntity<?> update(@RequestBody AlumnoDTO alumnoDTO)throws EmptyResultException{
 	alumnoService.updateAlumno(alumnoDTO);

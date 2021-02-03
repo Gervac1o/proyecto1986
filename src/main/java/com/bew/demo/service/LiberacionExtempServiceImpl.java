@@ -2,6 +2,7 @@ package com.bew.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -37,10 +38,17 @@ public class LiberacionExtempServiceImpl implements LiberacionExtempService {
 
 	@Override
 	public LiberacionExtempDTO findById(Integer idLiberacion) {
-		// TODO Auto-generated method stub
-		return null;
+		LiberacionExtempDTO liberacionDTO = new LiberacionExtempDTO(); 
+		LiberacionExtemp liberacion = null;
+		Optional<LiberacionExtemp> opLiberacion = liberacionRepository.findById(idLiberacion);
+		liberacion = opLiberacion.get();
+		
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+		liberacionDTO = ( mapper.map(liberacion, LiberacionExtempDTO.class));
+		
+		return liberacionDTO;
 	}
-
+	
 	@Override
 	public void saveLiberacionExtemp(LiberacionExtempDTO liberacionDTO) {
 		// TODO Auto-generated method stub

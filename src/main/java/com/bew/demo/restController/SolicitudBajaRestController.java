@@ -31,11 +31,17 @@ public class SolicitudBajaRestController {
 		solicitudes = solicitudService.findAll();
 		return ResponseEntity.ok(solicitudes);
 	}
+	@GetMapping(path = "/find/{idSolicitud}", produces = "application/json")
+	public ResponseEntity<?>find(@PathVariable("idSolicitud") Integer idSolicitud){
+	SolicitudBajaDTO solicitudDTO;
+	solicitudDTO = solicitudService.findById(idSolicitud);
+	return ResponseEntity.ok(solicitudDTO);		
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody SolicitudBajaDTO solicitudDTO){
 	solicitudService.saveSolicitudBaja (solicitudDTO);
 	return ResponseEntity.ok().build();
-}
+	}
 	@PatchMapping(path = "/update", consumes = "application/json")
 	public ResponseEntity<?> update(@RequestBody SolicitudBajaDTO solicitudDTO)throws EmptyResultException{
 	solicitudService.updateSolicitudBaja(solicitudDTO);
