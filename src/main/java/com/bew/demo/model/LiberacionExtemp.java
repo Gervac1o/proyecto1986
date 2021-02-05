@@ -55,7 +55,7 @@ public class LiberacionExtemp implements Serializable{
 	private Date fechaTermino;
 	
 	@Column(name="telefono")
-	private Integer telefono;
+	private String telefono;
 
 	@Column(name="sexo")
 	private String sexo;
@@ -65,7 +65,7 @@ public class LiberacionExtemp implements Serializable{
 
 	public LiberacionExtemp() {}
 	public LiberacionExtemp( Integer idLiberacion, String programaAcademico, Integer semestre, Boolean egresado, String registroSS, 
-	String prestatario, String programaSS, Date fechaInicio, Date fechaTermino, Integer telefono, String sexo, Integer idAlumno) {
+	String prestatario, String programaSS, Date fechaInicio, Date fechaTermino, String telefono, String sexo, Integer idAlumno) {
 
 		this.idLiberacion=idLiberacion;
 		this.programaAcademico=programaAcademico;
@@ -138,10 +138,10 @@ public class LiberacionExtemp implements Serializable{
 	public void setFechaTermino(Date fechaTermino) {
 		this.fechaTermino = fechaTermino;
 	}
-	public Integer getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(Integer telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 	public String getSexo() {

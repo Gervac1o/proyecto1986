@@ -16,7 +16,7 @@ public class LiberacionExtempDTO implements Serializable{
 	private String programaSS;
 	private Date fechaInicio;
 	private Date fechaTermino;
-	private Integer telefono;
+	private String telefono;
 	private String sexo;
 	private Integer idAlumno;
 	
@@ -74,10 +74,10 @@ public class LiberacionExtempDTO implements Serializable{
 	public void setFechaTermino(Date fechaTermino) {
 		this.fechaTermino = fechaTermino;
 	}
-	public Integer getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(Integer telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 	public String getSexo() {

@@ -24,10 +24,10 @@ public class DocsBajaRestControler {
 	DocsBajaService DocsBajaService;
 	
 
-    @PostMapping(path = "/upload/{idSulicitud}")
-    public void FileUpload(@RequestParam("file") MultipartFile file,@PathVariable Integer idSulicitud)  throws EmptyResultException {
+    @PostMapping(path = "/upload/{idSolicitud}")
+    public void FileUpload(@RequestParam("file") MultipartFile file,@PathVariable Integer idSolicitud)  throws EmptyResultException {
 
-    	DocsBajaService.store(file,idSulicitud);
+    	DocsBajaService.store(file,idSolicitud);
     }
 
 
