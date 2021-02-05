@@ -13,4 +13,5 @@ public interface AdminService {
 	AdminDTO AdminNombre (String nombre);
 	AdminDTO AdminApellidos (String apellidos);
 	AdminDTO AdminTelefono (Integer telefono);
+	AdminDTO findByIdUsuario(Integer idUsuario);
 }

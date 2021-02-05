@@ -45,10 +45,7 @@ public class ClienteRestController {
 	}
 	
 	@PostMapping(path = "/save", consumes = "application/json")
-	public ResponseEntity<?> save(@RequestBody ClienteDTO clienteDTO
-									){
-		
-		
+	public ResponseEntity<?> save(@RequestBody ClienteDTO clienteDTO){
 		clienteService.saveCliente (clienteDTO);
 
 		   return ResponseEntity.ok().build();

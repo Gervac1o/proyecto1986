@@ -37,6 +37,12 @@ public class ServicioSocialRestController {
 	servicioDTO = servicioService.findById(idServicio);
 	return ResponseEntity.ok(servicioDTO);		
 	}
+	@GetMapping(path = "/findIdAlumno/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Integer idAlumno){
+	ServicioSocialDTO servicioDTO;
+	servicioDTO = servicioService.findByIdAlumno(idAlumno);
+	return ResponseEntity.ok(servicioDTO);		
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody ServicioSocialDTO servicioDTO){
 	servicioService.saveServicioSocial (servicioDTO);

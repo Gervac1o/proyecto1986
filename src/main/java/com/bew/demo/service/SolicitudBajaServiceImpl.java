@@ -50,6 +50,18 @@ public class SolicitudBajaServiceImpl implements SolicitudBajaService {
 	}
 
 	@Override
+	public SolicitudBajaDTO findByIdAlumno(Integer idAlumno) {
+		SolicitudBajaDTO solicitudDTO = new SolicitudBajaDTO(); 
+		SolicitudBaja solicitud = null;
+		Optional<SolicitudBaja> opSolicitud = solicitudRepository.findByIdAlumno(idAlumno);
+		solicitud = opSolicitud.get();
+		
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+		solicitudDTO = ( mapper.map(solicitud, SolicitudBajaDTO.class));
+		
+		return solicitudDTO;
+	}
+	@Override
 	public void saveSolicitudBaja(SolicitudBajaDTO solicitudDTO) {
 		// TODO Auto-generated method stub
 		SolicitudBaja solicitud;

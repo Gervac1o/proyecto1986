@@ -50,6 +50,20 @@ public class AdminServiceImpl implements AdminService {
 		return adminDTO;
 	}
 	@Override
+	public AdminDTO findByIdUsuario(Integer idUsuario) {
+		
+		AdminDTO adminDTO = new AdminDTO(); 
+		Admin admin = null;
+		System.out.println(idUsuario + "Antes de Admin Repository" );
+		Optional<Admin> opAdmin = adminRepository.findByIdUsuario(idUsuario);
+		admin = opAdmin.get();
+		System.out.println(idUsuario + "Despues de Admin Repository" );
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+    	adminDTO = ( mapper.map(admin, AdminDTO.class));
+    	System.out.println(adminDTO.getIdUsuario());
+		return adminDTO;
+	}
+	@Override
 	public AdminDTO AdminNombre(String nombre) {
 			
 		AdminDTO adminDTO = new AdminDTO(); 

@@ -25,4 +25,9 @@ public interface AdminRepository extends JpaRepository <Admin,Integer>{
             value = "SELECT s FROM Admin s WHERE s.telefono = :telefono",
             nativeQuery = false)
     Optional<Admin> findByTelefono(@Param("telefono") Integer telefono);
+	
+	@Query(
+            value = "SELECT s FROM Admin s WHERE s.idUsuario = :idUsuario",
+            nativeQuery = false)
+    Optional<Admin> findByIdUsuario(@Param("idUsuario") Integer idUsuario);
 }

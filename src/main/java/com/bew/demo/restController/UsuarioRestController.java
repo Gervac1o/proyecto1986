@@ -60,11 +60,12 @@ public class UsuarioRestController {
 	public ResponseEntity<?> save(@RequestBody UsuarioDTO usuarioDTO){
 	usuarioService.saveUsuario (usuarioDTO);
 	return ResponseEntity.ok().build();
-}
+	}
 	@PatchMapping(path = "/update", consumes = "application/json")
 	public ResponseEntity<?> update(@RequestBody UsuarioDTO usuarioDTO)throws EmptyResultException{
 	usuarioService.updateUsuario(usuarioDTO);
-	return ResponseEntity.ok().build();
+	System.out.println(usuarioDTO.getIdUsuario());
+	return ResponseEntity.ok(usuarioDTO);
 	}
 	
 	@DeleteMapping(path = "/delete/{idUsuario}", consumes="application/json")

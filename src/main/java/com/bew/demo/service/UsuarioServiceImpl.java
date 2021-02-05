@@ -95,6 +95,21 @@ public class UsuarioServiceImpl implements UsuarioService {
 		usuario = (mapper.map(usuarioDTO, Usuario.class));
     	usuarioRepository.save(usuario);
 	}
+	/*
+	@Override
+	public UsuarioDTO saveUsuario(UsuarioDTO usuarioDTO, UsuarioDTO a) {
+		// TODO Auto-generated method stub
+		Usuario usuario;
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+		usuario = (mapper.map(usuarioDTO, Usuario.class));
+    	usuarioRepository.save(usuario);
+    	System.out.println(usuario.getIdUsuario());
+    	//UsuarioDTO buscandoDTO = new UsuarioDTO();
+    	Mapper buscando = DozerBeanMapperBuilder.buildDefault();
+    	a = (buscando.map(usuario, UsuarioDTO.class));
+    	System.out.println(a.getIdUsuario());
+    	return a;
+	}*/
 
 	@Override
 	public void updateUsuario(UsuarioDTO usuarioDTO) throws EmptyResultException {

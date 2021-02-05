@@ -42,15 +42,27 @@ public class DictamenServiceImpl implements DictamenService {
 	public DictamenDTO findById(Integer idDictamen) {
 		DictamenDTO dictamenDTO = new DictamenDTO(); 
 		Dictamen dictamen = null;
-		Optional<Dictamen> opCliente = dictamenRepository.findById(idDictamen);
-		dictamen = opCliente.get();
+		Optional<Dictamen> opDictamen = dictamenRepository.findById(idDictamen);
+		dictamen = opDictamen.get();
 		
 		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
 		dictamenDTO = ( mapper.map(dictamen, DictamenDTO.class));
 		
 		return dictamenDTO;
 	}
-
+	@Override
+	public DictamenDTO findByIdAlumno(Integer idAlumno) {
+		
+		DictamenDTO dictamenDTO = new DictamenDTO();
+		Dictamen dictamen = null;
+		Optional<Dictamen> opDictamen = dictamenRepository.findByIdAlumno(idAlumno);
+		dictamen = opDictamen.get();
+		
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+		dictamenDTO = (mapper.map(dictamen, DictamenDTO.class));
+		
+		return dictamenDTO;
+	}
 	@Override
 	public void saveDictamen(DictamenDTO dictamenDTO) {
 		Dictamen dictamen;

@@ -59,11 +59,18 @@ public class AdminRestController {
 		
 		return ResponseEntity.ok(adminDTO);
 	}
+	@GetMapping(path = "/findIdUsuario/{idUsuario}", produces = "application/json")
+	public ResponseEntity<?>findIdUsuario(@PathVariable("idUsuario") Integer idUsuario){
+		AdminDTO adminDTO;
+		System.out.println(idUsuario);
+		adminDTO = adminService.findByIdUsuario(idUsuario);
+		return ResponseEntity.ok(adminDTO);		
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody AdminDTO adminDTO){
 	adminService.saveAdmin (adminDTO);
 	return ResponseEntity.ok().build();
-}
+	}
 	@PatchMapping(path = "/update", consumes = "application/json")
 	public ResponseEntity<?> update(@RequestBody AdminDTO adminDTO)throws EmptyResultException{
 	adminService.updateAdmin(adminDTO);

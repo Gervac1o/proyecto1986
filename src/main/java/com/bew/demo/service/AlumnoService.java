@@ -21,4 +21,6 @@ public interface AlumnoService {
 	AlumnoDTO AlumnoApellidoPaterno (String apellidoPaterno);
 	AlumnoDTO AlumnoApellidoMaterno (String apellidoMaterno);
 	AlumnoDTO AlumnoBoleta (Integer boleta);
+	AlumnoDTO findByIdUsuario(Integer idUsuario);
+	
 }

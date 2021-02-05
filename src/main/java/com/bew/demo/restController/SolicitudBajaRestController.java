@@ -37,6 +37,12 @@ public class SolicitudBajaRestController {
 	solicitudDTO = solicitudService.findById(idSolicitud);
 	return ResponseEntity.ok(solicitudDTO);		
 	}
+	@GetMapping(path = "/findIdAlumno/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Integer idAlumno){
+	SolicitudBajaDTO solicitudDTO;
+	solicitudDTO = solicitudService.findByIdAlumno(idAlumno);
+	return ResponseEntity.ok(solicitudDTO);		
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody SolicitudBajaDTO solicitudDTO){
 	solicitudService.saveSolicitudBaja (solicitudDTO);

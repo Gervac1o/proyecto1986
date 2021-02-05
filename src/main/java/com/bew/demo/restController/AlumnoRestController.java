@@ -65,6 +65,12 @@ public class AlumnoRestController {
 		
 		return ResponseEntity.ok(alumnoDTO);
 	}
+	@GetMapping(path = "/findIdUsuario/{idUsuario}", produces = "application/json")
+	public ResponseEntity<?>findIdUsuario(@PathVariable("idUsuario") Integer idUsuario){
+		AlumnoDTO alumnoDTO;
+		alumnoDTO = alumnoService.findByIdUsuario(idUsuario);
+		return ResponseEntity.ok(alumnoDTO);		
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody AlumnoDTO alumnoDTO){
 	alumnoService.saveAlumno (alumnoDTO);
