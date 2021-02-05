@@ -69,10 +69,10 @@ public class ClienteRestController {
 		
 	
 	@GetMapping(path = "/findNombre/{nombre}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("nombre") String nombre){
+	public ResponseEntity<?>find(@PathVariable("nombre") String nombre) throws EmptyResultException{
 		ClienteDTO clienteDTO;
 		clienteDTO = clienteService.ClienteNombre(nombre);
-		//System.out.print(nombre);
+			
 		
 		return ResponseEntity.ok(clienteDTO);
 	}
