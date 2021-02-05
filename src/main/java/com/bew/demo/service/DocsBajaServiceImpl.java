@@ -23,9 +23,9 @@ public class DocsBajaServiceImpl implements DocsBajaService {
 	
 	@Override
 
-    public void store(MultipartFile file, Integer idSulicitud) throws EmptyResultException    {
+    public void store(MultipartFile file, Integer idSolicitud) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		try  {DocsBaja dbFile = new DocsBaja( fileName, file.getContentType(), file.getBytes(), idSulicitud);
+		try  {DocsBaja dbFile = new DocsBaja( fileName, file.getContentType(), file.getBytes(), idSolicitud);
 
 		docsBajaRepository.save(dbFile);
 
