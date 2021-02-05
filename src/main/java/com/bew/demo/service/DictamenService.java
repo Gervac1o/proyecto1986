@@ -12,6 +12,7 @@ public interface DictamenService {
 	void saveDictamen(DictamenDTO dictamenDTO);
 	void updateDictamen(DictamenDTO dictamenDTO)throws EmptyResultException;
 	void deleteDictamen(Integer idDictamen)throws EmptyResultException;
+	DictamenDTO findByIdAlumno(Integer idUsuario);
 	
 }
 

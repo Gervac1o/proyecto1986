@@ -52,6 +52,17 @@ public class AlumnoServiceImpl implements AlumnoService {
 		return alumnoDTO;
 	}
 	@Override
+	public AlumnoDTO findByIdUsuario(Integer idUsuario) {
+		AlumnoDTO alumnoDTO = new AlumnoDTO(); 
+		Alumno alumno = null;
+		Optional<Alumno> opAlumno = alumnoRepository.findByIdUsuario(idUsuario);
+		alumno = opAlumno.get();
+		
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+    	alumnoDTO = ( mapper.map(alumno, AlumnoDTO.class));
+		return alumnoDTO;
+	}
+	@Override
 	public AlumnoDTO AlumnoNombre(String nombre) {
 			
 		AlumnoDTO alumnoDTO = new AlumnoDTO(); 

@@ -50,6 +50,19 @@ public class LiberacionExtempServiceImpl implements LiberacionExtempService {
 	}
 	
 	@Override
+	public LiberacionExtempDTO findByIdAlumno(Integer idAlumno) {
+		LiberacionExtempDTO liberacionDTO = new LiberacionExtempDTO(); 
+		LiberacionExtemp liberacion = null;
+		Optional<LiberacionExtemp> opLiberacion = liberacionRepository.findByIdAlumno(idAlumno);
+		liberacion = opLiberacion.get();
+		
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+		liberacionDTO = ( mapper.map(liberacion, LiberacionExtempDTO.class));
+		
+		return liberacionDTO;
+	}
+	
+	@Override
 	public void saveLiberacionExtemp(LiberacionExtempDTO liberacionDTO) {
 		// TODO Auto-generated method stub
 		LiberacionExtemp liberacion;

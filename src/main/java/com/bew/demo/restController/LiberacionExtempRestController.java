@@ -37,6 +37,12 @@ public class LiberacionExtempRestController {
 		liberacionDTO = liberacionService.findById(idLiberacion);
 		return ResponseEntity.ok(liberacionDTO);		
 	}
+	@GetMapping(path = "/findIdAlumno/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Integer idAlumno){
+		LiberacionExtempDTO liberacionDTO;
+		liberacionDTO = liberacionService.findByIdAlumno(idAlumno);
+		return ResponseEntity.ok(liberacionDTO);		
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody LiberacionExtempDTO liberacionDTO){
 	liberacionService.saveLiberacionExtemp (liberacionDTO);

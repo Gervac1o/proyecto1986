@@ -48,6 +48,18 @@ public class ServicioSocialServiceImpl implements ServicioSocialService {
 		
 		return servicioDTO;
 	}
+	@Override
+	public ServicioSocialDTO findByIdAlumno(Integer idAlumno) {
+		ServicioSocialDTO servicioDTO = new ServicioSocialDTO(); 
+		ServicioSocial servicio = null;
+		Optional<ServicioSocial> opServicio = servicioRepository.findByIdAlumno(idAlumno);
+		servicio = opServicio.get();
+		
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+		servicioDTO = ( mapper.map(servicio, ServicioSocialDTO.class));
+		
+		return servicioDTO;
+	}
 
 	@Override
 	public void saveServicioSocial(ServicioSocialDTO servicioDTO) {
