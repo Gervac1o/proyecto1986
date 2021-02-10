@@ -10,9 +10,10 @@ public class AlumnoDTO implements Serializable{
 	private String apellidoPaterno;
 	private String apellidoMaterno;
 	private Integer boleta;
+	private String programaAcademico;
+	private String sexo;
 	private Integer idUsuario;
-	//private String email;
-	//private String contraseña;
+	
 	
 	public Integer getIdAlumno() {
 		return idAlumno;
@@ -44,23 +45,22 @@ public class AlumnoDTO implements Serializable{
 	public void setBoleta(Integer boleta) {
 		this.boleta = boleta;
 	}
+	public String getProgramaAcademico() {
+		return programaAcademico;
+	}
+	public void setProgramaAcademico(String programaAcademico) {
+		this.programaAcademico = programaAcademico;
+	}
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 	public Integer getIdUsuario() {
 		return idUsuario;
 	}
 	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	
-	/*public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getContraseña() {
-		return contraseña;
-	}
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
-	}*/
 }

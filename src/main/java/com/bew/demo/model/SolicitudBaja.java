@@ -33,9 +33,6 @@ public class SolicitudBaja implements Serializable{
 	@Column(name="tipo_de_baja")
 	private String tipoDeBaja;
 
-	@Column(name="programa_academico")
-	private String programaAcademico;
-
 	@Column(name="semestre")
 	private Integer semestre;
 
@@ -56,20 +53,16 @@ public class SolicitudBaja implements Serializable{
 
 	@Column(name="fecha_termino")
 	private Date fechaTermino;
-
-	@Column(name="sexo")
-	private String sexo;
 	
 	@Column(name="id_alumno")
 	private Integer idAlumno;
 	
 	public SolicitudBaja() {}
-	public SolicitudBaja( Integer idSolicitud, String tipoDeBaja, String programaAcademico, Integer semestre, Boolean egresado, String registroSS, 
-	String prestatario, String programaSS, Date fechaInicio, Date fechaTermino, String sexo, Integer idAlumno) {
+	public SolicitudBaja( Integer idSolicitud, String tipoDeBaja, Integer semestre, Boolean egresado, String registroSS, 
+	String prestatario, String programaSS, Date fechaInicio, Date fechaTermino, Integer idAlumno) {
 
 		this.idSolicitud=idSolicitud;
 		this.tipoDeBaja=tipoDeBaja;
-		this.programaAcademico=programaAcademico;
 		this.semestre=semestre;
 		this.egresado=egresado;
 		this.registroSS=registroSS;
@@ -77,7 +70,6 @@ public class SolicitudBaja implements Serializable{
 		this.programaSS=programaSS;
 		this.fechaInicio=fechaInicio;
 		this.fechaTermino=fechaTermino;
-		this.sexo=sexo;
 		this.idAlumno=idAlumno;
 }
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -95,12 +87,6 @@ public class SolicitudBaja implements Serializable{
 	}
 	public void setTipoDeBaja(String tipoDeBaja) {
 		this.tipoDeBaja = tipoDeBaja;
-	}
-	public String getProgramaAcademico() {
-		return programaAcademico;
-	}
-	public void setProgramaAcademico(String programaAcademico) {
-		this.programaAcademico=programaAcademico;
 	}
 	public Integer getSemestre() {
 		return semestre;
@@ -143,12 +129,6 @@ public class SolicitudBaja implements Serializable{
 	}
 	public void setFechaTermino(Date fechaTermino) {
 		this.fechaTermino = fechaTermino;
-	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
 	}
 	public Integer getIdAlumno() {
 		return idAlumno;

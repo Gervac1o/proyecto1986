@@ -8,8 +8,6 @@ public class DictamenDTO implements Serializable {
 	
 	private Long porcentajeCreditos;
 	private Integer semestre;
-	private String programaAcademico;
-	private String sexo;
 	private Integer idDictamen;
 	private Integer idAlumno;
 	
@@ -28,22 +26,6 @@ public class DictamenDTO implements Serializable {
 
 	public void setSemestre(Integer semestre) {
 		this.semestre = semestre;
-	}
-
-	public String getProgramaAcademico() {
-		return programaAcademico;
-	}
-
-	public void setProgramaAcademico(String programaAcademico) {
-		this.programaAcademico = programaAcademico;
-	}
-
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
 	}
 
 	public Integer getIdDictamen() {

@@ -21,8 +21,8 @@ public class DocsServicio implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name = "docs_sec", sequenceName = "docs_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "docs_sec")
+	@SequenceGenerator(name = "doc_sec", sequenceName = "doc_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "doc_sec")
 	private Integer fileId;
 	
     @Column(name = "file_name")
@@ -37,6 +37,8 @@ public class DocsServicio implements Serializable {
     @Column(name="id_servicio")
     private Integer idServicio;
     
+    public DocsServicio() {}
+    
     public DocsServicio (String fileName, String fileType, byte[] data, Integer idServicio) {
         this.fileName = fileName;
         this.fileType = fileType;
@@ -47,7 +49,8 @@ public class DocsServicio implements Serializable {
     @ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_servicio",insertable=false, updatable = false)
 	private ServicioSocial servicio;
-	public Integer getFileId() {
+	
+    public Integer getFileId() {
 		return fileId;
 	}
 

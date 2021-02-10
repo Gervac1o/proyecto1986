@@ -28,9 +28,6 @@ public class ServicioSocial implements Serializable{
 	@Column(name="id_servicio")
 	private Integer idServicio;
 
-	@Column(name="programa_academico")
-	private String programaAcademico;
-
 	@Column(name="semestre")
 	private Integer semestre;
 
@@ -41,10 +38,9 @@ public class ServicioSocial implements Serializable{
 	private Integer idAlumno;
 
 	public ServicioSocial() {}
-	public ServicioSocial( Integer idServicio, String programaAcademico, Integer semestre, String responsableDirecto, Integer idAlumno) {
+	public ServicioSocial( Integer idServicio, Integer semestre, String responsableDirecto, Integer idAlumno) {
 
 		this.idServicio=idServicio;
-		this.programaAcademico=programaAcademico;
 		this.semestre=semestre;
 		this.responsableDirecto=responsableDirecto;
 		this.idAlumno=idAlumno;
@@ -58,12 +54,6 @@ public class ServicioSocial implements Serializable{
 	}
 	public void setIdServicio(Integer idServicio) {
 		this.idServicio = idServicio;
-	}
-	public String getProgramaAcademico() {
-		return programaAcademico;
-	}
-	public void setProgramaAcademico(String programaAcademico) {
-		this.programaAcademico = programaAcademico;
 	}
 	public Integer getSemestre() {
 		return semestre;
