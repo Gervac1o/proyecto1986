@@ -34,24 +34,16 @@ public class Dictamen implements Serializable{
 	@Column(name = "semestre")
 	private Integer semestre;
 	
-	@Column(name = "programa_academico")
-	private String programaAcademico;
-	
-	@Column(name = "sexo")
-	private String sexo;
-	
 	@Column(name="id_alumno")
 	private Integer idAlumno;
 	
 	public Dictamen () {}
 	
 	public Dictamen (Integer idDictamen , Long porcentajeCreditos ,Integer semestre,
-			String programaAcademico,  String sexo, Integer idAlumno) {
+			Integer idAlumno) {
 		this.idDictamen=idDictamen;
 		this.porcentajeCreditos=porcentajeCreditos;
 		this.semestre=semestre;
-		this.programaAcademico=programaAcademico;
-		this.sexo=sexo;
 		this.idAlumno=idAlumno;
 	}
 	
@@ -75,22 +67,6 @@ public class Dictamen implements Serializable{
 		this.semestre = semestre;
 	}
 
-	public String getProgramaAcademico() {
-		return programaAcademico;
-	}
-
-	public void setProgramaAcademico(String programaAcademico) {
-		this.programaAcademico = programaAcademico;
-	}
-
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-
 	public Integer getIdDictamen() {
 		return idDictamen;
 	}
@@ -106,10 +82,5 @@ public class Dictamen implements Serializable{
 	public void setIdAlumno(Integer idAlumno) {
 		this.idAlumno = idAlumno;
 	}
-	
-	
-	
-	
-
 	
 }

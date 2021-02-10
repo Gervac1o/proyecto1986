@@ -8,7 +8,6 @@ public class LiberacionExtempDTO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private Integer idLiberacion;
-	private String programaAcademico;
 	private Integer semestre;
 	private Boolean egresado;
 	private String registroSS;
@@ -17,7 +16,6 @@ public class LiberacionExtempDTO implements Serializable{
 	private Date fechaInicio;
 	private Date fechaTermino;
 	private String telefono;
-	private String sexo;
 	private Integer idAlumno;
 	
 	public Integer getIdLiberacion() {
@@ -25,12 +23,6 @@ public class LiberacionExtempDTO implements Serializable{
 	}
 	public void setIdLiberacion(Integer idLiberacion) {
 		this.idLiberacion = idLiberacion;
-	}
-	public String getProgramaAcademico() {
-		return programaAcademico;
-	}
-	public void setProgramaAcademico(String programaAcademico) {
-		this.programaAcademico = programaAcademico;
 	}
 	public Integer getSemestre() {
 		return semestre;
@@ -79,12 +71,6 @@ public class LiberacionExtempDTO implements Serializable{
 	}
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
-	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
 	}
 	public Integer getIdAlumno() {
 		return idAlumno;
