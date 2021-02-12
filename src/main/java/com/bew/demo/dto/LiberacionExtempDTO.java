@@ -1,7 +1,7 @@
 package com.bew.demo.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+//import java.util.Date;
 //import java.sql.Date;
 
 public class LiberacionExtempDTO implements Serializable{
@@ -13,8 +13,8 @@ public class LiberacionExtempDTO implements Serializable{
 	private String registroSS;
 	private String prestatario;
 	private String programaSS;
-	private Date fechaInicio;
-	private Date fechaTermino;
+	private String fechaInicio;
+	private String fechaTermino;
 	private String telefono;
 	private Integer idAlumno;
 	
@@ -54,16 +54,16 @@ public class LiberacionExtempDTO implements Serializable{
 	public void setProgramaSS(String programaSS) {
 		this.programaSS = programaSS;
 	}
-	public Date getFechaInicio() {
+	public String getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public Date getFechaTermino() {
+	public String getFechaTermino() {
 		return fechaTermino;
 	}
-	public void setFechaTermino(Date fechaTermino) {
+	public void setFechaTermino(String fechaTermino) {
 		this.fechaTermino = fechaTermino;
 	}
 	public String getTelefono() {

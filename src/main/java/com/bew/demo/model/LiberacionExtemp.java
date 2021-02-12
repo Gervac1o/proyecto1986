@@ -1,7 +1,7 @@
 package com.bew.demo.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+//import java.sql.Date;
 //import java.util.Date;
 
 import javax.persistence.Column;
@@ -41,10 +41,10 @@ public class LiberacionExtemp implements Serializable{
 	private String programaSS;
 
 	@Column(name="fecha_inicio")
-	private Date fechaInicio;
+	private String fechaInicio;
 
 	@Column(name="fecha_termino")
-	private Date fechaTermino;
+	private String fechaTermino;
 	
 	@Column(name="telefono")
 	private String telefono;
@@ -54,7 +54,7 @@ public class LiberacionExtemp implements Serializable{
 
 	public LiberacionExtemp() {}
 	public LiberacionExtemp( Integer idLiberacion, Integer semestre, Boolean egresado, String registroSS, 
-	String prestatario, String programaSS, Date fechaInicio, Date fechaTermino, String telefono, Integer idAlumno) {
+	String prestatario, String programaSS, String fechaInicio, String fechaTermino, String telefono, Integer idAlumno) {
 
 		this.idLiberacion=idLiberacion;
 		this.semestre=semestre;
@@ -107,16 +107,16 @@ public class LiberacionExtemp implements Serializable{
 	public void setProgramaSS(String programaSS) {
 		this.programaSS = programaSS;
 	}
-	public Date getFechaInicio() {
+	public String getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public Date getFechaTermino() {
+	public String getFechaTermino() {
 		return fechaTermino;
 	}
-	public void setFechaTermino(Date fechaTermino) {
+	public void setFechaTermino(String fechaTermino) {
 		this.fechaTermino = fechaTermino;
 	}
 	public String getTelefono() {
