@@ -23,8 +23,6 @@ public class ServicioSocial implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name = "servicio_sec", sequenceName = "servicio_seq", allocationSize = 1, initialValue=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "servicio_sec")
 	@Column(name="id_servicio")
 	private Integer idServicio;
 

@@ -25,8 +25,6 @@ public class LiberacionExtemp implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name = "liberacion_sec", sequenceName = "liberacion_seq", allocationSize = 1, initialValue=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "liberacion_sec")
 	@Column(name="id_liberacion")
 	private Integer idLiberacion;
 
