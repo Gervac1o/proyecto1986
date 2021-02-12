@@ -17,7 +17,7 @@ public interface AlumnoService {
 	void saveAlumno(AlumnoDTO alumnoDTO);
 	void updateAlumno(AlumnoDTO alumnoDTO)throws EmptyResultException;
 	void deleteAlumno(Integer idAlumno)throws EmptyResultException;
-	AlumnoDTO AlumnoNombre (String nombre);
+	List<AlumnoDTO> AlumnoNombre (String nombre);
 	AlumnoDTO AlumnoApellidoPaterno (String apellidoPaterno);
 	AlumnoDTO AlumnoApellidoMaterno (String apellidoMaterno);
 	AlumnoDTO AlumnoBoleta (Integer boleta);

@@ -1,6 +1,7 @@
 package com.bew.demo.dao;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +17,7 @@ public interface AlumnoRepository extends JpaRepository <Alumno,Integer>{
 	@Query(
             value = "SELECT s FROM Alumno s WHERE s.nombre = :nombre",
             nativeQuery = false)
-    Optional<Alumno> findByNombre(@Param("nombre") String nombre);
+    List<Alumno> findByNombre(@Param("nombre") String nombre);
 	
 	@Query(
             value = "SELECT s FROM Alumno s WHERE s.apellidoPaterno = :apellidoPaterno",
