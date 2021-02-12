@@ -25,8 +25,6 @@ public class SolicitudBaja implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name = "solicitud_sec", sequenceName = "solicitud_seq", allocationSize = 1, initialValue=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "solicitud_sec")
 	@Column(name="id_solicitud")
 	private Integer idSolicitud;
 	
