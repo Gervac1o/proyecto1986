@@ -3,6 +3,8 @@ package com.bew.demo.service;
 
 
 
+//import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +32,9 @@ public class DocsDictamenServiceImpl implements DocsDictamenService {
 	
 	@Override
 
-    public void store(MultipartFile file, Integer idDictamen) throws EmptyResultException    {
+    public String store(MultipartFile file,String idDoc) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		try  {DocsDictamen dbFile = new DocsDictamen( fileName, file.getContentType(), file.getBytes(), idDictamen);
+		try  {DocsDictamen dbFile = new DocsDictamen( fileName, file.getContentType(), file.getBytes(), idDoc);
 
 		docsDictamenRepository.save(dbFile);
 
@@ -40,6 +42,7 @@ public class DocsDictamenServiceImpl implements DocsDictamenService {
 		catch(Exception e) {
 			e.printStackTrace();
 			}
+		return fileName;
 }
 
 
@@ -53,9 +56,18 @@ public class DocsDictamenServiceImpl implements DocsDictamenService {
                 .contentType(MediaType.parseMediaType(file.getFileType()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
                 .body(new ByteArrayResource(file.getData()));
-        
-        
     
     }
 
+	@Override
+	public ResponseEntity<ByteArrayResource> findDoc(String idDoc){
+		DocsDictamen file = docsDictamenRepository.findDoc(idDoc);
+	
+
+        return  ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(file.getFileType()))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
+                .body(new ByteArrayResource(file.getData()));
+    
+    }
 }

@@ -3,6 +3,7 @@ package com.bew.demo.restController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,10 +27,14 @@ public class DocsDictamenRestController {
 	DocsDictamenService docsDictamenService;
 	
 
-    @PostMapping(path = "/upload/{idDictamen}")
-    public void FileUpload(@RequestParam("file") MultipartFile file, @PathVariable Integer idDictamen)  throws EmptyResultException {
+    @PostMapping(path = "/upload/{idDoc}", produces="application/json")
+    public String FileUpload(@RequestParam("file") MultipartFile file,@PathVariable String idDoc)  throws EmptyResultException {
 
-    	docsDictamenService.store(file,idDictamen);
+    	docsDictamenService.store(file,idDoc);
+    	String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+    	System.out.println(fileName + " <-- Luis esta borracho y lo hizo llorar el Damenso");
+    	
+    	return fileName;
 }
 
     
@@ -40,5 +45,13 @@ public class DocsDictamenRestController {
 
    	
         return  docsDictamenService.load(idFile);
+    }
+    
+    @GetMapping("/getDoc/{idDoc}")
+    @ResponseBody
+    public ResponseEntity<ByteArrayResource> serveDoc(@PathVariable String idDoc) throws EmptyResultException {
+
+   	
+        return  docsDictamenService.findDoc(idDoc);
     }
 }
