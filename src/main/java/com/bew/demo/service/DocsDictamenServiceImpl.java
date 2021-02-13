@@ -1,15 +1,9 @@
 package com.bew.demo.service;
 
-
-
-
-//import java.util.Optional;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +12,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bew.demo.dao.DocsDictamenRepository;
-
 import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.model.DocsDictamen;
-
 
 @Service
 @Transactional
@@ -37,15 +29,12 @@ public class DocsDictamenServiceImpl implements DocsDictamenService {
 		try  {DocsDictamen dbFile = new DocsDictamen( fileName, file.getContentType(), file.getBytes(), idDoc);
 
 		docsDictamenRepository.save(dbFile);
-
 		  }
 		catch(Exception e) {
 			e.printStackTrace();
 			}
 		return fileName;
 }
-
-
 
 	@Override
 	public ResponseEntity<ByteArrayResource> load(Integer idFile) throws EmptyResultException {

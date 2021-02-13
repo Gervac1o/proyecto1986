@@ -25,7 +25,6 @@ public class DocsDictamenRestController {
 
 	@Autowired
 	DocsDictamenService docsDictamenService;
-	
 
     @PostMapping(path = "/upload/{idDoc}", produces="application/json")
     public String FileUpload(@RequestParam("file") MultipartFile file,@PathVariable String idDoc)  throws EmptyResultException {
@@ -35,14 +34,11 @@ public class DocsDictamenRestController {
     	System.out.println(fileName + " <-- Luis esta borracho y lo hizo llorar el Damenso");
     	
     	return fileName;
-}
+    }
 
-    
-    
     @GetMapping("/getFile/{idFile}")
     @ResponseBody
     public ResponseEntity<ByteArrayResource> serveFile(@PathVariable Integer idFile) throws EmptyResultException {
-
    	
         return  docsDictamenService.load(idFile);
     }
@@ -50,8 +46,8 @@ public class DocsDictamenRestController {
     @GetMapping("/getDoc/{idDoc}")
     @ResponseBody
     public ResponseEntity<ByteArrayResource> serveDoc(@PathVariable String idDoc) throws EmptyResultException {
-
    	
         return  docsDictamenService.findDoc(idDoc);
     }
+    
 }

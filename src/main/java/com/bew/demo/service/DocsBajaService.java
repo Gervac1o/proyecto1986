@@ -10,7 +10,7 @@ public interface DocsBajaService {
 	
 	ResponseEntity<ByteArrayResource> load(Integer fileId) throws EmptyResultException;
 
-	void store(MultipartFile file, Integer idSolicitud) throws EmptyResultException;
+	String store(MultipartFile file, String idDoc) throws EmptyResultException;
 	
-	
+	ResponseEntity<ByteArrayResource> findDoc(String idDoc);
 }

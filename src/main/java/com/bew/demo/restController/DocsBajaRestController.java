@@ -3,6 +3,7 @@ package com.bew.demo.restController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,27 +20,33 @@ import com.bew.demo.service.DocsBajaService;
 @RestController
 @RequestMapping("/docBaja")
 @CrossOrigin("*")
-public class DocsBajaRestControler {
-	@Autowired
-	DocsBajaService DocsBajaService;
+
+public class DocsBajaRestController {
 	
+	@Autowired
+	DocsBajaService docsBajaService;
+	
+    @PostMapping(path = "/upload/{idDoc}", produces="application/json")
+    public String FileUpload(@RequestParam("file") MultipartFile file,@PathVariable String idDoc)  throws EmptyResultException {
 
-    @PostMapping(path = "/upload/{idSolicitud}")
-    public void FileUpload(@RequestParam("file") MultipartFile file,@PathVariable Integer idSolicitud)  throws EmptyResultException {
-
-    	DocsBajaService.store(file,idSolicitud);
+    	docsBajaService.store(file,idDoc);
+    	String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+    	System.out.println(fileName + " <-- Luis esta borracho y lo hizo llorar el Damenso");
+    	
+    	return fileName;
     }
-
-
-       // return ResponseEntity.ok().build();
-    
     
     @GetMapping("/getFile/{idFile}")
     @ResponseBody
     public ResponseEntity<ByteArrayResource> serveFile(@PathVariable Integer idFile) throws EmptyResultException {
 
-   	
-        return  DocsBajaService.load(idFile);
+        return  docsBajaService.load(idFile);
     }
-
+    
+    @GetMapping("/getDoc/{idDoc}")
+    @ResponseBody
+    public ResponseEntity<ByteArrayResource> serveDoc(@PathVariable String idDoc) throws EmptyResultException {
+   	
+        return  docsBajaService.findDoc(idDoc);
+    }
 }
