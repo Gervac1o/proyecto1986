@@ -1,10 +1,15 @@
 package com.bew.demo.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import com.bew.demo.model.DocsServicio;
 
-@Repository
 public interface DocsServicioRepository extends JpaRepository <DocsServicio, Integer> {
 
+	@Query(
+            value = "SELECT s FROM DocsServicio s WHERE s.idDoc = :idDoc",
+            nativeQuery = false)
+	DocsServicio findDoc(@Param("idDoc") String idDoc);
+	
 }

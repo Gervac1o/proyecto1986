@@ -34,16 +34,16 @@ public class DocsServicio implements Serializable {
     @Lob
     private byte[] data;
 
-    @Column(name="id_servicio")
-    private Integer idServicio;
+    @Column(name = "id_doc")
+    private String idDoc;
     
     public DocsServicio() {}
     
-    public DocsServicio (String fileName, String fileType, byte[] data, Integer idServicio) {
+    public DocsServicio (String fileName, String fileType, byte[] data, String idDoc) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
-        this.idServicio= idServicio;
+        this.idDoc= idDoc;
         //this.fileId = fileId;
     }
     @ManyToOne(fetch=FetchType.LAZY)
@@ -82,12 +82,13 @@ public class DocsServicio implements Serializable {
 		this.data = data;
 	}
 
-	public Integer getIdServicio() {
-		return idServicio;
+	public String getIdDoc() {
+		return idDoc;
 	}
 
-	public void setIdServicio(Integer idServicio) {
-		this.idServicio = idServicio;
+	public void setIdDoc(String idDoc) {
+		this.idDoc = idDoc;
 	}
+
 
 }

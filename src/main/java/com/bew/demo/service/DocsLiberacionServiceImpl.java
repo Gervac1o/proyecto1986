@@ -10,30 +10,30 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.bew.demo.dao.DocsLiberacionExtempRepository;
 import com.bew.demo.exception.EmptyResultException;
-
 import com.bew.demo.model.DocsLiberacion;
 
 @Service
 @Transactional
-public class DocsLiberacionLiberacionServiceImpl implements DocsLiberacionService {
+public class DocsLiberacionServiceImpl implements DocsLiberacionService {
 
 	@Autowired
 	DocsLiberacionExtempRepository docsLiberacionExtempRepository;
 	
 	@Override
 
-    public void store(MultipartFile file,Integer idLiberacion) throws EmptyResultException    {
+    public String store(MultipartFile file,String idDoc) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		try  {DocsLiberacion dbFile = new DocsLiberacion( fileName, file.getContentType(), file.getBytes(), idLiberacion);
+		try  {DocsLiberacion dbFile = new DocsLiberacion( fileName, file.getContentType(), file.getBytes(), idDoc);
 
 		docsLiberacionExtempRepository.save(dbFile);
-
 		  }
 		catch(Exception e) {
 			e.printStackTrace();
 			}
+		return fileName;
 }
 
 
@@ -47,9 +47,19 @@ public class DocsLiberacionLiberacionServiceImpl implements DocsLiberacionServic
                 .contentType(MediaType.parseMediaType(file.getFileType()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
                 .body(new ByteArrayResource(file.getData()));
-        
-        
     
     }
 
+	@Override
+	public ResponseEntity<ByteArrayResource> findDoc(String idDoc){
+		DocsLiberacion file = docsLiberacionExtempRepository.findDoc(idDoc);
+	
+
+        return  ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(file.getFileType()))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
+                .body(new ByteArrayResource(file.getData()));
+    
+    }
+	
 }

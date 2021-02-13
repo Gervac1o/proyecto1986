@@ -31,8 +31,8 @@ public class DocsBaja implements Serializable {
     @Column(name = "type")
     private String fileType;
     
-    @Column(name = "id_solicitud")
-    private Integer idSolicitud;
+    @Column(name = "id_doc")
+    private String idDoc;
     
     @Lob
     private byte[] data;
@@ -40,20 +40,14 @@ public class DocsBaja implements Serializable {
 
     public DocsBaja() {}
     
-    public DocsBaja (String fileName, String fileType, byte[] data, Integer idSolicitud) {
+    public DocsBaja (String fileName, String fileType, byte[] data, String idDoc) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
-        this.idSolicitud=idSolicitud;
+        this.idDoc=idDoc;
         //this.fileId = fileId;
     }
-	public Integer getIdSolicitud() {
-		return idSolicitud;
-	}
 
-	public void setIdSolicitud(Integer idSolicitud) {
-		this.idSolicitud = idSolicitud;
-	}
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_solicitud",insertable=false, updatable = false)
 	private SolicitudBaja solicitudBaja;
@@ -88,6 +82,14 @@ public class DocsBaja implements Serializable {
 
 	public void setData(byte[] data) {
 		this.data = data;
+	}
+
+	public String getIdDoc() {
+		return idDoc;
+	}
+
+	public void setIdDoc(String idDoc) {
+		this.idDoc = idDoc;
 	}
 
 

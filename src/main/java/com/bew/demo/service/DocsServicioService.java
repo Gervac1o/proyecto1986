@@ -9,5 +9,6 @@ import com.bew.demo.exception.EmptyResultException;
 public interface DocsServicioService {
 
 	ResponseEntity<ByteArrayResource> load(Integer fileId) throws EmptyResultException;
-	void store(MultipartFile file, Integer idServicio) throws EmptyResultException;
+	String store(MultipartFile file, String idDoc) throws EmptyResultException;
+	ResponseEntity<ByteArrayResource> findDoc(String idDoc);
 }
