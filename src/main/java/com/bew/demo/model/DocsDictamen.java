@@ -34,30 +34,21 @@ public class DocsDictamen implements Serializable {
     @Lob
     private byte[] data;
     
-    @Column(name = "id_dictamen")
-    private Integer idDictamen;
-
+    @Column(name = "id_doc")
+    private String idDoc;
 
 
 	public DocsDictamen() {}
     
-    public DocsDictamen (String fileName, String fileType, byte[] data,Integer idDictamen) {
+    public DocsDictamen (String fileName, String fileType, byte[] data, String idDoc) {
         this.fileName = fileName;
         this.fileType = fileType;
-        this.data = data;
-        this.idDictamen=idDictamen;     
+        this.data = data; 
+        this.idDoc=idDoc;
     }
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_dictamen",insertable=false, updatable = false)
 	private Dictamen dictamen;
-
-	public Integer getIdDictamen() {
-		return idDictamen;
-	}
-
-	public void setIdDictamen(Integer idDictamen) {
-		this.idDictamen = idDictamen;
-	}
 
 	public Integer getFileId() {
 		return fileId;
@@ -89,6 +80,14 @@ public class DocsDictamen implements Serializable {
 
 	public void setData(byte[] data) {
 		this.data = data;
+	}
+
+	public String getIdDoc() {
+		return idDoc;
+	}
+
+	public void setIdDoc(String idDoc) {
+		this.idDoc = idDoc;
 	}
 
     

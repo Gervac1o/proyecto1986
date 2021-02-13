@@ -32,6 +32,38 @@ public class ListaDocsRestController {
 		return ResponseEntity.ok(listaDocs);
 	}
 	
+	@GetMapping(path = "/findDictamen/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?> findDictamen(@PathVariable("idAlumno") Integer idAlumno){
+		List<ListaDocsDTO> listaDocs;
+		listaDocs = listaDocsService.findDictamen(idAlumno);
+		
+		return ResponseEntity.ok(listaDocs);
+	}
+	
+	@GetMapping(path = "/findLiberacion/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?> findLiberacion(@PathVariable("idAlumno") Integer idAlumno){
+		List<ListaDocsDTO> listaDocs;
+		listaDocs = listaDocsService.findLiberacion(idAlumno);
+		
+		return ResponseEntity.ok(listaDocs);
+	}
+	
+	@GetMapping(path = "/findBaja/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?> findBaja(@PathVariable("idAlumno") Integer idAlumno){
+		List<ListaDocsDTO> listaDocs;
+		listaDocs = listaDocsService.findBaja(idAlumno);
+		
+		return ResponseEntity.ok(listaDocs);
+	}
+	
+	@GetMapping(path = "/findServicio/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?> findServicio(@PathVariable("idAlumno") Integer idAlumno){
+		List<ListaDocsDTO> listaDocs;
+		listaDocs = listaDocsService.findServicio(idAlumno);
+		
+		return ResponseEntity.ok(listaDocs);
+	}
+	
 	@GetMapping(path = "/find/{idLista}", produces = "application/json")
 	public ResponseEntity<?>find(@PathVariable("idCliente") Integer idLista){
 		ListaDocsDTO listaDocsDTO;

@@ -9,4 +9,8 @@ public interface ListaDocsService {
 	void saveListaDocs(ListaDocsDTO listaDocsDTO);
 	void updateListaDocs(ListaDocsDTO listaDocsDTO);
 	void deleteListaDocs(Integer idLista);
+	List<ListaDocsDTO> findDictamen(Integer idAlumno);
+	List<ListaDocsDTO> findLiberacion(Integer idAlumno);
+	List<ListaDocsDTO> findBaja(Integer idAlumno);
+	List<ListaDocsDTO> findServicio(Integer idAlumno);
 }

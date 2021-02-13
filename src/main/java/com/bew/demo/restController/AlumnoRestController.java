@@ -39,7 +39,7 @@ public class AlumnoRestController {
 	}
 	@GetMapping(path = "/findNombre/{nombre}", produces = "application/json")
 	public ResponseEntity<?>findN(@PathVariable("nombre") String nombre){
-		AlumnoDTO alumnoDTO;
+		List<AlumnoDTO> alumnoDTO;
 		alumnoDTO = alumnoService.AlumnoNombre(nombre);
 		
 		return ResponseEntity.ok(alumnoDTO);

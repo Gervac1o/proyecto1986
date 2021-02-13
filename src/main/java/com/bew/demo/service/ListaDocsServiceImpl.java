@@ -30,6 +30,7 @@ public class ListaDocsServiceImpl implements ListaDocsService {
 		}
 		return listaDocsDTO;
 	}
+	
 	@Override
 	public ListaDocsDTO findById(Integer idLista) {
 		ListaDocsDTO listaDocsDTO = new ListaDocsDTO(); 
@@ -59,6 +60,50 @@ public class ListaDocsServiceImpl implements ListaDocsService {
 	public void deleteListaDocs(Integer idLista) {
 		
 		listaDocsRepository.deleteById(idLista);
+	}
+
+	@Override
+	public List<ListaDocsDTO> findDictamen(Integer idAlumno) {
+		List<ListaDocsDTO> listaDocsDTO = new ArrayList<>();
+		List<ListaDocs> listaDocs = listaDocsRepository.findDictamen(idAlumno);
+		for(ListaDocs listaDoc: listaDocs) {
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			listaDocsDTO.add(mapper.map(listaDoc, ListaDocsDTO.class));
+		}
+		return listaDocsDTO;
+	}
+	
+	@Override
+	public List<ListaDocsDTO> findLiberacion(Integer idAlumno) {
+		List<ListaDocsDTO> listaDocsDTO = new ArrayList<>();
+		List<ListaDocs> listaDocs = listaDocsRepository.findLiberacion(idAlumno);
+		for(ListaDocs listaDoc: listaDocs) {
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			listaDocsDTO.add(mapper.map(listaDoc, ListaDocsDTO.class));
+		}
+		return listaDocsDTO;
+	}
+	
+	@Override
+	public List<ListaDocsDTO> findBaja(Integer idAlumno) {
+		List<ListaDocsDTO> listaDocsDTO = new ArrayList<>();
+		List<ListaDocs> listaDocs = listaDocsRepository.findBaja(idAlumno);
+		for(ListaDocs listaDoc: listaDocs) {
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			listaDocsDTO.add(mapper.map(listaDoc, ListaDocsDTO.class));
+		}
+		return listaDocsDTO;
+	}
+	
+	@Override
+	public List<ListaDocsDTO> findServicio(Integer idAlumno) {
+		List<ListaDocsDTO> listaDocsDTO = new ArrayList<>();
+		List<ListaDocs> listaDocs = listaDocsRepository.findServicio(idAlumno);
+		for(ListaDocs listaDoc: listaDocs) {
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			listaDocsDTO.add(mapper.map(listaDoc, ListaDocsDTO.class));
+		}
+		return listaDocsDTO;
 	}
 
 }
