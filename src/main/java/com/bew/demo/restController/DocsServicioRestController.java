@@ -27,7 +27,7 @@ public class DocsServicioRestController {
 	DocsServicioService docServicioService;
 	
     @PostMapping(path = "/upload/{idDoc}", produces="application/json")
-    public String store(@RequestParam("file") MultipartFile file, @PathVariable("idServicio") String idDoc)  throws EmptyResultException {
+    public String store(@RequestParam("file") MultipartFile file, @PathVariable String idDoc)  throws EmptyResultException {
 
     	docServicioService.store(file, idDoc);
     	String fileName = StringUtils.cleanPath(file.getOriginalFilename());

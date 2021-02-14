@@ -18,6 +18,7 @@ public interface AlumnoService {
 	void updateAlumno(AlumnoDTO alumnoDTO)throws EmptyResultException;
 	void deleteAlumno(Integer idAlumno)throws EmptyResultException;
 	List<AlumnoDTO> AlumnoNombre (String nombre);
+	List<AlumnoDTO> AlumnoPrograma (String programaAcademico);
 	AlumnoDTO AlumnoApellidoPaterno (String apellidoPaterno);
 	AlumnoDTO AlumnoApellidoMaterno (String apellidoMaterno);
 	AlumnoDTO AlumnoBoleta (Integer boleta);
