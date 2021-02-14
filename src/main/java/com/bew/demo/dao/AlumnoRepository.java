@@ -20,6 +20,11 @@ public interface AlumnoRepository extends JpaRepository <Alumno,Integer>{
     List<Alumno> findByNombre(@Param("nombre") String nombre);
 	
 	@Query(
+            value = "SELECT s FROM Alumno s WHERE s.programaAcademico = :programaAcademico",
+            nativeQuery = false)
+    List<Alumno> findByPrograma(@Param("programaAcademico") String programaAcademico);
+	
+	@Query(
             value = "SELECT s FROM Alumno s WHERE s.apellidoPaterno = :apellidoPaterno",
             nativeQuery = false)
     Optional<Alumno> findByApellidoPaterno(@Param("apellidoPaterno") String apellidoPaterno);

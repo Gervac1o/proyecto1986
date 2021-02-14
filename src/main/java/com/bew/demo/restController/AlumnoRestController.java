@@ -44,6 +44,13 @@ public class AlumnoRestController {
 		
 		return ResponseEntity.ok(alumnoDTO);
 	}
+	@GetMapping(path = "/findPrograma/{programaAcademico}", produces = "application/json")
+	public ResponseEntity<?>findPrograma(@PathVariable("programaAcademico") String programaAcademico){
+		List<AlumnoDTO> alumnoDTO;
+		alumnoDTO = alumnoService.AlumnoPrograma(programaAcademico);
+		
+		return ResponseEntity.ok(alumnoDTO);
+	}
 	@GetMapping(path = "/findApellidoPaterno/{apellidoPaterno}", produces = "application/json")
 	public ResponseEntity<?>find(@PathVariable("apellidoPaterno") String apellidoPaterno){
 		AlumnoDTO alumnoDTO;
