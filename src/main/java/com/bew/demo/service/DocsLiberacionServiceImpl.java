@@ -61,5 +61,13 @@ public class DocsLiberacionServiceImpl implements DocsLiberacionService {
                 .body(new ByteArrayResource(file.getData()));
     
     }
+
+
+
+	@Override
+	public void deleteDoc(String idDoc) {
+		docsLiberacionExtempRepository.deleteDoc(idDoc);
+		
+	}
 	
 }

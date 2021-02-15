@@ -58,4 +58,10 @@ public class DocsServicioServiceImpl implements DocsServicioService{
                 .body(new ByteArrayResource(file.getData()));
     
     }
+
+	@Override
+	public void deleteDoc(String idDoc) {
+		docsServicioRepository.deleteDoc(idDoc);
+		
+	}
 }

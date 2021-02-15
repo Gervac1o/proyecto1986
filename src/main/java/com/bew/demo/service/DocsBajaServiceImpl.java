@@ -61,4 +61,9 @@ public class DocsBajaServiceImpl implements DocsBajaService {
     
     }
 
+	@Override
+	public void deleteDoc(String idDoc) {
+		docsBajaRepository.deleteDoc(idDoc);
+	}
+
 }
