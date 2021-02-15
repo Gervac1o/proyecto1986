@@ -8,7 +8,7 @@ public class AdminDTO implements Serializable{
 	private Integer idAdmin;
 	private String nombre;
 	private String apellidos;
-	private Integer telefono;
+	private String telefono;
 	private Integer idUsuario;
 	
 	
@@ -30,10 +30,10 @@ public class AdminDTO implements Serializable{
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public Integer getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(Integer telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 	public Integer getIdUsuario() {

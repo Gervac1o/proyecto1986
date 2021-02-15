@@ -68,7 +68,7 @@ public class UsuarioRestController {
 	return ResponseEntity.ok(usuarioDTO);
 	}
 	
-	@DeleteMapping(path = "/delete/{idUsuario}", consumes="application/json")
+	@DeleteMapping(path = "/delete/{idUsuario}")
 	public ResponseEntity<?> delete(@PathVariable("idUsuario") Integer idUsuario) throws EmptyResultException{
 	usuarioService.deleteUsuario(idUsuario);
 	return ResponseEntity.ok().build();

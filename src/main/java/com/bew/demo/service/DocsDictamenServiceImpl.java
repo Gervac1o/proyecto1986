@@ -59,4 +59,9 @@ public class DocsDictamenServiceImpl implements DocsDictamenService {
                 .body(new ByteArrayResource(file.getData()));
     
     }
+
+	@Override
+	public void deleteDoc(String idDoc) {
+		docsDictamenRepository.deleteDoc(idDoc);	
+	}
 }

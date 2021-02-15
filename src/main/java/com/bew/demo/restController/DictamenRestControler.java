@@ -54,7 +54,7 @@ public class DictamenRestControler {
 	return ResponseEntity.ok().build();
 	}
 	
-	@DeleteMapping(path = "/delete/{idDictamen}", consumes="application/json")
+	@DeleteMapping(path = "/delete/{idDictamen}")
 	public ResponseEntity<?> delete(@PathVariable("idDictamen") Integer idDictamen) throws EmptyResultException{
 		dictamenService.deleteDictamen(idDictamen);
 	return ResponseEntity.ok().build();

@@ -65,7 +65,7 @@ public class ClienteRestController {
 
 		
 	
-	@GetMapping(path = "/findNombre/{nombre}", produces = "application/json")
+	@GetMapping(path = "/findNombre/{nombre}")
 	public ResponseEntity<?>find(@PathVariable("nombre") String nombre){
 		ClienteDTO clienteDTO;
 		clienteDTO = clienteService.ClienteNombre(nombre);
