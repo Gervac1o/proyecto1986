@@ -48,7 +48,7 @@ public class ListaDocs implements Serializable {
 	@JoinColumn(name="id_alumno",insertable=false, updatable = false)
 	private Alumno alumno;
 
-	private Integer idTtramie;
+	
 	
 	public ListaDocs() {};
 	
@@ -73,6 +73,14 @@ public class ListaDocs implements Serializable {
 
 	public String getNombreDoc() {
 		return nombreDoc;
+	}
+
+	public Integer getIdTramite() {
+		return idTramite;
+	}
+
+	public void setIdTramite(Integer idTramite) {
+		this.idTramite = idTramite;
 	}
 
 	public void setNombreDoc(String nombreDoc) {
@@ -107,15 +115,6 @@ public class ListaDocs implements Serializable {
 		this.idAlumno = idAlumno;
 	}
 
-
-	public Integer getIdTtramie() {
-		return getIdTtramie();
-	}
-
-	public void setIdTtramie(Integer idTtramie) {
-		this.idTtramie = idTtramie;
-
-	}
 }
 	
 	
