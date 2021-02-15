@@ -1,5 +1,7 @@
 package com.bew.demo.restController;
+import com.bew.demo.dto.ListaDocsDTO;
 
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bew.demo.exception.EmptyResultException;
+import com.bew.demo.model.FileImage;
 import com.bew.demo.service.FileImageService;
 
 @RestController
@@ -28,12 +31,12 @@ public class FileRestController {
 	@Autowired
 	FileImageService fileService;
 	
-    @PostMapping(path = "/upload")
-    public void FileUpload(@RequestParam("file") MultipartFile file)  throws EmptyResultException {
+    @PostMapping(path = "/upload/{idDictamen}")
+    public void FileUpload(@RequestParam("file") MultipartFile file, @PathVariable Integer idDictamen)  throws EmptyResultException {
 
-    	fileService.store(file );
+    	fileService.store(file, idDictamen );
 
-       // return ResponseEntity.ok().build();
+    
     }
     
     @GetMapping("/getFile/{idFile}")
@@ -41,6 +44,9 @@ public class FileRestController {
     public ResponseEntity<ByteArrayResource> serveFile(@PathVariable Integer idFile) throws EmptyResultException {
         return  fileService.load(idFile);
     }
+    
+
+    
     
 
     	

@@ -10,4 +10,8 @@ public interface AdminService {
 	void saveAdmin(AdminDTO adminDTO);
 	void updateAdmin(AdminDTO adminDTO)throws EmptyResultException;
 	void deleteAdmin(Integer idAdmin)throws EmptyResultException;
+	AdminDTO AdminNombre (String nombre);
+	AdminDTO AdminApellidos (String apellidos);
+	AdminDTO AdminTelefono (Integer telefono);
+	AdminDTO findByIdUsuario(Integer idUsuario);
 }

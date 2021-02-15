@@ -9,4 +9,5 @@ public interface ServicioSocialService {
 	void saveServicioSocial(ServicioSocialDTO servicioDTO);
 	void updateServicioSocial(ServicioSocialDTO servicioDTO)throws EmptyResultException;
 	void deleteServicioSocial(Integer idServicio)throws EmptyResultException;
+	ServicioSocialDTO findByIdAlumno(Integer idAlumno);
 }

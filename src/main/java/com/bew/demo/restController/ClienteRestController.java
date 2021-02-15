@@ -1,6 +1,6 @@
 package com.bew.demo.restController;
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -45,10 +45,7 @@ public class ClienteRestController {
 	}
 	
 	@PostMapping(path = "/save", consumes = "application/json")
-	public ResponseEntity<?> save(@RequestBody ClienteDTO clienteDTO
-									){
-		
-		
+	public ResponseEntity<?> save(@RequestBody ClienteDTO clienteDTO){
 		clienteService.saveCliente (clienteDTO);
 
 		   return ResponseEntity.ok().build();
@@ -70,10 +67,8 @@ public class ClienteRestController {
 	
 	@GetMapping(path = "/findNombre/{nombre}", produces = "application/json")
 	public ResponseEntity<?>find(@PathVariable("nombre") String nombre) throws EmptyResultException{
-		ClienteDTO clienteDTO;
-		clienteDTO = clienteService.ClienteNombre(nombre);
-			
-		
+		List<ClienteDTO> clienteDTO;
+		clienteDTO = clienteService.clientesNombre(nombre);
 		return ResponseEntity.ok(clienteDTO);
 	}
 

@@ -32,15 +32,40 @@ public class UsuarioRestController {
 		usuarios = usuarioService.findAll();
 		return ResponseEntity.ok(usuarios);
 	}
+	@GetMapping(path = "/find/{idUsuario}", produces = "application/json")
+	public ResponseEntity<?>find(@PathVariable("idUsuario") Integer idUsuario){
+		UsuarioDTO usuarioDTO;
+		usuarioDTO = usuarioService.findById(idUsuario);
+		return ResponseEntity.ok(usuarioDTO);		
+	}
+	@GetMapping(path = "/findEmail/{email}", produces = "application/json")
+	public ResponseEntity<?>findE(@PathVariable("email") String email){
+		UsuarioDTO usuarioDTO;
+		usuarioDTO = usuarioService.UsuarioEmail(email);
+		return ResponseEntity.ok(usuarioDTO);
+	}
+	@GetMapping(path = "/findContraseña/{contraseña}", produces = "application/json")
+	public ResponseEntity<?>findC(@PathVariable("contraseña") String contraseña){
+		UsuarioDTO usuarioDTO;
+		usuarioDTO = usuarioService.UsuarioContraseña(contraseña);
+		return ResponseEntity.ok(usuarioDTO);	
+	}
+	@GetMapping(path = "/findTipo/{tipoUsuario}", produces = "application/json")
+	public ResponseEntity<?>findT(@PathVariable("tipoUsuario") Boolean tipoUsuario){
+		UsuarioDTO usuarioDTO;
+		usuarioDTO = usuarioService.UsuarioTipo(tipoUsuario);
+		return ResponseEntity.ok(usuarioDTO);	
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody UsuarioDTO usuarioDTO){
 	usuarioService.saveUsuario (usuarioDTO);
 	return ResponseEntity.ok().build();
-}
+	}
 	@PatchMapping(path = "/update", consumes = "application/json")
 	public ResponseEntity<?> update(@RequestBody UsuarioDTO usuarioDTO)throws EmptyResultException{
 	usuarioService.updateUsuario(usuarioDTO);
-	return ResponseEntity.ok().build();
+	System.out.println(usuarioDTO.getIdUsuario());
+	return ResponseEntity.ok(usuarioDTO);
 	}
 	
 	@DeleteMapping(path = "/delete/{idUsuario}", consumes="application/json")

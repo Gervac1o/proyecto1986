@@ -2,6 +2,7 @@ package com.bew.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -31,14 +32,33 @@ public class ServicioSocialServiceImpl implements ServicioSocialService {
 			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
 			servicioDTO.add(mapper.map(servicio, ServicioSocialDTO.class));
 		}
-		// TODO Auto-generated method stub
+
 		return servicioDTO;
 	}
 
 	@Override
 	public ServicioSocialDTO findById(Integer idServicio) {
-		// TODO Auto-generated method stub
-		return null;
+		ServicioSocialDTO servicioDTO = new ServicioSocialDTO(); 
+		ServicioSocial servicio = null;
+		Optional<ServicioSocial> opServicio = servicioRepository.findById(idServicio);
+		servicio = opServicio.get();
+		
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+		servicioDTO = ( mapper.map(servicio, ServicioSocialDTO.class));
+		
+		return servicioDTO;
+	}
+	@Override
+	public ServicioSocialDTO findByIdAlumno(Integer idAlumno) {
+		ServicioSocialDTO servicioDTO = new ServicioSocialDTO(); 
+		ServicioSocial servicio = null;
+		Optional<ServicioSocial> opServicio = servicioRepository.findByIdAlumno(idAlumno);
+		servicio = opServicio.get();
+		
+		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+		servicioDTO = ( mapper.map(servicio, ServicioSocialDTO.class));
+		
+		return servicioDTO;
 	}
 
 	@Override

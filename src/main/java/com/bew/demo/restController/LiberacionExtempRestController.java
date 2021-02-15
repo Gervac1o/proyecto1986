@@ -31,11 +31,23 @@ public class LiberacionExtempRestController {
 		liberaciones = liberacionService.findAll();
 		return ResponseEntity.ok(liberaciones);
 	}
+	@GetMapping(path = "/find/{idLiberacion}", produces = "application/json")
+	public ResponseEntity<?>find(@PathVariable("idLiberacion") Integer idLiberacion){
+		LiberacionExtempDTO liberacionDTO;
+		liberacionDTO = liberacionService.findById(idLiberacion);
+		return ResponseEntity.ok(liberacionDTO);		
+	}
+	@GetMapping(path = "/findIdAlumno/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Integer idAlumno){
+		LiberacionExtempDTO liberacionDTO;
+		liberacionDTO = liberacionService.findByIdAlumno(idAlumno);
+		return ResponseEntity.ok(liberacionDTO);		
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody LiberacionExtempDTO liberacionDTO){
 	liberacionService.saveLiberacionExtemp (liberacionDTO);
 	return ResponseEntity.ok().build();
-}
+	}
 	@PatchMapping(path = "/update", consumes = "application/json")
 	public ResponseEntity<?> update(@RequestBody LiberacionExtempDTO liberacionDTO)throws EmptyResultException{
 	liberacionService.updateLiberacionExtemp(liberacionDTO);

@@ -1,13 +1,14 @@
 package com.bew.demo.service;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Date;
 
 
 
 import java.util.List;
 import java.util.Optional;
 
-import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
@@ -31,13 +32,10 @@ public class ClienteServiceImpl implements ClienteService {
 
        List <ClienteDTO> clienteDTO;
         List<Cliente> clientes = clienteRepository.findAll();
-        //if (clientes != null && !clientes.isEmpty()) {
         	clienteDTO = new ArrayList<>();
-        //} else {
-          // throw new EmptyResultException("Sin Resultados");
-       //}
+ 
         for (Cliente cliente : clientes) {
-        	//clienteDTO.add(util.getMapper().map(cliente, ClienteDTO.class));
+        
         	Mapper mapper = DozerBeanMapperBuilder.buildDefault();
         	clienteDTO.add( mapper.map(cliente, ClienteDTO.class));
         	
@@ -89,24 +87,24 @@ public class ClienteServiceImpl implements ClienteService {
 		clienteRepository.deleteById(idCliente);
 	}
 
-
-
+	
+	@Override
+	public List<ClienteDTO> clientesNombre(String nombre) {
+			
+		 List<ClienteDTO> clienteDTO = new ArrayList<>();
+		 List<Cliente> clientes = clienteRepository.findByNombre(nombre);
+		
+		 Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+		
+		
+		for(Cliente cliente : clientes) {
+			clienteDTO.add( mapper.map(cliente, ClienteDTO.class));
+		}
+			
 	
 
-		@Override
-		public ClienteDTO ClienteNombre(String nombre) {
-			
-			ClienteDTO clienteDTO = new ClienteDTO(); 
-			Cliente cliente = null;
-			Optional<Cliente> opcliente = clienteRepository.findByNombre(nombre);
-			cliente = opcliente.get();
-			
-			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-	    	clienteDTO = ( mapper.map(cliente, ClienteDTO.class));
-	    	System.out.print(nombre);
-	    	System.out.print(nombre);
-			return clienteDTO;
-		}
+		return clienteDTO;
+	}
 	
 
 }

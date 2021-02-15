@@ -1,5 +1,8 @@
 package com.bew.demo.service;
 
+import java.util.Optional;
+
+
 //import org.springframework.http.MediaType;
 import javax.transaction.Transactional;
 //import org.apache.tomcat.util.http.parser.MediaType;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bew.demo.dao.FileImageRepository;
+import com.bew.demo.dto.ListaDocsDTO;
 import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.model.FileImage;
 import org.springframework.util.StringUtils;
@@ -26,9 +30,9 @@ public class FileServiceImpl implements FileImageService{
 	FileImageRepository fileImageRepository;
 	
 	@Override
-    public void store(MultipartFile file) throws EmptyResultException    {
+    public void store(MultipartFile file, Integer idDictamen) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		try  {FileImage dbFile = new FileImage( fileName, file.getContentType(), file.getBytes());
+		try  {FileImage dbFile = new FileImage( fileName, file.getContentType(), file.getBytes(),  idDictamen);
 		fileImageRepository.save(dbFile);
 
 		  }
@@ -52,4 +56,7 @@ public class FileServiceImpl implements FileImageService{
         
     
     }
+
+
+
 }

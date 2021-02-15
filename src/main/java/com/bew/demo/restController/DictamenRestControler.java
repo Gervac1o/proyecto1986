@@ -31,11 +31,23 @@ public class DictamenRestControler {
 		dictamen = dictamenService.findAll();
 		return ResponseEntity.ok(dictamen);
 	}
+	@GetMapping(path = "/find/{idDictamen}", produces = "application/json")
+	public ResponseEntity<?>find(@PathVariable("idDictamen") Integer idDictamen){
+		DictamenDTO dictamenDTO;
+		dictamenDTO = dictamenService.findById(idDictamen);
+		return ResponseEntity.ok(dictamenDTO);		
+	}
+	@GetMapping(path = "/findIdAlumno/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Integer idAlumno){
+		DictamenDTO dictamenDTO;
+		dictamenDTO = dictamenService.findByIdAlumno(idAlumno);
+		return ResponseEntity.ok(dictamenDTO);
+	}
 	@PostMapping(path = "/save", consumes = "application/json")
 	public ResponseEntity<?> save(@RequestBody DictamenDTO dictamenDTO){
 		dictamenService.saveDictamen (dictamenDTO);
 	return ResponseEntity.ok().build();
-}
+	}
 	@PostMapping(path = "/update", consumes = "application/json")
 	public ResponseEntity<?> update(@RequestBody DictamenDTO dictamenDTO)throws EmptyResultException{
 		dictamenService.updateDictamen(dictamenDTO);
