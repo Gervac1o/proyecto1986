@@ -63,15 +63,27 @@ public class AlumnoServiceImpl implements AlumnoService {
 		return alumnoDTO;
 	}
 	@Override
-	public AlumnoDTO AlumnoNombre(String nombre) {
+	public List<AlumnoDTO> AlumnoNombre(String nombre) {
 			
-		AlumnoDTO alumnoDTO = new AlumnoDTO(); 
-		Alumno alumno = null;
-		Optional<Alumno> opalumno  = alumnoRepository.findByNombre(nombre);
-		alumno = opalumno.get();
+		List<AlumnoDTO> alumnoDTO; 
+		List<Alumno> alumnos = alumnoRepository.findByNombre(nombre);
+		alumnoDTO = new ArrayList<>();
+		for(Alumno alumno: alumnos) {
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			alumnoDTO.add(mapper.map(alumno, AlumnoDTO.class));
+		}
+		return alumnoDTO;
+	}
+	@Override
+	public List<AlumnoDTO> AlumnoPrograma(String programaAcademico) {
 			
-		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-	    alumnoDTO = ( mapper.map(alumno , AlumnoDTO.class));
+		List<AlumnoDTO> alumnoDTO; 
+		List<Alumno> alumnos = alumnoRepository.findByPrograma(programaAcademico);
+		alumnoDTO = new ArrayList<>();
+		for(Alumno alumno: alumnos) {
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			alumnoDTO.add(mapper.map(alumno, AlumnoDTO.class));
+		}
 		return alumnoDTO;
 	}
 	@Override

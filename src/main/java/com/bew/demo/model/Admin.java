@@ -35,13 +35,13 @@ public class Admin implements Serializable{
 	private String apellidos;
 	
 	@Column(name="telefono")
-	private Integer telefono;
+	private String telefono;
 	
 	@Column(name="id_usuario")
 	private Integer idUsuario;
 
 	public Admin() {}
-	public Admin( Integer idAdmin, String nombre, String apellidos, Integer telefono, Integer idUsuario) {
+	public Admin( Integer idAdmin, String nombre, String apellidos, String telefono, Integer idUsuario) {
 
 		this.nombre=nombre;	
 		this.idAdmin=idAdmin;
@@ -77,11 +77,11 @@ public class Admin implements Serializable{
 		this.apellidos = apellidos;
 	}
 	
-	public Integer getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(Integer telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 	public Integer getIdUsuario() {

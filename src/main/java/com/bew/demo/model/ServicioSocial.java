@@ -5,12 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -23,13 +20,8 @@ public class ServicioSocial implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name = "servicio_sec", sequenceName = "servicio_seq", allocationSize = 1, initialValue=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "servicio_sec")
 	@Column(name="id_servicio")
 	private Integer idServicio;
-
-	@Column(name="programa_academico")
-	private String programaAcademico;
 
 	@Column(name="semestre")
 	private Integer semestre;
@@ -41,10 +33,9 @@ public class ServicioSocial implements Serializable{
 	private Integer idAlumno;
 
 	public ServicioSocial() {}
-	public ServicioSocial( Integer idServicio, String programaAcademico, Integer semestre, String responsableDirecto, Integer idAlumno) {
+	public ServicioSocial( Integer idServicio, Integer semestre, String responsableDirecto, Integer idAlumno) {
 
 		this.idServicio=idServicio;
-		this.programaAcademico=programaAcademico;
 		this.semestre=semestre;
 		this.responsableDirecto=responsableDirecto;
 		this.idAlumno=idAlumno;
@@ -58,12 +49,6 @@ public class ServicioSocial implements Serializable{
 	}
 	public void setIdServicio(Integer idServicio) {
 		this.idServicio = idServicio;
-	}
-	public String getProgramaAcademico() {
-		return programaAcademico;
-	}
-	public void setProgramaAcademico(String programaAcademico) {
-		this.programaAcademico = programaAcademico;
 	}
 	public Integer getSemestre() {
 		return semestre;

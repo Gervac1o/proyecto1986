@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.bew.demo.dao.DocsBajaRepository;
 import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.model.DocsBaja;
+
 @Service
 @Transactional
 public class DocsBajaServiceImpl implements DocsBajaService {
@@ -23,9 +24,9 @@ public class DocsBajaServiceImpl implements DocsBajaService {
 	
 	@Override
 
-    public void store(MultipartFile file, Integer idSolicitud) throws EmptyResultException    {
+    public String store(MultipartFile file,String idDoc) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-		try  {DocsBaja dbFile = new DocsBaja( fileName, file.getContentType(), file.getBytes(), idSolicitud);
+		try  {DocsBaja dbFile = new DocsBaja( fileName, file.getContentType(), file.getBytes(), idDoc);
 
 		docsBajaRepository.save(dbFile);
 
@@ -33,9 +34,8 @@ public class DocsBajaServiceImpl implements DocsBajaService {
 		catch(Exception e) {
 			e.printStackTrace();
 			}
+		return fileName;
 }
-
-
 
 	@Override
 	public ResponseEntity<ByteArrayResource> load(Integer idFile) throws EmptyResultException {
@@ -46,8 +46,18 @@ public class DocsBajaServiceImpl implements DocsBajaService {
                 .contentType(MediaType.parseMediaType(file.getFileType()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
                 .body(new ByteArrayResource(file.getData()));
-        
-        
+      
+    }
+	
+	@Override
+	public ResponseEntity<ByteArrayResource> findDoc(String idDoc){
+		DocsBaja file = docsBajaRepository.findDoc(idDoc);
+	
+
+        return  ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(file.getFileType()))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFileName() + "\"")
+                .body(new ByteArrayResource(file.getData()));
     
     }
 

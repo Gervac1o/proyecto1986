@@ -2,7 +2,6 @@ package com.bew.demo.restController;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,15 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.bew.demo.dto.ListaDocsDTO;
-
 import com.bew.demo.service.ListaDocsService;
 
 @RestController
 @RequestMapping("/lista")
 @CrossOrigin("*")
-public class ListaDocsRestControler {
+public class ListaDocsRestController {
 	@Autowired
 	ListaDocsService listaDocsService; 
 
@@ -35,8 +32,40 @@ public class ListaDocsRestControler {
 		return ResponseEntity.ok(listaDocs);
 	}
 	
+	@GetMapping(path = "/findDictamen/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?> findDictamen(@PathVariable("idAlumno") Integer idAlumno){
+		List<ListaDocsDTO> listaDocs;
+		listaDocs = listaDocsService.findDictamen(idAlumno);
+		
+		return ResponseEntity.ok(listaDocs);
+	}
+	
+	@GetMapping(path = "/findLiberacion/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?> findLiberacion(@PathVariable("idAlumno") Integer idAlumno){
+		List<ListaDocsDTO> listaDocs;
+		listaDocs = listaDocsService.findLiberacion(idAlumno);
+		
+		return ResponseEntity.ok(listaDocs);
+	}
+	
+	@GetMapping(path = "/findBaja/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?> findBaja(@PathVariable("idAlumno") Integer idAlumno){
+		List<ListaDocsDTO> listaDocs;
+		listaDocs = listaDocsService.findBaja(idAlumno);
+		
+		return ResponseEntity.ok(listaDocs);
+	}
+	
+	@GetMapping(path = "/findServicio/{idAlumno}", produces = "application/json")
+	public ResponseEntity<?> findServicio(@PathVariable("idAlumno") Integer idAlumno){
+		List<ListaDocsDTO> listaDocs;
+		listaDocs = listaDocsService.findServicio(idAlumno);
+		
+		return ResponseEntity.ok(listaDocs);
+	}
+	
 	@GetMapping(path = "/find/{idLista}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("idLista") Integer idLista){
+	public ResponseEntity<?>find(@PathVariable("idCliente") Integer idLista){
 		ListaDocsDTO listaDocsDTO;
 		listaDocsDTO = listaDocsService.findById(idLista);
 		return ResponseEntity.ok(listaDocsDTO);		
@@ -59,8 +88,5 @@ public class ListaDocsRestControler {
 	public ResponseEntity<?> delete(@PathVariable("idLista") Integer idLista) {
 		listaDocsService.deleteListaDocs(idLista);
 		return ResponseEntity.ok().build();
-	}
-
-	
-	
+	}	
 }

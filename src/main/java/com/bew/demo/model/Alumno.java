@@ -40,6 +40,12 @@ public class Alumno implements Serializable{
 	@Column(name="boleta")
 	private Integer boleta;
 	
+	@Column(name="programa_academico")
+	private String programaAcademico;
+	
+	@Column(name="sexo")
+	private String sexo;
+	
 	@Column(name="id_usuario")
 	private Integer idUsuario;
 	
@@ -47,7 +53,7 @@ public class Alumno implements Serializable{
 	
 	public Alumno() {}
 	public Alumno( Integer idAlumno, String nombre, String apellidoPaterno, String apellidoMaterno, 
-			Integer boleta, Integer idUsuario) {
+			Integer boleta, String programaAcademico, String sexo, Integer idUsuario) {
 		
 		
 		this.nombre=nombre;	
@@ -55,7 +61,10 @@ public class Alumno implements Serializable{
 		this.apellidoPaterno=apellidoPaterno;
 		this.apellidoMaterno=apellidoMaterno;
 		this.boleta=boleta;
+		this.programaAcademico = programaAcademico;
+		this.sexo = sexo;
 		this.idUsuario=idUsuario;
+	
 }
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_usuario",insertable=false, updatable = false)
@@ -100,9 +109,27 @@ public class Alumno implements Serializable{
 	public void setBoleta(Integer boleta) {
 		this.boleta = boleta;
 	}
+	
+	public String getProgramaAcademico() {
+		return programaAcademico;
+	}
+	
+	public void setProgramaAcademico(String programaAcademico) {
+		this.programaAcademico = programaAcademico;
+	}
+	
+	public String getSexo() {
+		return sexo;
+	}
+	
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	
 	public Integer getIdUsuario() {
 		return idUsuario;
 	}
+	
 	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
 	}

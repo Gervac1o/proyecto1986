@@ -1,7 +1,7 @@
 package com.bew.demo.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+//import java.util.Date;
 //import java.sql.Date;
 
 public class SolicitudBajaDTO implements Serializable {
@@ -9,15 +9,13 @@ public class SolicitudBajaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer idSolicitud;
 	private String tipoDeBaja;
-	private String programaAcademico;
 	private Integer semestre;
 	private Boolean egresado;
 	private String registroSS;
 	private String prestatario;
 	private String programaSS;
-	private Date fechaInicio;
-	private Date fechaTermino;
-	private String sexo;
+	private String fechaInicio;
+	private String fechaTermino;
 	private Integer idAlumno;
 	
 	
@@ -32,12 +30,6 @@ public class SolicitudBajaDTO implements Serializable {
 	}
 	public void setTipoDeBaja(String tipoDeBaja) {
 		this.tipoDeBaja = tipoDeBaja;
-	}
-	public String getProgramaAcademico() {
-		return programaAcademico;
-	}
-	public void setProgramaAcademico(String programaAcademico) {
-		this.programaAcademico = programaAcademico;
 	}
 	public Integer getSemestre() {
 		return semestre;
@@ -69,23 +61,17 @@ public class SolicitudBajaDTO implements Serializable {
 	public void setProgramaSS(String programaSS) {
 		this.programaSS = programaSS;
 	}
-	public Date getFechaInicio() {
+	public String getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public Date getFechaTermino() {
+	public String getFechaTermino() {
 		return fechaTermino;
 	}
-	public void setFechaTermino(Date fechaTermino) {
+	public void setFechaTermino(String fechaTermino) {
 		this.fechaTermino = fechaTermino;
-	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
 	}
 	public Integer getIdAlumno() {
 		return idAlumno;

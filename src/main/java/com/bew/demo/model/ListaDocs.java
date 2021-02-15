@@ -31,7 +31,8 @@ public class ListaDocs implements Serializable {
 	private String nombreDoc;
 	
 	@Column(name="id_doc")
-	private Integer idDoc;
+	private String idDoc;
+
 	
 	@Column(name="comentario")
 	private String comentario;
@@ -40,20 +41,24 @@ public class ListaDocs implements Serializable {
 	private Integer idAlumno;
 	
 	@Column(name = "id_tramite")
-	private Integer idTtramie;
+	private Integer idTramite;
+
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_alumno",insertable=false, updatable = false)
 	private Alumno alumno;
+
+	private Integer idTtramie;
 	
 	public ListaDocs() {};
 	
-	public ListaDocs(Integer idLista, String nombreDoc, Integer idDoc, String comentario, Integer idTtramie) {
+	public ListaDocs(Integer idLista, String nombreDoc, String idDoc, String comentario, Integer idTramite) {
+
 		super();
 		this.idLista = idLista;
 		this.nombreDoc = nombreDoc;
 		this.idDoc = idDoc;
-		this.idTtramie=idTtramie;
+		this.idTramite=idTramite;
 		this.comentario = comentario;
 		
 	}
@@ -74,11 +79,15 @@ public class ListaDocs implements Serializable {
 		this.nombreDoc = nombreDoc;
 	}
 
-	public Integer getIdDoc() {
+
+
+
+	public String getIdDoc() {
 		return idDoc;
 	}
 
-	public void setIdDoc(Integer idDoc) {
+	public void setIdDoc(String idDoc) {
+
 		this.idDoc = idDoc;
 	}
 
@@ -98,16 +107,19 @@ public class ListaDocs implements Serializable {
 		this.idAlumno = idAlumno;
 	}
 
+
 	public Integer getIdTtramie() {
-		return idTtramie;
+		return getIdTtramie();
 	}
 
 	public void setIdTtramie(Integer idTtramie) {
 		this.idTtramie = idTtramie;
+
 	}
-	
-	
-	
-	
-	
 }
+	
+	
+	
+	
+	
+

@@ -54,7 +54,7 @@ public class LiberacionExtempRestController {
 	return ResponseEntity.ok().build();
 	}
 	
-	@DeleteMapping(path = "/delete/{idLiberacion}", consumes="application/json")
+	@DeleteMapping(path = "/delete/{idLiberacion}")
 	public ResponseEntity<?> delete(@PathVariable("idLiberacion") Integer idLiberacion) throws EmptyResultException{
 	liberacionService.deleteLiberacionExtemp(idLiberacion);
 	return ResponseEntity.ok().build();

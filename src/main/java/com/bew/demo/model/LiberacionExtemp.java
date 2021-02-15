@@ -2,17 +2,14 @@ package com.bew.demo.model;
 
 import java.io.Serializable;
 //import java.sql.Date;
-import java.util.Date;
+//import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -25,13 +22,8 @@ public class LiberacionExtemp implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name = "liberacion_sec", sequenceName = "liberacion_seq", allocationSize = 1, initialValue=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "liberacion_sec")
 	@Column(name="id_liberacion")
 	private Integer idLiberacion;
-
-	@Column(name="programa_academico")
-	private String programaAcademico;
 
 	@Column(name="semestre")
 	private Integer semestre;
@@ -49,26 +41,22 @@ public class LiberacionExtemp implements Serializable{
 	private String programaSS;
 
 	@Column(name="fecha_inicio")
-	private Date fechaInicio;
+	private String fechaInicio;
 
 	@Column(name="fecha_termino")
-	private Date fechaTermino;
+	private String fechaTermino;
 	
 	@Column(name="telefono")
 	private String telefono;
 
-	@Column(name="sexo")
-	private String sexo;
-	
 	@Column(name="id_alumno")
 	private Integer idAlumno;
 
 	public LiberacionExtemp() {}
-	public LiberacionExtemp( Integer idLiberacion, String programaAcademico, Integer semestre, Boolean egresado, String registroSS, 
-	String prestatario, String programaSS, Date fechaInicio, Date fechaTermino, String telefono, String sexo, Integer idAlumno) {
+	public LiberacionExtemp( Integer idLiberacion, Integer semestre, Boolean egresado, String registroSS, 
+	String prestatario, String programaSS, String fechaInicio, String fechaTermino, String telefono, Integer idAlumno) {
 
 		this.idLiberacion=idLiberacion;
-		this.programaAcademico=programaAcademico;
 		this.semestre=semestre;
 		this.egresado=egresado;
 		this.registroSS=registroSS;
@@ -77,7 +65,6 @@ public class LiberacionExtemp implements Serializable{
 		this.fechaInicio=fechaInicio;
 		this.fechaTermino=fechaTermino;
 		this.telefono=telefono;
-		this.sexo=sexo;
 		this.idAlumno=idAlumno;
 }
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -89,12 +76,6 @@ public class LiberacionExtemp implements Serializable{
 	}
 	public void setIdLiberacion(Integer idLiberacion) {
 		this.idLiberacion = idLiberacion;
-	}
-	public String getProgramaAcademico() {
-		return programaAcademico;
-	}
-	public void setProgramaAcademico(String programaAcademico) {
-		this.programaAcademico = programaAcademico;
 	}
 	public Integer getSemestre() {
 		return semestre;
@@ -126,16 +107,16 @@ public class LiberacionExtemp implements Serializable{
 	public void setProgramaSS(String programaSS) {
 		this.programaSS = programaSS;
 	}
-	public Date getFechaInicio() {
+	public String getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public Date getFechaTermino() {
+	public String getFechaTermino() {
 		return fechaTermino;
 	}
-	public void setFechaTermino(Date fechaTermino) {
+	public void setFechaTermino(String fechaTermino) {
 		this.fechaTermino = fechaTermino;
 	}
 	public String getTelefono() {
@@ -143,12 +124,6 @@ public class LiberacionExtemp implements Serializable{
 	}
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
-	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
 	}
 	public Integer getIdAlumno() {
 		return idAlumno;

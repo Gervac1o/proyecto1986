@@ -39,8 +39,15 @@ public class AlumnoRestController {
 	}
 	@GetMapping(path = "/findNombre/{nombre}", produces = "application/json")
 	public ResponseEntity<?>findN(@PathVariable("nombre") String nombre){
-		AlumnoDTO alumnoDTO;
+		List<AlumnoDTO> alumnoDTO;
 		alumnoDTO = alumnoService.AlumnoNombre(nombre);
+		
+		return ResponseEntity.ok(alumnoDTO);
+	}
+	@GetMapping(path = "/findPrograma/{programaAcademico}", produces = "application/json")
+	public ResponseEntity<?>findPrograma(@PathVariable("programaAcademico") String programaAcademico){
+		List<AlumnoDTO> alumnoDTO;
+		alumnoDTO = alumnoService.AlumnoPrograma(programaAcademico);
 		
 		return ResponseEntity.ok(alumnoDTO);
 	}
@@ -82,7 +89,7 @@ public class AlumnoRestController {
 	return ResponseEntity.ok().build();
 	}
 	
-	@DeleteMapping(path = "/delete/{idAlumno}", consumes="application/json")
+	@DeleteMapping(path = "/delete/{idAlumno}")
 	public ResponseEntity<?> delete(@PathVariable("idAlumno") Integer idAlumno) throws EmptyResultException{
 	alumnoService.deleteAlumno(idAlumno);
 	return ResponseEntity.ok().build();

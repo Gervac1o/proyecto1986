@@ -5,13 +5,14 @@ public class ListaDocsDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	
+
 	private Integer idLista;
 	private String nombreDoc;
-	private Integer idDoc;
+	private String idDoc;
 	private String comentario;
 	private Integer idAlumno;
-	private Integer idTtramie;
+	private Integer idTramite;
+	
 	public Integer getIdLista() {
 		return idLista;
 	}
@@ -24,10 +25,10 @@ public class ListaDocsDTO implements Serializable{
 	public void setNombreDoc(String nombreDoc) {
 		this.nombreDoc = nombreDoc;
 	}
-	public Integer getIdDoc() {
+	public String getIdDoc() {
 		return idDoc;
 	}
-	public void setIdDoc(Integer idDoc) {
+	public void setIdDoc(String idDoc) {
 		this.idDoc = idDoc;
 	}
 	public String getComentario() {
@@ -42,12 +43,14 @@ public class ListaDocsDTO implements Serializable{
 	public void setIdAlumno(Integer idAlumno) {
 		this.idAlumno = idAlumno;
 	}
-	public Integer getIdTtramie() {
-		return idTtramie;
+	public Integer getIdTramite() {
+		return idTramite;
 	}
-	public void setIdTtramie(Integer idTtramie) {
-		this.idTtramie = idTtramie;
+	public void setIdTramite(Integer idTramite) {
+		this.idTramite = idTramite;
 	}
+
+	
 	
 	
 	

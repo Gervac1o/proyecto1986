@@ -54,7 +54,7 @@ public class SolicitudBajaRestController {
 	return ResponseEntity.ok().build();
 	}
 	
-	@DeleteMapping(path = "/delete/{idSolicitud}", consumes="application/json")
+	@DeleteMapping(path = "/delete/{idSolicitud}")
 	public ResponseEntity<?> delete(@PathVariable("idSolicitud") Integer idSolicitud) throws EmptyResultException{
 	solicitudService.deleteSolicitudBaja(idSolicitud);
 	return ResponseEntity.ok().build();

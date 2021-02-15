@@ -2,17 +2,14 @@ package com.bew.demo.model;
 
 import java.io.Serializable;
 //import java.sql.Date;
-import java.util.Date;
+//import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -25,16 +22,11 @@ public class SolicitudBaja implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name = "solicitud_sec", sequenceName = "solicitud_seq", allocationSize = 1, initialValue=1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "solicitud_sec")
 	@Column(name="id_solicitud")
 	private Integer idSolicitud;
 	
 	@Column(name="tipo_de_baja")
 	private String tipoDeBaja;
-
-	@Column(name="programa_academico")
-	private String programaAcademico;
 
 	@Column(name="semestre")
 	private Integer semestre;
@@ -52,24 +44,20 @@ public class SolicitudBaja implements Serializable{
 	private String programaSS;
 
 	@Column(name="fecha_inicio")
-	private Date fechaInicio;
+	private String fechaInicio;
 
 	@Column(name="fecha_termino")
-	private Date fechaTermino;
-
-	@Column(name="sexo")
-	private String sexo;
+	private String fechaTermino;
 	
 	@Column(name="id_alumno")
 	private Integer idAlumno;
 	
 	public SolicitudBaja() {}
-	public SolicitudBaja( Integer idSolicitud, String tipoDeBaja, String programaAcademico, Integer semestre, Boolean egresado, String registroSS, 
-	String prestatario, String programaSS, Date fechaInicio, Date fechaTermino, String sexo, Integer idAlumno) {
+	public SolicitudBaja( Integer idSolicitud, String tipoDeBaja, Integer semestre, Boolean egresado, String registroSS, 
+	String prestatario, String programaSS, String fechaInicio, String fechaTermino, Integer idAlumno) {
 
 		this.idSolicitud=idSolicitud;
 		this.tipoDeBaja=tipoDeBaja;
-		this.programaAcademico=programaAcademico;
 		this.semestre=semestre;
 		this.egresado=egresado;
 		this.registroSS=registroSS;
@@ -77,7 +65,6 @@ public class SolicitudBaja implements Serializable{
 		this.programaSS=programaSS;
 		this.fechaInicio=fechaInicio;
 		this.fechaTermino=fechaTermino;
-		this.sexo=sexo;
 		this.idAlumno=idAlumno;
 }
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -95,12 +82,6 @@ public class SolicitudBaja implements Serializable{
 	}
 	public void setTipoDeBaja(String tipoDeBaja) {
 		this.tipoDeBaja = tipoDeBaja;
-	}
-	public String getProgramaAcademico() {
-		return programaAcademico;
-	}
-	public void setProgramaAcademico(String programaAcademico) {
-		this.programaAcademico=programaAcademico;
 	}
 	public Integer getSemestre() {
 		return semestre;
@@ -132,23 +113,17 @@ public class SolicitudBaja implements Serializable{
 	public void setProgramaSS(String programaSS) {
 		this.programaSS = programaSS;
 	}
-	public Date getFechaInicio() {
+	public String getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(Date fechaInicio) {
+	public void setFechaInicio(String fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public Date getFechaTermino() {
+	public String getFechaTermino() {
 		return fechaTermino;
 	}
-	public void setFechaTermino(Date fechaTermino) {
+	public void setFechaTermino(String fechaTermino) {
 		this.fechaTermino = fechaTermino;
-	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
 	}
 	public Integer getIdAlumno() {
 		return idAlumno;
