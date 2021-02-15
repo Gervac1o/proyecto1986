@@ -89,7 +89,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
-	public AdminDTO AdminTelefono(Integer telefono) {
+	public AdminDTO AdminTelefono(String telefono) {
 			
 		AdminDTO adminDTO = new AdminDTO(); 
 		Admin admin = null;

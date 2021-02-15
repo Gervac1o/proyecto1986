@@ -53,7 +53,7 @@ public class AdminRestController {
 		return ResponseEntity.ok(adminDTO);
 	}
 	@GetMapping(path = "/findTelefono/{telefono}", produces = "application/json")
-	public ResponseEntity<?>findT(@PathVariable("telefono") Integer telefono){
+	public ResponseEntity<?>findT(@PathVariable("telefono") String telefono){
 		AdminDTO adminDTO;
 		adminDTO = adminService.AdminTelefono(telefono);
 		
@@ -77,7 +77,7 @@ public class AdminRestController {
 	return ResponseEntity.ok().build();
 	}
 	
-	@DeleteMapping(path = "/delete/{idAdmin}", consumes="application/json")
+	@DeleteMapping(path = "/delete/{idAdmin}")
 	public ResponseEntity<?> delete(@PathVariable("idAdmin") Integer idAdmin) throws EmptyResultException{
 	adminService.deleteAdmin(idAdmin);
 	return ResponseEntity.ok().build();

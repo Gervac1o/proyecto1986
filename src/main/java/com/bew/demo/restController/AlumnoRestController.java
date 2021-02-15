@@ -89,7 +89,7 @@ public class AlumnoRestController {
 	return ResponseEntity.ok().build();
 	}
 	
-	@DeleteMapping(path = "/delete/{idAlumno}", consumes="application/json")
+	@DeleteMapping(path = "/delete/{idAlumno}")
 	public ResponseEntity<?> delete(@PathVariable("idAlumno") Integer idAlumno) throws EmptyResultException{
 	alumnoService.deleteAlumno(idAlumno);
 	return ResponseEntity.ok().build();

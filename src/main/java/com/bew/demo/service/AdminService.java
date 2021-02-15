@@ -12,6 +12,6 @@ public interface AdminService {
 	void deleteAdmin(Integer idAdmin)throws EmptyResultException;
 	AdminDTO AdminNombre (String nombre);
 	AdminDTO AdminApellidos (String apellidos);
-	AdminDTO AdminTelefono (Integer telefono);
+	AdminDTO AdminTelefono (String telefono);
 	AdminDTO findByIdUsuario(Integer idUsuario);
 }

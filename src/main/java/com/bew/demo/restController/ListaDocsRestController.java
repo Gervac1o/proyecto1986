@@ -84,7 +84,7 @@ public class ListaDocsRestController {
 	return ResponseEntity.ok().build();
 	}
 	
-	@DeleteMapping(path="/delete/{idLista}", consumes="application/json")
+	@DeleteMapping(path="/delete/{idLista}")
 	public ResponseEntity<?> delete(@PathVariable("idLista") Integer idLista) {
 		listaDocsService.deleteListaDocs(idLista);
 		return ResponseEntity.ok().build();

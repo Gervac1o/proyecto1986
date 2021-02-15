@@ -13,5 +13,6 @@ public interface DocsDictamenService {
 	String store(MultipartFile file, String idDoc) throws EmptyResultException;
 	
 	ResponseEntity<ByteArrayResource> findDoc(String idDoc);
-
+	
+	void deleteDoc (String idDoc);
 }
