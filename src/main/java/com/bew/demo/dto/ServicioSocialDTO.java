@@ -6,7 +6,7 @@ public class ServicioSocialDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Integer idServicio;
-	private Integer semestre;
+	private String semestre;
 	private String responsableDirecto;
 	private Integer idAlumno;
 	
@@ -16,10 +16,10 @@ public class ServicioSocialDTO implements Serializable {
 	public void setIdServicio(Integer idServicio) {
 		this.idServicio = idServicio;
 	}
-	public Integer getSemestre() {
+	public String getSemestre() {
 		return semestre;
 	}
-	public void setSemestre(Integer semestre) {
+	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
 	public String getResponsableDirecto() {

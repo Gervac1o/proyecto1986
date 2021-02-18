@@ -26,7 +26,7 @@ public class LiberacionExtemp implements Serializable{
 	private Integer idLiberacion;
 
 	@Column(name="semestre")
-	private Integer semestre;
+	private String semestre;
 
 	@Column(name="egresado")
 	private Boolean egresado;
@@ -53,7 +53,7 @@ public class LiberacionExtemp implements Serializable{
 	private Integer idAlumno;
 
 	public LiberacionExtemp() {}
-	public LiberacionExtemp( Integer idLiberacion, Integer semestre, Boolean egresado, String registroSS, 
+	public LiberacionExtemp( Integer idLiberacion, String semestre, Boolean egresado, String registroSS, 
 	String prestatario, String programaSS, String fechaInicio, String fechaTermino, String telefono, Integer idAlumno) {
 
 		this.idLiberacion=idLiberacion;
@@ -77,10 +77,10 @@ public class LiberacionExtemp implements Serializable{
 	public void setIdLiberacion(Integer idLiberacion) {
 		this.idLiberacion = idLiberacion;
 	}
-	public Integer getSemestre() {
+	public String getSemestre() {
 		return semestre;
 	}
-	public void setSemestre(Integer semestre) {
+	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
 	public Boolean getEgresado() {

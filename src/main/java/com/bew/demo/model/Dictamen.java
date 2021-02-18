@@ -27,14 +27,14 @@ public class Dictamen implements Serializable{
 	private Long porcentajeCreditos;
 	
 	@Column(name = "semestre")
-	private Integer semestre;
+	private String semestre;
 	
 	@Column(name="id_alumno")
 	private Integer idAlumno;
 	
 	public Dictamen () {}
 	
-	public Dictamen (Integer idDictamen , Long porcentajeCreditos ,Integer semestre,
+	public Dictamen (Integer idDictamen , Long porcentajeCreditos ,String semestre,
 			Integer idAlumno) {
 		this.idDictamen=idDictamen;
 		this.porcentajeCreditos=porcentajeCreditos;
@@ -54,11 +54,11 @@ public class Dictamen implements Serializable{
 		this.porcentajeCreditos = porcentajeCreditos;
 	}
 
-	public Integer getSemestre() {
+	public String getSemestre() {
 		return semestre;
 	}
 
-	public void setSemestre(Integer semestre) {
+	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
 
