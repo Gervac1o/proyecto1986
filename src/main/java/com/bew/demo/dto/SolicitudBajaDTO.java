@@ -9,7 +9,8 @@ public class SolicitudBajaDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer idSolicitud;
 	private String tipoDeBaja;
-	private Integer semestre;
+	private Integer horas;
+	private String semestre;
 	private Boolean egresado;
 	private String registroSS;
 	private String prestatario;
@@ -31,10 +32,16 @@ public class SolicitudBajaDTO implements Serializable {
 	public void setTipoDeBaja(String tipoDeBaja) {
 		this.tipoDeBaja = tipoDeBaja;
 	}
-	public Integer getSemestre() {
+	public Integer getHoras() {
+		return horas;
+	}
+	public void setHoras(Integer horas) {
+		this.horas = horas;
+	}
+	public String getSemestre() {
 		return semestre;
 	}
-	public void setSemestre(Integer semestre) {
+	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
 	public Boolean getEgresado() {

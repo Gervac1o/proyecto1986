@@ -8,7 +8,7 @@ public class LiberacionExtempDTO implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private Integer idLiberacion;
-	private Integer semestre;
+	private String semestre;
 	private Boolean egresado;
 	private String registroSS;
 	private String prestatario;
@@ -24,10 +24,10 @@ public class LiberacionExtempDTO implements Serializable{
 	public void setIdLiberacion(Integer idLiberacion) {
 		this.idLiberacion = idLiberacion;
 	}
-	public Integer getSemestre() {
+	public String getSemestre() {
 		return semestre;
 	}
-	public void setSemestre(Integer semestre) {
+	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
 	public Boolean getEgresado() {
