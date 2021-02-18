@@ -27,9 +27,12 @@ public class SolicitudBaja implements Serializable{
 	
 	@Column(name="tipo_de_baja")
 	private String tipoDeBaja;
+	
+	@Column(name="horas")
+	private Integer horas;
 
 	@Column(name="semestre")
-	private Integer semestre;
+	private String semestre;
 
 	@Column(name="egresado")
 	private Boolean egresado;
@@ -53,11 +56,12 @@ public class SolicitudBaja implements Serializable{
 	private Integer idAlumno;
 	
 	public SolicitudBaja() {}
-	public SolicitudBaja( Integer idSolicitud, String tipoDeBaja, Integer semestre, Boolean egresado, String registroSS, 
+	public SolicitudBaja( Integer idSolicitud, String tipoDeBaja, Integer horas, String semestre, Boolean egresado, String registroSS, 
 	String prestatario, String programaSS, String fechaInicio, String fechaTermino, Integer idAlumno) {
 
 		this.idSolicitud=idSolicitud;
 		this.tipoDeBaja=tipoDeBaja;
+		this.horas=horas;
 		this.semestre=semestre;
 		this.egresado=egresado;
 		this.registroSS=registroSS;
@@ -83,10 +87,16 @@ public class SolicitudBaja implements Serializable{
 	public void setTipoDeBaja(String tipoDeBaja) {
 		this.tipoDeBaja = tipoDeBaja;
 	}
-	public Integer getSemestre() {
+	public Integer getHoras() {
+		return horas;
+	}
+	public void setHoras(Integer horas) {
+		this.horas = horas;
+	}
+	public String getSemestre() {
 		return semestre;
 	}
-	public void setSemestre(Integer semestre) {
+	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
 	public Boolean getEgresado() {

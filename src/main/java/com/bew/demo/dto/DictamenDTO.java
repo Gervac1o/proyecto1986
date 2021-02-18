@@ -7,7 +7,7 @@ public class DictamenDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long porcentajeCreditos;
-	private Integer semestre;
+	private String semestre;
 	private Integer idDictamen;
 	private Integer idAlumno;
 	
@@ -20,11 +20,11 @@ public class DictamenDTO implements Serializable {
 		this.porcentajeCreditos = porcentajeCreditos;
 	}
 
-	public Integer getSemestre() {
+	public String getSemestre() {
 		return semestre;
 	}
 
-	public void setSemestre(Integer semestre) {
+	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
 
