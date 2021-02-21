@@ -10,4 +10,5 @@ public interface SolicitudBajaService {
 	void updateSolicitudBaja(SolicitudBajaDTO solicitudDTO)throws EmptyResultException;
 	void deleteSolicitudBaja(Integer idSolicitud)throws EmptyResultException;
 	SolicitudBajaDTO findByIdAlumno(Integer idAlumno);
+	List<SolicitudBajaDTO> findByEstado(String estado);
 }

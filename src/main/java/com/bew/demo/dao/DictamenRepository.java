@@ -1,5 +1,6 @@
 package com.bew.demo.dao;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,5 +16,10 @@ public interface DictamenRepository  extends JpaRepository <Dictamen,Integer>{
             value = "SELECT s FROM Dictamen s WHERE s.idAlumno = :idAlumno",
             nativeQuery = false)
     Optional<Dictamen> findByIdAlumno(@Param("idAlumno") Integer idAlumno);
+	
+	@Query(
+            value = "SELECT s FROM Dictamen s WHERE s.estado = :estado",
+            nativeQuery = false)
+    List<Dictamen> findByEstado(@Param("estado") String estado);
 
 }
