@@ -48,13 +48,16 @@ public class LiberacionExtemp implements Serializable{
 	
 	@Column(name="telefono")
 	private String telefono;
+	
+	@Column(name="estado")
+	private String estado;
 
 	@Column(name="id_alumno")
 	private Integer idAlumno;
 
 	public LiberacionExtemp() {}
 	public LiberacionExtemp( Integer idLiberacion, String semestre, Boolean egresado, String registroSS, 
-	String prestatario, String programaSS, String fechaInicio, String fechaTermino, String telefono, Integer idAlumno) {
+	String prestatario, String programaSS, String fechaInicio, String fechaTermino, String telefono, String estado, Integer idAlumno) {
 
 		this.idLiberacion=idLiberacion;
 		this.semestre=semestre;
@@ -65,6 +68,7 @@ public class LiberacionExtemp implements Serializable{
 		this.fechaInicio=fechaInicio;
 		this.fechaTermino=fechaTermino;
 		this.telefono=telefono;
+		this.estado=estado;
 		this.idAlumno=idAlumno;
 }
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -124,6 +128,12 @@ public class LiberacionExtemp implements Serializable{
 	}
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	public Integer getIdAlumno() {
 		return idAlumno;

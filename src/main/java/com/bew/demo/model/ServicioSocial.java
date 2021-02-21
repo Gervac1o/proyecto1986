@@ -29,15 +29,19 @@ public class ServicioSocial implements Serializable{
 	@Column(name="responsable_directo")
 	private String responsableDirecto;
 	
+	@Column(name="estado")
+	private String estado;
+	
 	@Column(name="id_alumno")
 	private Integer idAlumno;
 
 	public ServicioSocial() {}
-	public ServicioSocial( Integer idServicio, String semestre, String responsableDirecto, Integer idAlumno) {
+	public ServicioSocial( Integer idServicio, String semestre, String responsableDirecto, String estado, Integer idAlumno) {
 
 		this.idServicio=idServicio;
 		this.semestre=semestre;
 		this.responsableDirecto=responsableDirecto;
+		this.estado=estado;
 		this.idAlumno=idAlumno;
 }
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -61,6 +65,12 @@ public class ServicioSocial implements Serializable{
 	}
 	public void setResponsableDirecto(String responsableDirecto) {
 		this.responsableDirecto = responsableDirecto;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	public Integer getIdAlumno() {
 		return idAlumno;
