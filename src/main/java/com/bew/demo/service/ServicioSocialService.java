@@ -10,4 +10,5 @@ public interface ServicioSocialService {
 	void updateServicioSocial(ServicioSocialDTO servicioDTO)throws EmptyResultException;
 	void deleteServicioSocial(Integer idServicio)throws EmptyResultException;
 	ServicioSocialDTO findByIdAlumno(Integer idAlumno);
+	List<ServicioSocialDTO> findByEstado(String estado);
 }
