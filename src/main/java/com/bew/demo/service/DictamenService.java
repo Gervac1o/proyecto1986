@@ -13,6 +13,7 @@ public interface DictamenService {
 	void updateDictamen(DictamenDTO dictamenDTO)throws EmptyResultException;
 	void deleteDictamen(Integer idDictamen)throws EmptyResultException;
 	DictamenDTO findByIdAlumno(Integer idAlumno);
+	List<DictamenDTO> findByEstado(String estado);
 	
 }
 

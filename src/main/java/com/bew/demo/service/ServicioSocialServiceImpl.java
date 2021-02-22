@@ -85,4 +85,16 @@ public class ServicioSocialServiceImpl implements ServicioSocialService {
 		servicioRepository.deleteById(idServicio);
 	}
 
+	@Override
+	public List<ServicioSocialDTO> findByEstado(String estado) {
+		List<ServicioSocialDTO> servicioDTO; 
+		List<ServicioSocial> servicios = servicioRepository.findByEstado(estado);
+		servicioDTO = new ArrayList<>();
+		for(ServicioSocial servicio: servicios) {
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			servicioDTO.add(mapper.map(servicio, ServicioSocialDTO.class));
+		}
+		return servicioDTO;
+	}
+
 }

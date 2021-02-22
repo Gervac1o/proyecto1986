@@ -85,4 +85,16 @@ public class SolicitudBajaServiceImpl implements SolicitudBajaService {
 		solicitudRepository.deleteById(idSolicitud);
 	}
 
+	@Override
+	public List<SolicitudBajaDTO> findByEstado(String estado) {
+		List<SolicitudBajaDTO> solicitudDTO; 
+		List<SolicitudBaja> solicitudes = solicitudRepository.findByEstado(estado);
+		solicitudDTO = new ArrayList<>();
+		for(SolicitudBaja solicitud: solicitudes) {
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			solicitudDTO.add(mapper.map(solicitud, SolicitudBajaDTO.class));
+		}
+		return solicitudDTO;
+	}
+
 }

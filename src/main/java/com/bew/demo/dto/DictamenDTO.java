@@ -9,6 +9,7 @@ public class DictamenDTO implements Serializable {
 	private Long porcentajeCreditos;
 	private String semestre;
 	private Integer idDictamen;
+	private String estado;
 	private Integer idAlumno;
 	
 
@@ -34,6 +35,14 @@ public class DictamenDTO implements Serializable {
 
 	public void setIdDictamen(Integer idDictamen) {
 		this.idDictamen = idDictamen;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	public Integer getIdAlumno() {

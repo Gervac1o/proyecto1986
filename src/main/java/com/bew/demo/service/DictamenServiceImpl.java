@@ -86,4 +86,16 @@ public class DictamenServiceImpl implements DictamenService {
 		dictamenRepository.deleteById(idDictamen);
 	}
 
+	@Override
+	public List<DictamenDTO> findByEstado(String estado) {
+		List<DictamenDTO> dictamenDTO; 
+		List<Dictamen> dictamenes = dictamenRepository.findByEstado(estado);
+		dictamenDTO = new ArrayList<>();
+		for(Dictamen dictamen: dictamenes) {
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			dictamenDTO.add(mapper.map(dictamen, DictamenDTO.class));
+		}
+		return dictamenDTO;
+	}
+
 }

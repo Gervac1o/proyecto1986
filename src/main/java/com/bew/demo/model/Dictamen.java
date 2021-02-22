@@ -29,16 +29,20 @@ public class Dictamen implements Serializable{
 	@Column(name = "semestre")
 	private String semestre;
 	
+	@Column(name="estado")
+	private String estado;
+	
 	@Column(name="id_alumno")
 	private Integer idAlumno;
 	
 	public Dictamen () {}
 	
-	public Dictamen (Integer idDictamen , Long porcentajeCreditos ,String semestre,
+	public Dictamen (Integer idDictamen , Long porcentajeCreditos ,String semestre, String estado,
 			Integer idAlumno) {
 		this.idDictamen=idDictamen;
 		this.porcentajeCreditos=porcentajeCreditos;
 		this.semestre=semestre;
+		this.estado=estado;
 		this.idAlumno=idAlumno;
 	}
 	
@@ -68,6 +72,14 @@ public class Dictamen implements Serializable{
 
 	public void setIdDictamen(Integer idDictamen) {
 		this.idDictamen = idDictamen;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	public Integer getIdAlumno() {

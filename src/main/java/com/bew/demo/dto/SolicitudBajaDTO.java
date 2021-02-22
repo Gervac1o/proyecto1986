@@ -17,6 +17,7 @@ public class SolicitudBajaDTO implements Serializable {
 	private String programaSS;
 	private String fechaInicio;
 	private String fechaTermino;
+	private String estado;
 	private Integer idAlumno;
 	
 	
@@ -79,6 +80,12 @@ public class SolicitudBajaDTO implements Serializable {
 	}
 	public void setFechaTermino(String fechaTermino) {
 		this.fechaTermino = fechaTermino;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	public Integer getIdAlumno() {
 		return idAlumno;

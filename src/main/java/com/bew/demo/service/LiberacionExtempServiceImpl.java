@@ -86,4 +86,16 @@ public class LiberacionExtempServiceImpl implements LiberacionExtempService {
 		liberacionRepository.deleteById(idLiberacion);
 	}
 
+	@Override
+	public List<LiberacionExtempDTO> findByEstado(String estado) {
+		List<LiberacionExtempDTO> liberacionDTO; 
+		List<LiberacionExtemp> liberaciones = liberacionRepository.findByEstado(estado);
+		liberacionDTO = new ArrayList<>();
+		for(LiberacionExtemp liberacion: liberaciones) {
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			liberacionDTO.add(mapper.map(liberacion, LiberacionExtempDTO.class));
+		}
+		return liberacionDTO;
+	}
+
 }
