@@ -42,11 +42,11 @@ public class FileImage  {
 
 	public FileImage() {}
     
-    public FileImage (String fileName, String fileType, byte[] data) {
+    public FileImage (String fileName, String fileType, byte[] data, Integer idDictamen) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
-       // this.idDictamen=idDictamen;
+       this.idDictamen=idDictamen;
         
     }
 

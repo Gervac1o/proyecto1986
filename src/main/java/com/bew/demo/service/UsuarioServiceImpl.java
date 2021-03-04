@@ -52,15 +52,29 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return usuarioDTO;
 	}
 	@Override
-	public UsuarioDTO UsuarioEmail(String email) {
+	public UsuarioDTO UsuarioEmail(UsuarioDTO usuarioDTO) {
 			
-		UsuarioDTO usuarioDTO = new UsuarioDTO(); 
+		 
 		Usuario usuario = null;
-		Optional<Usuario> opUsuario  = usuarioRepository.findByEmail(email);
+		Optional<Usuario> opUsuario  = usuarioRepository.findByEmail(usuarioDTO.getEmail());
 		usuario = opUsuario.get();
+		
+		 if( usuario.getContraseña().equals(usuarioDTO.getContraseña())) {
 			
-		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-	    usuarioDTO = ( mapper.map(usuario , UsuarioDTO.class));
+			
+			 Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			 usuarioDTO = ( mapper.map(usuario , UsuarioDTO.class));
+			 usuarioDTO.setStatus(true);
+			 usuarioDTO.setContraseña("");
+		 }
+		 else {
+		
+			 usuarioDTO.setStatus(false);
+			 usuarioDTO.setContraseña("");
+
+		 }
+		
+	   
 		return usuarioDTO;
 	}
 	@Override
@@ -95,21 +109,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		usuario = (mapper.map(usuarioDTO, Usuario.class));
     	usuarioRepository.save(usuario);
 	}
-	/*
-	@Override
-	public UsuarioDTO saveUsuario(UsuarioDTO usuarioDTO, UsuarioDTO a) {
-		// TODO Auto-generated method stub
-		Usuario usuario;
-		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-		usuario = (mapper.map(usuarioDTO, Usuario.class));
-    	usuarioRepository.save(usuario);
-    	System.out.println(usuario.getIdUsuario());
-    	//UsuarioDTO buscandoDTO = new UsuarioDTO();
-    	Mapper buscando = DozerBeanMapperBuilder.buildDefault();
-    	a = (buscando.map(usuario, UsuarioDTO.class));
-    	System.out.println(a.getIdUsuario());
-    	return a;
-	}*/
+
 
 	@Override
 	public void updateUsuario(UsuarioDTO usuarioDTO) throws EmptyResultException {
@@ -124,6 +124,18 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public void deleteUsuario(Integer idUsuario) throws EmptyResultException {
 		// TODO Auto-generated method stub
 		usuarioRepository.deleteById(idUsuario);
+	}
+
+	@Override
+	public UsuarioDTO findUsuarioByEmail(String email) {
+		UsuarioDTO usuarioDTO = new UsuarioDTO(); 
+		Usuario usuario = null;
+		Optional<Usuario> opUsuario  = usuarioRepository.findByEmail(email);
+		usuario = opUsuario.get();
+		 Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+		 usuarioDTO = ( mapper.map(usuario , UsuarioDTO.class));
+		
+		return usuarioDTO;
 	}
 
 }

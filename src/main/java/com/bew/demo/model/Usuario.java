@@ -40,13 +40,17 @@ public class Usuario implements Serializable{
 	@Column(name="tipo_usuario")
 	private Boolean tipoUsuario;
 	
+	@Column(name = "status")
+	private Boolean status;
+	
 	public Usuario() {}
-	public Usuario( Integer idUsuario, String email, String contraseña, Boolean tipoUsuario) {
+	public Usuario( Integer idUsuario, String email, String contraseña, Boolean tipoUsuario, Boolean status) {
 		 	
 		this.idUsuario=idUsuario;
 		this.email=email;
 		this.contraseña=contraseña;
 		this.tipoUsuario=tipoUsuario;
+		this.status = status;
 		
 	}
 
@@ -81,4 +85,11 @@ public class Usuario implements Serializable{
 	public void setTipoUsuario(Boolean tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
+	public Boolean getStatus() {
+		return status;
+	}
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+	
 }

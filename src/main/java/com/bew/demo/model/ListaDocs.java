@@ -32,6 +32,7 @@ public class ListaDocs implements Serializable {
 	
 	@Column(name="id_doc")
 	private String idDoc;
+
 	
 	@Column(name="comentario")
 	private String comentario;
@@ -42,13 +43,17 @@ public class ListaDocs implements Serializable {
 	@Column(name = "id_tramite")
 	private Integer idTramite;
 
+
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_alumno",insertable=false, updatable = false)
 	private Alumno alumno;
+
+	
 	
 	public ListaDocs() {};
 	
 	public ListaDocs(Integer idLista, String nombreDoc, String idDoc, String comentario, Integer idTramite) {
+
 		super();
 		this.idLista = idLista;
 		this.nombreDoc = nombreDoc;
@@ -70,15 +75,27 @@ public class ListaDocs implements Serializable {
 		return nombreDoc;
 	}
 
+	public Integer getIdTramite() {
+		return idTramite;
+	}
+
+	public void setIdTramite(Integer idTramite) {
+		this.idTramite = idTramite;
+	}
+
 	public void setNombreDoc(String nombreDoc) {
 		this.nombreDoc = nombreDoc;
 	}
+
+
+
 
 	public String getIdDoc() {
 		return idDoc;
 	}
 
 	public void setIdDoc(String idDoc) {
+
 		this.idDoc = idDoc;
 	}
 
@@ -98,12 +115,10 @@ public class ListaDocs implements Serializable {
 		this.idAlumno = idAlumno;
 	}
 
-	public Integer getIdTramite() {
-		return idTramite;
-	}
-
-	public void setIdTramite(Integer idTramite) {
-		this.idTramite = idTramite;
-	}
-		
 }
+	
+	
+	
+	
+	
+

@@ -38,12 +38,20 @@ public class UsuarioRestController {
 		usuarioDTO = usuarioService.findById(idUsuario);
 		return ResponseEntity.ok(usuarioDTO);		
 	}
-	@GetMapping(path = "/findEmail/{email}", produces = "application/json")
-	public ResponseEntity<?>findE(@PathVariable("email") String email){
-		UsuarioDTO usuarioDTO;
-		usuarioDTO = usuarioService.UsuarioEmail(email);
-		return ResponseEntity.ok(usuarioDTO);
+	
+	@PostMapping(path = "/findEmail", consumes = "application/json", produces = "application/json")
+	public ResponseEntity<?>findE(@RequestBody UsuarioDTO usuarioDTO){
+		UsuarioDTO usuarioRes;
+		usuarioRes = usuarioService.UsuarioEmail(usuarioDTO);
+		return ResponseEntity.ok(usuarioRes);
 	}
+	@GetMapping(path = "/findByEmail/{email}", produces = "application/json")
+	public ResponseEntity<?>findE(@PathVariable("email") String email){
+		UsuarioDTO usuarioRes;
+		usuarioRes = usuarioService.findUsuarioByEmail(email);
+		return ResponseEntity.ok(usuarioRes);
+	}
+	
 	@GetMapping(path = "/findContraseña/{contraseña}", produces = "application/json")
 	public ResponseEntity<?>findC(@PathVariable("contraseña") String contraseña){
 		UsuarioDTO usuarioDTO;

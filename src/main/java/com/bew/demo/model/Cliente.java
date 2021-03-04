@@ -30,6 +30,9 @@ public class Cliente implements Serializable{
 	@Column(name="nombre")
 	private String nombre;
 	
+	@Column(name = "status")
+	private Boolean status;
+	
 	
 	
    /* @OneToOne(orphanRemoval = true, mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
@@ -41,13 +44,14 @@ public class Cliente implements Serializable{
 	}
 	*/
 
+
 	public Cliente() {}
-	public Cliente( Integer idCliente, String nombre ) {
+	public Cliente( Integer idCliente, String nombre, Boolean status) {
 		
 		
 		this.nombre=nombre;	
 		this.idCliente=idCliente;
-	
+		this.status = status;
 }
     
 	public Integer getIdCliente() {
@@ -64,6 +68,12 @@ public class Cliente implements Serializable{
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public Boolean getStatus() {
+		return status;
+	}
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 

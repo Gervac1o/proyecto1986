@@ -32,7 +32,7 @@ public class ServicioSocialServiceImpl implements ServicioSocialService {
 			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
 			servicioDTO.add(mapper.map(servicio, ServicioSocialDTO.class));
 		}
-		// TODO Auto-generated method stub
+
 		return servicioDTO;
 	}
 

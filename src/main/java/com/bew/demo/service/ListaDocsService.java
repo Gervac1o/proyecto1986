@@ -1,7 +1,11 @@
 package com.bew.demo.service;
 
 import java.util.List;
+
+
+
 import com.bew.demo.dto.ListaDocsDTO;
+
 
 public interface ListaDocsService {
 	List<ListaDocsDTO> findAll();
@@ -13,4 +17,5 @@ public interface ListaDocsService {
 	List<ListaDocsDTO> findLiberacion(Integer idAlumno);
 	List<ListaDocsDTO> findBaja(Integer idAlumno);
 	List<ListaDocsDTO> findServicio(Integer idAlumno);
+
 }
