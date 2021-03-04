@@ -9,6 +9,7 @@ public class UsuarioDTO implements Serializable{
 	private String email;
 	private String contraseña;
 	private Boolean tipoUsuario;
+	private Boolean status;
 	
 	public Integer getIdUsuario() {
 		return idUsuario;
@@ -34,4 +35,11 @@ public class UsuarioDTO implements Serializable{
 	public void setTipoUsuario(Boolean tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
+	public Boolean getStatus() {
+		return status;
+	}
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+	
 }

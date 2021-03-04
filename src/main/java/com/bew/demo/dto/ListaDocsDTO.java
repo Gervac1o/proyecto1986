@@ -5,13 +5,14 @@ public class ListaDocsDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+
 	private Integer idLista;
 	private String nombreDoc;
 	private String idDoc;
 	private String comentario;
 	private Integer idAlumno;
 	private Integer idTramite;
-
+	
 	public Integer getIdLista() {
 		return idLista;
 	}
@@ -48,4 +49,9 @@ public class ListaDocsDTO implements Serializable{
 	public void setIdTramite(Integer idTramite) {
 		this.idTramite = idTramite;
 	}
+
+	
+	
+	
+	
 }
