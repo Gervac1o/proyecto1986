@@ -1,8 +1,5 @@
 package com.bew.demo.service;
 
-import java.util.Optional;
-
-
 //import org.springframework.http.MediaType;
 import javax.transaction.Transactional;
 //import org.apache.tomcat.util.http.parser.MediaType;
@@ -15,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bew.demo.dao.FileImageRepository;
-import com.bew.demo.dto.ListaDocsDTO;
 import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.model.FileImage;
 import org.springframework.util.StringUtils;
