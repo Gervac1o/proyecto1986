@@ -55,12 +55,19 @@ public class SolicitudBaja implements Serializable{
 	@Column(name="estado")
 	private String estado;
 	
+	@Column(name="fecha_registro")
+	private String fechaRegistro;
+	
+	@Column(name="revisado")
+	private String revisado;
+	
 	@Column(name="id_alumno")
 	private Integer idAlumno;
 	
 	public SolicitudBaja() {}
 	public SolicitudBaja( Integer idSolicitud, String tipoDeBaja, Integer horas, String semestre, Boolean egresado, String registroSS, 
-	String prestatario, String programaSS, String fechaInicio, String fechaTermino, String estado, Integer idAlumno) {
+	String prestatario, String programaSS, String fechaInicio, String fechaTermino, String estado, String fechaRegistro, String revisado, 
+	Integer idAlumno) {
 
 		this.idSolicitud=idSolicitud;
 		this.tipoDeBaja=tipoDeBaja;
@@ -73,6 +80,8 @@ public class SolicitudBaja implements Serializable{
 		this.fechaInicio=fechaInicio;
 		this.fechaTermino=fechaTermino;
 		this.estado=estado;
+		this.fechaRegistro=fechaRegistro;
+		this.revisado=revisado;
 		this.idAlumno=idAlumno;
 }
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -144,6 +153,18 @@ public class SolicitudBaja implements Serializable{
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public String getFechaRegistro() {
+		return fechaRegistro;
+	}
+	public void setFechaRegistro(String fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+	public String getRevisado() {
+		return revisado;
+	}
+	public void setRevisado(String revisado) {
+		this.revisado = revisado;
 	}
 	public Integer getIdAlumno() {
 		return idAlumno;

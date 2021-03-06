@@ -1,9 +1,6 @@
 package com.bew.demo.service;
 
 import java.util.List;
-import java.util.Optional;
-
-import org.springframework.data.domain.Sort;
 
 import com.bew.demo.dto.ClienteDTO;
 import com.bew.demo.exception.EmptyResultException;

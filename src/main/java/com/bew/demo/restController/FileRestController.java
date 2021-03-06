@@ -1,8 +1,4 @@
 package com.bew.demo.restController;
-import com.bew.demo.dto.ListaDocsDTO;
-
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.core.io.ByteArrayResource;
@@ -21,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bew.demo.exception.EmptyResultException;
-import com.bew.demo.model.FileImage;
 import com.bew.demo.service.FileImageService;
 
 @RestController
