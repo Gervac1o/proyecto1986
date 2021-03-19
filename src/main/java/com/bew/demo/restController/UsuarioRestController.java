@@ -46,7 +46,7 @@ public class UsuarioRestController {
 		return ResponseEntity.ok(usuarioRes);
 	}
 	@GetMapping(path = "/findByEmail/{email}", produces = "application/json")
-	public ResponseEntity<?>findE(@PathVariable("email") String email){
+	public ResponseEntity<?>findE(@PathVariable("email") String email) throws EmptyResultException {
 		UsuarioDTO usuarioRes;
 		usuarioRes = usuarioService.findUsuarioByEmail(email);
 		return ResponseEntity.ok(usuarioRes);

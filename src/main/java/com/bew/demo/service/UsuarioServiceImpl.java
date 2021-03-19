@@ -1,21 +1,18 @@
 package com.bew.demo.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import javax.transaction.Transactional;
-
-import com.github.dozermapper.core.Mapper;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.bew.demo.dao.UsuarioRepository;
 import com.bew.demo.dto.UsuarioDTO;
 import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.model.Usuario;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
+import com.github.dozermapper.core.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -127,14 +124,22 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public UsuarioDTO findUsuarioByEmail(String email) {
+    public UsuarioDTO findUsuarioByEmail(String email) throws EmptyResultException {
 		UsuarioDTO usuarioDTO = new UsuarioDTO(); 
 		Usuario usuario = null;
-		Optional<Usuario> opUsuario  = usuarioRepository.findByEmail(email);
-		usuario = opUsuario.get();
-		 Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-		 usuarioDTO = ( mapper.map(usuario , UsuarioDTO.class));
-		
+
+
+        usuario = usuarioRepository.findByEmail(email).orElseThrow(() -> new EmptyResultException("Sin Resultados"));
+
+
+//		Optional<Usuario> opUsuario  = usuarioRepository.findByEmail(email);
+//		usuario = opUsuario.get();
+        if (usuario == null) {
+            usuarioDTO = null;
+        } else {
+            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+            usuarioDTO = (mapper.map(usuario, UsuarioDTO.class));
+        }
 		return usuarioDTO;
 	}
 

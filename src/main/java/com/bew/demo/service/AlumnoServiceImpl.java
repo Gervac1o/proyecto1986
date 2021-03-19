@@ -55,11 +55,14 @@ public class AlumnoServiceImpl implements AlumnoService {
 	public AlumnoDTO findByIdUsuario(Integer idUsuario) {
 		AlumnoDTO alumnoDTO = new AlumnoDTO(); 
 		Alumno alumno = null;
-		Optional<Alumno> opAlumno = alumnoRepository.findByIdUsuario(idUsuario);
-		alumno = opAlumno.get();
-		
-		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-    	alumnoDTO = ( mapper.map(alumno, AlumnoDTO.class));
+		try {
+			alumno = alumnoRepository.findByIdUsuario(idUsuario).orElseThrow(() -> new EmptyResultException("Sin Resultados"));
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			alumnoDTO = ( mapper.map(alumno, AlumnoDTO.class));
+		} catch (EmptyResultException e) {
+			//meter aqui log informativo de alumno no encontrado
+		}
+
 		return alumnoDTO;
 	}
 	@Override

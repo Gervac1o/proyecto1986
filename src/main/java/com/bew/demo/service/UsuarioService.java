@@ -13,5 +13,5 @@ public interface UsuarioService {
 	UsuarioDTO UsuarioEmail (UsuarioDTO usuarioDTO);
 	UsuarioDTO UsuarioContraseña (String contraseña);
 	UsuarioDTO UsuarioTipo (Boolean tipoUsuario);
-	UsuarioDTO findUsuarioByEmail(String email);
+	UsuarioDTO findUsuarioByEmail(String email) throws EmptyResultException;
 }
