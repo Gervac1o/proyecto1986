@@ -32,11 +32,11 @@ class DirectorioAlumno extends Component{
             this.cerrarSesion();
             window.location.href = '/IniciarSesion';
         }
-        else {
-            this.cerrarSesion();
-            window.location.href = './IniciarSesion';
-           
-        }   
+        // else {
+        //     this.cerrarSesion();
+        //     window.location.href = './IniciarSesion';
+        //
+        // }
     }
      
     
