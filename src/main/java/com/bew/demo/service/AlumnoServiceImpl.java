@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ import com.github.dozermapper.core.Mapper;
 @Service
 @Transactional
 public class AlumnoServiceImpl implements AlumnoService {
+
+    private static final Logger logger = LogManager.getLogger(AlumnoServiceImpl.class);
 
 	@Autowired
 	AlumnoRepository alumnoRepository;
@@ -60,7 +64,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
 			alumnoDTO = ( mapper.map(alumno, AlumnoDTO.class));
 		} catch (EmptyResultException e) {
-			//meter aqui log informativo de alumno no encontrado
+            logger.info("alumno no encontrado");
 		}
 
 		return alumnoDTO;
