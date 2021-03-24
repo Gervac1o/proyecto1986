@@ -112,13 +112,13 @@ class IniciarSesion extends React.Component {
                                         cookies.set('idUsuario', this.state.usuario.idUsuario , { path: "/" })
                                         cookies.set('email',this.state.usuario.email, { path: "/" })
                                         cookies.set('tipoUsuario', "false", { path: "/" })
-                                        window.location.href ="./MisDatosAlumno";
+                                         this.props.history.push("/MisDatosAlumno");
                                      } 
                                      else{
                                         cookies.set('idUsuario', this.state.usuario.idUsuario , { path: "/" })
                                         cookies.set('email',this.state.usuario.email, { path: "/" })
                                         cookies.set('tipoUsuario', "true", { path: "/" })
-                                        window.location.href = "./MisDatosAdmin";
+                                         this.props.history.push("/MisDatosAlumno");
                                     }
                                      }
                                  return response.data;
