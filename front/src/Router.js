@@ -56,11 +56,9 @@ class Router extends React.Component {
         return (
             
             <BrowserRouter>
-            
-            
                 {/**CONFIGURAR RUTAS Y PAGINAS  */}
                 <Switch>
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/" component={MisDatosAlumno} />
                     <Route exact path = "/DirectorioAdmin" component = {DirectorioAdmin}/>
                     <Route exact path = "/DirectorioArchivosAlumno/:id" component = {DirectorioArchivosAlumno}/>
                     <Route exact path = "/Lista" component = {ListaAlumnos}/>

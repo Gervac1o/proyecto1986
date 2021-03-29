@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Log in</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="login-page">
+    <div class="form">
+        <img src="ipn.png" id="logo2" alt="politecnico">
+        <p class="text-logo">Departameno de Extención y Apoyos Educativos</p>
+        <form class="register-form"  action="/auth/registration"  method="post">
+            <input type="text" name="username" placeholder="Ingresa aquí tu correo electrónico"/>
+            <input type="password" name="password" placeholder="Ingresa aquí tu contraseña"/>
+            <input type="password" placeholder="Confirma aquí tu contraseña"/>
+            <button>CREAR</button>
+            <p class="message">¿Ya estas registrado? <a href="#">Inciar Sesión</a></p>
+        </form>
+        <form class="login-form" action="/auth/login" method="post">
+            <input type="text" id="email" name="email" autofocus="autofocus" placeholder="Ingresa aquí tu correo electrónico"/>
+            <input type="password" id="password" name="password" placeholder="Ingresa aquí tu contraseña"/>
+            <div align="center">
+                <p style="color: #FF1C19;">User Name or Password invalid, please verify</p>
+            </div>
+            <button type="submit" >ACEPTAR</button>
+            <p class="message">¿No estas registrado? <a href="#">Registrarse</a></p>
+        </form>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

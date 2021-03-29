@@ -1,9 +1,11 @@
 package com.bew.demo.restController;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,9 @@ import com.bew.demo.dto.AdminDTO;
 import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.service.AdminService;
 
+import javax.annotation.security.RolesAllowed;
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 @RequestMapping("/admin")
 @CrossOrigin("*")
@@ -25,6 +30,12 @@ public class AdminRestController {
 	
 	@Autowired
 	AdminService adminService;
+
+	@RolesAllowed("USER")
+	@GetMapping(path = "/home")
+	public void welcome(HttpServletResponse servletResponse) throws IOException {
+		servletResponse.sendRedirect("/");
+	}
 	
 	@GetMapping(path = "/findAll", produces = "application/json")
 	public ResponseEntity<?> buscar(){

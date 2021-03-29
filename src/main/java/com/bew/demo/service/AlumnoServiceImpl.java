@@ -25,133 +25,148 @@ public class AlumnoServiceImpl implements AlumnoService {
 
     private static final Logger logger = LogManager.getLogger(AlumnoServiceImpl.class);
 
-	@Autowired
-	AlumnoRepository alumnoRepository;
-	
-	@Override
-	public List<AlumnoDTO> findAll() {
-		
-		List<AlumnoDTO> alumnoDTO;
-		List<Alumno> alumnos = alumnoRepository.findAll();
-		alumnoDTO = new ArrayList<>();
-		for(Alumno alumno: alumnos) {
-			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-			alumnoDTO.add(mapper.map(alumno, AlumnoDTO.class));
-		}
-		// TODO Auto-generated method stub
-		return alumnoDTO;
-	}
+    @Autowired
+    AlumnoRepository alumnoRepository;
 
-	@Override
-	public AlumnoDTO findById(Integer idAlumno) {
-		
-		AlumnoDTO alumnoDTO = new AlumnoDTO(); 
-		Alumno alumno = null;
-		Optional<Alumno> opAlumno = alumnoRepository.findById(idAlumno);
-		alumno = opAlumno.get();
-		
-		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-    	alumnoDTO = ( mapper.map(alumno, AlumnoDTO.class));
-		
-		return alumnoDTO;
-	}
-	@Override
-	public AlumnoDTO findByIdUsuario(Integer idUsuario) {
-		AlumnoDTO alumnoDTO = new AlumnoDTO(); 
-		Alumno alumno = null;
-		try {
-			alumno = alumnoRepository.findByIdUsuario(idUsuario).orElseThrow(() -> new EmptyResultException("Sin Resultados"));
-			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-			alumnoDTO = ( mapper.map(alumno, AlumnoDTO.class));
-		} catch (EmptyResultException e) {
+    @Override
+    public List<AlumnoDTO> findAll() {
+
+        List<AlumnoDTO> alumnoDTO;
+        List<Alumno> alumnos = alumnoRepository.findAll();
+        alumnoDTO = new ArrayList<>();
+        for (Alumno alumno : alumnos) {
+            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+            alumnoDTO.add(mapper.map(alumno, AlumnoDTO.class));
+        }
+        // TODO Auto-generated method stub
+        return alumnoDTO;
+    }
+
+    @Override
+    public AlumnoDTO findById(Integer idAlumno) {
+
+        AlumnoDTO alumnoDTO = new AlumnoDTO();
+        try {
+            Alumno alumno = alumnoRepository.findById(idAlumno).orElseThrow(() -> new EmptyResultException("Sin Resultados"));
+            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+            alumnoDTO = (mapper.map(alumno, AlumnoDTO.class));
+        } catch (EmptyResultException e) {
             logger.info("alumno no encontrado");
-		}
+        }
+        return alumnoDTO;
+    }
 
-		return alumnoDTO;
-	}
-	@Override
-	public List<AlumnoDTO> AlumnoNombre(String nombre) {
-			
-		List<AlumnoDTO> alumnoDTO; 
-		List<Alumno> alumnos = alumnoRepository.findByNombre(nombre);
-		alumnoDTO = new ArrayList<>();
-		for(Alumno alumno: alumnos) {
-			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-			alumnoDTO.add(mapper.map(alumno, AlumnoDTO.class));
-		}
-		return alumnoDTO;
-	}
-	@Override
-	public List<AlumnoDTO> AlumnoPrograma(String programaAcademico) {
-			
-		List<AlumnoDTO> alumnoDTO; 
-		List<Alumno> alumnos = alumnoRepository.findByPrograma(programaAcademico);
-		alumnoDTO = new ArrayList<>();
-		for(Alumno alumno: alumnos) {
-			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-			alumnoDTO.add(mapper.map(alumno, AlumnoDTO.class));
-		}
-		return alumnoDTO;
-	}
-	@Override
-	public AlumnoDTO AlumnoApellidoPaterno(String apellidoPaterno) {
-			
-		AlumnoDTO alumnoDTO = new AlumnoDTO(); 
-		Alumno alumno = null;
-		Optional<Alumno> opalumno  = alumnoRepository.findByApellidoPaterno(apellidoPaterno);
-		alumno = opalumno.get();
-			
-		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-	    alumnoDTO = ( mapper.map(alumno , AlumnoDTO.class));
-		return alumnoDTO;
-	}
-	@Override
-	public AlumnoDTO AlumnoApellidoMaterno(String apellidoMaterno) {
-			
-		AlumnoDTO alumnoDTO = new AlumnoDTO(); 
-		Alumno alumno = null;
-		Optional<Alumno> opalumno  = alumnoRepository.findByApellidoMaterno(apellidoMaterno);
-		alumno = opalumno.get();
-			
-		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-	    alumnoDTO = ( mapper.map(alumno , AlumnoDTO.class));
-		return alumnoDTO;
-	}
-	@Override
-	public AlumnoDTO AlumnoBoleta(Integer boleta) {
-			
-		AlumnoDTO alumnoDTO = new AlumnoDTO(); 
-		Alumno alumno = null;
-		Optional<Alumno> opalumno  = alumnoRepository.findByBoleta(boleta);
-		alumno = opalumno.get();
-			
-		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-	    alumnoDTO = ( mapper.map(alumno , AlumnoDTO.class));
-		return alumnoDTO;
-	}
-	@Override
-	public void saveAlumno(AlumnoDTO alumnoDTO) {
-		// TODO Auto-generated method stub
-		Alumno alumno;
-		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-		alumno = (mapper.map(alumnoDTO, Alumno.class));
-    	alumnoRepository.save(alumno);
-	}
+    @Override
+    public AlumnoDTO findByIdUsuario(Integer idUsuario) {
+        AlumnoDTO alumnoDTO = new AlumnoDTO();
+        Alumno alumno = null;
+        try {
+            alumno = alumnoRepository.findByIdUsuario(idUsuario).orElseThrow(() -> new EmptyResultException("Sin Resultados"));
+            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+            alumnoDTO = (mapper.map(alumno, AlumnoDTO.class));
+        } catch (EmptyResultException e) {
+            logger.info("alumno no encontrado");
+        }
 
-	@Override
-	public void updateAlumno(AlumnoDTO alumnoDTO) throws EmptyResultException {
-		// TODO Auto-generated method stub
-		Alumno alumno;
-		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-		alumno = (mapper.map(alumnoDTO, Alumno.class));
-		alumnoRepository.save(alumno);
-	}
+        return alumnoDTO;
+    }
 
-	@Override
-	public void deleteAlumno(Integer idAlumno) throws EmptyResultException {
-		// TODO Auto-generated method stub
-		alumnoRepository.deleteById(idAlumno);
-	}
+    @Override
+    public List<AlumnoDTO> AlumnoNombre(String nombre) {
+
+        List<AlumnoDTO> alumnoDTO;
+        List<Alumno> alumnos = alumnoRepository.findByNombre(nombre);
+        alumnoDTO = new ArrayList<>();
+        for (Alumno alumno : alumnos) {
+            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+            alumnoDTO.add(mapper.map(alumno, AlumnoDTO.class));
+        }
+        return alumnoDTO;
+    }
+
+    @Override
+    public List<AlumnoDTO> AlumnoPrograma(String programaAcademico) {
+
+        List<AlumnoDTO> alumnoDTO;
+        List<Alumno> alumnos = alumnoRepository.findByPrograma(programaAcademico);
+        alumnoDTO = new ArrayList<>();
+        for (Alumno alumno : alumnos) {
+            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+            alumnoDTO.add(mapper.map(alumno, AlumnoDTO.class));
+        }
+        return alumnoDTO;
+    }
+
+    @Override
+    public AlumnoDTO AlumnoApellidoPaterno(String apellidoPaterno) {
+
+        AlumnoDTO alumnoDTO = new AlumnoDTO();
+        try {
+            Alumno alumno = alumnoRepository.findByApellidoPaterno(apellidoPaterno).orElseThrow(() -> new EmptyResultException("Sin Resultados"));
+            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+            alumnoDTO = (mapper.map(alumno, AlumnoDTO.class));
+        } catch (EmptyResultException e) {
+            logger.info("alumno no encontrado");
+        }
+        return alumnoDTO;
+    }
+
+    @Override
+    public AlumnoDTO AlumnoApellidoMaterno(String apellidoMaterno) {
+
+        AlumnoDTO alumnoDTO = new AlumnoDTO();
+        try {
+            Alumno alumno = alumnoRepository.findByApellidoMaterno(apellidoMaterno).orElseThrow(() -> new EmptyResultException("Sin Resultados"));
+
+            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+            alumnoDTO = (mapper.map(alumno, AlumnoDTO.class));
+        } catch (
+                EmptyResultException e) {
+            logger.info("alumno no encontrado");
+        }
+        return alumnoDTO;
+    }
+
+    @Override
+    public AlumnoDTO AlumnoBoleta(Integer boleta) {
+
+        AlumnoDTO alumnoDTO = new AlumnoDTO();
+        Alumno alumno = null;
+        try {
+
+            alumno = alumnoRepository.findByBoleta(boleta).orElseThrow(() -> new EmptyResultException("Sin Resultados"));
+            Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+            alumnoDTO = (mapper.map(alumno, AlumnoDTO.class));
+        } catch (EmptyResultException e) {
+            logger.info("alumno no encontrado");
+        }
+
+        return alumnoDTO;
+    }
+
+    @Override
+    public void saveAlumno(AlumnoDTO alumnoDTO) {
+        // TODO Auto-generated method stub
+        Alumno alumno;
+        Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+        alumno = (mapper.map(alumnoDTO, Alumno.class));
+        alumnoRepository.save(alumno);
+    }
+
+    @Override
+    public void updateAlumno(AlumnoDTO alumnoDTO) throws EmptyResultException {
+        // TODO Auto-generated method stub
+        Alumno alumno;
+        Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+        alumno = (mapper.map(alumnoDTO, Alumno.class));
+        alumnoRepository.save(alumno);
+    }
+
+    @Override
+    public void deleteAlumno(Integer idAlumno) throws EmptyResultException {
+        // TODO Auto-generated method stub
+        alumnoRepository.deleteById(idAlumno);
+    }
 
 
 }
