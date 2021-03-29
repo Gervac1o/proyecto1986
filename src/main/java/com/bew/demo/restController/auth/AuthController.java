@@ -1,6 +1,9 @@
 package com.bew.demo.restController.auth;
 
 import com.bew.demo.dto.UsuarioDTO;
+import com.bew.demo.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -10,13 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/auth/")
+@RequestMapping("/auth")
 public class AuthController {
 
-    @PostMapping(path = "/home", consumes = "application/json")
-    ResponseEntity<?> login(@RequestBody UsuarioDTO user) {
-        return ResponseEntity.ok().build();
-    }
+    @Autowired
+    UsuarioService usuarioService;
 
     @GetMapping(path = "/login")
     public void welcome(HttpServletResponse servletResponse) throws IOException {
@@ -24,27 +25,9 @@ public class AuthController {
 
     }
 
-    @PostMapping(path = "/registration")
-    @ResponseBody
-    public ResponseEntity<UsuarioDTO> insert(@RequestBody UsuarioDTO user) {
-
-        return ResponseEntity.ok(user);
+    @PostMapping(path = "/registration", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void insert(@RequestBody UsuarioDTO user, HttpServletResponse servletResponse) throws IOException {
+        usuarioService.saveUsuario (user);
+        servletResponse.sendRedirect("/login.html");
     }
-
-    @PostMapping(path = "/logout")
-    @ResponseBody
-    public void logout() {
-
-       String n = "sdasd";
-    }
-    /*@GetMapping(value="/admin/home")
-    public ModelAndView home(){
-        ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByUserName(auth.getName());
-        modelAndView.addObject("userName", "Welcome " + user.getUserName() + "/" + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-        modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("admin/home");
-        return modelAndView;
-    }*/
 }
