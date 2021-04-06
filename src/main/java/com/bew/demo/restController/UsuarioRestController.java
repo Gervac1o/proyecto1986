@@ -2,6 +2,7 @@ package com.bew.demo.restController;
 
 import java.util.List;
 
+import com.bew.demo.exception.MailRepetidoException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -65,7 +66,7 @@ public class UsuarioRestController {
 		return ResponseEntity.ok(usuarioDTO);	
 	}
 	@PostMapping(path = "/save", consumes = "application/json")
-	public ResponseEntity<?> save(@RequestBody UsuarioDTO usuarioDTO){
+	public ResponseEntity<?> save(@RequestBody UsuarioDTO usuarioDTO) throws MailRepetidoException {
 	usuarioService.saveUsuario (usuarioDTO);
 	return ResponseEntity.ok().build();
 	}

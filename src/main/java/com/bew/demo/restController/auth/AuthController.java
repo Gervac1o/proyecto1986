@@ -1,8 +1,11 @@
 package com.bew.demo.restController.auth;
 
 import com.bew.demo.dto.UsuarioDTO;
+import com.bew.demo.exception.MailRepetidoException;
 import com.bew.demo.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,15 +22,36 @@ public class AuthController {
     @Autowired
     UsuarioService usuarioService;
 
-    @GetMapping(path = "/login")
-    public void welcome(HttpServletResponse servletResponse) throws IOException {
-        servletResponse.sendRedirect("/login.html");
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> insert(final UsuarioDTO user) throws IOException, MailRepetidoException {
+        try {
+            usuarioService.saveUsuario(user);
+            return ResponseEntity.ok(user);
+        } catch (MailRepetidoException e) {
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.setContentType(MediaType.TEXT_HTML);
+
+            return new ResponseEntity<>(
+                    e.getMessage(),
+                    HttpStatus.FORBIDDEN);
+        }
+
 
     }
 
-    @PostMapping(path = "/registration", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void insert(@RequestBody UsuarioDTO user, HttpServletResponse servletResponse) throws IOException {
-        usuarioService.saveUsuario (user);
-        servletResponse.sendRedirect("/login.html");
+    @RequestMapping(value = "/validation", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> validate(final UsuarioDTO user) throws IOException, MailRepetidoException {
+        try {
+
+            return ResponseEntity.ok(usuarioService.findByUser(user));
+        } catch (Exception e) {
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.setContentType(MediaType.TEXT_HTML);
+
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+
+
     }
 }

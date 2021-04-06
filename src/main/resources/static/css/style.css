@@ -122,7 +122,12 @@ body {
     font-weight: bold;
 
 }
-
+.error {
+    color: #FF1C19;
+}
+.done {
+    color: #0e804a;
+}
 .form .message a {
     color: #1a5e7e;
     text-decoration: none;

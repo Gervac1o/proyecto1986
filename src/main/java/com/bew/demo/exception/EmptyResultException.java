@@ -1,6 +1,6 @@
 package com.bew.demo.exception;
 
-public class EmptyResultException extends Exception {
+public class EmptyResultException extends Throwable {
 	
 	/**
 	 * 
