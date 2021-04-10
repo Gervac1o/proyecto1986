@@ -1,7 +1,13 @@
 package com.bew.demo.config;
 
+import com.bew.demo.dao.UsuarioRepository;
+import com.bew.demo.exception.EmptyResultException;
+import com.bew.demo.model.Usuario;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -12,10 +18,26 @@ import java.io.IOException;
 
 @Component
 public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-        Cookie cookie = new Cookie("idUsuario", "pruebaId");
-        httpServletResponse.addCookie(cookie);
+        Usuario usuario = (Usuario) authentication.getPrincipal();
+
+        Cookie cIdUsuario = new Cookie("idUsuario", usuario.getIdUsuario().toString());
+        cIdUsuario.setMaxAge(60 * 10);
+        cIdUsuario.setPath("/");
+        cIdUsuario.setSecure(false);
+        httpServletResponse.addCookie(cIdUsuario);
+        Cookie cMail = new Cookie("email", usuario.getEmail());
+        cMail.setMaxAge(60 * 10);
+        cMail.setPath("/");
+        cMail.setSecure(false);
+        httpServletResponse.addCookie(cMail);
+        Cookie cTipoUsuario = new Cookie("tipoUsuario", "false");
+        cTipoUsuario.setMaxAge(60 * 10);
+        cTipoUsuario.setPath("/");
+        cTipoUsuario.setSecure(false);
+        httpServletResponse.addCookie(cTipoUsuario);
         httpServletResponse.sendRedirect("/");
     }
 }
