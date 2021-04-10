@@ -146,15 +146,15 @@ class DatosActualizadosAlumno extends React.Component {
     }//Fin de funcion saveAlumno()
 
     componentDidMount = () => {
-        if (cookies.get('email') === null || cookies.get('email') === undefined) {
-            window.location.href = './IniciarSesion';
-        }
+        // if (cookies.get('email') === null || cookies.get('email') === undefined) {
+        //     window.location.href = './IniciarSesion';
+        // }
     }
 
     componentWillMount = () => {
-        if (cookies.get('email') === null || cookies.get('email') === undefined) {
-            window.location.href = './IniciarSesion';
-        }
+        // if (cookies.get('email') === null || cookies.get('email') === undefined) {
+        //     window.location.href = './IniciarSesion';
+        // }
     }
 
     render() {

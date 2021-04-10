@@ -3,7 +3,6 @@ package com.bew.demo.config;
 import com.bew.demo.dao.UsuarioRepository;
 import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.model.Usuario;
-import com.bew.demo.service.AlumnoServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.DigestUtils;
 
@@ -46,6 +43,7 @@ public class AuthProviderService implements AuthenticationProvider {
         if (usuario.getPassword().equals(password)) {
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority("USER"));
+
             return new UsernamePasswordAuthenticationToken(usuario, password, authorities);
 
         } else {

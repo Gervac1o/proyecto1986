@@ -1,31 +1,23 @@
 package com.bew.demo.config;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    final
-    MyUserDetailsService userDetailsService;
+    private final MyAuthenticationSuccessHandler authSuccessHandler;
 
 
-    public WebSecurityConfig(MyUserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
+    public WebSecurityConfig(MyAuthenticationSuccessHandler authSuccessHandler) {
+        this.authSuccessHandler = authSuccessHandler;
     }
 
     @Override
@@ -51,12 +43,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").hasAuthority("USER")
                 .anyRequest()
                 .authenticated()
-                .and().csrf().disable()
-                .formLogin().loginProcessingUrl("/auth/login")
+                .and()
+                .csrf().disable()
+                .formLogin()
+
                 .loginPage("/login.html")
                 .defaultSuccessUrl("/")
                 .usernameParameter("email")
                 .passwordParameter("password")
+                .successHandler(authSuccessHandler)
+                .loginProcessingUrl("/auth/login")
                 .and()
                 .logout()
                 .logoutUrl("/auth/logout")
@@ -66,5 +62,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
+
+    @Bean
+    public MyAuthenticationSuccessHandler authSuccessHandler() {
+        return new MyAuthenticationSuccessHandler();
+    }
 }
 

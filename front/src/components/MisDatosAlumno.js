@@ -24,8 +24,9 @@ class MisDatosAlumno extends React.Component{
         status: null
     };
         componentWillMount() {
-            this.getAlumno();
-            
+            // this.getAlumno();
+            alert(cookies.get('idUsuario'));
+
         }
 
         getAlumno = () => {

@@ -201,9 +201,9 @@ class CrearAlumno extends React.Component {
     }   //fin de saveAlumno
 
     render() {
-        if(this.state.status === 'true'){
-            return <Redirect to = "/IniciarSesion"></Redirect>
-        }
+        // if(this.state.status === 'true'){
+        //     return <Redirect to = "/IniciarSesion"></Redirect>
+        // }
 
         return (
             <div className = "center">

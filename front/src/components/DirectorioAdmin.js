@@ -17,14 +17,14 @@ class DirectorioAdmin extends Component{
         cookies.remove('tipoUsuario', {path:"/"});
         cookies.remove('idAdmin', {path:"/"});
         cookies.remove('idAlumno', {path:"/"});
-        window.location.href = '/IniciarSesion';
+        window.location.href = '/auth/logout';
     }
 
 	componentDidMount = () => {
-       if(cookies.get('tipoUsuario') !== "true"){
-            this.cerrarSesion();
-            window.location.href = '/IniciarSesion'
-        }
+       // if(cookies.get('tipoUsuario') !== "true"){
+       //      this.cerrarSesion();
+       //      window.location.href = '/IniciarSesion'
+       //  }
     }//Fin de funcion DidMount
 
     render(){

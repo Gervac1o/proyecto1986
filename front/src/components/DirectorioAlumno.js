@@ -23,15 +23,15 @@ class DirectorioAlumno extends Component{
         cookies.remove('tipoUsuario', {path:"/"});
         cookies.remove('idAlumno', {path:"/"});
         cookies.remove('boleta', {path:"/"});
-        window.location.href = '/IniciarSesion';
+        window.location.href = '/auth/logout';
     }//Fin de Cerrar Sesion
 
     componentDidMount = () => {
         console.log()
-        if(cookies.get('email') === null || cookies.get('email') === undefined){
-            this.cerrarSesion();
-            window.location.href = '/IniciarSesion';
-        }
+        // if(cookies.get('email') === null || cookies.get('email') === undefined){
+        //     this.cerrarSesion();
+        //     window.location.href = '/auth/logout';
+        // }
         // else {
         //     this.cerrarSesion();
         //     window.location.href = './IniciarSesion';
