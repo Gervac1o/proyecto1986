@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Global from '../Global';
+
 import DirectorioAdmin from './DirectorioAdmin';
 class ListaAlumnos extends Component{
 
-    url = Global.url;
+
     state = {
         alumnos: [],
         status: null
@@ -23,7 +23,7 @@ class ListaAlumnos extends Component{
     }
 
     getAlumnos = () => {
-        axios.get(this.url+"alumno/findAll")
+        axios.get("alumno/findAll")
             .then(response => {
                 this.setState({
                     alumnos: response.data,
@@ -34,7 +34,7 @@ class ListaAlumnos extends Component{
     }
     //Funcion Buscar por Id
 /*    getAlumnosById = (id) => {
-        axios.get(this.url+"alumno/find/"+id)
+        axios.get("alumno/find/"+id)
             .then(res => {
                 this.setState({
                     alumnos: res.data,

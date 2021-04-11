@@ -1,13 +1,13 @@
 import React from 'react';
 import { Redirect,Link } from 'react-router-dom';
 import axios from 'axios';
-import Global from '../Global';
+
 import BorrarDoc from './BorrarDoc';
 import ActualizarComentario from './ActualizarComentario';
 
 class AdminServicioArchivos extends React.Component {
 
-    url = Global.url;
+
     
     comentarioRef=React.createRef();
 

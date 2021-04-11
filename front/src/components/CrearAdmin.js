@@ -3,12 +3,12 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import Slider from './Slider';
 import DirectorioAdmin from './DirectorioAdmin';
-import Global from '../Global';
+
 import md5 from 'md5';
 
 class CrearAdmin extends React.Component {
 
-    url = Global.url;
+
     tipoUsuarioRef = React.createRef();
     contraseñaRef = React.createRef();
     emailRef = React.createRef();
@@ -41,7 +41,7 @@ class CrearAdmin extends React.Component {
         if(this.state.usuario.email && this.state.usuario.email !== null && this.state.usuario.email !== undefined){
             if(this.state.contraseña && this.state.contraseña !== null && this.state.contraseña !== undefined){
                 if(this.state.contraseña.length >= 5 && this.state.contraseña.length<= 10){
-                    axios.get(this.url+"usuario/findByEmail/"+this.state.usuario.email)
+                    axios.get("usuario/findByEmail/"+this.state.usuario.email)
                 .then(res => {
                     this.setState({
                         emailExistente: "true",
@@ -60,7 +60,7 @@ class CrearAdmin extends React.Component {
                 .then(res => {
                     if(this.state.emailExistente === "false"){
                         if(this.state.ayuda === "false"){
-                            axios.post(this.url+"usuario/save", this.state.usuario)
+                            axios.post("usuario/save", this.state.usuario)
                             .then(res =>{
                                 this.setState({
                                     status: "true"

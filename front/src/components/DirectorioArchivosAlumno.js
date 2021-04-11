@@ -13,7 +13,7 @@ import AdminBajaArchivos from './AdminBajaArchivos';
 import AdminDictamenArchivos from './AdminDictamenArchivos';
 import AdminLiberacionArchivos from './AdminLiberacionArchivos';
 import AdminServicioArchivos from './AdminServicioArchivos';
-const cookies = new Cookies();
+ const cookies = new Cookies();
 
 class DirectorioArchivosAlumno extends Component{
 

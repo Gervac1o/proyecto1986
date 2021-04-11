@@ -1,13 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Global from '../Global';
+
 import DirectorioAdmin from './DirectorioAdmin';
 import RecuperacionContraseña from './RecuperacionContraseña';
 
 class BuscarAlumno extends React.Component {
 
-    url = Global.url;
+
 
     nombreRef = React.createRef();
 

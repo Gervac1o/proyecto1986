@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Global from '../Global';
+
 import DirectorioAdmin from './DirectorioAdmin';
 import { Link } from 'react-router-dom';
 import { Alert } from 'bootstrap';
@@ -8,7 +8,7 @@ import RecuperacionContraseña from './RecuperacionContraseña';
 
 class BuscarBoleta extends React.Component {
 
-    url = Global.url;
+
 
     boletaRef = React.createRef();
 

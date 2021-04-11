@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import Slider from './Slider';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import Global from '../Global';
+
 
 const cookies = new Cookies();
 
 class DatosAdmin extends React.Component {
 
-    url = Global.url;
+
 
     nombreRef = React.createRef();
     apellidosRef = React.createRef();

@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Global from '../Global';
+
 import DirectorioAdmin from './DirectorioAdmin';
 class BuscarDictamenAlumnos extends Component{
 
     estadoRef = React.createRef();
 
-    url = Global.url;
+
 
     idAlumnoRef = React.createRef();
 
@@ -23,7 +23,7 @@ class BuscarDictamenAlumnos extends Component{
     }
 
     getDictamenes = () => {
-        axios.get(this.url+"dictamen/findAll")
+        axios.get("dictamen/findAll")
             .then(response => {
                 this.setState({
                     dictamenes: response.data,
@@ -54,7 +54,7 @@ class BuscarDictamenAlumnos extends Component{
     }
 
     getNew = () => {
-        axios.get(this.url+"dictamen/findEstado/NUEVO")
+        axios.get("dictamen/findEstado/NUEVO")
             .then(response => {
                 this.setState({
                     dictamenes: response.data,
@@ -65,7 +65,7 @@ class BuscarDictamenAlumnos extends Component{
     }//Fin de getNew
 
     getProcessing = () => {
-        axios.get(this.url+"dictamen/findEstado/PROCESANDO")
+        axios.get("dictamen/findEstado/PROCESANDO")
             .then(response => {
                 this.setState({
                     dictamenes: response.data,
@@ -76,7 +76,7 @@ class BuscarDictamenAlumnos extends Component{
     }//Fin de getProcessing
 
     getFinished = () => {
-        axios.get(this.url+"dictamen/findEstado/FINALIZADO")
+        axios.get("dictamen/findEstado/FINALIZADO")
             .then(response => {
                 this.setState({
                     dictamenes: response.data,
@@ -87,7 +87,7 @@ class BuscarDictamenAlumnos extends Component{
     }//Fin de getFinished
 
     getRejected = () => {
-        axios.get(this.url+"dictamen/findEstado/RECHAZADO")
+        axios.get("dictamen/findEstado/RECHAZADO")
             .then(response => {
                 this.setState({
                     dictamenes: response.data,

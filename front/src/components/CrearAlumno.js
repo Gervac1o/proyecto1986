@@ -5,7 +5,7 @@ import logo2 from '../assets/images/ipnLogo.png'
 import Slider from './Slider';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import Global from '../Global';
+
 import md5 from 'md5';
 import validator from 'validator';
 
@@ -13,7 +13,7 @@ const cookies = new Cookies();
 
 class CrearAlumno extends React.Component {
 
-    url = Global.url;
+
     
     tipoUsuarioRef = React.createRef();
     contraseñaRef = React.createRef();
@@ -154,7 +154,7 @@ class CrearAlumno extends React.Component {
                                     }
                                 })
                                 
-                                    axios.post(this.url+"usuario/save", this.state.usuario)
+                                    axios.post("usuario/save", this.state.usuario)
                                     .then(res =>{
                                         this.setState({
                                             status: "true"

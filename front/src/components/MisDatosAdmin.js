@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Global from '../Global';
+
 import DirectorioAdmin from './DirectorioAdmin';
 import Slider from './Slider';
 import Cookies from 'universal-cookie';
@@ -12,7 +12,7 @@ const cookies = new Cookies();
 
 class MisDatosAdmin extends React.Component{
 
-    url = Global.url;
+
 
     state = {
         admin: {},

@@ -1,14 +1,14 @@
 import React from 'react';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import Global from '../Global';
+
 import md5 from 'md5';
 
 const cookies = new Cookies();
 
 class DatosActualizadosEmail extends React.Component {
 
-    url = Global.url;
+
 
     contraseñaRef = React.createRef();
     emailRef = React.createRef();
@@ -58,7 +58,7 @@ class DatosActualizadosEmail extends React.Component {
         this.changeState();
         if(this.state.email && this.state.email !== null && this.state.email !== undefined){
             if(this.state.contraseña.length >= 5){
-                axios.get(this.url+"usuario/findByEmail/"+this.state.email)
+                axios.get("usuario/findByEmail/"+this.state.email)
                 .then(res => {
                     if(this.state.email === this.state.emailPerfil){
                         if(this.state.usuario.email && this.state.usuario.email !== null && this.state.usuario.email !== undefined){
@@ -66,7 +66,7 @@ class DatosActualizadosEmail extends React.Component {
                                 if(this.state.nuevaContraseña.length >= 5 && this.state.nuevaContraseña.length<= 10){
                                     if(this.state.confirmarNuevaContraseña && this.state.confirmarNuevaContraseña !== null && this.state.confirmarNuevaContraseña !== undefined){
                                         if(this.state.usuario.contraseña === this.state.confirmarContraseña){
-                                            axios.patch(this.url+"usuario/update", this.state.usuario)
+                                            axios.patch("usuario/update", this.state.usuario)
                                             .then(res => {
                                                 this.setState({
                                                     status: "true"
@@ -102,7 +102,7 @@ class DatosActualizadosEmail extends React.Component {
                                 if(this.state.nuevaContraseña.length >= 5 && this.state.nuevaContraseña.length<= 10){
                                     if(this.state.confirmarNuevaContraseña && this.state.confirmarNuevaContraseña !== null && this.state.confirmarNuevaContraseña !== undefined){
                                         if(this.state.usuario.contraseña === this.state.confirmarContraseña){
-                                            axios.get(this.url+"usuario/findByEmail/" + this.state.usuario.email)
+                                            axios.get("usuario/findByEmail/" + this.state.usuario.email)
                                             .then(res =>{
                                                 this.setState({
                                                     ayuda: "false",
@@ -123,7 +123,7 @@ class DatosActualizadosEmail extends React.Component {
                                             .then(res => {
                                                 if(this.state.emailExistente == "false"){
                                                     if(this.state.ayuda == "false"){
-                                                        axios.patch(this.url+"usuario/update", this.state.usuario)
+                                                        axios.patch("usuario/update", this.state.usuario)
                                                         .then(res =>{
                                                             this.setState({
                                                                 status: "true"

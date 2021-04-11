@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Global from '../Global';
-import Cookies from 'universal-cookie';
 
+import Cookies from 'universal-cookie';
 const cookies = new Cookies();
+
+
 
 class AlumnoDictamen extends React.Component{
 
     estadoRef = React.createRef();
 
-    url = Global.url;
+
 
 
     state = {
@@ -72,7 +73,7 @@ class AlumnoDictamen extends React.Component{
     }//Fin de getEmail()
 
     deleteDictamen = () => {
-        axios.delete(this.url+"dictamen/delete/"+this.props.id)
+        axios.delete("dictamen/delete/"+this.props.id)
         .then(res => {
             window.location.href = "./" + this.props.id
         })
@@ -92,7 +93,7 @@ class AlumnoDictamen extends React.Component{
 
     cambiarEstado = () => {
         this.changeState();
-        axios.post(this.url+"dictamen/update", this.state.cambioEstado)
+        axios.post("dictamen/update", this.state.cambioEstado)
         .then(res =>{
             this.getDictamen();
         });

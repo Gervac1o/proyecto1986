@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import Slider from './Slider';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import Global from '../Global';
 
 const cookies = new Cookies();
 
+
 class DatosAlumno extends React.Component {
 
-    url = Global.url;
+
 
     nombreRef = React.createRef();
     apellidoPaternoRef = React.createRef();
@@ -54,7 +54,7 @@ class DatosAlumno extends React.Component {
             if(this.state.alumno.apellidoPaterno && this.state.alumno.apellidoPaterno !== null && this.state.alumno.apellidoPaterno !== undefined){
                 if(this.state.alumno.apellidoMaterno && this.state.alumno.apellidoMaterno !== null && this.state.alumno.apellidoMaterno !== undefined){
                     if(this.state.alumno.boleta.length === 10){
-                        axios.get(this.url+"alumno/findBoleta/"+this.state.alumno.boleta)
+                        axios.get("alumno/findBoleta/"+this.state.alumno.boleta)
                         .then(res =>{
                             this.setState({
                                 statusBoleta: "true",
@@ -73,7 +73,7 @@ class DatosAlumno extends React.Component {
                         .then(res =>{
                             if(this.state.boletaExiste === "false"){
                                 if(this.state.existe === false){
-                                    axios.post(this.url+"alumno/save", this.state.alumno)
+                                    axios.post("alumno/save", this.state.alumno)
                                      .then(res => {
                                          this.setState({
                                              status: "true"

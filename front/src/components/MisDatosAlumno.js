@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import HeaderDEyAE from './HeaderDEyAE';
 import axios from 'axios';
-import Global from '../Global';
 import DirectorioAlumno from './DirectorioAlumno';
 import Cookies from 'universal-cookie';
 import DatosActualizadosAlumno from './DatosActualizadosAlumno';
@@ -12,7 +11,6 @@ const cookies = new Cookies();
 
 class MisDatosAlumno extends React.Component{
 
-    url = Global.url;
 
     state = {
         alumno: {},
@@ -24,13 +22,14 @@ class MisDatosAlumno extends React.Component{
         status: null
     };
         componentWillMount() {
-            // this.getAlumno();
+            this.getAlumno();
             //alert(cookies.get('idUsuario'));
 
         }
 
         getAlumno = () => {
-            axios.get(this.url + "alumno/findIdUsuario/"+ this.state.idUsuario)
+            console.log(this.state.idUsuario);
+            axios.get("alumno/findIdUsuario/"+ this.state.idUsuario)
             .then(res => {
                     this.setState({
                         alumno: res.data,

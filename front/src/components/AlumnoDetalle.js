@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import BorrarDoc from './BorrarDoc';
-import Global from '../Global';
+
 
 class AlumnoBaja extends React.Component{
 
-    url = Global.url;
+
 
     state = {
         idAlumno: this.props.id,

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Global from '../Global';
-import Cookies from 'universal-cookie';
 
+import Cookies from 'universal-cookie';
 const cookies = new Cookies();
+
 
 class AlumnoLiberacion extends React.Component{
 
-    url = Global.url;
+
 
     estadoRef = React.createRef();
 
@@ -77,7 +77,7 @@ class AlumnoLiberacion extends React.Component{
     }//Fin de getEmail()
 
     deleteLiberacion = () => {
-        axios.delete(this.url+"liberacionExtemporanea/delete/"+this.props.id)
+        axios.delete("liberacionExtemporanea/delete/"+this.props.id)
         .then(res => {
             window.location.href = "./" + this.props.id
         })
@@ -97,7 +97,7 @@ class AlumnoLiberacion extends React.Component{
 
     cambiarEstado = () => {
         this.changeState();
-        axios.patch(this.url+"liberacionExtemporanea/update", this.state.cambioEstado)
+        axios.patch("liberacionExtemporanea/update", this.state.cambioEstado)
         .then(res =>{
             this.getLiberacion();
         });

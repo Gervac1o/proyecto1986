@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Global from '../Global';
+
 import DirectorioAdmin from './DirectorioAdmin';
 class BuscarLiberacionAlumnos extends Component{
 
     estadoRef = React.createRef();
 
-    url = Global.url;
+
 
     state = {
         liberaciones: [],
@@ -21,7 +21,7 @@ class BuscarLiberacionAlumnos extends Component{
     }
 
     getLiberaciones = () => {
-        axios.get(this.url+"liberacionExtemporanea/findAll")
+        axios.get("liberacionExtemporanea/findAll")
             .then(response => {
                 this.setState({
                     liberaciones: response.data,
@@ -52,7 +52,7 @@ class BuscarLiberacionAlumnos extends Component{
     }
 
     getNew = () => {
-        axios.get(this.url+"liberacionExtemporanea/findEstado/NUEVO")
+        axios.get("liberacionExtemporanea/findEstado/NUEVO")
             .then(response => {
                 this.setState({
                     liberaciones: response.data,
@@ -63,7 +63,7 @@ class BuscarLiberacionAlumnos extends Component{
     }//Fin de getNew
 
     getProcessing = () => {
-        axios.get(this.url+"liberacionExtemporanea/findEstado/PROCESANDO")
+        axios.get("liberacionExtemporanea/findEstado/PROCESANDO")
             .then(response => {
                 this.setState({
                     liberaciones: response.data,
@@ -74,7 +74,7 @@ class BuscarLiberacionAlumnos extends Component{
     }//Fin de getProcessing
 
     getFinished = () => {
-        axios.get(this.url+"liberacionExtemporanea/findEstado/FINALIZADO")
+        axios.get("liberacionExtemporanea/findEstado/FINALIZADO")
             .then(response => {
                 this.setState({
                     liberaciones: response.data,
@@ -85,7 +85,7 @@ class BuscarLiberacionAlumnos extends Component{
     }//Fin de getFinished
 
     getRejected = () => {
-        axios.get(this.url+"liberacionExtemporanea/findEstado/RECHAZADO")
+        axios.get("liberacionExtemporanea/findEstado/RECHAZADO")
             .then(response => {
                 this.setState({
                     liberaciones: response.data,

@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import Slider from './Slider';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import Global from '../Global';
 
 const cookies = new Cookies();
 
+
 class DatosActualizadosAdmin extends React.Component {
 
-    url = Global.url;
+
 
     nombreRef = React.createRef();
     apellidosRef = React.createRef();
@@ -43,7 +43,7 @@ class DatosActualizadosAdmin extends React.Component {
         if(this.state.admin.nombre && this.state.admin.nombre != null && this.state.admin.nombre != undefined){
             if(this.state.admin.apellidos && this.state.admin.apellidos != null && this.state.admin.apellidos != undefined){
                 if(this.state.admin.telefono && this.state.admin.telefono != null && this.state.admin.telefono != undefined){
-                        await axios.patch(this.url+"admin/update", this.state.admin)
+                        await axios.patch("admin/update", this.state.admin)
                         .then(res => {
                             this.setState({
                                 status: "true"

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Global from '../Global';
+
 import Cookies from 'universal-cookie';
 import PdfLiberacionAlumno from './PdfLiberacionAlumno';
 
@@ -8,7 +8,7 @@ const cookies = new Cookies();
 
 class VerDatosLiberacion extends React.Component{
 
-    url = Global.url;
+
 
     state = {
         liberacionExtemporanea: {},

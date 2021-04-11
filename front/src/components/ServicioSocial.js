@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import HeaderDEyAE from './HeaderDEyAE';
 import axios from 'axios';
 import DirectorioAlumno from './DirectorioAlumno';
-import Global from '../Global';
+
 import Cookies from 'universal-cookie';
 import SubirServicio from './SubirServicio';
 import VerDatosServicio from './VerDatosServicio';
@@ -13,7 +13,7 @@ const cookies = new Cookies();
 
 class ServicioSocial extends React.Component {
 
-    url = Global.url;
+
     semestreRef = React.createRef();
     responsableDirectoRef = React.createRef();
     servicioRef = React.createRef();
@@ -35,7 +35,7 @@ class ServicioSocial extends React.Component {
     }
 
     searchServicio = () => {
-        axios.get(this.url+"servicioSocial/findIdAlumno/"+this.servicioRef)
+        axios.get("servicioSocial/findIdAlumno/"+this.servicioRef)
         .then(res =>{
             this.setState({
                 servicio: res.data

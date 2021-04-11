@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
-import Global from '../Global';
+
 import BorrarDoc from './BorrarDoc';
 import Cookies from 'universal-cookie';
 
@@ -9,7 +9,7 @@ const cookies = new Cookies();
 
 class SubirLiberacion extends React.Component {
 
-    url = Global.url;
+
     
     state = {
         idLiberacion: cookies.get('idAlumno'),
@@ -34,7 +34,7 @@ class SubirLiberacion extends React.Component {
     }
 
     getLista = () => {
-        axios.get(this.url+"lista/findLiberacion/" + this.state.idLiberacion)
+        axios.get("lista/findLiberacion/" + this.state.idLiberacion)
             .then(response => {
                 this.setState({
                     listar: response.data,

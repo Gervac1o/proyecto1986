@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Global from '../Global';
+
 import DirectorioAdmin from './DirectorioAdmin';
 class BuscarServicioAlumnos extends Component{
 
     estadoRef = React.createRef();
 
-    url = Global.url;
+
 
     state = {
         servicios: [],
@@ -21,7 +21,7 @@ class BuscarServicioAlumnos extends Component{
     }
 
     getServicios = () => {
-        axios.get(this.url+"servicioSocial/findAll")
+        axios.get("servicioSocial/findAll")
             .then(response => {
                 this.setState({
                     servicios: response.data,
@@ -52,7 +52,7 @@ class BuscarServicioAlumnos extends Component{
     }
 
     getNew = () => {
-        axios.get(this.url+"servicioSocial/findEstado/NUEVO")
+        axios.get("servicioSocial/findEstado/NUEVO")
             .then(response => {
                 this.setState({
                     servicios: response.data,
@@ -63,7 +63,7 @@ class BuscarServicioAlumnos extends Component{
     }//Fin de getNew
 
     getProcessing = () => {
-        axios.get(this.url+"servicioSocial/findEstado/PROCESANDO")
+        axios.get("servicioSocial/findEstado/PROCESANDO")
             .then(response => {
                 this.setState({
                     servicios: response.data,
@@ -74,7 +74,7 @@ class BuscarServicioAlumnos extends Component{
     }//Fin de getProcessing
 
     getFinished = () => {
-        axios.get(this.url+"servicioSocial/findEstado/FINALIZADO")
+        axios.get("servicioSocial/findEstado/FINALIZADO")
             .then(response => {
                 this.setState({
                     servicios: response.data,
@@ -85,7 +85,7 @@ class BuscarServicioAlumnos extends Component{
     }//Fin de getFinished
 
     getRejected = () => {
-        axios.get(this.url+"servicioSocial/findEstado/RECHAZADO")
+        axios.get("servicioSocial/findEstado/RECHAZADO")
             .then(response => {
                 this.setState({
                     servicios: response.data,

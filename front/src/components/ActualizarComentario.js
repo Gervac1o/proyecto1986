@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-import Global from '../Global';
+
 
 class ActualizarComentario extends React.Component {
 
-    url = Global.url;
+
     
     comentarioRef=React.createRef();
 
@@ -44,7 +44,7 @@ class ActualizarComentario extends React.Component {
     cambiarComentario = () =>{
         this.changeState();
         if(this.state.lista.comentario && this.state.lista.comentario !==null && this.state.lista.comentario !== undefined){
-            axios.patch(this.url+"lista/update", this.state.lista)
+            axios.patch("lista/update", this.state.lista)
             .then(res =>{
                 this.setState({
                     status: "true",

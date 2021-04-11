@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Global from '../Global';
+
 import DirectorioAdmin from './DirectorioAdmin';
 class BuscarBajaAlumnos extends Component{
 
     estadoRef = React.createRef();
 
-    url = Global.url;
+
 
     state = {
         bajas: [],
@@ -21,7 +21,7 @@ class BuscarBajaAlumnos extends Component{
     }
 
     getBajas = () => {
-        axios.get(this.url+"solicitudBaja/findAll")
+        axios.get("solicitudBaja/findAll")
             .then(response => {
                 this.setState({
                     bajas: response.data,
@@ -52,7 +52,7 @@ class BuscarBajaAlumnos extends Component{
     }
 
     getNew = () => {
-        axios.get(this.url+"solicitudBaja/findEstado/NUEVO")
+        axios.get("solicitudBaja/findEstado/NUEVO")
             .then(response => {
                 this.setState({
                     bajas: response.data,
@@ -63,7 +63,7 @@ class BuscarBajaAlumnos extends Component{
     }//Fin de getNew
 
     getProcessing = () => {
-        axios.get(this.url+"solicitudBaja/findEstado/PROCESANDO")
+        axios.get("solicitudBaja/findEstado/PROCESANDO")
             .then(response => {
                 this.setState({
                     bajas: response.data,
@@ -74,7 +74,7 @@ class BuscarBajaAlumnos extends Component{
     }//Fin de getProcessing
 
     getFinished = () => {
-        axios.get(this.url+"solicitudBaja/findEstado/FINALIZADO")
+        axios.get("solicitudBaja/findEstado/FINALIZADO")
             .then(response => {
                 this.setState({
                     bajas: response.data,
@@ -85,7 +85,7 @@ class BuscarBajaAlumnos extends Component{
     }//Fin de getFinished
 
     getRejected = () => {
-        axios.get(this.url+"solicitudBaja/findEstado/RECHAZADO")
+        axios.get("solicitudBaja/findEstado/RECHAZADO")
             .then(response => {
                 this.setState({
                     bajas: response.data,

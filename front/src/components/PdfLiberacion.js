@@ -2,11 +2,10 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import { PDFReader  } from 'reactjs-pdf-view';
-import Global from '../Global';
+
 
 class PdfLiberacion extends React.Component {
 
-  url = Global.url;
   state = {
     docLiberacion: "",
     status: null
@@ -23,7 +22,7 @@ class PdfLiberacion extends React.Component {
         return(
             <div>
             <PDFReader 
-               url ={this.url + "docLiberacion/getDoc/" + this.state.docLiberacion}
+               url ={"docLiberacion/getDoc/" + this.state.docLiberacion}
               showAllPage="true"
             >
             </PDFReader >

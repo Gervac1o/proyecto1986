@@ -3,7 +3,7 @@ import axios from 'axios';
 import logo2 from '../assets/images/ipnLogo.png'
 import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
-import Global from '../Global';
+
 import Slider from './Slider';
 import md5 from 'md5';
 import validator from 'validator';
@@ -12,7 +12,7 @@ const cookies = new Cookies();
 
 class IniciarSesion extends React.Component {
 
-    url = Global.url;
+
     
     contraseñaRef = React.createRef();
     contraseñaRef2 = React.createRef();

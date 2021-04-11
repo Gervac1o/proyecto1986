@@ -1,13 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Global from '../Global';
+
 import Slider from './Slider';
 import DirectorioAdmin from './DirectorioAdmin';
 
 class BuscarIE extends React.Component {
 
-    url = Global.url;
+
 
     state = {
         programas: [],

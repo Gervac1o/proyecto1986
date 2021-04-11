@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Global from '../Global';
+
 import md5 from 'md5';
 
 class RecuperacionContraseña extends React.Component{
 
     cambioRef = React.createRef();
 
-    url = Global.url;
+
 
     state = {
         usuario:{},
@@ -30,7 +30,7 @@ class RecuperacionContraseña extends React.Component{
     }//Fin de changeState
 
     getUsuario = () =>{
-        axios.get(this.url+"usuario/find/"+this.props.id)
+        axios.get("usuario/find/"+this.props.id)
         .then(res =>{
             this.setState({
                 usuario: res.data,
@@ -41,7 +41,7 @@ class RecuperacionContraseña extends React.Component{
     updateContraseña = () =>{
         this.changeState();
         if(this.cambioRef.current.value === "SI"){
-            axios.patch(this.url+"usuario/update", this.state.recuperar)
+            axios.patch("usuario/update", this.state.recuperar)
             .then(res =>{
                 this.setState({
                     status: "true"

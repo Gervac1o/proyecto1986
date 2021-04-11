@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import HeaderDEyAE from './HeaderDEyAE';
 import DirectorioAlumno from './DirectorioAlumno';
-import Global from '../Global';
+
 import Cookies from 'universal-cookie';
 import SubirBaja from './SubirBaja';
 import VerDatosBaja from './VerDatosBaja';
@@ -13,7 +13,7 @@ const cookies = new Cookies();
 
 class Baja extends React.Component {
 
-    url = Global.url;
+
 
     registroSSRef = React.createRef();
     semestreRef = React.createRef();
@@ -48,7 +48,7 @@ class Baja extends React.Component {
     }
 
     searchBaja = () => {
-        axios.get(this.url+"solicitudBaja/findIdAlumno/"+this.bajaRef)
+        axios.get("solicitudBaja/findIdAlumno/"+this.bajaRef)
         .then(res =>{
             this.setState({
                 baja: res.data

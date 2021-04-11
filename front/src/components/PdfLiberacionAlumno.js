@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import jspdf, { jsPDF } from 'jspdf';
-import Global from '../Global';
+
 
 
 class PdfLiberacionAlumno extends React.Component{
 
-    url = Global.url;
+
       
         state={
             alumno: {},

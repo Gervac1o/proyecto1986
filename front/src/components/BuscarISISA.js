@@ -1,13 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import Global from '../Global';
 import Slider from './Slider';
 import DirectorioAdmin from './DirectorioAdmin';
 
 class BuscarISISA extends React.Component {
-
-    url = Global.url;
 
     state = {
         programas: [],
@@ -19,7 +16,7 @@ class BuscarISISA extends React.Component {
     }
 
     searchISISA = () => {
-         axios.get(this.url + "alumno/findPrograma/INGENIERÍA EN SISTEMAS AUTOMOTRICES")
+         axios.get("alumno/findPrograma/INGENIERÍA EN SISTEMAS AUTOMOTRICES")
             .then(res => {
                 this.setState(
                     {

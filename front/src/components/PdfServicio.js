@@ -1,35 +1,33 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import axios from 'axios';
-import { PDFReader  } from 'reactjs-pdf-view';
-import Global from '../Global';
+import {PDFReader} from 'reactjs-pdf-view';
 
 class PdfServicio extends React.Component {
 
-  url = Global.url;
-  state = {
-    docServicio: "",
-    status: null
-  };
+    state = {
+        docServicio: "",
+        status: null
+    };
     componentWillMount = () => {
-        const { match: { params } } = this.props;
+        const {match: {params}} = this.props;
         var doc = params.doc;
         this.setState({
-                docServicio: doc,
-                status: "true"
+            docServicio: doc,
+            status: "true"
         })
     }
-    render(){
-        return(
+
+    render() {
+        return (
             <div>
-            <PDFReader 
-               url ={this.url + "docServicio/getDoc/" + this.state.docServicio}
-              showAllPage="true"
-            >
-            </PDFReader >
-          
-          </div>
+                <PDFReader
+                    url={"docServicio/getDoc/" + this.state.docServicio}
+                    showAllPage="true">
+                </PDFReader>
+            </div>
         );
     }
 }
+
 export default PdfServicio;

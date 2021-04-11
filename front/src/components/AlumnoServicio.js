@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Global from '../Global';
+
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
 class AlumnoServicio extends React.Component{
 
-    url = Global.url;
+
 
     estadoRef = React.createRef();
 
@@ -71,7 +71,7 @@ class AlumnoServicio extends React.Component{
     }//Fin de getEmail()
 
     deleteServicio = () => {
-        axios.delete(this.url+"servicioSocial/delete/"+this.props.id)
+        axios.delete("servicioSocial/delete/"+this.props.id)
         .then(res => {
             window.location.href = "./" + this.props.id
         })
@@ -91,7 +91,7 @@ class AlumnoServicio extends React.Component{
 
     cambiarEstado = () => {
         this.changeState();
-        axios.patch(this.url+"servicioSocial/update", this.state.cambioEstado)
+        axios.patch("servicioSocial/update", this.state.cambioEstado)
         .then(res =>{
             this.getServicio();
         });

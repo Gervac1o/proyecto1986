@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Global from '../Global';
+
 
 class DocDictamen extends React.Component{
 
-    url = Global.url;
+
 
     state = {
         docDictamen: "",

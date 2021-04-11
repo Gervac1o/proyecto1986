@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import HeaderDEyAE from './HeaderDEyAE';
 import DirectorioAlumno from './DirectorioAlumno';
-import Global from '../Global';
+
 import Cookies from 'universal-cookie';
 import SubirLiberacion from './SubirLiberacion';
 import VerDatosLiberacion from './VerDatosLiberacion';
@@ -13,7 +13,7 @@ const cookies = new Cookies();
 
 class Liberacion extends React.Component {
 
-    url = Global.url;
+
     
     registroSSRef = React.createRef();
     semestreRef = React.createRef();
@@ -47,7 +47,7 @@ class Liberacion extends React.Component {
     }
 
     searchLiberacion = () => {
-        axios.get(this.url+"liberacionExtemporanea/findIdAlumno/"+this.liberacionRef)
+        axios.get("liberacionExtemporanea/findIdAlumno/"+this.liberacionRef)
         .then(res =>{
             this.setState({
                 liberacion: res.data

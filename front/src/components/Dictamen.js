@@ -4,7 +4,7 @@ import axios from 'axios';
 import HeaderDEyAE from './HeaderDEyAE';
 import { Link } from 'react-router-dom';
 import DirectorioAlumno from './DirectorioAlumno';
-import Global from '../Global';
+
 import SubirDictamen from './SubirDictamen';
 import VerDatosDictamen from './VerDatosDictamen';
 import Cookies from 'universal-cookie';
@@ -14,7 +14,7 @@ const cookies = new Cookies();
 
 class Dictamen extends React.Component {
 
-    url = Global.url;
+
 
     creditosRef = React.createRef();
     dictamenRef = React.createRef();
@@ -49,7 +49,7 @@ class Dictamen extends React.Component {
     }
 
     searchDictamen = () => {
-        axios.get(this.url+"dictamen/findIdAlumno/"+this.dictamenRef)
+        axios.get("dictamen/findIdAlumno/"+this.dictamenRef)
         .then(res =>{
             this.setState({
                 dictamen: res.data
