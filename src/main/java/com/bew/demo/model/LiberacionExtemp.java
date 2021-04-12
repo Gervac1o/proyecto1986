@@ -23,7 +23,7 @@ public class LiberacionExtemp implements Serializable{
 	
 	@Id
 	@Column(name="id_liberacion")
-	private Integer idLiberacion;
+	private Long idLiberacion;
 
 	@Column(name="semestre")
 	private String semestre;
@@ -59,13 +59,12 @@ public class LiberacionExtemp implements Serializable{
 	private String revisado;
 
 	@Column(name="id_alumno")
-	private Integer idAlumno;
+	private Long idAlumno;
 
 	public LiberacionExtemp() {}
-	public LiberacionExtemp( Integer idLiberacion, String semestre, Boolean egresado, String registroSS, 
+	public LiberacionExtemp( Long idLiberacion, String semestre, Boolean egresado, String registroSS,
 	String prestatario, String programaSS, String fechaInicio, String fechaTermino, String telefono,
-	String fechaRegistro, String revisado, String estado, Integer idAlumno) {
-	
+	String fechaRegistro, String revisado, String estado, Long idAlumno) {
 
 		this.idLiberacion=idLiberacion;
 		this.semestre=semestre;
@@ -84,84 +83,5 @@ public class LiberacionExtemp implements Serializable{
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_alumno",insertable=false, updatable = false)
 	private Alumno alumno;
-
-	public Integer getIdLiberacion() {
-		return idLiberacion;
-	}
-	public void setIdLiberacion(Integer idLiberacion) {
-		this.idLiberacion = idLiberacion;
-	}
-	public String getSemestre() {
-		return semestre;
-	}
-	public void setSemestre(String semestre) {
-		this.semestre = semestre;
-	}
-	public Boolean getEgresado() {
-		return egresado;
-	}
-	public void setEgresado(Boolean egresado) {
-		this.egresado = egresado;
-	}
-	public String getRegistroSS() {
-		return registroSS;
-	}
-	public void setRegistroSS(String registroSS) {
-		this.registroSS = registroSS;
-	}
-	public String getPrestatario() {
-		return prestatario;
-	}
-	public void setPrestatario(String prestatario) {
-		this.prestatario = prestatario;
-	}
-	public String getProgramaSS() {
-		return programaSS;
-	}
-	public void setProgramaSS(String programaSS) {
-		this.programaSS = programaSS;
-	}
-	public String getFechaInicio() {
-		return fechaInicio;
-	}
-	public void setFechaInicio(String fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-	public String getFechaTermino() {
-		return fechaTermino;
-	}
-	public void setFechaTermino(String fechaTermino) {
-		this.fechaTermino = fechaTermino;
-	}
-	public String getTelefono() {
-		return telefono;
-	}
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-	public String getEstado() {
-		return estado;
-	}
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-	public String getFechaRegistro() {
-		return fechaRegistro;
-	}
-	public void setFechaRegistro(String fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
-	}
-	public String getRevisado() {
-		return revisado;
-	}
-	public void setRevisado(String revisado) {
-		this.revisado = revisado;
-	}
-	public Integer getIdAlumno() {
-		return idAlumno;
-	}
-	public void setIdAlumno(Integer idAlumno) {
-		this.idAlumno = idAlumno;
-	}
 	
 }

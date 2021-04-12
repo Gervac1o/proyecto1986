@@ -22,7 +22,7 @@ public class Usuario implements Serializable{
 	@SequenceGenerator(name = "usuario_sec", sequenceName = "usuario_seq", allocationSize = 1, initialValue=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_sec")
 	@Column(name="id_usuario")
-	private Integer idUsuario;
+	private Long idUsuario;
 	
 	@Column(name="email", unique = true)
 	private String email;
@@ -37,7 +37,7 @@ public class Usuario implements Serializable{
 	private Boolean status;
 	
 	public Usuario() {}
-	public Usuario( Integer idUsuario, String email, String password, Boolean tipoUsuario, Boolean status) {
+	public Usuario( Long idUsuario, String email, String password, Boolean tipoUsuario, Boolean status) {
 		 	
 		this.idUsuario=idUsuario;
 		this.email=email;

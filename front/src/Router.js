@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Error from './components/Error';
 import Footer from './components/Footer';
-import Home from './components/Home';
 import DirectorioAdmin from './components/DirectorioAdmin';
 import ListaAlumnos from './components/ListaAlumnos';
 import BuscarAlumno from './components/BuscarAlumno';
@@ -18,7 +17,6 @@ import SubirDictamen from './components/SubirDictamen';
 import SubirLiberacion from './components/SubirLiberacion';
 import SubirBaja from './components/SubirBaja';
 import SubirServicio from './components/SubirServicio';
-import IniciarSesion from './components/IniciarSesion';
 import CrearAlumno from './components/CrearAlumno';
 import DatosAlumno from './components/DatosAlumno';
 import MisDatosAlumno from './components/MisDatosAlumno';
@@ -91,7 +89,6 @@ class Router extends React.Component {
                     <Route exact path = "/SubirLiberacion" component = {SubirLiberacion}/>
                     <Route exact path = "/SubirBaja" component = {SubirBaja}/>
                     <Route exact path = "/SubirServicio" component = {SubirServicio}/>
-                    <Route exact path = "/IniciarSesion" component = {IniciarSesion}/>
                     <Route exact path = "/Registrarse" component = {CrearAlumno}/>
                     <Route exact path = "/DatosAlumno" component = {DatosAlumno}/>
                     <Route exact path = "/MisDatosAlumno" component = {MisDatosAlumno}/>

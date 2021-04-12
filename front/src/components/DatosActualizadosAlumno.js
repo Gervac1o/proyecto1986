@@ -56,57 +56,14 @@ class DatosActualizadosAlumno extends React.Component {
             if(this.state.alumno.apellidoPaterno && this.state.alumno.apellidoPaterno !== null && this.state.alumno.apellidoPaterno !== undefined){
                 if(this.state.alumno.apellidoMaterno && this.state.alumno.apellidoMaterno !== null && this.state.alumno.apellidoMaterno !== undefined){
                     if(this.state.alumno.boleta.length === 10){
-                        if(this.state.alumno.boleta === this.cookiesBoletaRef){
+
                             axios.patch("alumno/update", this.state.alumno)
                                 .then(res => {
                                     this.setState({
                                         status: "true"
                                         });
                                     });
-                        }else{
-                        axios.get("alumno/findBoleta/"+this.state.alumno.boleta)
-                        .then(res =>{
-                            this.setState({
-                                statusBoleta: "true",
-                                statusApellidoMaterno: "true",
-                                statusApellidoPaterno: "true",
-                                statusNombre: "true",
-                                boletaExiste: "true",
-                                existe: "true"
-                            });
-                        })
-                        .catch(error =>{
-                            this.setState({
-                                boletaExiste: "false"
-                            });
-                        })
-                        .then(res =>{
-                            if(this.state.boletaExiste === "false"){
-                                if(this.state.existe === false){
-                                    axios.patch("alumno/update", this.state.alumno)
-                                    .then(res => {
-                                        this.setState({
-                                            status: "true"
-                                            });
-                                        });
-                                 }else{
-                                     this.setState({
-                                         statusBoleta: "true",
-                                         statusApellidoMaterno: "true",
-                                         statusApellidoPaterno: "true",
-                                         statusNombre: "true",
-                                         boletaExiste: "true",
-                                         existe: false
-                                     });
-                                }
-                            }else{
-                                this.setState({
-                                    boletaExiste: "true",
-                                    existe: false
-                                });
-                            }
-                        })
-                        }
+
                     }else{
                         this.setState(
                             {

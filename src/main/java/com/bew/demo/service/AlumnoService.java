@@ -1,9 +1,10 @@
 /**
- * 
+ *
  */
 package com.bew.demo.service;
 
 import java.util.List;
+
 import com.bew.demo.dto.AlumnoDTO;
 import com.bew.demo.exception.EmptyResultException;
 
@@ -12,16 +13,27 @@ import com.bew.demo.exception.EmptyResultException;
  *
  */
 public interface AlumnoService {
-	List<AlumnoDTO> findAll();
-	AlumnoDTO findById(Integer idAlumno);
-	void saveAlumno(AlumnoDTO alumnoDTO);
-	void updateAlumno(AlumnoDTO alumnoDTO)throws EmptyResultException;
-	void deleteAlumno(Integer idAlumno)throws EmptyResultException;
-	List<AlumnoDTO> AlumnoNombre (String nombre);
-	List<AlumnoDTO> AlumnoPrograma (String programaAcademico);
-	AlumnoDTO AlumnoApellidoPaterno (String apellidoPaterno);
-	AlumnoDTO AlumnoApellidoMaterno (String apellidoMaterno);
-	AlumnoDTO AlumnoBoleta (Integer boleta);
-	AlumnoDTO findByIdUsuario(Integer idUsuario);
-	
+
+    List<AlumnoDTO> findAll();
+
+    AlumnoDTO findById(Integer idAlumno);
+
+    AlumnoDTO AlumnoBoleta(String boleta);
+
+    void saveAlumno(AlumnoDTO alumnoDTO);
+
+    void updateAlumno(AlumnoDTO alumnoDTO) throws EmptyResultException;
+
+    void deleteAlumno(Integer idAlumno) throws EmptyResultException;
+
+    AlumnoDTO findByIdUsuario(Long idUsuario);
+
+    List<AlumnoDTO> AlumnoNombre(String nombre);
+
+    List<AlumnoDTO> AlumnoPrograma(String programaAcademico);
+
+    AlumnoDTO AlumnoApellidoPaterno(String apellidoPaterno);
+
+    AlumnoDTO AlumnoApellidoMaterno(String apellidoMaterno);
+
 }

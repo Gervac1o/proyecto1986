@@ -57,7 +57,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public AlumnoDTO findByIdUsuario(Integer idUsuario) {
+    public AlumnoDTO findByIdUsuario(Long idUsuario) {
         AlumnoDTO alumnoDTO = new AlumnoDTO();
         Alumno alumno = null;
         try {
@@ -128,7 +128,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public AlumnoDTO AlumnoBoleta(Integer boleta) {
+    public AlumnoDTO AlumnoBoleta(String boleta) {
 
         AlumnoDTO alumnoDTO = new AlumnoDTO();
         Alumno alumno = null;

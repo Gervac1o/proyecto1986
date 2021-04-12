@@ -25,61 +25,25 @@ public class Cliente implements Serializable{
 	@SequenceGenerator(name = "cliente_sec", sequenceName = "cliente_seq", allocationSize = 1, initialValue=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente_sec")
 	@Column(name="id_cliente")
-	private Integer idCliente;
+	private Long idCliente;
 	
 	@Column(name="nombre")
 	private String nombre;
 	
 	@Column(name = "status")
 	private Boolean status;
-	
-	
-	
-   /* @OneToOne(orphanRemoval = true, mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
-    private DatosCliente datosCliente;
 
-	public Cliente(DatosCliente datosCliente) {
-		super();
-		this.datosCliente = datosCliente;
-	}
-	*/
 
 
 	public Cliente() {}
-	public Cliente( Integer idCliente, String nombre, Boolean status) {
+	public Cliente( Long idCliente, String nombre, Boolean status) {
 		
 		
 		this.nombre=nombre;	
 		this.idCliente=idCliente;
 		this.status = status;
 }
-    
-	public Integer getIdCliente() {
-		return idCliente;
-	}
 
-	public void setIdCliente(Integer idCliente) {
-		this.idCliente = idCliente;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	public Boolean getStatus() {
-		return status;
-	}
-	public void setStatus(Boolean status) {
-		this.status = status;
-	}
-
-
-
-
-	
 	
 
 }

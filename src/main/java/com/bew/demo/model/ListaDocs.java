@@ -25,7 +25,7 @@ public class ListaDocs implements Serializable {
 	@SequenceGenerator(name = "lista_sec", sequenceName = "lista_seq", allocationSize = 1, initialValue=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lista_sec")
 	@Column(name="id_lista")
-	private Integer idLista;
+	private Long idLista;
 	
 	@Column(name="nombre_doc")
 	private String nombreDoc;
@@ -38,10 +38,10 @@ public class ListaDocs implements Serializable {
 	private String comentario;
 	
 	@Column(name="id_alumno")
-	private Integer idAlumno;
+	private Long idAlumno;
 	
 	@Column(name = "id_tramite")
-	private Integer idTramite;
+	private Long idTramite;
 
 
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -52,7 +52,7 @@ public class ListaDocs implements Serializable {
 	
 	public ListaDocs() {};
 	
-	public ListaDocs(Integer idLista, String nombreDoc, String idDoc, String comentario, Integer idTramite) {
+	public ListaDocs(Long idLista, String nombreDoc, String idDoc, String comentario, Long idTramite) {
 
 		super();
 		this.idLista = idLista;
@@ -61,58 +61,6 @@ public class ListaDocs implements Serializable {
 		this.idTramite=idTramite;
 		this.comentario = comentario;
 		
-	}
-
-	public Integer getIdLista() {
-		return idLista;
-	}
-
-	public void setIdLista(Integer idLista) {
-		this.idLista = idLista;
-	}
-
-	public String getNombreDoc() {
-		return nombreDoc;
-	}
-
-	public Integer getIdTramite() {
-		return idTramite;
-	}
-
-	public void setIdTramite(Integer idTramite) {
-		this.idTramite = idTramite;
-	}
-
-	public void setNombreDoc(String nombreDoc) {
-		this.nombreDoc = nombreDoc;
-	}
-
-
-
-
-	public String getIdDoc() {
-		return idDoc;
-	}
-
-	public void setIdDoc(String idDoc) {
-
-		this.idDoc = idDoc;
-	}
-
-	public String getComentario() {
-		return comentario;
-	}
-
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
-	}
-
-	public Integer getIdAlumno() {
-		return idAlumno;
-	}
-
-	public void setIdAlumno(Integer idAlumno) {
-		this.idAlumno = idAlumno;
 	}
 
 }

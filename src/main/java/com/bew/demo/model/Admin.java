@@ -26,7 +26,7 @@ public class Admin implements Serializable{
 	@SequenceGenerator(name = "admin_sec", sequenceName = "admin_seq", allocationSize = 1, initialValue=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "admin_sec")
 	@Column(name="id_admin")
-	private Integer idAdmin;
+	private Long idAdmin;
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -38,10 +38,10 @@ public class Admin implements Serializable{
 	private String telefono;
 	
 	@Column(name="id_usuario")
-	private Integer idUsuario;
+	private Long idUsuario;
 
 	public Admin() {}
-	public Admin( Integer idAdmin, String nombre, String apellidos, String telefono, Integer idUsuario) {
+	public Admin( Long idAdmin, String nombre, String apellidos, String telefono, Long idUsuario) {
 
 		this.nombre=nombre;	
 		this.idAdmin=idAdmin;
@@ -52,42 +52,5 @@ public class Admin implements Serializable{
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_usuario",insertable=false, updatable = false)
 	private Usuario usuario;
-	
-	public Integer getIdAdmin() {
-		return idAdmin;
-	}
 
-	public void setIdAdmin(Integer idAdmin) {
-		this.idAdmin = idAdmin;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
-	public String getApellidos() {
-		return apellidos;
-	}
-	
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-	
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-	public Integer getIdUsuario() {
-		return idUsuario;
-	}
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
-	}
 }

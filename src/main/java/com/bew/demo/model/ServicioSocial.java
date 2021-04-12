@@ -21,7 +21,7 @@ public class ServicioSocial implements Serializable{
 	
 	@Id
 	@Column(name="id_servicio")
-	private Integer idServicio;
+	private Long idServicio;
 
 	@Column(name="semestre")
 	private String semestre;
@@ -39,11 +39,11 @@ public class ServicioSocial implements Serializable{
 	private String revisado;
 	
 	@Column(name="id_alumno")
-	private Integer idAlumno;
+	private Long idAlumno;
 
 	public ServicioSocial() {}
-	public ServicioSocial( Integer idServicio, String semestre, String responsableDirecto, String estado,
-			String fechaRegistro, String revisado, Integer idAlumno) {
+	public ServicioSocial( Long idServicio, String semestre, String responsableDirecto, String estado,
+			String fechaRegistro, String revisado, Long idAlumno) {
 
 		this.idServicio=idServicio;
 		this.semestre=semestre;
@@ -56,48 +56,4 @@ public class ServicioSocial implements Serializable{
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_alumno",insertable=false, updatable = false)
 	private Alumno alumno;
-
-	public Integer getIdServicio() {
-		return idServicio;
-	}
-	public void setIdServicio(Integer idServicio) {
-		this.idServicio = idServicio;
-	}
-	public String getSemestre() {
-		return semestre;
-	}
-	public void setSemestre(String semestre) {
-		this.semestre = semestre;
-	}
-	public String getResponsableDirecto() {
-		return responsableDirecto;
-	}
-	public void setResponsableDirecto(String responsableDirecto) {
-		this.responsableDirecto = responsableDirecto;
-	}
-	public String getEstado() {
-		return estado;
-	}
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-	public String getFechaRegistro() {
-		return fechaRegistro;
-	}
-	public void setFechaRegistro(String fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
-	}
-	public String getRevisado() {
-		return revisado;
-	}
-	public void setRevisado(String revisado) {
-		this.revisado = revisado;
-	}
-	public Integer getIdAlumno() {
-		return idAlumno;
-	}
-	public void setIdAlumno(Integer idAlumno) {
-		this.idAlumno = idAlumno;
-	}
-	
 }
