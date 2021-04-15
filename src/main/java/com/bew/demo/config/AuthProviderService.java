@@ -42,8 +42,11 @@ public class AuthProviderService implements AuthenticationProvider {
 
         if (usuario.getPassword().equals(password)) {
             Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-            authorities.add(new SimpleGrantedAuthority("USER"));
-
+            if(usuario.getTipoUsuario()){
+                authorities.add(new SimpleGrantedAuthority("ADMIN"));
+            }else {
+                authorities.add(new SimpleGrantedAuthority("USER"));
+            }
             return new UsernamePasswordAuthenticationToken(usuario, password, authorities);
 
         } else {

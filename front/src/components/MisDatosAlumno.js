@@ -15,9 +15,12 @@ class MisDatosAlumno extends React.Component{
     state = {
         alumno: {},
         usuario: {},
-        idUsuario: cookies.get('idUsuario'),
-        idAlumno: cookies.get('idAlumno'),
-        email: cookies.get('email'),
+        // idUsuario: cookies.get('idUsuario'),
+        // idAlumno: cookies.get('idAlumno'),
+        // email: cookies.get('email'),
+        idUsuario: "1",
+        idAlumno: "1",
+        email: "dummy@prueba.com",
         actualizar: null,
         status: null
     };

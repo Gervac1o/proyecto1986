@@ -33,7 +33,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
         cMail.setPath("/");
         cMail.setSecure(false);
         httpServletResponse.addCookie(cMail);
-        Cookie cTipoUsuario = new Cookie("tipoUsuario", "false");
+        Cookie cTipoUsuario = new Cookie("tipoUsuario", usuario.getTipoUsuario().toString());
         cTipoUsuario.setMaxAge(60 * 10);
         cTipoUsuario.setPath("/");
         cTipoUsuario.setSecure(false);
