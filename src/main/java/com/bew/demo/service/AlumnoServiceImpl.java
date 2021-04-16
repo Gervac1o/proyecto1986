@@ -43,15 +43,17 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public AlumnoDTO findById(Integer idAlumno) {
+    public AlumnoDTO findById(Long idAlumno) {
 
         AlumnoDTO alumnoDTO = new AlumnoDTO();
         try {
             Alumno alumno = alumnoRepository.findById(idAlumno).orElseThrow(() -> new EmptyResultException("Sin Resultados"));
+            System. out.println(idAlumno);
             Mapper mapper = DozerBeanMapperBuilder.buildDefault();
             alumnoDTO = (mapper.map(alumno, AlumnoDTO.class));
         } catch (EmptyResultException e) {
-            logger.info("alumno no encontrado");
+        	logger.info("holaaa");
+            logger.info("alumno no encontrado alterando el log " );
         }
         return alumnoDTO;
     }
@@ -138,7 +140,7 @@ public class AlumnoServiceImpl implements AlumnoService {
             Mapper mapper = DozerBeanMapperBuilder.buildDefault();
             alumnoDTO = (mapper.map(alumno, AlumnoDTO.class));
         } catch (EmptyResultException e) {
-            logger.info("alumno no encontrado");
+            logger.info("alumno no encontrado alterando logg");
         }
 
         return alumnoDTO;
@@ -163,7 +165,7 @@ public class AlumnoServiceImpl implements AlumnoService {
     }
 
     @Override
-    public void deleteAlumno(Integer idAlumno) throws EmptyResultException {
+    public void deleteAlumno(Long idAlumno) throws EmptyResultException {
         // TODO Auto-generated method stub
         alumnoRepository.deleteById(idAlumno);
     }

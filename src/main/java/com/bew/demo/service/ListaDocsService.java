@@ -9,13 +9,13 @@ import com.bew.demo.dto.ListaDocsDTO;
 
 public interface ListaDocsService {
 	List<ListaDocsDTO> findAll();
-	ListaDocsDTO findById(Integer idLista);
+	ListaDocsDTO findById(Long idLista);
 	void saveListaDocs(ListaDocsDTO listaDocsDTO);
 	void updateListaDocs(ListaDocsDTO listaDocsDTO);
-	void deleteListaDocs(Integer idLista);
-	List<ListaDocsDTO> findDictamen(Integer idAlumno);
-	List<ListaDocsDTO> findLiberacion(Integer idAlumno);
-	List<ListaDocsDTO> findBaja(Integer idAlumno);
-	List<ListaDocsDTO> findServicio(Integer idAlumno);
+	void deleteListaDocs(Long idLista);
+	List<ListaDocsDTO> findDictamen(Long idAlumno);
+	List<ListaDocsDTO> findLiberacion(Long idAlumno);
+	List<ListaDocsDTO> findBaja(Long idAlumno);
+	List<ListaDocsDTO> findServicio(Long idAlumno);
 
 }

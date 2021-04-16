@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.bew.demo.model.Alumno;
 
 @Repository
-public interface AlumnoRepository extends JpaRepository <Alumno,Integer>{
+public interface AlumnoRepository extends JpaRepository <Alumno,Long>{
 
 	@Query(
             value = "SELECT s FROM Alumno s WHERE s.nombre = :nombre",

@@ -1,6 +1,7 @@
 package com.bew.demo.dto;
 
 import lombok.Getter;
+
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -14,6 +15,14 @@ public class AdminDTO implements Serializable{
 	private String apellidos;
 	private String telefono;
 	private Long idUsuario;
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+	
+	
 
 
 	public Long getIdAdmin() {

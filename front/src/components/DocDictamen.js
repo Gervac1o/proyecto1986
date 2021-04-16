@@ -22,7 +22,8 @@ class DocDictamen extends React.Component{
         if(this.state.status == "true"){
             return(
                 <div>
-                        <iframe  src={this.url + "docDictamen/getDoc/" + this.state.docDictamen}></iframe>
+                    <a>descarga completa</a>
+                        <iframe  src={"http://localhost:8080/docDictamen/getDoc/" + this.state.docDictamen}></iframe>
                 </div>
             );
         }

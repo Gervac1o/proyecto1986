@@ -73,7 +73,7 @@ public class UsuarioRestController {
 	@PatchMapping(path = "/update", consumes = "application/json")
 	public ResponseEntity<?> update(@RequestBody UsuarioDTO usuarioDTO)throws EmptyResultException{
 	usuarioService.updateUsuario(usuarioDTO);
-	System.out.println(usuarioDTO.getIdUsuario());
+	//System.out.println(usuarioDTO.getIdUsuario());
 	return ResponseEntity.ok(usuarioDTO);
 	}
 	

@@ -51,7 +51,7 @@ public class DictamenServiceImpl implements DictamenService {
 		return dictamenDTO;
 	}
 	@Override
-	public DictamenDTO findByIdAlumno(Integer idAlumno) {
+	public DictamenDTO findByIdAlumno(Long idAlumno) {
 		
 		DictamenDTO dictamenDTO = new DictamenDTO();
 		Dictamen dictamen = null;

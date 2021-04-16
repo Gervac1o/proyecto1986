@@ -38,7 +38,7 @@ public class DictamenRestControler {
 		return ResponseEntity.ok(dictamenDTO);		
 	}
 	@GetMapping(path = "/findIdAlumno/{idAlumno}", produces = "application/json")
-	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Integer idAlumno){
+	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Long idAlumno){
 		DictamenDTO dictamenDTO;
 		dictamenDTO = dictamenService.findByIdAlumno(idAlumno);
 		return ResponseEntity.ok(dictamenDTO);

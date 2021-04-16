@@ -33,7 +33,7 @@ public class ListaDocsRestController {
 	}
 	
 	@GetMapping(path = "/findDictamen/{idAlumno}", produces = "application/json")
-	public ResponseEntity<?> findDictamen(@PathVariable("idAlumno") Integer idAlumno){
+	public ResponseEntity<?> findDictamen(@PathVariable("idAlumno") Long idAlumno){
 		List<ListaDocsDTO> listaDocs;
 		listaDocs = listaDocsService.findDictamen(idAlumno);
 		
@@ -41,7 +41,7 @@ public class ListaDocsRestController {
 	}
 	
 	@GetMapping(path = "/findLiberacion/{idAlumno}", produces = "application/json")
-	public ResponseEntity<?> findLiberacion(@PathVariable("idAlumno") Integer idAlumno){
+	public ResponseEntity<?> findLiberacion(@PathVariable("idAlumno") Long idAlumno){
 		List<ListaDocsDTO> listaDocs;
 		listaDocs = listaDocsService.findLiberacion(idAlumno);
 		
@@ -49,7 +49,7 @@ public class ListaDocsRestController {
 	}
 	
 	@GetMapping(path = "/findBaja/{idAlumno}", produces = "application/json")
-	public ResponseEntity<?> findBaja(@PathVariable("idAlumno") Integer idAlumno){
+	public ResponseEntity<?> findBaja(@PathVariable("idAlumno") Long idAlumno){
 		List<ListaDocsDTO> listaDocs;
 		listaDocs = listaDocsService.findBaja(idAlumno);
 		
@@ -57,7 +57,7 @@ public class ListaDocsRestController {
 	}
 	
 	@GetMapping(path = "/findServicio/{idAlumno}", produces = "application/json")
-	public ResponseEntity<?> findServicio(@PathVariable("idAlumno") Integer idAlumno){
+	public ResponseEntity<?> findServicio(@PathVariable("idAlumno") Long idAlumno){
 		List<ListaDocsDTO> listaDocs;
 		listaDocs = listaDocsService.findServicio(idAlumno);
 		
@@ -65,7 +65,7 @@ public class ListaDocsRestController {
 	}
 	
 	@GetMapping(path = "/find/{idLista}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("idCliente") Integer idLista){
+	public ResponseEntity<?>find(@PathVariable("idCliente") Long idLista){
 		ListaDocsDTO listaDocsDTO;
 		listaDocsDTO = listaDocsService.findById(idLista);
 		return ResponseEntity.ok(listaDocsDTO);		
@@ -85,7 +85,7 @@ public class ListaDocsRestController {
 	}
 	
 	@DeleteMapping(path="/delete/{idLista}")
-	public ResponseEntity<?> delete(@PathVariable("idLista") Integer idLista) {
+	public ResponseEntity<?> delete(@PathVariable("idLista") Long idLista) {
 		listaDocsService.deleteListaDocs(idLista);
 		return ResponseEntity.ok().build();
 	}	

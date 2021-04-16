@@ -74,13 +74,14 @@ class Dictamen extends React.Component {
     saveDictamen = async (e) => {
         this.changeState();
         if(this.state.dictamen.porcentajeCreditos && this.state.dictamen.porcentajeCreditos != null && this.state.dictamen.porcentajeCreditos != undefined){
-         await axios.post(this.url + "dictamen/save", this.state.dictamen)
+         await axios.post("dictamen/save", this.state.dictamen)
             .then(res => {
                 this.setState(
                     {
-                        status: "true"
+                        statusCreditos: "true"
                     }
                 );
+                this.recargarPagina();
             })
         }else{
             this.setState(
@@ -90,17 +91,28 @@ class Dictamen extends React.Component {
             );
         }//Fin de else % de Creditos
     }//Fin de funcion saveDictamen()
-    render() {
-        if(this.state.status == 'true'){
-            window.location.href = './CrearDictamen';
-        }
 
+    recargarPagina=() =>{
+        window.location.href = "/CrearDictamen"
+    }
+
+
+
+    render() {
+       
+            
+           //<Redirect to = "/CrearDictamen" />
+           //window.location.reload()
+         
+        
+     
         return (
             <div className="center">
             <HeaderDEyAE />
                 <DirectorioAlumno />
                         <div id="sidebar" className="dictamenLeft">
                             <div>
+                            <button className="btn" onClick = {this.recargarPagina}> recargar pagina</button>
                                 <label htmlFor="creditos" className="text_login">Porcentaje de Creditos</label>
                                 <input type="text" className="input_login" name="creditos" placeholder="Ingresa el % de creditos sin decimales" ref={this.creditosRef} onChange={this.changeState}/>
                                 {(() => {
@@ -109,39 +121,23 @@ class Dictamen extends React.Component {
                                         return (
                                         <a className="warning">¡Ingresa tu porcentaje de creditos sin decimales!</a>
                                         );
-                                        break;
+                                     
                                         default:
                                             break;
                                     }
                                 })()}       
                             </div>
                             <br/>
-                            {(() => {
-                                switch(this.state.estado){
-                                    case "NUEVO":
-                                    return (
+                            
+         
                                         <button className="btn" onClick = {this.saveDictamen}>Aceptar</button>
-                                    );
-                                    break;
-                                    case undefined:
-                                    return (
-                                        <button className="btn" onClick = {this.saveDictamen}>Aceptar</button>
-                                    );
-                                    break;
-                                    case null:
-                                    return (
-                                        <button className="btn" onClick = {this.saveDictamen}>Aceptar</button>
-                                    );
-                                    break;
-                                    default:
-                                        break;
-                                }
-                            })()}
+     
                           </div>
                        <SubirDictamen/>
                        <VerDatosDictamen/>
             </div>
         );
+                        
     }
 }
 export default Dictamen;

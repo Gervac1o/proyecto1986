@@ -32,7 +32,7 @@ class SubirDictamen extends React.Component {
     }
 
     getLista = () => {
-        axios.get(this.url + "lista/findDictamen/" + this.state.idDictamen)
+        axios.get("lista/findDictamen/" + this.state.idDictamen)
             .then(response => {
                 this.setState({
                     listar: response.data,
@@ -41,7 +41,7 @@ class SubirDictamen extends React.Component {
     }
 
     guardarLista = async (e) => {
-        await axios.post(this.url + "lista/save", this.state.lista)
+        await axios.post("lista/save", this.state.lista)
         .then(res => {
             this.setState({
                 status: "true"
@@ -55,7 +55,7 @@ class SubirDictamen extends React.Component {
             console.log(this.state);
             fd.append('file', this.state.file, this.state.file.name)
             console.log(this.state.file.name)
-                axios.post(this.url + "docDictamen/upload/" + this.state.file.name + this.state.idDictamen, fd)
+                axios.post("docDictamen/upload/" + this.state.file.name + this.state.idDictamen, fd)
                     .then(res =>{
                         this.setState({
                             lista:{
@@ -63,9 +63,12 @@ class SubirDictamen extends React.Component {
                                 nombreDoc: res.data,
                                 idTramite: 1,
                                 idDoc: res.data + this.state.idDictamen,
+                                idDictamen:this.state.idDictamen,
                                 comentario: "NUEVO"
                             }
+                        
                         })
+                        console.log("id de dictamen" + this.state.idDictamen)
                         this.guardarLista();
                     });
         }else{
@@ -158,7 +161,6 @@ class SubirDictamen extends React.Component {
                                         return (
                                         <a className="warning">¡Seleccione un Archivo para Registrar!</a>
                                         );
-                                        break;
                                         default:
                                             break;
                                     }
