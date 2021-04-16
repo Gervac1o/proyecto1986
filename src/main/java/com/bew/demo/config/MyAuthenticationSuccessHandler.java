@@ -1,13 +1,8 @@
 package com.bew.demo.config;
 
-import com.bew.demo.dao.UsuarioRepository;
-import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.model.Usuario;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;

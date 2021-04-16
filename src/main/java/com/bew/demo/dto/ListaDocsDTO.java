@@ -1,16 +1,11 @@
 package com.bew.demo.dto;
 
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.Serializable;
 
-@Getter
-@Setter
 public class ListaDocsDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
 
 	private Long idLista;
 	private String nombreDoc;
@@ -18,6 +13,53 @@ public class ListaDocsDTO implements Serializable{
 	private String comentario;
 	private Integer idAlumno;
 	private Long idTramite;
-	
-	
+
+
+	public Long getIdLista() {
+		return idLista;
+	}
+
+	public void setIdLista(Long idLista) {
+		this.idLista = idLista;
+	}
+
+	public String getNombreDoc() {
+		return nombreDoc;
+	}
+
+	public void setNombreDoc(String nombreDoc) {
+		this.nombreDoc = nombreDoc;
+	}
+
+	public String getIdDoc() {
+		return idDoc;
+	}
+
+	public void setIdDoc(String idDoc) {
+		this.idDoc = idDoc;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+
+	public Integer getIdAlumno() {
+		return idAlumno;
+	}
+
+	public void setIdAlumno(Integer idAlumno) {
+		this.idAlumno = idAlumno;
+	}
+
+	public Long getIdTramite() {
+		return idTramite;
+	}
+
+	public void setIdTramite(Long idTramite) {
+		this.idTramite = idTramite;
+	}
 }
