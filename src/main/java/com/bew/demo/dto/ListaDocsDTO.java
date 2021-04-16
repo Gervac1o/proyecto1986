@@ -11,7 +11,7 @@ public class ListaDocsDTO implements Serializable{
 	private String nombreDoc;
 	private String idDoc;
 	private String comentario;
-	private Integer idAlumno;
+	private Long idAlumno;
 	private Long idTramite;
 
 

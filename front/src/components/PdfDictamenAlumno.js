@@ -19,12 +19,12 @@ class PdfDictamenAlumno extends React.Component{
         }
 
         generarPdf =  () =>{
-            axios.get(this.url + "alumno/find/" + this.props.idAlumno)
+            axios.get( "alumno/find/" + this.props.idAlumno)
                 .then(res => {
                     this.setState({
                         alumno: res.data
                 })
-               console.log(this.state.alumno.nombre)
+               
             })
             .then(res =>{
                 this.setState({
@@ -71,7 +71,7 @@ class PdfDictamenAlumno extends React.Component{
         doc.text("ATENTAMENTE", 295,550, 'center');
         doc.text(290 ,650, this.state.alumno.nombre+" "+this.state.alumno.apellidoPaterno+" "+this.state.alumno.apellidoMaterno, 'center');
         doc.setFontSize(10);
-        doc.text(295,670, this.props.email,'center');
+        //doc.text(295,670, this.props.email,'center');
         doc.save("Dictamen.pdf") 
     }
     render(){

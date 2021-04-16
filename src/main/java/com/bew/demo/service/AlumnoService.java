@@ -16,7 +16,7 @@ public interface AlumnoService {
 
     List<AlumnoDTO> findAll();
 
-    AlumnoDTO findById(Integer idAlumno);
+    AlumnoDTO findById(Long idAlumno);
 
     AlumnoDTO AlumnoBoleta(String boleta);
 
@@ -24,7 +24,7 @@ public interface AlumnoService {
 
     void updateAlumno(AlumnoDTO alumnoDTO) throws EmptyResultException;
 
-    void deleteAlumno(Integer idAlumno) throws EmptyResultException;
+    void deleteAlumno(Long idAlumno) throws EmptyResultException;
 
     AlumnoDTO findByIdUsuario(Long idUsuario);
 

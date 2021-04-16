@@ -46,7 +46,7 @@ public class ListaDocsServiceImpl implements ListaDocsService {
 
 	
 	@Override
-	public ListaDocsDTO findById(Integer idLista) {
+	public ListaDocsDTO findById(Long idLista) {
 		ListaDocsDTO listaDocsDTO = new ListaDocsDTO(); 
 		ListaDocs listaDocs = null;
 		Optional<ListaDocs> oplistaDocs = listaDocsRepository.findById(idLista);
@@ -83,14 +83,14 @@ public class ListaDocsServiceImpl implements ListaDocsService {
 
 
 	@Override
-	public void deleteListaDocs(Integer idLista) {
+	public void deleteListaDocs(Long idLista) {
 		
 		listaDocsRepository.deleteById(idLista);
 	}
 	
 
 	@Override
-	public List<ListaDocsDTO> findDictamen(Integer idAlumno) {
+	public List<ListaDocsDTO> findDictamen(Long idAlumno) {
 		List<ListaDocsDTO> listaDocsDTO = new ArrayList<>();
 		List<ListaDocs> listaDocs = listaDocsRepository.findDictamen(idAlumno);
 		for(ListaDocs listaDoc: listaDocs) {
@@ -101,7 +101,7 @@ public class ListaDocsServiceImpl implements ListaDocsService {
 	}
 	
 	@Override
-	public List<ListaDocsDTO> findLiberacion(Integer idAlumno) {
+	public List<ListaDocsDTO> findLiberacion(Long idAlumno) {
 		List<ListaDocsDTO> listaDocsDTO = new ArrayList<>();
 		List<ListaDocs> listaDocs = listaDocsRepository.findLiberacion(idAlumno);
 		for(ListaDocs listaDoc: listaDocs) {
@@ -112,7 +112,7 @@ public class ListaDocsServiceImpl implements ListaDocsService {
 	}
 	
 	@Override
-	public List<ListaDocsDTO> findBaja(Integer idAlumno) {
+	public List<ListaDocsDTO> findBaja(Long idAlumno) {
 		List<ListaDocsDTO> listaDocsDTO = new ArrayList<>();
 		List<ListaDocs> listaDocs = listaDocsRepository.findBaja(idAlumno);
 		for(ListaDocs listaDoc: listaDocs) {
@@ -123,7 +123,7 @@ public class ListaDocsServiceImpl implements ListaDocsService {
 	}
 	
 	@Override
-	public List<ListaDocsDTO> findServicio(Integer idAlumno) {
+	public List<ListaDocsDTO> findServicio(Long idAlumno) {
 		List<ListaDocsDTO> listaDocsDTO = new ArrayList<>();
 		List<ListaDocs> listaDocs = listaDocsRepository.findServicio(idAlumno);
 		for(ListaDocs listaDoc: listaDocs) {

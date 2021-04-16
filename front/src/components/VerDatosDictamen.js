@@ -21,12 +21,14 @@ class VerDatosDictamen extends React.Component{
         }
 
         getDictamen = () => {
-            axios.get(this.url +"dictamen/findIdAlumno/" + this.state.idAlumno)
+            console.log("entrando al get dictamen con el idAlumno" + this.state.idAlumno)
+            axios.get("dictamen/findIdAlumno/" + this.state.idAlumno)
             .then(res => {
                     this.setState({
                         dictamen: res.data,
                         status: 'success'
                        });
+                       console.log("respuesta " + this.state.dictamen)
             });
         }//Fin de funcion getDictamen()
         

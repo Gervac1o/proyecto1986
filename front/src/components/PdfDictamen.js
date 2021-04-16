@@ -22,7 +22,7 @@ class PdfDictamen extends React.Component {
         return(
             <div>
             <PDFReader 
-               url ={"docDictamen/getDoc/" + this.state.docDictamen}
+               url ={"http://localhost:8080/docDictamen/getDoc/" + this.state.docDictamen}
               showAllPage="true"
             >
             </PDFReader >
