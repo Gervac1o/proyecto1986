@@ -16,10 +16,9 @@ class MisDatosAlumno extends React.Component{
         alumno: {},
         usuario: {},
         // idUsuario: cookies.get('idUsuario'),
-        // idAlumno: cookies.get('idAlumno'),
+        idAlumno: cookies.get('idAlumno'),
         // email: cookies.get('email'),
         idUsuario: "1",
-        idAlumno: "1",
         email: "dummy@prueba.com",
         actualizar: null,
         status: null
@@ -28,7 +27,6 @@ class MisDatosAlumno extends React.Component{
             this.getAlumno();
             //alert(cookies.get('idUsuario'));
             cookies.set('idUsuario', 1, {path:"/"})
-            cookies.set('idAlumno', 1, {path:"/"})
             cookies.set('email', "dummy@prueba.com" , {path:"/"})
         }
 
@@ -40,11 +38,11 @@ class MisDatosAlumno extends React.Component{
                         alumno: res.data,
                         status: 'success'
                        });
-                       //cookies.set('idAlumno', this.state.alumno.idAlumno, {path:"/"})
-                       //cookies.set('boleta', this.state.alumno.boleta, {path:"/"})
+                       cookies.set('idAlumno', this.state.alumno.idAlumno, {path:"/"})
+                       cookies.set('boleta', this.state.alumno.boleta, {path:"/"})
             })
             .catch(err=>{
-               // window.location.href = '/DatosAlumno';
+                window.location.reload(false);
         })
         }//Fin de funcion getAlumno()
 

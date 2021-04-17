@@ -182,7 +182,7 @@ class Baja extends React.Component {
     }//Fin de Funcion saveBaja
     render() {
         if(this.state.status == 'true'){
-            window.location.href = './CrearBaja';
+            window.location.reload(false);
         }
 
         return (

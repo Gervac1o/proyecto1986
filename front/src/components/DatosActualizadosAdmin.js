@@ -85,7 +85,7 @@ class DatosActualizadosAdmin extends React.Component {
     }
     render() {
         if(this.state.status === 'true'){
-            window.location.href = './MisDatosAdmin'
+            window.location.reload(false);
         }
 
         return (

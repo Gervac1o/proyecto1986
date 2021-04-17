@@ -85,7 +85,7 @@ class ServicioSocial extends React.Component {
     }//Fin de funcion saveServicio()
     render() {
         if(this.state.status == 'true'){
-            window.location.href = './CrearServicio';
+            window.location.reload(false);
         }
 
         return (
