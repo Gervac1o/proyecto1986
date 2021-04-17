@@ -90,7 +90,7 @@ class SubirServicio extends React.Component {
     } */
     render() {
         if(this.state.status === 'true'){
-            window.location.href = './CrearServicio';
+            window.location.reload(false);
         }
         if(this.state.listar.length >=1){
         return (

@@ -91,7 +91,7 @@ class SubirBaja extends React.Component {
     } */
     render() {
         if(this.state.status == 'true'){
-            window.location.href = './CrearBaja';
+            window.location.reload(false);
         }
         if(this.state.listar.length >=1){
         return (

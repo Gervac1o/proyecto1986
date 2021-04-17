@@ -93,7 +93,7 @@ class Dictamen extends React.Component {
     }//Fin de funcion saveDictamen()
 
     recargarPagina=() =>{
-        window.location.href = "/CrearDictamen"
+        window.location.reload(false);
     }
 
 

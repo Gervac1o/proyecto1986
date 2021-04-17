@@ -155,7 +155,7 @@ class Liberacion extends React.Component {
     }//Fin de funcion saveLiberacion()
     render() {
         if(this.state.status == 'true'){
-            window.location.href = './CrearLiberacion';
+            window.location.reload(false);
         }
 
         return (

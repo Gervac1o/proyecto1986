@@ -50,15 +50,15 @@ class DatosAdmin extends React.Component {
                             alert("DATOS PERSONALES GUARDADOS")
                 }else{
                     alert("LLENA EL CAMPO DE TELEFONO")
-                    window.location.href = './DatosAdmin';
+                    window.location.reload(false);
                 }//Fin de else Apellido Materno
             }else{
                 alert("LLENA EL CAMPO DE APELLIDOS")
-                window.location.href = './DatosAdmin';
+                window.location.reload(false);
             }//Fin de else Apellido Paterno
         }else{
             alert("LLENA EL CAMPO DE NOMBRE")
-            window.location.href = './DatosAdmin';
+            window.location.reload(false);
         }//Fin de else NOMBRE
     }//Fin de funcion saveAlumno()
 

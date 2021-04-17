@@ -29,7 +29,7 @@ class MisDatosAdmin extends React.Component{
         getAdmin = () => {
             axios.get(this.url +"admin/findIdUsuario/"+ this.state.idUsuario)
             .catch(error=>{
-                    window.location.href = '/DatosAdmin';
+                window.location.reload(false);
             })
             .then(res => {
                     this.setState({

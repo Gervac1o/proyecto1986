@@ -93,7 +93,7 @@ class SubirLiberacion extends React.Component {
     } */
     render() {
         if(this.state.status == 'true'){
-            window.location.href = './CrearLiberacion';
+            window.location.reload(false);
         }
         if(this.state.listar.length >=1){
         return (

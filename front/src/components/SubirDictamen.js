@@ -97,7 +97,7 @@ class SubirDictamen extends React.Component {
         //var doc = this.lista1.idDoc;
 
         if(this.state.status == "true"){
-            window.location.href = './CrearDictamen';
+            window.location.reload(false);
         }
         if(this.state.listar.length >=1){
             return (
