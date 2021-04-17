@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository <Usuario,Integer>{
+public interface UsuarioRepository extends JpaRepository <Usuario,Long>{
 
 	@Query(
             value = "SELECT s FROM Usuario s WHERE s.email = :email",

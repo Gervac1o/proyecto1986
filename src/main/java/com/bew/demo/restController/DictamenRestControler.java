@@ -32,7 +32,7 @@ public class DictamenRestControler {
 		return ResponseEntity.ok(dictamen);
 	}
 	@GetMapping(path = "/find/{idDictamen}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("idDictamen") Integer idDictamen){
+	public ResponseEntity<?>find(@PathVariable("idDictamen") Long idDictamen){
 		DictamenDTO dictamenDTO;
 		dictamenDTO = dictamenService.findById(idDictamen);
 		return ResponseEntity.ok(dictamenDTO);		
@@ -62,7 +62,7 @@ public class DictamenRestControler {
 	}
 	
 	@DeleteMapping(path = "/delete/{idDictamen}")
-	public ResponseEntity<?> delete(@PathVariable("idDictamen") Integer idDictamen) throws EmptyResultException{
+	public ResponseEntity<?> delete(@PathVariable("idDictamen") Long idDictamen) throws EmptyResultException{
 		dictamenService.deleteDictamen(idDictamen);
 	return ResponseEntity.ok().build();
 	}

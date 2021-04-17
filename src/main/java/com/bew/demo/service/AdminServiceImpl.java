@@ -39,7 +39,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public AdminDTO findById(Integer idAdmin) {
+	public AdminDTO findById(Long idAdmin) {
 		
 		AdminDTO adminDTO = new AdminDTO(); 
 		Admin admin = null;
@@ -52,7 +52,7 @@ public class AdminServiceImpl implements AdminService {
 		return adminDTO;
 	}
 	@Override
-	public AdminDTO findByIdUsuario(Integer idUsuario) {
+	public AdminDTO findByIdUsuario(Long idUsuario) {
 		
 		AdminDTO adminDTO = new AdminDTO(); 
 		Admin admin = null;
@@ -62,7 +62,7 @@ public class AdminServiceImpl implements AdminService {
 		System.out.println(idUsuario + "Despues de Admin Repository" );
 		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
     	adminDTO = ( mapper.map(admin, AdminDTO.class));
-    	System.out.println(adminDTO.getIdUsuario());
+
 		return adminDTO;
 	}
 	@Override
@@ -121,7 +121,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void deleteAdmin(Integer idAdmin) throws EmptyResultException {
+	public void deleteAdmin(Long idAdmin) throws EmptyResultException {
 		// TODO Auto-generated method stub
 		adminRepository.deleteById(idAdmin);
 	}

@@ -10,9 +10,9 @@ import com.bew.demo.exception.EmptyResultException;
 
 public interface FileImageService {
 	
-	ResponseEntity<ByteArrayResource> load(Integer fileId) throws EmptyResultException;
+	ResponseEntity<ByteArrayResource> load(Long fileId) throws EmptyResultException;
 	//void store(MultipartFile file) throws EmptyResultException;
-	void store(MultipartFile file, Integer idDictamen) throws EmptyResultException;
+	void store(MultipartFile file, Long idDictamen) throws EmptyResultException;
 	
 	
 	

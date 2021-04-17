@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import com.bew.demo.model.Dictamen;
 
 
-public interface DictamenRepository  extends JpaRepository <Dictamen,Integer>{
+public interface DictamenRepository  extends JpaRepository <Dictamen,Long>{
 	
 	@Query(
             value = "SELECT s FROM Dictamen s WHERE s.idAlumno = :idAlumno",

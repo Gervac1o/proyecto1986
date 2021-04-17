@@ -37,7 +37,7 @@ public class ClienteRestController {
 	}
 	
 	@GetMapping(path = "/find/{idCliente}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("idCliente") Integer idCliente){
+	public ResponseEntity<?>find(@PathVariable("idCliente") Long idCliente){
 		ClienteDTO clienteDTO;
 		clienteDTO = clienteService.findById(idCliente);
 		return ResponseEntity.ok(clienteDTO);		
@@ -57,7 +57,7 @@ public class ClienteRestController {
 	}
 	
 	@DeleteMapping(path="/delete/{idCliente}", consumes="application/json")
-	public ResponseEntity<?> delete(@PathVariable("idCliente") Integer idCliente) throws EmptyResultException{
+	public ResponseEntity<?> delete(@PathVariable("idCliente") Long idCliente) throws EmptyResultException{
 		clienteService.deleteCliente(idCliente);
 		return ResponseEntity.ok().build();
 	}

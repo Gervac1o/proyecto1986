@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.bew.demo.model.Admin;
 
 @Repository
-public interface AdminRepository extends JpaRepository <Admin,Integer>{
+public interface AdminRepository extends JpaRepository <Admin,Long>{
 
 	@Query(
             value = "SELECT s FROM Admin s WHERE s.nombre = :nombre",
@@ -29,5 +29,5 @@ public interface AdminRepository extends JpaRepository <Admin,Integer>{
 	@Query(
             value = "SELECT s FROM Admin s WHERE s.idUsuario = :idUsuario",
             nativeQuery = false)
-    Optional<Admin> findByIdUsuario(@Param("idUsuario") Integer idUsuario);
+    Optional<Admin> findByIdUsuario(@Param("idUsuario") Long idUsuario);
 }

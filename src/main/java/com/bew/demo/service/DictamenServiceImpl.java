@@ -39,7 +39,7 @@ public class DictamenServiceImpl implements DictamenService {
 	}
 
 	@Override
-	public DictamenDTO findById(Integer idDictamen) {
+	public DictamenDTO findById(Long idDictamen) {
 		DictamenDTO dictamenDTO = new DictamenDTO(); 
 		Dictamen dictamen = null;
 		Optional<Dictamen> opDictamen = dictamenRepository.findById(idDictamen);
@@ -81,7 +81,7 @@ public class DictamenServiceImpl implements DictamenService {
 	}
 
 	@Override
-	public void deleteDictamen(Integer idDictamen) throws EmptyResultException {
+	public void deleteDictamen(Long idDictamen) throws EmptyResultException {
 		
 		dictamenRepository.deleteById(idDictamen);
 	}

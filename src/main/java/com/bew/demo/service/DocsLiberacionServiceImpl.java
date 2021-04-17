@@ -39,7 +39,7 @@ public class DocsLiberacionServiceImpl implements DocsLiberacionService {
 
 
 	@Override
-	public ResponseEntity<ByteArrayResource> load(Integer idFile) throws EmptyResultException {
+	public ResponseEntity<ByteArrayResource> load(Long idFile) throws EmptyResultException {
 		DocsLiberacion file = docsLiberacionExtempRepository.findById(idFile).orElseThrow(() -> new   EmptyResultException("File not found with id " + idFile));
 	
 	

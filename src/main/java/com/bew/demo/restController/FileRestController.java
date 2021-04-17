@@ -27,7 +27,7 @@ public class FileRestController {
 	FileImageService fileService;
 	
     @PostMapping(path = "/upload/{idDictamen}")
-    public void FileUpload(@RequestParam("file") MultipartFile file, @PathVariable Integer idDictamen)  throws EmptyResultException {
+    public void FileUpload(@RequestParam("file") MultipartFile file, @PathVariable Long idDictamen)  throws EmptyResultException {
 
     	fileService.store(file, idDictamen );
 
@@ -36,7 +36,7 @@ public class FileRestController {
     
     @GetMapping("/getFile/{idFile}")
     @ResponseBody
-    public ResponseEntity<ByteArrayResource> serveFile(@PathVariable Integer idFile) throws EmptyResultException {
+    public ResponseEntity<ByteArrayResource> serveFile(@PathVariable Long idFile) throws EmptyResultException {
         return  fileService.load(idFile);
     }
     

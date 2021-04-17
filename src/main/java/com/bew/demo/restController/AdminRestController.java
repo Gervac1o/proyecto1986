@@ -44,7 +44,7 @@ public class AdminRestController {
 		return ResponseEntity.ok(admins);
 	}
 	@GetMapping(path = "/find/{idAdmin}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("idAdmin") Integer idAdmin){
+	public ResponseEntity<?>find(@PathVariable("idAdmin") Long idAdmin){
 		AdminDTO adminDTO;
 		adminDTO = adminService.findById(idAdmin);
 		return ResponseEntity.ok(adminDTO);		
@@ -71,7 +71,7 @@ public class AdminRestController {
 		return ResponseEntity.ok(adminDTO);
 	}
 	@GetMapping(path = "/findIdUsuario/{idUsuario}", produces = "application/json")
-	public ResponseEntity<?>findIdUsuario(@PathVariable("idUsuario") Integer idUsuario){
+	public ResponseEntity<?>findIdUsuario(@PathVariable("idUsuario") Long idUsuario){
 		AdminDTO adminDTO;
 		System.out.println(idUsuario);
 		adminDTO = adminService.findByIdUsuario(idUsuario);
@@ -89,7 +89,7 @@ public class AdminRestController {
 	}
 	
 	@DeleteMapping(path = "/delete/{idAdmin}")
-	public ResponseEntity<?> delete(@PathVariable("idAdmin") Integer idAdmin) throws EmptyResultException{
+	public ResponseEntity<?> delete(@PathVariable("idAdmin") Long idAdmin) throws EmptyResultException{
 	adminService.deleteAdmin(idAdmin);
 	return ResponseEntity.ok().build();
 	}

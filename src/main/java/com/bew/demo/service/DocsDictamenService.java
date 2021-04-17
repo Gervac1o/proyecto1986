@@ -8,7 +8,7 @@ import com.bew.demo.exception.EmptyResultException;
 
 public interface DocsDictamenService {
 	
-	ResponseEntity<ByteArrayResource> load(Integer fileId) throws EmptyResultException;
+	ResponseEntity<ByteArrayResource> load(Long fileId) throws EmptyResultException;
 
 	String store(MultipartFile file, String idDoc) throws EmptyResultException;
 	

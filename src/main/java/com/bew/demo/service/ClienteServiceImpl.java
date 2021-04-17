@@ -42,7 +42,7 @@ public class ClienteServiceImpl implements ClienteService {
 
 
 	@Override
-	public ClienteDTO findById(Integer idCliente){
+	public ClienteDTO findById(Long idCliente){
 
 		ClienteDTO clienteDTO = new ClienteDTO(); 
 		Cliente cliente = null;
@@ -78,7 +78,7 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
-	public void deleteCliente(Integer idCliente) throws EmptyResultException {
+	public void deleteCliente(Long idCliente) throws EmptyResultException {
 		clienteRepository.deleteById(idCliente);
 	}
 

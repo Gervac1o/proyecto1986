@@ -38,7 +38,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public UsuarioDTO findById(Integer idUsuario) {
+    public UsuarioDTO findById(Long idUsuario) {
 
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         Usuario usuario = null;
@@ -131,7 +131,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public void deleteUsuario(Integer idUsuario) throws EmptyResultException {
+    public void deleteUsuario(Long idUsuario) throws EmptyResultException {
         // TODO Auto-generated method stub
         usuarioRepository.deleteById(idUsuario);
     }

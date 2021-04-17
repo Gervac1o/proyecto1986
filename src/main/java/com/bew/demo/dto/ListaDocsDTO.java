@@ -47,11 +47,11 @@ public class ListaDocsDTO implements Serializable{
 		this.comentario = comentario;
 	}
 
-	public Integer getIdAlumno() {
+	public Long getIdAlumno() {
 		return idAlumno;
 	}
 
-	public void setIdAlumno(Integer idAlumno) {
+	public void setIdAlumno(Long idAlumno) {
 		this.idAlumno = idAlumno;
 	}
 

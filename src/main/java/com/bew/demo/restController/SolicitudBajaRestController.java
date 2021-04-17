@@ -32,13 +32,13 @@ public class SolicitudBajaRestController {
 		return ResponseEntity.ok(solicitudes);
 	}
 	@GetMapping(path = "/find/{idSolicitud}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("idSolicitud") Integer idSolicitud){
+	public ResponseEntity<?>find(@PathVariable("idSolicitud") Long idSolicitud){
 	SolicitudBajaDTO solicitudDTO;
 	solicitudDTO = solicitudService.findById(idSolicitud);
 	return ResponseEntity.ok(solicitudDTO);		
 	}
 	@GetMapping(path = "/findIdAlumno/{idAlumno}", produces = "application/json")
-	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Integer idAlumno){
+	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Long idAlumno){
 	SolicitudBajaDTO solicitudDTO;
 	solicitudDTO = solicitudService.findByIdAlumno(idAlumno);
 	return ResponseEntity.ok(solicitudDTO);		
@@ -62,7 +62,7 @@ public class SolicitudBajaRestController {
 	}
 	
 	@DeleteMapping(path = "/delete/{idSolicitud}")
-	public ResponseEntity<?> delete(@PathVariable("idSolicitud") Integer idSolicitud) throws EmptyResultException{
+	public ResponseEntity<?> delete(@PathVariable("idSolicitud") Long idSolicitud) throws EmptyResultException{
 	solicitudService.deleteSolicitudBaja(idSolicitud);
 	return ResponseEntity.ok().build();
 	}

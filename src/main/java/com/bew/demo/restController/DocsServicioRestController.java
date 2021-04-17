@@ -39,7 +39,7 @@ public class DocsServicioRestController {
     
     @GetMapping("/getFile/{idFile}")
     @ResponseBody
-    public ResponseEntity<ByteArrayResource> serveFile(@PathVariable Integer idFile) throws EmptyResultException {
+    public ResponseEntity<ByteArrayResource> serveFile(@PathVariable Long idFile) throws EmptyResultException {
     	
         return  docServicioService.load(idFile);
     }

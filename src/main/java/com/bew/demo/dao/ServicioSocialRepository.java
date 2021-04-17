@@ -12,12 +12,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 @Repository
-public interface ServicioSocialRepository extends JpaRepository <ServicioSocial,Integer> {
+public interface ServicioSocialRepository extends JpaRepository <ServicioSocial,Long> {
 	
 	@Query(
             value = "SELECT s FROM ServicioSocial s WHERE s.idAlumno = :idAlumno",
             nativeQuery = false)
-    Optional<ServicioSocial> findByIdAlumno(@Param("idAlumno") Integer idAlumno);
+    Optional<ServicioSocial> findByIdAlumno(@Param("idAlumno") Long idAlumno);
 	
 	@Query(
             value = "SELECT s FROM ServicioSocial s WHERE s.estado = :estado",

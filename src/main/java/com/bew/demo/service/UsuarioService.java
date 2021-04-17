@@ -6,11 +6,11 @@ import com.bew.demo.exception.MailRepetidoException;
 
 public interface UsuarioService {
 	List<UsuarioDTO> findAll();
-	UsuarioDTO findById(Integer idUsuario);
+	UsuarioDTO findById(Long idUsuario);
 	//UsuarioDTO saveUsuario(UsuarioDTO usuarioDTO, UsuarioDTO a);
 	void saveUsuario(UsuarioDTO usuarioDTO) throws MailRepetidoException;
 	void updateUsuario(UsuarioDTO usuarioDTO)throws EmptyResultException;
-	void deleteUsuario(Integer idUsuario)throws EmptyResultException;
+	void deleteUsuario(Long idUsuario)throws EmptyResultException;
 	UsuarioDTO UsuarioEmail (UsuarioDTO usuarioDTO);
 	UsuarioDTO UsuarioContraseña (String contraseña);
 	UsuarioDTO UsuarioTipo (Boolean tipoUsuario);
