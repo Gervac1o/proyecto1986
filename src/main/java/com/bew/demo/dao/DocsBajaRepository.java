@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.bew.demo.model.DocsBaja;
 
-public interface DocsBajaRepository extends JpaRepository<DocsBaja, Integer> {
+public interface DocsBajaRepository extends JpaRepository<DocsBaja, Long> {
 	
 	@Query(
             value = "SELECT s FROM DocsBaja s WHERE s.idDoc = :idDoc",

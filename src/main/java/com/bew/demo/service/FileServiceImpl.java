@@ -26,7 +26,7 @@ public class FileServiceImpl implements FileImageService{
 	FileImageRepository fileImageRepository;
 	
 	@Override
-    public void store(MultipartFile file, Integer idDictamen) throws EmptyResultException    {
+    public void store(MultipartFile file, Long idDictamen) throws EmptyResultException    {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		try  {FileImage dbFile = new FileImage( fileName, file.getContentType(), file.getBytes(),  idDictamen);
 		fileImageRepository.save(dbFile);
@@ -40,7 +40,7 @@ public class FileServiceImpl implements FileImageService{
 
 
 	@Override
-	public ResponseEntity<ByteArrayResource> load(Integer idFile) throws EmptyResultException {
+	public ResponseEntity<ByteArrayResource> load(Long idFile) throws EmptyResultException {
 		FileImage file = fileImageRepository.findById(idFile).orElseThrow(() -> new   EmptyResultException("File not found with id " + idFile));
 	
 

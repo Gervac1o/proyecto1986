@@ -37,7 +37,7 @@ public class SolicitudBajaServiceImpl implements SolicitudBajaService {
 	}
 
 	@Override
-	public SolicitudBajaDTO findById(Integer idSolicitud) {
+	public SolicitudBajaDTO findById(Long idSolicitud) {
 		SolicitudBajaDTO solicitudDTO = new SolicitudBajaDTO(); 
 		SolicitudBaja solicitud = null;
 		Optional<SolicitudBaja> opSolicitud = solicitudRepository.findById(idSolicitud);
@@ -50,7 +50,7 @@ public class SolicitudBajaServiceImpl implements SolicitudBajaService {
 	}
 
 	@Override
-	public SolicitudBajaDTO findByIdAlumno(Integer idAlumno) {
+	public SolicitudBajaDTO findByIdAlumno(Long idAlumno) {
 		SolicitudBajaDTO solicitudDTO = new SolicitudBajaDTO(); 
 		SolicitudBaja solicitud = null;
 		Optional<SolicitudBaja> opSolicitud = solicitudRepository.findByIdAlumno(idAlumno);
@@ -80,7 +80,7 @@ public class SolicitudBajaServiceImpl implements SolicitudBajaService {
 	}
 
 	@Override
-	public void deleteSolicitudBaja(Integer idSolicitud) throws EmptyResultException {
+	public void deleteSolicitudBaja(Long idSolicitud) throws EmptyResultException {
 		// TODO Auto-generated method stub
 		solicitudRepository.deleteById(idSolicitud);
 	}

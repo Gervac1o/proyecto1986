@@ -37,7 +37,7 @@ public class LiberacionExtempServiceImpl implements LiberacionExtempService {
 	}
 
 	@Override
-	public LiberacionExtempDTO findById(Integer idLiberacion) {
+	public LiberacionExtempDTO findById(Long idLiberacion) {
 		LiberacionExtempDTO liberacionDTO = new LiberacionExtempDTO(); 
 		LiberacionExtemp liberacion = null;
 		Optional<LiberacionExtemp> opLiberacion = liberacionRepository.findById(idLiberacion);
@@ -50,7 +50,7 @@ public class LiberacionExtempServiceImpl implements LiberacionExtempService {
 	}
 	
 	@Override
-	public LiberacionExtempDTO findByIdAlumno(Integer idAlumno) {
+	public LiberacionExtempDTO findByIdAlumno(Long idAlumno) {
 		LiberacionExtempDTO liberacionDTO = new LiberacionExtempDTO(); 
 		LiberacionExtemp liberacion = null;
 		Optional<LiberacionExtemp> opLiberacion = liberacionRepository.findByIdAlumno(idAlumno);
@@ -81,7 +81,7 @@ public class LiberacionExtempServiceImpl implements LiberacionExtempService {
 	}
 
 	@Override
-	public void deleteLiberacionExtemp(Integer idLiberacion) throws EmptyResultException {
+	public void deleteLiberacionExtemp(Long idLiberacion) throws EmptyResultException {
 		// TODO Auto-generated method stub
 		liberacionRepository.deleteById(idLiberacion);
 	}

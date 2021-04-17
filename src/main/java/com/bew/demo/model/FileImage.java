@@ -38,13 +38,13 @@ public class FileImage  {
     
     
     @Column(name = "id_dictamen")
-    private Integer idDictamen;
+    private Long idDictamen;
 
 
 
 	public FileImage() {}
     
-    public FileImage (String fileName, String fileType, byte[] data, Integer idDictamen) {
+    public FileImage (String fileName, String fileType, byte[] data, Long idDictamen) {
         this.fileName = fileName;
         this.fileType = fileType;
         this.data = data;
@@ -84,11 +84,11 @@ public class FileImage  {
 		this.data = data;
 	}
 
-	public Integer getIdDictamen() {
+	public Long getIdDictamen() {
 		return idDictamen;
 	}
 
-	public void setIdDictamen(Integer idDictamen) {
+	public void setIdDictamen(Long idDictamen) {
 		this.idDictamen = idDictamen;
 	}
 	

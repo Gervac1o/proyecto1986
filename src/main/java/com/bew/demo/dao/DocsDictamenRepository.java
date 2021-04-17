@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.bew.demo.model.DocsDictamen;
 
-public interface DocsDictamenRepository extends JpaRepository <DocsDictamen,Integer>{
+public interface DocsDictamenRepository extends JpaRepository <DocsDictamen,Long>{
 	
 	@Query(
             value = "SELECT s FROM DocsDictamen s WHERE s.idDoc = :idDoc",

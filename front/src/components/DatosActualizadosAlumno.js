@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import Slider from './Slider';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
+import MisDatosAlumno from "./MisDatosAlumno";
 
 const cookies = new Cookies();
 
@@ -115,7 +116,8 @@ class DatosActualizadosAlumno extends React.Component {
     }
     render() {
         if(this.state.status === 'true'){
-            window.location.href = './MisDatosAlumno'
+            window.location.reload(false);
+
         }
 
         return (

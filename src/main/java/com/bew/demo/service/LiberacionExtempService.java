@@ -5,10 +5,10 @@ import com.bew.demo.exception.EmptyResultException;
 
 public interface LiberacionExtempService {
 	List<LiberacionExtempDTO> findAll();
-	LiberacionExtempDTO findById(Integer idLiberacion);
+	LiberacionExtempDTO findById(Long idLiberacion);
 	void saveLiberacionExtemp(LiberacionExtempDTO liberacionDTO);
 	void updateLiberacionExtemp(LiberacionExtempDTO liberacionDTO)throws EmptyResultException;
-	void deleteLiberacionExtemp(Integer idLiberacion)throws EmptyResultException;
-	LiberacionExtempDTO findByIdAlumno(Integer idAlumno);
+	void deleteLiberacionExtemp(Long idLiberacion)throws EmptyResultException;
+	LiberacionExtempDTO findByIdAlumno(Long idAlumno);
 	List<LiberacionExtempDTO> findByEstado(String estado);
 }

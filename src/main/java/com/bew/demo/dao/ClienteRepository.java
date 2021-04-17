@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.bew.demo.model.Cliente;
 
 @Repository
-public interface ClienteRepository extends JpaRepository <Cliente,Integer>{
+public interface ClienteRepository extends JpaRepository <Cliente,Long>{
 
     @Query(
             value = "SELECT s FROM Cliente s WHERE s.nombre = :nombre",

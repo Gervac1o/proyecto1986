@@ -6,12 +6,15 @@ import com.bew.demo.exception.EmptyResultException;
 
 public interface AdminService {
 	List<AdminDTO> findAll();
-	AdminDTO findById(Integer idAdmin);
+	AdminDTO findById(Long idAdmin);
 	void saveAdmin(AdminDTO adminDTO);
 	void updateAdmin(AdminDTO adminDTO)throws EmptyResultException;
-	void deleteAdmin(Integer idAdmin)throws EmptyResultException;
-	AdminDTO AdminNombre (String nombre);
+	void deleteAdmin(Long idAdmin)throws EmptyResultException;
+
+    AdminDTO findByIdUsuario(Long idUsuario);
+
+    AdminDTO AdminNombre (String nombre);
 	AdminDTO AdminApellidos (String apellidos);
 	AdminDTO AdminTelefono (String telefono);
-	AdminDTO findByIdUsuario(Integer idUsuario);
+
 }

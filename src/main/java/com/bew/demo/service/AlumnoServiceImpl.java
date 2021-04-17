@@ -157,11 +157,15 @@ public class AlumnoServiceImpl implements AlumnoService {
 
     @Override
     public void updateAlumno(AlumnoDTO alumnoDTO) throws EmptyResultException {
-        // TODO Auto-generated method stub
-        Alumno alumno;
-        Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-        alumno = (mapper.map(alumnoDTO, Alumno.class));
-        alumnoRepository.save(alumno);
+        // Aqui no se usa el dozer ya que como es un update hay datos que se deben conservar como el idUser que nunca deberia cambiar.
+        Alumno alumnoBase = alumnoRepository.findById(alumnoDTO.getIdAlumno()).orElseThrow(() -> new EmptyResultException("Sin Resultados"));
+        alumnoBase.setBoleta(alumnoDTO.getBoleta());
+        alumnoBase.setApellidoMaterno(alumnoDTO.getApellidoMaterno());
+        alumnoBase.setApellidoPaterno(alumnoDTO.getApellidoPaterno());
+        alumnoBase.setNombre(alumnoDTO.getNombre());
+        alumnoBase.setProgramaAcademico(alumnoDTO.getProgramaAcademico());
+        alumnoBase.setSexo(alumnoDTO.getSexo());
+        alumnoRepository.save(alumnoBase);
     }
 
     @Override

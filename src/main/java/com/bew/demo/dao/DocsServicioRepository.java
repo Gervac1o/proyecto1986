@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import com.bew.demo.model.DocsServicio;
 
-public interface DocsServicioRepository extends JpaRepository <DocsServicio, Integer> {
+public interface DocsServicioRepository extends JpaRepository <DocsServicio, Long> {
 
 	@Query(
             value = "SELECT s FROM DocsServicio s WHERE s.idDoc = :idDoc",

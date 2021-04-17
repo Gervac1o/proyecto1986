@@ -37,7 +37,7 @@ public class ServicioSocialServiceImpl implements ServicioSocialService {
 	}
 
 	@Override
-	public ServicioSocialDTO findById(Integer idServicio) {
+	public ServicioSocialDTO findById(Long idServicio) {
 		ServicioSocialDTO servicioDTO = new ServicioSocialDTO(); 
 		ServicioSocial servicio = null;
 		Optional<ServicioSocial> opServicio = servicioRepository.findById(idServicio);
@@ -49,7 +49,7 @@ public class ServicioSocialServiceImpl implements ServicioSocialService {
 		return servicioDTO;
 	}
 	@Override
-	public ServicioSocialDTO findByIdAlumno(Integer idAlumno) {
+	public ServicioSocialDTO findByIdAlumno(Long idAlumno) {
 		ServicioSocialDTO servicioDTO = new ServicioSocialDTO(); 
 		ServicioSocial servicio = null;
 		Optional<ServicioSocial> opServicio = servicioRepository.findByIdAlumno(idAlumno);
@@ -80,7 +80,7 @@ public class ServicioSocialServiceImpl implements ServicioSocialService {
 	}
 
 	@Override
-	public void deleteServicioSocial(Integer idServicio) throws EmptyResultException {
+	public void deleteServicioSocial(Long idServicio) throws EmptyResultException {
 		// TODO Auto-generated method stub
 		servicioRepository.deleteById(idServicio);
 	}

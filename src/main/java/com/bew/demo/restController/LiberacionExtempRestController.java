@@ -32,13 +32,13 @@ public class LiberacionExtempRestController {
 		return ResponseEntity.ok(liberaciones);
 	}
 	@GetMapping(path = "/find/{idLiberacion}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("idLiberacion") Integer idLiberacion){
+	public ResponseEntity<?>find(@PathVariable("idLiberacion") Long idLiberacion){
 		LiberacionExtempDTO liberacionDTO;
 		liberacionDTO = liberacionService.findById(idLiberacion);
 		return ResponseEntity.ok(liberacionDTO);		
 	}
 	@GetMapping(path = "/findIdAlumno/{idAlumno}", produces = "application/json")
-	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Integer idAlumno){
+	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Long idAlumno){
 		LiberacionExtempDTO liberacionDTO;
 		liberacionDTO = liberacionService.findByIdAlumno(idAlumno);
 		return ResponseEntity.ok(liberacionDTO);		
@@ -62,7 +62,7 @@ public class LiberacionExtempRestController {
 	}
 	
 	@DeleteMapping(path = "/delete/{idLiberacion}")
-	public ResponseEntity<?> delete(@PathVariable("idLiberacion") Integer idLiberacion) throws EmptyResultException{
+	public ResponseEntity<?> delete(@PathVariable("idLiberacion") Long idLiberacion) throws EmptyResultException{
 	liberacionService.deleteLiberacionExtemp(idLiberacion);
 	return ResponseEntity.ok().build();
 	}
