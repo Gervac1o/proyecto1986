@@ -20,13 +20,6 @@ class DirectorioAdmin extends Component{
         window.location.href = '/auth/logout';
     }
 
-	componentDidMount = () => {
-       // if(cookies.get('tipoUsuario') !== "true"){
-       //      this.cerrarSesion();
-       //      window.location.href = '/IniciarSesion'
-       //  }
-    }//Fin de funcion DidMount
-
     render(){
         return(
             <div className="center">
@@ -41,11 +34,11 @@ class DirectorioAdmin extends Component{
                             <li>
                                 <Link to='#' className="active">Lista de Alumnos</Link>
                                 <ul>
-                                    <li><Link to={'/Lista'} className="active">TODOS</Link></li>
-                                    <li><Link to={'/BuscarDictamen'} className="active">DICTAMEN DE 70%</Link></li>
-                                    <li><Link to={'/BuscarLiberacion'} className="active">LIBERACIÓN EXTEMPORANEA</Link></li>
-                                    <li><Link to={'/BuscarBaja'} className="active">BAJA DE SERVICIO SOCIAL</Link></li>
-                                    <li><Link to={'/BuscarServicio'} className="active">SERVICIO SOCIAL</Link></li>
+                                    <li><Link to={'/admin/Lista'} className="active">TODOS</Link></li>
+                                    <li><Link to={'/admin/BuscarDictamen'} className="active">DICTAMEN DE 70%</Link></li>
+                                    <li><Link to={'/admin/BuscarLiberacion'} className="active">LIBERACIÓN EXTEMPORANEA</Link></li>
+                                    <li><Link to={'/admin/BuscarBaja'} className="active">BAJA DE SERVICIO SOCIAL</Link></li>
+                                    <li><Link to={'/admin/BuscarServicio'} className="active">SERVICIO SOCIAL</Link></li>
                                 </ul>
                                 </li>
                             </ul>
@@ -56,19 +49,19 @@ class DirectorioAdmin extends Component{
                                     <li>
                                         <Link to='#' className="active">Buscar Alumno</Link>
                                         <ul>
-                                            <li><Link to={'/BuscarNombre'} className="active">BUSCAR POR NOMBRE</Link></li>
-                                            <li><Link to={'/BuscarBoleta'} className="active">BUSCAR POR BOLETA</Link></li>
-                                            <li><Link to={'/BuscarICA'} className="active">INGENIERÍA EN CONTROL Y AUTOMATIZACIÓN</Link></li>
-                                            <li><Link to={'/BuscarICE'} className="active">INGENIERÍA EN COMUNICACIONES Y ELECTRÓNICA</Link></li>
-                                            <li><Link to={'/BuscarIE'} className="active">INGENIERÍA ELÉCTRICA</Link></li>
-                                            <li><Link to={'/BuscarISISA'} className="active">INGENIERÍA EN SISTEMAS AUTOMOTRICES</Link></li>
+                                            <li><Link to={'/admin/BuscarNombre'} className="active">BUSCAR POR NOMBRE</Link></li>
+                                            <li><Link to={'/admin/BuscarBoleta'} className="active">BUSCAR POR BOLETA</Link></li>
+                                            <li><Link to={'/admin/BuscarICA'} className="active">INGENIERÍA EN CONTROL Y AUTOMATIZACIÓN</Link></li>
+                                            <li><Link to={'/admin/BuscarICE'} className="active">INGENIERÍA EN COMUNICACIONES Y ELECTRÓNICA</Link></li>
+                                            <li><Link to={'/admin/BuscarIE'} className="active">INGENIERÍA ELÉCTRICA</Link></li>
+                                            <li><Link to={'/admin/BuscarISISA'} className="active">INGENIERÍA EN SISTEMAS AUTOMOTRICES</Link></li>
                                         </ul>
                                         </li>
                                     </ul>
                                 </div>
                             </th>
-                            <th className="table"><Link to='/Crearadmin' className = "active">Crear Administrador</Link></th>
-                            <th className="table"><Link to='/MisDatosAdmin' className = "active">Datos Personales</Link></th>
+                            <th className="table"><Link to='/admin/Crearadmin' className = "active">Crear Administrador</Link></th>
+                            <th className="table"><Link to='/admin/MisDatosAdmin' className = "active">Datos Personales</Link></th>
                             <th className="table"><button id ="table-btn" onClick={this.cerrarSesion}>cerrar sesion</button></th>
                         </tr>
                     </tbody>

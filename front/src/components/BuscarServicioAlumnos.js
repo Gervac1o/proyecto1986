@@ -132,7 +132,7 @@ render() {
                                                 <td className="table_lista">{servicio.responsableDirecto}</td>
                                                 <td className="table_lista"><a id="state_new">NO REVISADO</a></td>
                                                 <td className="table_lista">NO REVISADO</td>
-                                                <td><Link to={'/DirectorioArchivosAlumno/' + servicio.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                                                <td><Link to={'/admin/DirectorioArchivosAlumno/' + servicio.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                             </tr>
                                         </tbody>
                                         )

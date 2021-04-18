@@ -28,9 +28,7 @@ class MisDatosAdmin extends React.Component{
 
         getAdmin = () => {
             axios.get(this.url +"admin/findIdUsuario/"+ this.state.idUsuario)
-            .catch(error=>{
-                window.location.reload(false);
-            })
+       
             .then(res => {
                     this.setState({
                         admin: res.data,

@@ -24,34 +24,18 @@ class DirectorioAlumno extends Component{
         cookies.remove('idAlumno', {path:"/"});
         cookies.remove('boleta', {path:"/"});
         window.location.href = '/auth/logout';
-    }//Fin de Cerrar Sesion
-
-    componentDidMount = () => {
-        console.log()
-        // if(cookies.get('email') === null || cookies.get('email') === undefined){
-        //     this.cerrarSesion();
-        //     window.location.href = '/auth/logout';
-        // }
-        // else {
-        //     this.cerrarSesion();
-        //     window.location.href = './IniciarSesion';
-        //
-        // }
-    }
-     
-    
-//Fin de funcion DidMount
+    }//Fin de Cerrar SesiON 
     
     render(){
             return(
                 <div className="center">
                 <tbody>
                     <tr>
-                        <th className="table"><Link to='/CrearDictamen' className = "active">Dictamen de 70%</Link></th>
-                        <th className="table"><Link to='/CrearLiberacion' className = "active">Liberacion Extemporanea</Link></th>
-                        <th className="table"> <Link to='/CrearBaja' className = "active">Baja de Servicio Social</Link></th>
-                        <th className="table"><Link to='/CrearServicio' className = "active">Documentacion de Servicio Social</Link></th>
-                        <th className="table"><Link to='/MisDatosAlumno' className = "active">Datos Personales</Link></th>
+                        <th className="table"><Link to='/user/CrearDictamen' className = "active">Dictamen de 70%</Link></th>
+                        <th className="table"><Link to='/user/CrearLiberacion' className = "active">Liberacion Extemporanea</Link></th>
+                        <th className="table"> <Link to='/user/CrearBaja' className = "active">Baja de Servicio Social</Link></th>
+                        <th className="table"><Link to='/user/CrearServicio' className = "active">Documentacion de Servicio Social</Link></th>
+{/**FALTA PONER CONTEXTO USER */}<th className="table"><Link to='/MisDatosAlumno' className = "active">Datos Personales</Link></th>
                         <th className="table " > <button id ="table-btn" onClick={this.cerrarSesion}>cerrar sesion</button></th>
                     </tr>
                 </tbody>
