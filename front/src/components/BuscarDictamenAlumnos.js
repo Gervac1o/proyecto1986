@@ -134,7 +134,7 @@ render() {
                                                 <td className="table_lista">{dictamen.porcentajeCreditos}</td>
                                                 <td className="table_lista"><a id="state_new">NO REVISADO</a></td>
                                                 <td className="table_lista">NO REVISADO</td>
-                                                <td><Link to={'/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                                                <td><Link to={'/admin/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                             </tr>
                                         </tbody>
                                         )
@@ -152,7 +152,7 @@ render() {
                                                 <td className="table_lista">{dictamen.porcentajeCreditos}</td>
                                                 <td className="table_lista"><a id="state_processing">EN PROCESO</a></td>
                                                 <td className="table_lista">{dictamen.revisado}</td>
-                                                <td><Link to={'/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                                                <td><Link to={'/admin/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                             </tr>
                                         </tbody>
                                         )
@@ -170,7 +170,7 @@ render() {
                                                 <td className="table_lista">{dictamen.porcentajeCreditos}</td>
                                                 <td className="table_lista"><a id="state_finished">FINALIZADO</a></td>
                                                 <td className="table_lista">{dictamen.revisado}</td>
-                                                <td><Link to={'/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                                                <td><Link to={'/admmin/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                             </tr>
                                         </tbody>
                                         )
@@ -188,7 +188,7 @@ render() {
                                                 <td className="table_lista">{dictamen.porcentajeCreditos}</td>
                                                 <td className="table_lista"><a id="state_rejected">RECHAZADO</a></td>
                                                 <td className="table_lista">{dictamen.revisado}</td>
-                                                <td><Link to={'/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                                                <td><Link to={'/admin/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                             </tr>
                                         </tbody>
                                         )
@@ -242,7 +242,7 @@ render() {
                                                             break;
                                                         }
                                                     })()}
-                                                <td><Link to={'/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                                                <td><Link to={'/admin/DirectorioArchivosAlumno/' + dictamen.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                             </tr>
                                         </tbody>
                                         )

@@ -102,7 +102,7 @@ class BuscarAlumno extends React.Component {
                                             <td className="table_lista">{alumno.apellidoPaterno} {alumno.apellidoMaterno} {alumno.nombre}</td>
                                             <td className="table_lista">{alumno.boleta}</td>
                                             <td className="table_lista">{alumno.programaAcademico}</td>
-                                            <td><Link to={'/DirectorioArchivosAlumno/' + alumno.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                                            <td><Link to={'/admin/DirectorioArchivosAlumno/' + alumno.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                             <td>
                                                 <RecuperacionContraseña
                                                 id={alumno.idUsuario}/>

@@ -102,18 +102,6 @@ class DatosActualizadosAlumno extends React.Component {
         }//Fin de else NOMBRE
     }//Fin de funcion saveAlumno()
 
-    componentDidMount = () => {
-        // if(cookies.get('email') === null || cookies.get('email') === undefined){
-        //     window.location.href = './IniciarSesion';
-        // }
-    }
-
-    componentWillMount = () => {
-        // if(cookies.get('email') === null || cookies.get('email') === undefined){
-        //     window.location.href = './IniciarSesion';
-        // }
-    }
-
     render() {
         if (this.state.status === 'true') {
             window.location.reload(false);

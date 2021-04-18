@@ -27,6 +27,7 @@ class MisDatosAlumno extends React.Component{
             this.getAlumno();
             //alert(cookies.get('idUsuario'));
             cookies.set('idUsuario', 1, {path:"/"})
+            cookies.set('idAlumno', 1, {path:"/"})
             cookies.set('email', "dummy@prueba.com" , {path:"/"})
         }
 
@@ -42,9 +43,10 @@ class MisDatosAlumno extends React.Component{
                        cookies.set('boleta', this.state.alumno.boleta, {path:"/"})
             })
             .catch(err=>{
-                window.location.reload(false);
+               // window.location.reload(false);
         })
         }//Fin de funcion getAlumno()
+        
 
         updateDatos=()=>{
             this.setState({

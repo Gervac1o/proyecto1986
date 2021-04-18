@@ -132,7 +132,7 @@ render() {
                                                 <td className="table_lista">{liberacion.registroSS}</td>
                                                 <td className="table_lista"><a id="state_new">NO REVISADO</a></td>
                                                 <td className="table_lista">NO REVISADO</td>
-                                                <td><Link to={'/DirectorioArchivosAlumno/' + liberacion.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                                                <td><Link to={'/admin/DirectorioArchivosAlumno/' + liberacion.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                             </tr>
                                         </tbody>
                                         )
