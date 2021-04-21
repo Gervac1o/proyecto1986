@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Slider from './Slider';
-import { Link, Switch } from 'react-router-dom';
+import {BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 

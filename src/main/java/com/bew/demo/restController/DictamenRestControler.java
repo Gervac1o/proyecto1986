@@ -18,7 +18,7 @@ import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.service.DictamenService;
 
 @RestController
-@RequestMapping("/dictamen")
+@RequestMapping("user/dictamen")
 @CrossOrigin("*")
 public class DictamenRestControler {
 	

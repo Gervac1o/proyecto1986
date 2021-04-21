@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, HashRouter } from 'react-router-dom';
 import axios from 'axios';
 import HeaderDEyAE from './HeaderDEyAE';
 import { Link } from 'react-router-dom';
@@ -24,7 +24,7 @@ class Dictamen extends React.Component {
 
     state = {
         idAlumno: cookies.get('idAlumno'),
-        statusCreditos: null,
+        statusCreditos: "false",
         dictamen: {},
         status: "null",
         estado: null
@@ -49,7 +49,7 @@ class Dictamen extends React.Component {
     }
 
     searchDictamen = () => {
-        axios.get("dictamen/findIdAlumno/"+this.dictamenRef)
+        axios.get("dictamen/findIdAlumno/" + this.dictamenRef)
         .then(res =>{
             this.setState({
                 dictamen: res.data
@@ -73,6 +73,7 @@ class Dictamen extends React.Component {
 
     saveDictamen = async (e) => {
         this.changeState();
+        alert(this.state.idAlumno)
         if(this.state.dictamen.porcentajeCreditos && this.state.dictamen.porcentajeCreditos != null && this.state.dictamen.porcentajeCreditos != undefined){
          await axios.post("dictamen/save", this.state.dictamen)
             .then(res => {
@@ -81,7 +82,7 @@ class Dictamen extends React.Component {
                         statusCreditos: "true"
                     }
                 );
-                this.recargarPagina();
+               
             })
         }else{
             this.setState(
@@ -91,18 +92,13 @@ class Dictamen extends React.Component {
             );
         }//Fin de else % de Creditos
     }//Fin de funcion saveDictamen()
-
-    recargarPagina=() =>{
-        window.location.reload(false);
-    }
-
-
-
     render() {
        
             
-           //<Redirect to = "/CrearDictamen" />
-           //window.location.reload()
+        if (this.state.statusCreditos === "true") {
+            window.location.reload();
+       
+        }
          
         
      
@@ -112,7 +108,6 @@ class Dictamen extends React.Component {
                 <DirectorioAlumno />
                         <div id="sidebar" className="dictamenLeft">
                             <div>
-                            <button className="btn" onClick = {this.recargarPagina}> recargar pagina</button>
                                 <label htmlFor="creditos" className="text_login">Porcentaje de Creditos</label>
                                 <input type="text" className="input_login" name="creditos" placeholder="Ingresa el % de creditos sin decimales" ref={this.creditosRef} onChange={this.changeState}/>
                                 {(() => {
@@ -133,8 +128,9 @@ class Dictamen extends React.Component {
                                         <button className="btn" onClick = {this.saveDictamen}>Aceptar</button>
      
                           </div>
-                       <SubirDictamen/>
+                   {/**     <SubirDictamen/>
                        <VerDatosDictamen/>
+                       */}
             </div>
         );
                         
