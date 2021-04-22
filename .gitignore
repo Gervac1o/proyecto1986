@@ -4,6 +4,3 @@ target/*
 .project
 .classpath
 .settiings/*
-bin/
-front/.htaccess
-src/main/resources/static/.thaccess
