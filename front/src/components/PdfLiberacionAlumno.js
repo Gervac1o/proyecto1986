@@ -19,7 +19,7 @@ class PdfLiberacionAlumno extends React.Component{
         }
 
         generarPdf =  () =>{
-            axios.get(this.url + "alumno/find/" + this.props.idAlumno)
+            axios.get("alumno/find/" + this.props.idAlumno)
                 .then(res => {
                     this.setState({
                         alumno: res.data

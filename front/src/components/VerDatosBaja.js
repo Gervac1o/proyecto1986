@@ -21,7 +21,7 @@ class VerDatosBaja extends React.Component{
         }
 
         getBaja = () => {
-            axios.get(this.url +"solicitudBaja/findIdAlumno/" + this.state.idAlumno)
+            axios.get("solicitudBaja/findIdAlumno/" + this.state.idAlumno)
             .then(res => {
                     this.setState({
                         tipoBaja: res.data,

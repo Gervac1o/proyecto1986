@@ -22,6 +22,32 @@ public class SolicitudBajaDTO implements Serializable {
 	private String revisado;
 	private Long idAlumno;
 
+	
+	
+	public String getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(String fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	public String getRevisado() {
+		return revisado;
+	}
+
+	public void setRevisado(String revisado) {
+		this.revisado = revisado;
+	}
+
+	public Long getIdAlumno() {
+		return idAlumno;
+	}
+
+	public void setIdAlumno(Long idAlumno) {
+		this.idAlumno = idAlumno;
+	}
+
 	public Long getIdSolicitud() {
 		return idSolicitud;
 	}

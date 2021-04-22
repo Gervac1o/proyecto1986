@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './assets/css/App.css';
-import Router from './Router';
+
 
 
 
@@ -10,8 +10,6 @@ export class App extends Component {
         return (
 
             <div className="App">
-
-                <Router/>
 
             </div>
 

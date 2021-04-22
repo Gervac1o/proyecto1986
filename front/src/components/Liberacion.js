@@ -98,13 +98,14 @@ class Liberacion extends React.Component {
 
     saveLiberacion = (e) => {
         this.changeState();
+        console.log("ID DEL ALUMNO" + this.state.liberacion.idAlumno)
         if(this.state.liberacion.registroSS && this.state.liberacion.registroSS != null && this.state.liberacion.registroSS != undefined){
             if(this.state.liberacion.programaSS && this.state.liberacion.programaSS != null && this.state.liberacion.programaSS != undefined){
                 if(this.state.liberacion.prestatario && this.state.liberacion.prestatario != null && this.state.liberacion.prestatario != undefined){
                     if(this.state.liberacion.telefono && this.state.liberacion.telefono != null && this.state.liberacion.telefono != undefined){
                         if(this.state.liberacion.fechaInicio && this.state.liberacion.fechaInicio != null && this.state.liberacion.fechaInicio != undefined){
                             if(this.state.liberacion.fechaTermino && this.state.liberacion.fechaTermino != null && this.state.liberacion.fechaTermino != undefined){
-                                axios.post(this.url + "liberacionExtemporanea/save", this.state.liberacion)
+                                axios.post("liberacionExtemporanea/save", this.state.liberacion)
                                     .then(res => {
                                         this.setState({
                                                 status: "true"
@@ -276,7 +277,8 @@ class Liberacion extends React.Component {
                                 }
                             })()}
                           </div>
-                          <SubirLiberacion/>
+                          
+                      {/** */} <SubirLiberacion/> 
                           <VerDatosLiberacion/>
             </div>
         );

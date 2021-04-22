@@ -122,12 +122,13 @@ class Baja extends React.Component {
 
     saveBaja = (e) => {
         this.changeState();
+        alert("VALOR DEL ID ALUMNO DENTRO OBJETO" + this.state.baja.idAlumno)
         if(this.state.baja.registroSS && this.state.baja.registroSS != null && this.state.baja.registroSS != undefined){
             if(this.state.baja.programaSS && this.state.baja.programaSS != null && this.state.baja.programaSS != undefined){
                 if(this.state.baja.prestatario && this.state.baja.prestatario != null && this.state.baja.prestatario != undefined){
                     if(this.state.baja.fechaInicio && this.state.baja.fechaInicio != null && this.state.baja.fechaInicio != undefined){
                         if(this.state.baja.fechaTermino && this.state.baja.fechaTermino != null && this.state.baja.fechaTermino != undefined){
-                            axios.post(this.url + "solicitudBaja/save", this.state.baja)
+                            axios.post( "solicitudBaja/save", this.state.baja)
                             .then(res => {
                                 this.setState(
                                 {
@@ -316,7 +317,7 @@ class Baja extends React.Component {
                                 }
                             })()}
                           </div>
-                          <SubirBaja/>
+                           <SubirBaja/>
                           <VerDatosBaja/>
             </div>
         );

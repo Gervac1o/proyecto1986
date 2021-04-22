@@ -21,7 +21,7 @@ class VerDatosServicio extends React.Component{
         }
 
         getServicio = () => {
-            axios.get(this.url +"servicioSocial/findIdAlumno/" + this.state.idAlumno)
+            axios.get("servicioSocial/findIdAlumno/" + this.state.idAlumno)
             .then(res => {
                     this.setState({
                         servicio: res.data,

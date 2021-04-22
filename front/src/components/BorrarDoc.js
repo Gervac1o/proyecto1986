@@ -37,8 +37,8 @@ class BorrarDoc extends React.Component {
 
     render(){
 
-        if(this.state.statusDoc == "true" && this.state.statusLista == "true"){
-            window.location.href = "./" + this.props.redirect;
+        if(this.state.statusDoc === "true" && this.state.statusLista === "true"){
+            window.location.reload();
         }
 
         return(

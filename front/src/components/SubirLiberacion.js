@@ -43,7 +43,7 @@ class SubirLiberacion extends React.Component {
     }
 
     guardarLista = async (e) => {
-        await axios.post(this.url + "lista/save", this.state.lista)
+        await axios.post( "lista/save", this.state.lista)
         .then(res => {
             this.setState({
                 status: "true"
@@ -57,7 +57,7 @@ class SubirLiberacion extends React.Component {
             console.log(this.state);
             fd.append('file', this.state.file, this.state.file.name)
             console.log(this.state.file.name)
-                axios.post(this.url + "docLiberacion/upload/" + this.state.file.name + this.state.idLiberacion, fd)
+                axios.post("docLiberacion/upload/" + this.state.file.name + this.state.idLiberacion, fd)
                     .then(res =>{
                         this.setState({
                             lista:{

@@ -22,7 +22,7 @@ class PdfServicio extends React.Component {
         return (
             <div>
                 <PDFReader
-                    url={"docServicio/getDoc/" + this.state.docServicio}
+                    url={"http://localhost:8080/docServicio/getDoc/" + this.state.docServicio}
                     showAllPage="true">
                 </PDFReader>
             </div>

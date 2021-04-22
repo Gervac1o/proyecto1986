@@ -3,11 +3,7 @@ import ReactDOM from 'react-dom';
 import './assets/css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-//import {BrowserRouter, HashRouter} from "react-router-dom";
-import Router from './Router';
-///////////////////////////////////////////////////
 
-//import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch,HashRouter } from 'react-router-dom';
 
 import Error from './components/Error';
@@ -48,7 +44,6 @@ import BuscarDictamenAlumnos from './components/BuscarDictamenAlumnos';
 import BuscarBajaAlumnos from './components/BuscarBajaAlumnos';
 import BuscarLiberacionAlumnos from './components/BuscarLiberacionAlumnos';
 import BuscarServicioAlumnos from './components/BuscarServicioAlumnos';
-//////////////////////////////////////
 
 ReactDOM.render(
     <React.StrictMode>

@@ -74,7 +74,7 @@ class ServicioSocial extends React.Component {
 
     saveServicio = (e) => {
         this.changeState();
-            axios.post(this.url + "servicioSocial/save", this.state.servicio)
+            axios.post( "servicioSocial/save", this.state.servicio)
             .then(res => {
                 this.setState(
                     {

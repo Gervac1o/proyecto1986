@@ -21,7 +21,7 @@ class VerDatosLiberacion extends React.Component{
         }
 
         getLiberacion = () => {
-            axios.get(this.url +"liberacionExtemporanea/findIdAlumno/" + this.state.idAlumno)
+            axios.get("liberacionExtemporanea/findIdAlumno/" + this.state.idAlumno)
             .then(res => {
                     this.setState({
                         liberacionExtemporanea: res.data,

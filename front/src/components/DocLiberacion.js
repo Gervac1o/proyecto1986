@@ -17,12 +17,13 @@ class DocLiberacion extends React.Component{
                     docLiberacion: doc,
                     status: "true"
             })
+            console.log("VALOR DE DOC LIBERACION" + this.state.docLiberacion)
         }
     render() {
         if(this.state.status == "true"){
             return(
                 <div>
-                        <iframe  src={this.url + "docLiberacion/getDoc/" + this.state.docLiberacion}></iframe>
+                        <iframe  src={"http://localhost:8080/docLiberacion/getDoc/" + this.state.docLiberacion}></iframe>
                 </div>
             );
         }

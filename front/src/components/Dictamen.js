@@ -49,7 +49,7 @@ class Dictamen extends React.Component {
     }
 
     searchDictamen = () => {
-        axios.get("dictamen/findIdAlumno/" + this.dictamenRef)
+        axios.get("user/dictamen/findIdAlumno/" + this.dictamenRef)
         .then(res =>{
             this.setState({
                 dictamen: res.data
@@ -73,9 +73,9 @@ class Dictamen extends React.Component {
 
     saveDictamen = async (e) => {
         this.changeState();
-        alert(this.state.idAlumno)
+        //alert(this.state.idAlumno)
         if(this.state.dictamen.porcentajeCreditos && this.state.dictamen.porcentajeCreditos != null && this.state.dictamen.porcentajeCreditos != undefined){
-         await axios.post("dictamen/save", this.state.dictamen)
+         await axios.post("user/dictamen/save", this.state.dictamen)
             .then(res => {
                 this.setState(
                     {
@@ -128,9 +128,10 @@ class Dictamen extends React.Component {
                                         <button className="btn" onClick = {this.saveDictamen}>Aceptar</button>
      
                           </div>
-                   {/**     <SubirDictamen/>
-                       <VerDatosDictamen/>
-                       */}
+                          <VerDatosDictamen/>
+                       
+                        <SubirDictamen/>
+                    
             </div>
         );
                         
