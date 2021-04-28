@@ -9,8 +9,8 @@ body{
   -moz-font-feature-settings: initial;
   -webkit-font-feature-settings: normal;
  
-  background: rgb(235,255,243);
-background: linear-gradient(308deg, rgba(235,255,243,1) 0%, rgba(232,232,232,1) 52%, rgba(255,233,233,1) 100%);
+ /* background: rgb(235,255,243);*/
+background: linear-gradient(308deg, rgb(219, 236, 255) 0%, rgba(232,232,232,1) 52%, rgb(249, 238, 252) 100%);
 }
 /*
 background: rgba(47, 1, 1, 0.11);
@@ -213,6 +213,8 @@ div {
 }
 #slider.slider-small{
   height: 50px;
+  color: #3f3f3f;
+  background-color: #dfdfdf;
   padding-top: 0px;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -260,7 +262,8 @@ div {
   margin-top: 25px;
   margin-left:  480px;
   margin-bottom: 32px;
-  background: rgb(255, 255, 255);
+  padding-bottom: 20px;
+  background: rgba(255, 255, 255, 0.404);
   border-radius: 1px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   font-size: 20px;
@@ -317,6 +320,7 @@ div {
   min-height: 350px;
   height: auto;
   width: 1060px;
+  color: #135081;
 }
 #sidebar.archivosAdminRight{
   margin-top: -300px;
@@ -434,6 +438,13 @@ div {
   cursor: pointer;
   float: center;
 }
+#btn-table{
+  min-width: 210px;
+  max-width: 210px;
+  min-height: 60px;
+  font-size: 14px;
+
+}
 
 .datosAlumnos{
   max-width: 120px;
@@ -465,6 +476,32 @@ div {
   background: #02275e;
   color: white;
 }
+
+.btn_join_red{
+  background: #9e0404;
+  color: rgb(255, 255, 255);
+  padding: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  max-width: 100px;
+  transition: 200ms;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  float: center;
+}
+.btn_join_red:hover{
+  background: #580202;
+  color: white;
+}
+
+
+
+
 /*input[type="text"],*/
 .text
 {
@@ -693,7 +730,7 @@ input[type="radio"]{
 }
 
 #btn_delete{
-  background: rgb(255, 0, 0);
+  background: rgba(221, 35, 35, 0.829);
   color: rgb(255, 255, 255);
   width: 60px;
   height: 24px;
@@ -709,11 +746,11 @@ input[type="radio"]{
   cursor: pointer;
 }
 #btn_delete:hover{
-  background: rgb(129, 6, 6);
+  background: rgba(110, 7, 7, 0.836);
   color: rgb(255, 255, 255);
 }
 #btn_deleteRegistro{
-  background: rgb(255, 0, 0);
+  background: rgba(189, 0, 0, 0.63);
   color: rgb(255, 255, 255);
   width: 80px;
   height: 45px;
@@ -735,9 +772,9 @@ input[type="radio"]{
   color: rgb(255, 255, 255);
 }
 #btn_downLoad{
-  background: rgb(18, 224, 18);
+  background: rgba(46, 179, 13, 0.651);
   color: rgb(255, 255, 255);
-  width: 110px;
+  min-width: 110px;
   height: 80px;
   margin-left: 0px ;
   margin-right: 10px;
@@ -755,7 +792,7 @@ input[type="radio"]{
   color: rgb(255, 255, 255);
 }
 #btn_watch{
-  background: rgb(17, 180, 167);
+  background: rgba(1, 182, 167, 0.568);
   color: rgb(255, 255, 255);
   width: 110px;
   height: 80px;
@@ -770,7 +807,7 @@ input[type="radio"]{
   cursor: pointer;
 }
 #btn_watch:hover{
-  background: rgb(27, 131, 145);
+  background: rgb(17, 112, 124);
   color: rgb(255, 255, 255);
 }
 #linea{
@@ -918,4 +955,77 @@ ul li ul li:hover {background: #343a40;}
 }
 .contenido{
   font-size: 20px;
+}
+
+
+/**************CONTENEDOR DE COMENTARIO*****/
+
+
+
+.contenedor2 h1{
+  padding: 10px;
+  width: 100px;
+  background-color: #414549;
+  color: #ffffff;
+}
+
+.contenedor2{
+  width: 300px;
+  min-height: 200px;
+  padding-bottom: 0px;
+  height: auto;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+  transition: 500ms ;
+  font-size: 15px;
+  transform: translateY(-80%);
+  transition: all 500ms ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+
+.window-notice {
+  background: rgba(82, 92, 107, 0.555);
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  position: fixed;
+  z-index: 999;
+ padding: auto;
+
+ 
+}
+.window-notice .content {
+    background: rgb(236, 236, 236);
+    border-radius: 2px;
+    padding:10px;
+    box-shadow: 0 1px 3px rgba(147, 147, 175, 0.75);
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 500px;
+    min-width: 320px !important;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+ 
+    
+    font-size: 1.3rem;
+}
+.window-notice .content h1{
+  padding: 1px;
+  width: 500px;
+  background-color: #4a4d50;
+  color: #ffffff;
+}
+
+#documentos{
+  text-align: left;
+  padding-left: 30px;
+  font-size: 22px;
 }

@@ -1,4 +1,4 @@
- import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Slider from './Slider';
 import { Link, Switch } from 'react-router-dom';
@@ -13,139 +13,147 @@ import AdminBajaArchivos from './AdminBajaArchivos';
 import AdminDictamenArchivos from './AdminDictamenArchivos';
 import AdminLiberacionArchivos from './AdminLiberacionArchivos';
 import AdminServicioArchivos from './AdminServicioArchivos';
- const cookies = new Cookies();
+const cookies = new Cookies();
 
-class DirectorioArchivosAlumno extends Component{
+class DirectorioArchivosAlumno extends Component {
 
     state = {
         idAlumno: "",
         idTramite: "",
-        status: null
+        status: null,
+        alumno:{}
     };
 
     componentWillMount() {
+        
         const { match: { params } } = this.props;
-        console.log(params.id)
+        console.log(params.id + "id por parametros")
         var id = params.id;
         this.setState({
-                idAlumno: id
+            idAlumno: params.id
         })
-        console.log(this.state.idAlumno)
+       
+        
+    }
+    componentDidMount () {
+        this.getAlumno();
     }
 
-    tramite1=()=>{
+    getAlumno = () => {
+        axios.get("/alumno/find/"+ this.state.idAlumno)
+        .then(response => {
+        this.setState({
+            alumno: response.data,
+        });
+        } );   
+    }//Fin de getAlumno()
+
+    tramite1 = () => {
         this.setState({
             idTramite: 1
         })
     }
-    tramite2=()=>{
+    tramite2 = () => {
         this.setState({
             idTramite: 2
         })
     }
-    tramite3=()=>{
+    tramite3 = () => {
         this.setState({
             idTramite: 3
         })
     }
-    tramite4=()=>{
+    tramite4 = () => {
         this.setState({
             idTramite: 4
         })
     }
 
-    render(){
-       
+    render() {
 
-            return(
-              <div className = "center">
-                        <DirectorioAdmin />
-                        {(() => {  
-                        switch (this.state.idTramite){
-                        case 1:
-                            return (
-                                <AlumnoDictamen
-                                id = {this.state.idAlumno}
-                                />                                
-                              );
-                        break;
-                        case 2:
-                            return(
-                                <AlumnoLiberacion
-                                id = {this.state.idAlumno}/>
-                              ); 
-                              break;  
-                        case 3:
-                            return(
-                                <AlumnoBaja
-                                id = {this.state.idAlumno}/>    
-                            );
-                        case 4:
-                            return(
-                                <AlumnoServicio
-                                id = {this.state.idAlumno}/>
-                            )
-                         default: 
-                            return(
-                                <AlumnoDetalle
-                                id = {this.state.idAlumno}/>
-                            )
-                            break;
-                        }
-                        })()}
+
+        return (
+            <div className="center">
+
+
+
+                <DirectorioAdmin />
+
+
+
+                {/**AQUI VA LOS DATOS DEL ALUMNO */}
+                <tbody>
+                    <tr >
+                        <th className="table_lista"> </th>
+                        <th className="table_lista">Alumno</th>
+                        <th className="table_lista">Boleta</th>
+                        <th className="table_lista">Programa Academico</th>
+
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td className="table_lista">TRÁMITE</td>
+                        <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
+                        <td className="table_lista">{this.state.alumno.boleta}</td>
+                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+
+                    </tr>
+                </tbody>
+
 
                 <tbody>
                     <tr>
                         <tr>
-                        <td className="table_lista"> <button  class = "btn" onClick={this.tramite1} >Docuementacion Dictamen de 70%</button></td>
-                        </tr>
-                        <tr> 
-                        <td className="table_lista"><button  class = "btn" onClick={this.tramite2} >Docuementacion Liberacion Extemporanea</button></td>
+                            <td className="table_lista"> <button class="btn" id= "btn-table" onClick={this.tramite1} > Dictamen de 70%</button></td>
                         </tr>
                         <tr>
-                        <td className="table_lista"><button  class = "btn" onClick={this.tramite3} >Documentacion Baja de Servicio Social</button></td> 
+                            <td className="table_lista"><button class="btn" id= "btn-table"  onClick={this.tramite2} > Liberacion Extemporanea</button></td>
                         </tr>
                         <tr>
-                        <td className="table_lista"><button  class = "btn" onClick={this.tramite4} >Docuementacion Servicio Social</button></td>
+                            <td className="table_lista"><button class="btn" id= "btn-table" onClick={this.tramite3} > Baja de Servicio Social</button></td>
                         </tr>
-                     </tr>   
+                        <tr>
+                            <td className="table_lista"><button class="btn" id= "btn-table" onClick={this.tramite4} > Servicio Social</button></td>
+                        </tr>
+                    </tr>
                 </tbody>
 
-                {(() => {  
-                    switch (this.state.idTramite){
+                {(() => {
+                    switch (this.state.idTramite) {
                         case 1:
                             return (
                                 <AdminDictamenArchivos
-                                id = {this.state.idAlumno}/>
-                              );
-                        break;
+                                    id={this.state.idAlumno} />
+                            );
+                            break;
                         case 2:
-                            return(
+                            return (
                                 <AdminLiberacionArchivos
-                                id = {this.state.idAlumno}/>
-                              ); 
-                              break;  
+                                    id={this.state.idAlumno} />
+                            );
+                            break;
                         case 3:
-                            return(
+                            return (
                                 <AdminBajaArchivos
-                                id = {this.state.idAlumno}/>    
+                                    id={this.state.idAlumno} />
                             );
                         case 4:
-                            return(
+                            return (
                                 <AdminServicioArchivos
-                                id = {this.state.idAlumno}/>
+                                    id={this.state.idAlumno} />
                             )
-                         default: break;
+                        default: break;
 
                     }
 
 
                 })()}
 
-                 </div>
-             );
-             
+            </div>
+        );
 
-        }   
+
     }
-export default DirectorioArchivosAlumno; 
+}
+export default DirectorioArchivosAlumno;

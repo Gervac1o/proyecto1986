@@ -45,12 +45,14 @@ import BuscarBajaAlumnos from './components/BuscarBajaAlumnos';
 import BuscarLiberacionAlumnos from './components/BuscarLiberacionAlumnos';
 import BuscarServicioAlumnos from './components/BuscarServicioAlumnos';
 
+
+
 ReactDOM.render(
     <React.StrictMode>
          <HashRouter basename={'/'}>
            
          <Switch>
-                    <Route exact path="/" component={MisDatosAlumno} />
+                   
 
                      {/**RUTAS ADMINISTRADOR  */}
                      
@@ -68,6 +70,7 @@ ReactDOM.render(
                     <Route exact path = "/admin/BuscarLiberacion" component = {BuscarLiberacionAlumnos}/>
                     <Route exact path = "/admin/BuscarServicio" component = {BuscarServicioAlumnos}/>
                     <Route exact path = "/admin/DirectorioArchivosAlumno/:id" component = {DirectorioArchivosAlumno}/>
+                   
 
                      {/**RUTAS USUARIO  */}
 

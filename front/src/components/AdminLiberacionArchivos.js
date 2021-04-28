@@ -4,12 +4,15 @@ import axios from 'axios';
 
 import BorrarDoc from './BorrarDoc';
 import ActualizarComentario from './ActualizarComentario';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 class AdminLiberacionArchivos extends React.Component {
 
 
-    
-    comentarioRef=React.createRef();
+    estadoRef = React.createRef();
+
+    comentarioRef = React.createRef();
 
     state = {
         idAlumno: this.props.id,
@@ -19,18 +22,95 @@ class AdminLiberacionArchivos extends React.Component {
         lista: {},
         listar:[],
         fileName: "",
-        comentar: ""
+       
+        liberacion: {},
+        alumno: {},
+        usuario: {},
+        statusDictamen: null,
+        cambioEstado: {},
+        statusEstado: null,
+        comentario: {}
     };
 
     componentWillMount = () => {
+       
+       
         this.getLista();
+        this.getLiberacion();
+        this.getAlumno();
     } 
+ 
+
+
+    cancelComentario = () => {
+        this.setState({
+            comentario: {
+                status: "false",
+                texto: ""
+            },
+            statusComentario: "true"
+        })
+    }
+
+
+    getLiberacion = () => {
+        axios.get("liberacionExtemporanea/findIdAlumno/" + this.state.idAlumno)
+            .then(response => {
+                this.setState({
+                    liberacion: response.data,
+                    statusDictamen: 'success'
+                });
+
+            });
+           
+    }//Fin de getLiberacion()
+
+    getAlumno = () => {
+        axios.get("/alumno/find/" + this.state.idAlumno)
+            .then(response => {
+                this.setState({
+                    alumno: response.data,
+                });
+            });
+           
+    }//Fin de getAlumno()
+
+    deleteLiberacion = () => {
+        axios.delete("liberacionExtemporanea/delete/" + this.props.id)
+            .then(res => {
+                window.location.reload()
+            })
+            
+    }//Fin de deleteDictamen
 
     changeState = () => {
         this.setState({
-            comentar: this.comentarioRef.current.value
+            cambioEstado: {
+                idAlumno:this.props.id,
+                idLiberacion: this.state.liberacion.idLiberacion,
+                telefono: this.state.liberacion.telefono,
+                semestre: this.state.liberacion.semestre,
+                egresado: this.state.liberacion.egresado,
+                registroSS: this.state.liberacion.registroSS,
+                prestatario: this.state.liberacion.prestatario,
+                programaSS: this.state.liberacion.programaSS,
+                fechaInicio: this.state.liberacion.fechaInicio,
+                fechaTermino: this.state.liberacion.fechaTermino,
+                estado: this.estadoRef.current.value,
+                fechaRegistro: this.state.liberacion.fechaRegistro,
+                revisado:this.state.liberacion.revisado
+            }
         });
     }
+
+    cambiarEstado = () => {
+        this.changeState();
+        axios.patch("liberacionExtemporanea/update", this.state.cambioEstado)
+            .then(res => {
+                this.getLiberacion();
+            });
+    }//Fin de Cambiar Estado
+
 
     fileChange = (event) => {
        this.setState({
@@ -38,8 +118,14 @@ class AdminLiberacionArchivos extends React.Component {
         });
     }
 
+    estado = () => {
+        this.setState({
+            statusEstado: "true"
+        });
+    }//Fin de estado
+
     getLista = () => {
-        axios.get(this.url + "lista/findLiberacion/" + this.props.id)
+        axios.get("lista/findLiberacion/" + this.props.id)
             .then(response => {
                 this.setState({
                     listar: response.data,
@@ -48,7 +134,7 @@ class AdminLiberacionArchivos extends React.Component {
     }
 
     guardarLista = async (e) => {
-        await axios.post(this.url + "lista/save", this.state.lista)
+        await axios.post("lista/save", this.state.lista)
         .then(res => {
             this.setState({
                 status: "true"
@@ -62,7 +148,7 @@ class AdminLiberacionArchivos extends React.Component {
             console.log(this.state);
             fd.append('file', this.state.file, this.state.file.name)
             console.log(this.state.file.name)
-                axios.post(this.url + "docLiberacion/upload/" + this.state.file.name + this.props.id, fd)
+                axios.post("docLiberacion/upload/" + this.state.file.name + this.props.id, fd)
                     .then(res =>{
                         this.setState({
                             lista:{
@@ -75,6 +161,7 @@ class AdminLiberacionArchivos extends React.Component {
                             statusArchivo: "true"
                         })
                         this.guardarLista();
+                        window.location.reload(false);
                     });
         }else{
             this.setState({
@@ -83,16 +170,78 @@ class AdminLiberacionArchivos extends React.Component {
         }//Fin de else file
     }//Fin de funcion upLoad
     render() {
-        if(this.state.status == "true"){
-            window.location.href = './' + this.props.id;
-        }
-        if(this.state.listar.length >=1){
+        
+           
+       
             return (
                 <div className="center">
                             <div id="sidebar" className="archivosAdminCenter">
+                            <br />
                             <strong>DOCUMENTACIÓN DE LIBERACIÓN EXTEMPORANEA</strong>
                                 <div>
                                 <br/>
+                                
+                                <input type="checkbox" id="btn-modal" />
+                            <label htmlFor="btn-modal" className="btn" onClick={this.getEmail}>INFORMACIÓN DE LA SOLICITUD</label>
+                            <br/>
+                            <div className="modal">
+                                <div className="contenedor">
+                                    <h1>Liberación Extemporanea</h1>
+                                    <label htmlFor="btn-modal">X</label>
+                                    <div className="contenido">
+                                        <div>
+                                        <strong>Fecha de Registro:</strong> {this.state.liberacion.fechaRegistro}
+                                        </div>
+                                        <div>
+                                        <strong>Semestre:</strong> {this.state.liberacion.semestre}
+                                        </div>
+                                        <div>
+                                        <strong>Registro de Servicio Social:</strong> {this.state.liberacion.registroSS}
+                                    </div>
+                                        <div>
+                                        <strong>Programa de Servicio Social:</strong> {this.state.liberacion.programaSS}
+                                        </div>
+                                        <div>
+                                        <strong>Prestatario:</strong> {this.state.liberacion.prestatario}
+                                        </div>
+                                        <div>
+                                        <strong>Fecha de Inicio:</strong> {this.state.liberacion.fechaInicio}
+                                    </div>
+                                    <div>
+                                    <strong>Fecha de Término:</strong> {this.state.liberacion.fechaTermino}
+                                </div>
+                                <div>
+                                <strong>Número Telefónico:</strong> {this.state.liberacion.telefono}
+                            </div>
+                            <div>
+                            <strong>Correo electrónico:</strong> {this.state.usuario.email}
+                        </div>
+                        <div>
+                        <strong>Revisado por: </strong> {this.state.liberacion.revisado}
+                    </div>
+                    <div>
+                        <strong>Estado:</strong>{this.state.liberacion.estado}
+                    </div>
+                                        <strong>cambiar estado de la revision</strong>
+                                        <div className="center">
+                                            <select name="estado" ref={this.estadoRef} onChange={this.changeState}>
+                                                <option value="NUEVO">NO REVISADO</option>
+                                                <option value="PROCESANDO">EN PROCESO</option>
+                                                <option value="FINALIZADO">FINALIZADO</option>
+                                                <option value="RECHAZADO">RECHAZADO</option>
+                                            </select>
+                                            <button className="btn_join" onClick={this.cambiarEstado}>Actualizar</button>
+                                            <br />
+                                        </div>
+                                        <br />
+                                        <button id="btn_deleteRegistro" onClick={this.deleteDictamen}>Borrar Registro</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {/**fincontenedor */}   
+                            <br />
+                            <br />
+                                   
                                     <tbody>
                                         <tr>
                                             <td className="table_lista"><strong>Archivo</strong></td>
@@ -111,21 +260,24 @@ class AdminLiberacionArchivos extends React.Component {
                                                 idDoc={lista1.idDoc}
                                                 url= "docLiberacion/deleteDoc/"
                                                 redirect={lista1.idAlumno}
-                                                /></td>
-                                                <td><ActualizarComentario
+                                                />
+                                                </td>
+                                                <td>
+                                                <ActualizarComentario
                                                 idLista={lista1.idLista}
                                                 idAlumno= {lista1.idAlumno}
                                                 idDoc={lista1.idDoc}
                                                 idTramite={lista1.idTramite}
                                                 nombreDoc={lista1.nombreDoc}
                                                 comentario={lista1.comentario}
-                                                /></td>
+                                                />
+                                                </td>
                                             </tr>
                                     </tbody>
                                     )}
-                                    <br/>
-                                    <a className="text_login">Subir Archivo</a>
-                                    <input type="file" name = "file" onChange={this.fileChange} />
+                                        <br/>
+                                    <div  className="archivosAdminCenter" ><strong>Enviar archivo PDF</strong></div> <br />    
+                                    <input type="file" name = "file"   onChange={this.fileChange} />
                                     {(() => {
                                     switch(this.state.statusArchivo){   
                                         case "false":
@@ -138,73 +290,13 @@ class AdminLiberacionArchivos extends React.Component {
                                     }
                                     })()} 
                                 </div>
-                                <div>
-                                    <label htmlFor="comentario" className="text_login">Comentario Informativo</label>
-                                    <input type="text" className="input_login" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onChange={this.changeState}/>
-                                </div>
                                 <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
+                                <button className="btn"  onClick = {this.upLoad}>ACEPTAR</button> 
                             </div>
                 </div>
             );
-        }else if(this.state.listar.length == 0){
-            return (
-                <div className="center">
-                            <div id="sidebar" className="archivosAdminCenter">
-                                <div>
-                                <strong>SIN DOCUMENTACION PARA LIBERACION EXTEMPORANEA</strong>
-                                <br/>
-                                <a className="text_login">Subir Archivo</a>
-                                    <input type="file" name = "file"  onChange={this.fileChange} />
-                                    {(() => {
-                                    switch(this.state.statusArchivo){   
-                                        case "false":
-                                        return (
-                                        <a className="warning_search">¡Seleccione un Archivo para Registrar!</a>
-                                        );
-                                        break;
-                                        default:
-                                            break;
-                                    }
-                                    })()} 
-                                </div>
-                                <div>
-                                    <label htmlFor="comentario" className="text_login">Comentario Informativo</label>
-                                    <input type="text" className="input_login" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onChange={this.changeState}/>
-                                </div>
-                                <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
-                            </div>
-                </div>
-            );
-        }else{
-            return (
-            <div className="center">
-                        <div id="sidebar" className="archivosAdminCenter">
-                            <div>
-                                Cargando... Espere un momento
-                                <input type="file" name = "file" onChange={this.fileChange} />
-                                {(() => {
-                                    switch(this.state.statusArchivo){   
-                                        case "false":
-                                        return (
-                                        <a className="warning_search">¡Seleccione un Archivo para Registrar!</a>
-                                        );
-                                        break;
-                                        default:
-                                            break;
-                                    }
-                                    })()} 
-                            </div>
-                            <div>
-                                <label htmlFor="comentario" className="text_login">Comentario Informativo</label>
-                                <input type="text" className="input_login" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onClick={this.upLoad}/>
-                            </div>
-                            <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
-                        </div>
-            </div>
-        );
-    }
+        
+       
     }//Fin de Render
 }//Fin de Class AdminLiberacionArchivos
 export default AdminLiberacionArchivos;

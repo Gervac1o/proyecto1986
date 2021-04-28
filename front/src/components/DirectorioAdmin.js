@@ -8,6 +8,7 @@ class DirectorioAdmin extends Component{
 
     state = {
         email: cookies.get('email'),
+        alumno:{}
     }
 
 	cerrarSesion(){
@@ -22,11 +23,16 @@ class DirectorioAdmin extends Component{
 
     render(){
         return(
-            <div className="center">
+            <div className="">
             <Slider
             title= {this.state.email}
             size="slider-small"
-            title2="DEyAE"/>
+            title2="DEyAE"/> 
+
+           
+
+
+
                     <tbody >
                         <tr >
                         <th className="table"><div>

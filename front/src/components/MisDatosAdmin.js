@@ -27,7 +27,7 @@ class MisDatosAdmin extends React.Component{
         }
 
         getAdmin = () => {
-            axios.get(this.url +"admin/findIdUsuario/"+ this.state.idUsuario)
+            axios.get("admin/findIdUsuario/"+ this.state.idUsuario)
        
             .then(res => {
                     this.setState({
@@ -57,10 +57,10 @@ class MisDatosAdmin extends React.Component{
     render() {
             return(
                 <div className="center">
-                <Slider
+              {/**   <Slider
                 title="DATOS PERSONALES"
                 size="slider-small"
-                />
+                />*/}
                 <DirectorioAdmin/>
                 <br/>
                     <tbody >
