@@ -19,7 +19,7 @@ class BuscarIE extends React.Component {
     }
 
     searchIE = () => {
-         axios.get(this.url + "alumno/findPrograma/INGENIERÍA ELÉCTRICA")
+         axios.get("alumno/findPrograma/INGENIERÍA ELÉCTRICA")
             .then(res => {
                 this.setState(
                     {

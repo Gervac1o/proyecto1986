@@ -19,7 +19,7 @@ class BuscarICE extends React.Component {
     }
 
     searchICE = () => {
-         axios.get(this.url + "alumno/findPrograma/INGENIERÍA EN COMUNICACIONES Y ELECTRÓNICA")
+         axios.get("alumno/findPrograma/INGENIERÍA EN COMUNICACIONES Y ELECTRÓNICA")
             .then(res => {
                 this.setState(
                     {

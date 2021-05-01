@@ -29,7 +29,7 @@ class BuscarBoleta extends React.Component {
         this.changeState();
         if(this.boletaRef.current.value && this.boletaRef.current.value != null && this.boletaRef.current.value != undefined)
         {
-            axios.get(this.url + "alumno/findBoleta/" + this.state.boleta)
+            axios.get("alumno/findBoleta/" + this.state.boleta)
             .then(res => {
             this.setState(
                 {

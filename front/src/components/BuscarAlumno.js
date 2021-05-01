@@ -28,7 +28,7 @@ class BuscarAlumno extends React.Component {
         this.changeState();
         if(this.nombreRef.current.value && this.nombreRef.current.value != null && this.nombreRef.current.value != undefined)
         {
-            axios.get(this.url + "alumno/findNombre/" + this.state.nombre)
+            axios.get( "alumno/findNombre/" + this.state.nombre)
             .then(res => {
                 this.setState(
                     {

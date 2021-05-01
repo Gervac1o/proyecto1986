@@ -19,7 +19,7 @@ class BuscarICA extends React.Component {
     }
 
     searchICA = () => {
-         axios.get(this.url + "alumno/findPrograma/INGENIERÍA EN CONTROL Y AUTOMATIZACIÓN")
+         axios.get("alumno/findPrograma/INGENIERÍA EN CONTROL Y AUTOMATIZACIÓN")
             .then(res => {
                 this.setState(
                     {
