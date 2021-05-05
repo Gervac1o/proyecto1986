@@ -150,7 +150,7 @@ render() {
                                                 <td className="table_lista">{liberacion.registroSS}</td>
                                                 <td className="table_lista"><a id="state_processing">EN PROCESO</a></td>
                                                 <td className="table_lista">{liberacion.revisado}</td>
-                                                <td><Link to={'/DirectorioArchivosAlumno/' + liberacion.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                                                <td><Link to={'/admin/DirectorioArchivosAlumno/' + liberacion.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                             </tr>
                                         </tbody>
                                         )
@@ -168,7 +168,7 @@ render() {
                                                 <td className="table_lista">{liberacion.registroSS}</td>
                                                 <td className="table_lista"><a id="state_finished">FINALIZADO</a></td>
                                                 <td className="table_lista">{liberacion.revisado}</td>
-                                                <td><Link to={'/DirectorioArchivosAlumno/' + liberacion.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                                                <td><Link to={'/admin/DirectorioArchivosAlumno/' + liberacion.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                             </tr>
                                         </tbody>
                                         )
@@ -186,7 +186,7 @@ render() {
                                                 <td className="table_lista">{liberacion.registroSS}</td>
                                                 <td className="table_lista"><a id="state_rejected">RECHAZADO</a></td>
                                                 <td className="table_lista">{liberacion.revisado}</td>
-                                                <td><Link to={'/DirectorioArchivosAlumno/' + liberacion.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                                                <td><Link to={'/admin/DirectorioArchivosAlumno/' + liberacion.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                             </tr>
                                         </tbody>
                                         )
@@ -240,7 +240,7 @@ render() {
                                                             break;
                                                         }
                                                     })()}
-                                                <td><Link to={'/DirectorioArchivosAlumno/' + liberacion.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                                                <td><Link to={'/admin/DirectorioArchivosAlumno/' + liberacion.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                                             </tr>
                                         </tbody>
                                         )

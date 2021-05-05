@@ -18,8 +18,7 @@ class AdminBajaArchivos extends React.Component {
         status: null,
         lista: {},
         listar:[],
-        fileName: "",
-        
+
         comentario:{},
         Baja: {},
         alumno: {},
@@ -54,7 +53,6 @@ class AdminBajaArchivos extends React.Component {
         //this.getAlumno();
            this.getBaja();
     } 
-
     getBaja = () => {
         axios.get("solicitudBaja/findIdAlumno/"+ this.props.id)
         .then(response => {
@@ -223,12 +221,10 @@ class AdminBajaArchivos extends React.Component {
                             </div>
                         </div>{/**fincontenedor */}
                         <br />
-                        <br />
-                        <div id = "documentos"><strong>Documentos</strong></div> <br />
-                                
+                        <br />  
                                 <tbody>
                                         <tr>
-                                            <td className="table_lista"><strong>Archivo</strong></td>
+                                            <td className="table_lista"><strong>Documentos</strong></td>
                                             <td className="table_lista"><strong>Comentario</strong></td>
                                         </tr>
                                     </tbody>
@@ -256,8 +252,8 @@ class AdminBajaArchivos extends React.Component {
                                             </tr>
                                     </tbody>
                                     )}
-                                  
-                                    <a className="text_login">Subir Archivo</a>
+                                    <br />
+                                    <div  className="archivosAdminCenter" ><strong>Enviar archivo PDF</strong></div> <br />  
                                     <input type="file" name = "file" onChange={this.fileChange} />
                                     {(() => {
                                     switch(this.state.statusArchivo){   
@@ -272,7 +268,7 @@ class AdminBajaArchivos extends React.Component {
                                     })()} 
                                 </div>
                                 <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
+                                <button className="btn"  onClick = {this.upLoad}>ENVIAR</button> 
                             </div>
                 </div>
             );

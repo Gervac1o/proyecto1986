@@ -240,11 +240,11 @@ class AdminLiberacionArchivos extends React.Component {
                             </div>
                             {/**fincontenedor */}   
                             <br />
-                            <br />
+                            
                                    
                                     <tbody>
                                         <tr>
-                                            <td className="table_lista"><strong>Archivo</strong></td>
+                                            <td className="table_lista"><strong>Documentos</strong></td>
                                             <td className="table_lista"><strong>Comentario</strong></td>
                                         </tr>
                                     </tbody>
@@ -291,7 +291,7 @@ class AdminLiberacionArchivos extends React.Component {
                                     })()} 
                                 </div>
                                 <br/>
-                                <button className="btn"  onClick = {this.upLoad}>ACEPTAR</button> 
+                                <button className="btn"  onClick = {this.upLoad}>ENVIAR</button> 
                             </div>
                 </div>
             );
