@@ -9,6 +9,6 @@ public interface LiberacionExtempService {
 	void saveLiberacionExtemp(LiberacionExtempDTO liberacionDTO);
 	void updateLiberacionExtemp(LiberacionExtempDTO liberacionDTO)throws EmptyResultException;
 	void deleteLiberacionExtemp(Long idLiberacion)throws EmptyResultException;
-	LiberacionExtempDTO findByIdAlumno(Long idAlumno);
+	LiberacionExtempDTO findByIdAlumno(Long idAlumno)throws EmptyResultException;
 	List<LiberacionExtempDTO> findByEstado(String estado);
 }

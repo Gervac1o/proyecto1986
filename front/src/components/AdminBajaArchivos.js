@@ -20,11 +20,13 @@ class AdminBajaArchivos extends React.Component {
         listar:[],
 
         comentario:{},
-        Baja: {},
+        Baja: {
+            idSolicitud:"null"
+        },
         alumno: {},
         usuario: {},
         cambioEstado: {},
-        statusBaja: null,
+        statusBaja: " null",
         statusEstado: null,
     };
 
@@ -58,7 +60,8 @@ class AdminBajaArchivos extends React.Component {
         .then(response => {
         this.setState({
             Baja: response.data,
-            statusBaja: 'success'
+            statusBaja: response.idSolicitud,
+            cambioEstado:response.data,
         });
         } );   
        
@@ -94,11 +97,17 @@ class AdminBajaArchivos extends React.Component {
     }
 
     cambiarEstado = () => {
+        if(this.state.statusBaja ==! undefined){
+            
         this.changeState();
         axios.patch("solicitudBaja/update", this.state.cambioEstado)
             .then(res => {
                 this.getBaja();
             });
+        }
+        else{
+            console.log("elid de baaja es undefined")
+        }
     }//Fin de Cambiar Estado
 
 

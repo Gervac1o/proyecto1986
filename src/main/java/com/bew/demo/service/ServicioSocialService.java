@@ -9,6 +9,6 @@ public interface ServicioSocialService {
 	void saveServicioSocial(ServicioSocialDTO servicioDTO);
 	void updateServicioSocial(ServicioSocialDTO servicioDTO)throws EmptyResultException;
 	void deleteServicioSocial(Long idServicio)throws EmptyResultException;
-	ServicioSocialDTO findByIdAlumno(Long idAlumno);
+	ServicioSocialDTO findByIdAlumno(Long idAlumno) throws EmptyResultException;
 	List<ServicioSocialDTO> findByEstado(String estado);
 }

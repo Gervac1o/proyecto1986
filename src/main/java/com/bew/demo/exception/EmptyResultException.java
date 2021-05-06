@@ -1,5 +1,7 @@
 package com.bew.demo.exception;
 
+import org.springframework.http.HttpStatus;
+
 public class EmptyResultException extends Throwable {
 	
 	/**
@@ -11,6 +13,7 @@ public class EmptyResultException extends Throwable {
     }
 
     public EmptyResultException(String s) {
+    	
     }
 	
 

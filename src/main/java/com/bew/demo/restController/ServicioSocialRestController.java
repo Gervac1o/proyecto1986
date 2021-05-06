@@ -1,8 +1,12 @@
 package com.bew.demo.restController;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,10 +42,19 @@ public class ServicioSocialRestController {
 	return ResponseEntity.ok(servicioDTO);		
 	}
 	@GetMapping(path = "/findIdAlumno/{idAlumno}", produces = "application/json")
-	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Long idAlumno){
+	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Long idAlumno) throws IOException, EmptyResultException{
 	ServicioSocialDTO servicioDTO;
-	servicioDTO = servicioService.findByIdAlumno(idAlumno);
-	return ResponseEntity.ok(servicioDTO);		
+	try {
+		servicioDTO = servicioService.findByIdAlumno(idAlumno);
+		return ResponseEntity.ok(servicioDTO);	
+	}catch (EmptyResultException e) {
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.setContentType(MediaType.TEXT_HTML);
+		return new ResponseEntity<>(e.getMessage(), HttpStatus.ACCEPTED);
+		
+		
+	}
+	
 	}
 	@GetMapping(path = "/findEstado/{estado}", produces = "application/json")
 	public ResponseEntity<?>findEstado(@PathVariable("estado") String estado){

@@ -26,7 +26,7 @@ class AdminDictamenArchivos extends React.Component {
         dictamen: {},
         alumno: {},
         usuario: {},
-        statusDictamen: null,
+        statusDictamen: "null",
         cambioEstado: {},
         
         statusEstado: null,
@@ -55,13 +55,18 @@ class AdminDictamenArchivos extends React.Component {
 
 
     getDictamen = () => {
+       
         axios.get("user/dictamen/findIdAlumno/" + this.state.idAlumno)
             .then(response => {
                 this.setState({
                     dictamen: response.data,
-                    statusDictamen: 'success'
+                    statusDictamen: response.data.idDictamen,
+                    cambioEstado:response.data,
                 });
-            });
+            }); 
+        
+    
+            
     }//Fin de getDictamen()
 
 
@@ -98,11 +103,16 @@ class AdminDictamenArchivos extends React.Component {
     }
 
     cambiarEstado = () => {
-        this.changeState();
-        axios.post("user/dictamen/update", this.state.cambioEstado)
-            .then(res => {
-                this.getDictamen();
-            });
+        if(this.state.statusDictamen ==! undefined){
+            this.changeState();
+            axios.post("user/dictamen/update", this.state.cambioEstado)
+                .then(res => {
+                    this.getDictamen();
+                });
+        }else{
+            console.log("esta en undefined el id dictamen")
+        }
+
     }//Fin de Cambiar Estado
 
     fileChange = (event) => {

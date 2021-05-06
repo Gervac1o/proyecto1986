@@ -23,7 +23,7 @@ class RecuperacionContraseña extends React.Component{
             recuperar:{
                 idUsuario: this.props.id,
                 email: this.state.usuario.email,
-                contraseña: md5("p4SS"+this.props.id+"dEYAe"),
+                password: md5("p4SS"+this.props.id+"dEYAe"),
                 tipoUsuario: "false"
             }
         });
@@ -40,6 +40,7 @@ class RecuperacionContraseña extends React.Component{
 
     updateContraseña = () =>{
         this.changeState();
+        console.log("update contraseña ")
         if(this.cambioRef.current.value === "SI"){
             axios.patch("usuario/update", this.state.recuperar)
             .then(res =>{

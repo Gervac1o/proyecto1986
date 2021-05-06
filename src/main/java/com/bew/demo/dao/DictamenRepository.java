@@ -15,7 +15,8 @@ public interface DictamenRepository  extends JpaRepository <Dictamen,Long>{
 	@Query(
             value = "SELECT s FROM Dictamen s WHERE s.idAlumno = :idAlumno",
             nativeQuery = false)
-    Optional<Dictamen> findByIdAlumno(@Param("idAlumno") Long idAlumno);
+    Optional<Dictamen> findByIdAlumno(@Param("idAlumno") Long idAlumno
+    		);
 	
 	@Query(
             value = "SELECT s FROM Dictamen s WHERE s.estado = :estado",

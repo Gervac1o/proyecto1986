@@ -26,7 +26,7 @@ class AdminLiberacionArchivos extends React.Component {
         liberacion: {},
         alumno: {},
         usuario: {},
-        statusDictamen: null,
+        statusLiberacion: "null",
         cambioEstado: {},
         statusEstado: null,
         comentario: {}
@@ -58,7 +58,8 @@ class AdminLiberacionArchivos extends React.Component {
             .then(response => {
                 this.setState({
                     liberacion: response.data,
-                    statusDictamen: 'success'
+                    statusLiberacion: response.data.idLiberacion,
+                    cambioEstado:response.data,
                 });
 
             });
@@ -104,11 +105,17 @@ class AdminLiberacionArchivos extends React.Component {
     }
 
     cambiarEstado = () => {
+       if(this.state.statusLiberacion ==! undefined){
         this.changeState();
         axios.patch("liberacionExtemporanea/update", this.state.cambioEstado)
             .then(res => {
                 this.getLiberacion();
             });
+       }
+       else{
+           console.log("el id de liberacion esta en undefined")
+       }
+     
     }//Fin de Cambiar Estado
 
 

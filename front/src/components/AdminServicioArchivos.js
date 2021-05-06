@@ -22,10 +22,15 @@ class AdminServicioArchivos extends React.Component {
         listar:[],
         comentar: "",
         usuario: {},
-        servicio: {},
+        servicio: {
+            idServicio: "null"
+        },
         alumno: {},
-        statusServicio: null,
-        cambioEstado: {},
+        statusServicio: "",
+        cambioEstado: {
+            estado:"NUEVO",
+
+        },
         statusEstado: null,
     };
 
@@ -41,10 +46,6 @@ class AdminServicioArchivos extends React.Component {
                 revisado:this.state.servicio.revisado
             }
         })  
-        console.log(this.state.cambioEstado.idServicio)
-        console.log(this.state.cambioEstado.idAlumno)
-      
-        console.log(this.state.cambioEstado.estado)
       
     }//Fin de ChangeState
 
@@ -54,19 +55,17 @@ class AdminServicioArchivos extends React.Component {
     }
 
     getServicio = () => {
+       
         axios.get("servicioSocial/findIdAlumno/"+ this.props.id)
         .then(response => {
         this.setState({
             servicio: response.data,
-            statusServicio: 'success'
+            cambioEstado: response.data,
+            statusServicio: response.data.idServicio,
         });
-        console.log(this.state.servicio.idAlumno)
-        console.log(this.state.servicio.idServicio)
-        console.log(this.state.servicio.responsableDirecto)
-        console.log(this.state.servicio.estado)
-        console.log(this.state.servicio.fechaRegistro)
-        console.log(this.state.servicio.revisado) 
+        
     });   
+
     }//Fin de getservicio()
     getAlumno = () => {
         axios.get("/alumno/find/" + this.state.idAlumno)
@@ -95,12 +94,17 @@ class AdminServicioArchivos extends React.Component {
     }
     cambiarEstado = () => {
        
-        this.changeState();
-        console.log(this.state.cambioEstado.estado)
-       axios.patch("servicioSocial/update", this.state.cambioEstado)
-            .then(res => {
-                this.getServicio();
-            }); 
+        if(this.state.statusServicio ==! undefined){
+            this.changeState();
+            axios.patch("servicioSocial/update", this.state.cambioEstado)
+                 .then(res => {
+                     this.getServicio();
+                 }); 
+        }
+        else{
+            console.log("el cambio estado esta en undefined")
+        }
+    
            
             
     }//Fin de Cambiar Estado
@@ -119,7 +123,6 @@ class AdminServicioArchivos extends React.Component {
                 });
             });
     }
-
     guardarLista = async (e) => {
         await axios.post("lista/save", this.state.lista)
         .then(res => {
@@ -133,13 +136,10 @@ class AdminServicioArchivos extends React.Component {
              file: event.target.files[0]
          });
      }
-
     upLoad = () => {
         if(this.state.file && this.state.file != null && this.state.file != undefined){
             const fd = new FormData();
-            console.log(this.state);
             fd.append('file', this.state.file, this.state.file.name)
-            console.log(this.state.file.name)
                 axios.post("docServicio/upload/" + this.state.file.name + this.props.id, fd)
                     .then(res =>{
                         this.setState({
@@ -161,26 +161,16 @@ class AdminServicioArchivos extends React.Component {
             });
         }//Fin de else file
     }//Fin de funcion upLoad
-
-  
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     render() {
             return (
                 <div className="center">
                             <div id="sidebar" className="archivosAdminCenter">
                             <br />
                             <strong>DOCUMENTACIÓN DE SERVICIO SOCIAL</strong>
-                                <div>
-                                <br/>
+                            <div>
+                            <br/>
+                          
+                                          
                                 <input type="checkbox" id="btn-modal" />
                                 <label htmlFor="btn-modal" className="btn" onClick={this.getEmail}>INFORMACIÓN DE LA SOLICITUD</label>
                                  <div className="modal">
@@ -219,7 +209,10 @@ class AdminServicioArchivos extends React.Component {
                                 <button id="btn_deleteRegistro" onClick={this.deleteDictamen}>Borrar Registro</button>
                             </div>
                             </div>
-                        </div>{/**fincontenedor */}
+                            </div>
+                      
+                                                
+                         {/**fincontenedor */}
                         <br />
                         <br />
                                <tbody>
@@ -271,7 +264,9 @@ class AdminServicioArchivos extends React.Component {
                                 <br/>
                                 <button className="btn"  onClick = {this.upLoad}>ENVIAR</button> 
                             </div>
-                </div>
+                            </div>
+                           
+               
             );
         
     }//Fin de Render
