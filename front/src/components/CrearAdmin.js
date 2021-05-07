@@ -15,10 +15,10 @@ class CrearAdmin extends React.Component {
 
     state = {
         usuario: {},
-        contraseña: "",
-        statusEmail: null,
-        statusContraseña: null,
-        status: "null",
+        contraseña: null,
+        statusEmail: "",
+        statusContraseña: "",
+        status: false,
         searchEmail: {},
         emailExistente: null,
         ayuda: "false",
@@ -29,109 +29,80 @@ class CrearAdmin extends React.Component {
         this.setState({
             usuario: {
                 email: this.emailRef.current.value,
-                contraseña: md5(this.contraseñaRef.current.value),
-                tipoUsuario: "true"
+                password: md5(this.contraseñaRef.current.value),
+                tipoUsuario: "true",
+                status:true
             },
-            contraseña: this.contraseñaRef.current.value
+            contraseña: this.contraseñaRef.current.value,
+            statusEmail:this.emailRef.current.value,
+            statusContraseña: this.contraseñaRef.current.value,
         });
-       // console.log(this.state + "Cambiando datos a usuario");
+        console.log(this.state.statusEmail + "status email")
+        console.log(this.state.statusContraseña + "status contraseña dentro del if")
+                
     }
 
     saveAdmin = () =>{
-        if(this.state.usuario.email && this.state.usuario.email !== null && this.state.usuario.email !== undefined){
-            if(this.state.contraseña && this.state.contraseña !== null && this.state.contraseña !== undefined){
-                if(this.state.contraseña.length >= 5 && this.state.contraseña.length<= 10){
-                    axios.get("usuario/findByEmail/"+this.state.usuario.email)
-                .then(res => {
-                    this.setState({
-                        emailExistente: "true",
-                        ayuda: "true",
-                        statusContraseña: "true",
-                        statusEmail: "true",
-                        statusLongitud: "true"
-                    });
-                })
-                .catch(error =>{
-                    this.setState({
-                        emailExistente: "false",
-                        statusLongitud: "true"
-                    });
-                })
-                .then(res => {
-                    if(this.state.emailExistente === "false"){
-                        if(this.state.ayuda === "false"){
-                            axios.post("usuario/save", this.state.usuario)
-                            .then(res =>{
-                                this.setState({
-                                    status: "true"
-                                });
-                            });
-                        }else{
-                            this.setState({
-                                ayuda: "false",
-                                emailExistente: "true",
-                                statusContraseña: "true",
-                                statusEmail: "true"
-                            });
-                        }
-                    }else{
+        console.log(this.state.usuario.email + " email fuera del if")
+        if(this.state.statusEmail != "null"){
+            console.log(this.state.statusEmail + " email dentro del if")
+            if(this.state.statusEmail.length ){
+               
+                if(this.state.statusContraseña.length){
+                 try{
+                    console.log(this.state.contraseña + " contraseña dentro del if")
+                    axios.post("usuario/save", this.state.usuario)
+                    .then(res =>{
                         this.setState({
-                            emailExistente: "true",
-                            ayuda: "false"
+                            status:true,
                         });
-                    }//Fin de else Email Existe
-                })
-                }else{
-                    this.setState({
-                        statusContraseña: "true",
-                        statusEmail: "true",
-                        statusLongitud: "false"
+                        console.log(this.state.contraseña + " contraseña despues del setsatate")
                     });
-                }//Finde else longitud de contraseña
-            }else{
-                this.setState({
-                    statusContraseña: "false",
-                    statusEmail: "true"
-                });
-            }//Fin de else contraseña
-        }else{
+               
+                }
+                finally{
+                    this.setState({
+                        statusContraseña:false,
+                        statusEmail: "null"
+                    })
+                }
+     
+               // window.location.reload(false);
+            }
+            }
+  
+        else{
             this.setState({
-                statusEmail: "false",
-                emailExistente: "false",
-            });
-        }//Fin de else correo
-    }//Fin de saveAdmin
+                statusContraseña: false,
+                statusEmail: "null"
+            })
+            console.log(this.state.statusContraseña + "dentro del rres")
+        }
+   
+    }
+}//Fin de saveAdmin
 
     render() {
-        if(this.state.status === 'true'){
-            return <Redirect to = "/Lista"></Redirect>
-        }
-
+        if(this.state.status === false){
         return (
-            <div className="center">
+ 
+                 <div className="center">
                     <DirectorioAdmin />
                         <div id="sidebar" className="crearAdmin">
+                        <br/>
+                            <strong>Crear Administrador</strong>
+                  
                             <div>
                                 <label htmlFor="email" className="text_login">Email</label>
                                 <input type="email" className="input_login" name="email" ref={this.emailRef} placeholder="Ingresa aquí el correo electrónico" onChange={this.changeState}/>
+                           
                                 {(() => {
                                     switch(this.state.statusEmail){   
-                                        case "false":
+                                        case "null":
                                         return (
-                                        <a className="warning">¡Ingresa un correo electronico valido!</a>
+                                        <a className="warning">Ingresa un email válido</a>
                                         );
-                                        break;
-                                        default:
-                                            break;
-                                    }
-                                })()}  
-                                {(() => {
-                                    switch(this.state.emailExistente){   
-                                        case "true":
-                                        return (
-                                        <a className="warning">¡Este correo ya fue registrado!</a>
-                                        );
-                                        break;
+        
                                         default:
                                             break;
                                     }
@@ -165,9 +136,39 @@ class CrearAdmin extends React.Component {
                             </div>
                             <br/>
                             <button className = "btn" onClick = {this.saveAdmin}>Aceptar</button>
-                          </div>
+                                      
+                                    
+                                              
+                     
+                       
+             </div>
+             
             </div>
+                    
+                                
         );
+                                    }
+                                    else {
+                                        return(
+                                            <div className="center">
+                                            <DirectorioAdmin />
+                                            <div id="sidebar" className="crearAdmin">
+                                            <br/>
+                                            <strong>Se registró  </strong><br/>
+                                            <strong>nuevo administrador</strong>
+                                            <br/>
+                                            <br/>
+                                            <strong>Email:</strong> {this.state.usuario.email}
+                                                <br/><br/>
+                                                <strong>Contraseña:</strong>  {this.state.contraseña}
+                                            </div>
+                                                
+                                                </div>
+                                        );
+                                    }
+
+            
+    
     }
 }
 export default CrearAdmin;

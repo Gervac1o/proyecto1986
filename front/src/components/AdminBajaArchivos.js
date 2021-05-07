@@ -168,7 +168,7 @@ class AdminBajaArchivos extends React.Component {
                 <div className="center">
                             <div id="sidebar" className="archivosAdminCenter">
                             <br />
-                            <strong>DOCUMENTACIÓN BAJA DE SERVICIO SOCIAL</strong>
+                            <strong>BAJA DE SERVICIO SOCIAL</strong>
                                 <div>
                                 <br/>
                                 <input type="checkbox" id="btn-modal" />

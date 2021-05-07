@@ -184,7 +184,7 @@ class AdminLiberacionArchivos extends React.Component {
                 <div className="center">
                             <div id="sidebar" className="archivosAdminCenter">
                             <br />
-                            <strong>DOCUMENTACIÓN DE LIBERACIÓN EXTEMPORANEA</strong>
+                            <strong>LIBERACIÓN EXTEMPORANEA</strong>
                                 <div>
                                 <br/>
                                 

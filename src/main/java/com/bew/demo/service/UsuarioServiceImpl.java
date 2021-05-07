@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import javax.transaction.Transactional;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -104,18 +106,21 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public void saveUsuario(UsuarioDTO usuarioDTO) throws MailRepetidoException {
+    public void saveUsuario(UsuarioDTO usuarioDTO) throws  MailRepetidoException {
 
         if (usuarioRepository.findByEmail(usuarioDTO.getEmail()).isPresent()) {
             throw new MailRepetidoException("Este usuario ya esta registrado");
         } else {
             Usuario usuario;
+             
             Mapper mapper = DozerBeanMapperBuilder.buildDefault();
             usuario = (mapper.map(usuarioDTO, Usuario.class));
             String encPassword = DigestUtils.md5DigestAsHex(usuarioDTO.getPassword().getBytes());
             usuario.setPassword(encPassword);
             usuario.setTipoUsuario(false);
+            
             usuarioRepository.save(usuario);
+           
         }
 
     }

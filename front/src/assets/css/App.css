@@ -259,7 +259,7 @@ div {
 #sidebar{
   width: 30%;
   height: 460px;
-  margin-top: 25px;
+  margin-top: 2px;
   margin-left:  480px;
   margin-bottom: 32px;
   padding-bottom: 20px;
@@ -276,7 +276,9 @@ div {
   height: 600px;
 }
 #sidebar.crearAdmin{
-  height: 250px;
+  margin-top: 50px;
+  height: 370px;
+  color:#0d3570;
 }
 #sidebar.datosAdmin{
   height: 340px;
@@ -315,11 +317,20 @@ div {
 }
 #sidebar.archivosAdminCenter{
   float: center;
-  margin-top: -295px;
+  margin-top: -360px;
   margin-left: 265px;
   min-height: 350px;
   height: auto;
   width: 1060px;
+  color: #135081;
+}
+#sidebar.archivosAdminCenter2{
+  float: center;
+  margin-top: 30px;
+  margin-left: 265px;
+  min-height: 350px;
+  height: auto;
+  width: 400px;
   color: #135081;
 }
 #sidebar.archivosAdminRight{

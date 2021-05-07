@@ -166,7 +166,7 @@ class AdminServicioArchivos extends React.Component {
                 <div className="center">
                             <div id="sidebar" className="archivosAdminCenter">
                             <br />
-                            <strong>DOCUMENTACIÓN DE SERVICIO SOCIAL</strong>
+                            <strong>SERVICIO SOCIAL</strong>
                             <div>
                             <br/>
                           

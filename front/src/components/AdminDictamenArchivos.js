@@ -181,7 +181,7 @@ class AdminDictamenArchivos extends React.Component {
                 <div className="center">
                     <div id="sidebar" className="archivosAdminCenter">
                         <br />
-                        <strong>DOCUMENTACIÓN DE DICTAMEN MENOS DE 70% DE CREDITOS</strong>
+                        <strong>DICTAMEN MENOS DE 70% DE CREDITOS</strong>
                         <div>
                             <br />
                             <input type="checkbox" id="btn-modal" />

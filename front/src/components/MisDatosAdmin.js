@@ -7,6 +7,7 @@ import Slider from './Slider';
 import Cookies from 'universal-cookie';
 import DatosActualizadosAdmin from './DatosActualizadosAdmin';
 import DatosActualizadosEmail from './DatosActualizadosEmail';
+import RecuperacionContraseña from './RecuperacionContraseña';
 
 const cookies = new Cookies();
 
@@ -24,6 +25,7 @@ class MisDatosAdmin extends React.Component{
     };
         componentWillMount() {
             this.getAdmin();
+           
         }
 
         getAdmin = () => {
@@ -46,6 +48,11 @@ class MisDatosAdmin extends React.Component{
         updateEmail=()=>{
             this.setState({
                 actualizar: "EMAIL"
+            })
+        }
+        recuperarContraseña=()=>{
+            this.setState({
+                actualizar: "contraseña"
             })
         }
         cancel=()=>{
@@ -75,8 +82,10 @@ class MisDatosAdmin extends React.Component{
                             <td className="table_lista"> {this.state.admin.nombre} {this.state.admin.apellidos}</td>
                             <td className="table_lista"> {this.state.admin.telefono}</td>
                             <td className="table_lista"> {this.state.email}</td>
+                           
                             <td><button  className = "btn" onClick={this.updateDatos} >Actualizar Información Personal</button></td>
                             <td><button  className = "btn" onClick={this.updateEmail} >Actualizar Email ó Contraseña</button></td>
+                            <td><button  className = "btn" onClick={this.recuperarContraseña} >Recuperar contraseña</button></td>
                         </tr>
                         </tbody>
                         {(() => {  
@@ -100,7 +109,21 @@ class MisDatosAdmin extends React.Component{
                                     </div>
                                   );
                                 break;
-                             default: break;
+                                    case "contraseña":
+                                        return(
+                                            <div>
+                                            <RecuperacionContraseña
+                                            redirect="MisDatosAdmin"
+                                            tipoUsuario="true"
+                                            id= {this.state.idUsuario}
+                                            className="archivosAdminCenter2"
+                                            />
+                                            <button  id="btn_delete" onClick={this.cancel} >Cancelar</button>
+                                            </div>
+                                        );
+                                        break;
+                             default: 
+                             break;
                             }
                             })()}
                 </div>

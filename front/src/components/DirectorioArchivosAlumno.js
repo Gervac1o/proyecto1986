@@ -13,6 +13,7 @@ import AdminBajaArchivos from './AdminBajaArchivos';
 import AdminDictamenArchivos from './AdminDictamenArchivos';
 import AdminLiberacionArchivos from './AdminLiberacionArchivos';
 import AdminServicioArchivos from './AdminServicioArchivos';
+import RecuperacionContraseña from './RecuperacionContraseña';
 const cookies = new Cookies();
 
 class DirectorioArchivosAlumno extends Component {
@@ -68,6 +69,11 @@ class DirectorioArchivosAlumno extends Component {
             idTramite: 4
         })
     }
+    tramite5 = () => {
+        this.setState({
+            idTramite: 5
+        })
+    }
 
     render() {
 
@@ -116,6 +122,9 @@ class DirectorioArchivosAlumno extends Component {
                         <tr>
                             <td className="table_lista"><button class="btn" id= "btn-table" onClick={this.tramite4} > Servicio Social</button></td>
                         </tr>
+                        <tr>
+                            <td className="table_lista"><button class="btn" id= "btn-table" onClick={this.tramite5} > Recuperar contraseña</button></td>
+                        </tr>
                     </tr>
                 </tbody>
 
@@ -142,6 +151,13 @@ class DirectorioArchivosAlumno extends Component {
                             return (
                                 <AdminServicioArchivos
                                     id={this.state.idAlumno} />
+                            )
+                            case 5:
+                            return (
+                                <RecuperacionContraseña
+                                    id={this.state.idAlumno} 
+                                    className="archivosAdminCenter"
+                                    />
                             )
                         default: break;
 
