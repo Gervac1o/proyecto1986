@@ -69,7 +69,7 @@ class MisDatosAlumno extends React.Component{
                 <div className="center">
                 <HeaderDEyAE />
                     <DirectorioAlumno />
-                    <br/>
+                    
                     <tbody >
                         <tr >
                             <th className="table_lista">Nombre</th>
@@ -84,10 +84,19 @@ class MisDatosAlumno extends React.Component{
                             <td className="table_lista">{this.state.alumno.boleta}</td>
                             <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                             <td className="table_lista">{this.state.email}</td>
-                            <td><button  className = "btn datosAlumnos"  onClick={this.updateDatos} >Actualizar Información Personal</button></td>
-                            <td><button  className = "btn datosAlumnos" onClick={this.updateEmail} >Actualizar Email ó Contraseña</button></td>
+
                         </tr>
-                        </tbody>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <tr>
+                                <td className="table_lista"> <button  className = "btn"  id= "btn-table" onClick={this.updateDatos} >Actualizar Información Personal</button> </td>
+                            </tr>
+                            <tr>
+                            <td className="table_lista"><button  className = "btn"  id= "btn-table" onClick={this.updateEmail} >cambiar CONTRASEÑA</button></td>
+                            </tr>
+                        </tr>
+                    </tbody>
                         {(() => {  
                         switch (this.state.actualizar){
                         case "DATOS":
@@ -104,6 +113,7 @@ class MisDatosAlumno extends React.Component{
                                 <DatosActualizadosEmail
                                 redirect="MisDatosAlumno"
                                 tipoUsuario="false"
+                                clase = "archivosAdminCenter2"
                                 />
                                 <button  id="btn_delete" onClick={this.cancel} >Cancelar</button>
                                 </div>

@@ -111,6 +111,8 @@ class DatosActualizadosAlumno extends React.Component {
         return (
             <div className="center">
                 <div id="sidebar" className="datosAlumno">
+                <br/>
+                <strong>Actualizar información personal </strong>
                     <div>
                         <label htmlFor="nombre" className="text_login">Nombre(s)</label>
                         <input type="text" className="input_login" name="nombre" ref={this.nombreRef}

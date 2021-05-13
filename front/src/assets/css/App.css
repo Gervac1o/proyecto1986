@@ -165,18 +165,36 @@ div {
 .active{
   text-decoration: none;
   padding: 6px;
+  margin-right: 10px;
+  text-align: left;
   color: #e0e0e0;
   font-weight: 100;
   font-size: 15px;
-  transition: 300ms;
+  
 }
 .active:hover{
   color: rgb(145, 145, 145);
 }
-.active_archivos{
-  text-decoration: none;
-  color: black;
+
+#user{
+  max-width: 25px;
+  
+
 }
+.activeCuenta{
+  text-decoration: none;
+  padding: 8px;
+  margin-right: 70px;
+  text-align: left;
+  color: #e0e0e0;
+  font-weight: 100;
+  font-size: 15px;
+  
+}
+.activeCuenta :hover{
+  color: rgb(75, 75, 75);
+}
+
 
 #slider{
   background: #9e9e9e60;
@@ -212,10 +230,10 @@ div {
   color: white;
 }
 #slider.slider-small{
-  height: 50px;
+  height: 65px;
   color: #3f3f3f;
-  background-color: #dfdfdf;
-  padding-top: 0px;
+  background-color: #f7f7f7c4;
+  padding-top: 10px;
   margin-top: 0px;
   margin-bottom: 0px;
   text-align: center;
@@ -271,9 +289,16 @@ div {
 }
 #sidebar.registroAlumno{
   height: 500px;
+  margin-top: -200px;
 }
 #sidebar.datosAlumno{
+  margin-top: -100px;
   height: 600px;
+  float: center;
+ 
+  height: auto;
+  width: 400px;
+  color: #135081;
 }
 #sidebar.crearAdmin{
   margin-top: 50px;
@@ -281,33 +306,52 @@ div {
   color:#0d3570;
 }
 #sidebar.datosAdmin{
-  height: 340px;
+  height: 370px;
+  margin-top: -220px;
 }
 #sidebar.dictamenLeft{
-  min-height: 160px;
+  min-height: 500px;
   height: auto;
-  margin-left: 10px;
-  width: 400px;
+  margin-left: 5px;
+  width: 25%;
 }
 #sidebar.dictamenRight{
-  float: right;
-  margin-top: -192px;
-  margin-right: 8px;
+ 
+  margin-top: -265px;
+  margin-right: 5px;
+  margin-left: 765px;
   min-height: 220px;
-  height: auto;
- width: 600px;
+  height: auto;  
+ width: 575px;
+ float: right;
+ /*
+ margin-top: -812px;
+ margin-right: 2px;
+ min-height: 220px;
+ height: auto;
+ width: 578px; */
+
+
+
+
 }
 #sidebar.dictamenCenter{
-  margin-left: 420px;
-  margin-top: -193px;
+  margin-left: 350px;
+  margin-top: -530px;
   min-height: 120px;
   height: auto;
-  max-width: 24%;
+  max-width: 30%;
+ 
+ /* margin-left: 350px;
+  margin-top: -812px;
+  min-height: 120px;
+  height: auto;
+  max-width: 30%;  */
 }
 #sidebar.infoAdminLeft{
   height: auto;
   margin-left: 15px;
-  max-width: 40%;
+  max-width: 36%;
 }
 #sidebar.infoAdminCenter{
   margin-left: 520px;
@@ -317,17 +361,28 @@ div {
 }
 #sidebar.archivosAdminCenter{
   float: center;
-  margin-top: -360px;
+  margin-top: -375px;
   margin-left: 265px;
   min-height: 350px;
   height: auto;
-  width: 1060px;
+  width: 900px;
   color: #135081;
 }
 #sidebar.archivosAdminCenter2{
+
   float: center;
-  margin-top: 30px;
-  margin-left: 265px;
+  margin-top: -100px;
+  margin-left: 480px;
+  min-height: 350px;
+  height: auto;
+  width: 400px;
+  color: #135081;
+}
+#sidebar.archivosAdminCenter3{
+
+  float: center;
+  margin-top: -300px;
+  margin-left: 480px;
   min-height: 350px;
   height: auto;
   width: 400px;
@@ -343,23 +398,23 @@ div {
 #sidebar.liberacionLeft{
   min-height: 780px;
   height: auto;
-  margin-left: 15px;
-  max-width: 40%;
+  margin-left: 5px;
+  max-width: 25%;
 }
 #sidebar.liberacionRight{
   float: right;
   margin-top: -812px;
-  margin-right: 8px;
+  margin-right: 2px;
   min-height: 220px;
   height: auto;
-  width: 575px;
+  width: 578px;
 }
 #sidebar.liberacionCenter{
-  margin-left: 430px;
+  margin-left: 350px;
   margin-top: -812px;
   min-height: 120px;
   height: auto;
-  max-width: 24%;
+  max-width: 30%;
 }
 #sidebar.bajaLeft{
   min-height: 1000px;
@@ -545,7 +600,7 @@ textarea:focus{
   text-align: left;
 }
 .input_login{
-  width: 350px;
+  width: 280px;
   height: 25px;
   margin-left: 0px;
 
@@ -692,12 +747,17 @@ input[type="radio"]{
   font-size: 25px;
 }
 .table{
-  padding-top: 5px;
+  padding-bottom: 20px;
+  padding-top: 20px;
   margin-top: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
   text-align: center;
   background: #343a40;
   width: 280px; bottom: 1px solid #000000;
-  padding-bottom: 10px;
+  max-height: 15px;
+  
+  
 }
 .table_lista{
   padding-top: 1px;
@@ -737,6 +797,26 @@ input[type="radio"]{
 }
 #table-btn:hover{
   background: #727272;
+  cursor: pointer;
+}
+.btnCancel{
+  background: rgba(221, 35, 35, 0.829);
+  color: rgb(255, 255, 255);
+  width: 92px;
+  height: 45px;
+  position: fixed;
+  margin-top: 270px;
+  margin-left: 70px;
+  float: none;
+  font-size: 20px;
+  font-weight: 200;
+  font-family:unset;
+  text-shadow: none;
+  text-decoration: none;
+  box-shadow: none;
+  border-radius: 0px;
+  border: none;
+  transition: 300ms;
   cursor: pointer;
 }
 

@@ -106,7 +106,7 @@ class Dictamen extends React.Component {
             <div className="center">
             <HeaderDEyAE />
                 <DirectorioAlumno />
-                        <div id="sidebar" className="dictamenLeft">
+                        <div id="sidebar" className="liberacionLeft">
                             <div>
                                 <label htmlFor="creditos" className="text_login">Porcentaje de Creditos</label>
                                 <input type="text" className="input_login" name="creditos" placeholder="Ingresa el % de creditos sin decimales" ref={this.creditosRef} onChange={this.changeState}/>

@@ -74,15 +74,18 @@ public class UsuarioRestController {
 		
 			usuarioService.saveUsuario (usuarioDTO);
 			return ResponseEntity.ok(usuarioDTO);
-	
-	
-	
 	}
 	@PatchMapping(path = "/update", consumes = "application/json")
 	public ResponseEntity<?> update(@RequestBody UsuarioDTO usuarioDTO)throws EmptyResultException{
 	usuarioService.updateUsuario(usuarioDTO);
 	//System.out.println(usuarioDTO.getIdUsuario());
 	return ResponseEntity.ok(usuarioDTO);
+	}
+	@PostMapping(path = "/recovery", consumes = "application/json")
+	public ResponseEntity<?> recovery(@RequestBody UsuarioDTO usuarioDTO) throws  EmptyResultException {
+		
+			usuarioService.recoveryPassword (usuarioDTO);
+			return ResponseEntity.ok(usuarioDTO);
 	}
 	
 	@DeleteMapping(path = "/delete/{idUsuario}")

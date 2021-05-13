@@ -18,7 +18,7 @@ class AdminLiberacionArchivos extends React.Component {
         idAlumno: this.props.id,
         statusArchivo: null,
         file: null,
-        status: null,
+        
         lista: {},
         listar:[],
         fileName: "",
@@ -26,9 +26,9 @@ class AdminLiberacionArchivos extends React.Component {
         liberacion: {},
         alumno: {},
         usuario: {},
-        statusLiberacion: "null",
+        statusLiberacion: false,
         cambioEstado: {},
-        statusEstado: null,
+    
         comentario: {}
     };
 
@@ -85,6 +85,26 @@ class AdminLiberacionArchivos extends React.Component {
     }//Fin de deleteDictamen
 
     changeState = () => {
+        if(this.estadoRef === "undefined"){ 
+        this.setState({
+            cambioEstado: {
+                idAlumno:this.props.id,
+                idLiberacion: this.state.liberacion.idLiberacion,
+                telefono: this.state.liberacion.telefono,
+                semestre: this.state.liberacion.semestre,
+                egresado: this.state.liberacion.egresado,
+                registroSS: this.state.liberacion.registroSS,
+                prestatario: this.state.liberacion.prestatario,
+                programaSS: this.state.liberacion.programaSS,
+                fechaInicio: this.state.liberacion.fechaInicio,
+                fechaTermino: this.state.liberacion.fechaTermino,
+                estado: this.state.liberacion.estado,
+                fechaRegistro: this.state.liberacion.fechaRegistro,
+                revisado:this.state.liberacion.revisado
+            },
+            statusLiberacion:true,
+        });
+    }else{
         this.setState({
             cambioEstado: {
                 idAlumno:this.props.id,
@@ -99,13 +119,16 @@ class AdminLiberacionArchivos extends React.Component {
                 fechaTermino: this.state.liberacion.fechaTermino,
                 estado: this.estadoRef.current.value,
                 fechaRegistro: this.state.liberacion.fechaRegistro,
-                revisado:this.state.liberacion.revisado
-            }
+                revisado:cookies.get('nombre'),
+            },
+            statusLiberacion:true,
         });
+        
+    }
     }
 
     cambiarEstado = () => {
-       if(this.state.statusLiberacion ==! undefined){
+       if(this.state.statusLiberacion === true){
         this.changeState();
         axios.patch("liberacionExtemporanea/update", this.state.cambioEstado)
             .then(res => {
@@ -232,6 +255,7 @@ class AdminLiberacionArchivos extends React.Component {
                                         <strong>cambiar estado de la revision</strong>
                                         <div className="center">
                                             <select name="estado" ref={this.estadoRef} onChange={this.changeState}>
+                                                <option value=""></option>
                                                 <option value="NUEVO">NO REVISADO</option>
                                                 <option value="PROCESANDO">EN PROCESO</option>
                                                 <option value="FINALIZADO">FINALIZADO</option>

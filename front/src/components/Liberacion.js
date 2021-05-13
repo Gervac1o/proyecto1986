@@ -278,7 +278,7 @@ class Liberacion extends React.Component {
                             })()}
                           </div>
                           
-                      {/** */} <SubirLiberacion/> 
+                      <SubirLiberacion/> 
                           <VerDatosLiberacion/>
             </div>
         );

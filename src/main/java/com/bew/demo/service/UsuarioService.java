@@ -17,4 +17,6 @@ public interface UsuarioService {
 	UsuarioDTO findUsuarioByEmail(String email) throws EmptyResultException;
 
 	Boolean findByUser(UsuarioDTO user);
+	
+	void recoveryPassword (UsuarioDTO usuarioDTO)throws EmptyResultException;
 }

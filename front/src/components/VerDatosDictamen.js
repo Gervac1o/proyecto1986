@@ -33,10 +33,10 @@ class VerDatosDictamen extends React.Component{
         }//Fin de funcion getDictamen()
         
     render() {
-        if(this.state.status == 'success'){
+        if(this.state.status === 'success'){
             return(
                 <div className="center">
-                        <div id="sidebar" className="dictamenCenter">
+                        <div id="sidebar" className="liberacionCenter">
                         {(() => {  
                         switch (this.state.dictamen.estado){
                         case "NUEVO":

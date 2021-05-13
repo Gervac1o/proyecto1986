@@ -11,14 +11,13 @@ class DatosActualizadosEmail extends React.Component {
 
 
     contraseñaRef = React.createRef();
-    emailRef = React.createRef();
-    confirmarContraseñaRef = React.createRef();
+  
     nuevaContraseñaRef = React.createRef();
-    nuevoEmailRef = React.createRef();
+
     confirmarNuevaContraseña = React.createRef();
 
     state = {
-        confirmarContraseña: "",
+        confirmarContraseña: "null",
         confirmarNuevaContraseña: "",
         nuevaContraseña: "",
         idUsuario: cookies.get('idUsuario'),
@@ -28,273 +27,121 @@ class DatosActualizadosEmail extends React.Component {
         statusNuevoEmail: null,
         statusNuevaContraseña: "false",
         statusNuevaConfirmar: null,
-        usuario: {},
+        usuario: {
+            password:"null"
+        },
         email: "",
         contraseña: "",
-        status: "null",
+        status: false,
         searchEmail: {},
         emailExistente: null,
         ayuda: "false"
     };
 
-    changeState = async (e) => {
+    changeState =  () => {
         
-       await this.setState({
+        this.setState({
             usuario: {
-                email: this.nuevoEmailRef.current.value,
-                contraseña: md5(this.nuevaContraseñaRef.current.value),
-                tipoUsuario: this.props.tipoUsuario,
-                idUsuario: this.state.idUsuario
+               // idUsuario: cookies.get('idUsuario'),
+               
+                password: this.contraseñaRef.current.value,
+                
+                password2: this.nuevaContraseñaRef.current.value,
+
+                confirmPassword:this.confirmarNuevaContraseña.current.value,
+                idUsuario: 95,
+                // idUsuario: cookies.get('idUsuario'),
+
             },
-            confirmarContraseña: md5(this.confirmarNuevaContraseña.current.value),
-            confirmarNuevaContraseña: this.nuevaContraseñaRef.current.value,
-            nuevaContraseña: this.nuevaContraseñaRef.current.value,
-            contraseña: this.contraseñaRef.current.value,
-            email: this.emailRef.current.value
+       
         });  
+
     }//Fin de changeState
 
     update = () => {
-        this.changeState();
-        if(this.state.email && this.state.email !== null && this.state.email !== undefined){
-            if(this.state.contraseña.length >= 5){
-                axios.get("usuario/findByEmail/"+this.state.email)
-                .then(res => {
-                    if(this.state.email === this.state.emailPerfil){
-                        if(this.state.usuario.email && this.state.usuario.email !== null && this.state.usuario.email !== undefined){
-                            if(this.state.usuario.email === this.state.email){
-                                if(this.state.nuevaContraseña.length >= 5 && this.state.nuevaContraseña.length<= 10){
-                                    if(this.state.confirmarNuevaContraseña && this.state.confirmarNuevaContraseña !== null && this.state.confirmarNuevaContraseña !== undefined){
-                                        if(this.state.usuario.contraseña === this.state.confirmarContraseña){
-                                            axios.patch("usuario/update", this.state.usuario)
-                                            .then(res => {
-                                                this.setState({
-                                                    status: "true"
-                                                });
-                                            });
-                                        }else{
-                                            this.setState({
-                                                statusNuevaConfirmar: "false",
-                                                statusNuevaContraseña: "true",
-                                                statusNuevoEmail: "true",
-                                                statusEmail: "true",
-                                                statusContraseña: "true"
-                                            });
-                                        }//Fin de else comparando nuevas contraseñas
-                                    }else{
-                                        this.setState({
-                                            statusNuevaConfirmar: "false",
-                                            statusNuevaContraseña: "true",
-                                            statusNuevoEmail: "true",
-                                            statusEmail: "true",
-                                            statusContraseña: "true"
-                                        });
-                                    }//Fin de Nueva Contraseña Confirmar
-                                }else{
-                                    this.setState({
-                                        statusNuevaContraseña: "false",
-                                        statusNuevoEmail: "true",
-                                        statusEmail: "true",
-                                        statusContraseña: "true"
-                                    });
-                                }//Fin de Nueva contraseña
-                            }else{
-                                if(this.state.nuevaContraseña.length >= 5 && this.state.nuevaContraseña.length<= 10){
-                                    if(this.state.confirmarNuevaContraseña && this.state.confirmarNuevaContraseña !== null && this.state.confirmarNuevaContraseña !== undefined){
-                                        if(this.state.usuario.contraseña === this.state.confirmarContraseña){
-                                            axios.get("usuario/findByEmail/" + this.state.usuario.email)
-                                            .then(res =>{
-                                                this.setState({
-                                                    ayuda: "false",
-                                                    emailExistente: "true",
-                                                    statusNuevaConfirmar: "true",
-                                                    statusNuevaContraseña: "true",
-                                                    statusNuevoEmail: "true",
-                                                    statusEmail: "true",
-                                                    statusContraseña: "true"
-
-                                                });
-                                            })
-                                            .catch(error =>{
-                                                this.setState({
-                                                    emailExistente: "false"
-                                                });
-                                            })
-                                            .then(res => {
-                                                if(this.state.emailExistente == "false"){
-                                                    if(this.state.ayuda == "false"){
-                                                        axios.patch("usuario/update", this.state.usuario)
-                                                        .then(res =>{
-                                                            this.setState({
-                                                                status: "true"
-                                                            });
-                                                        })
-                                                        .then(res => {
-                                                            cookies.set('email', this.state.usuario.email , { path: "/" })
-                                                        })
-                                                    }else{
-                                                        this.setState({
-                                                            ayuda: "false"
-                                                        });
-                                                    }
-                                                }else{
-                                                    this.setState({
-                                                        emailExistente: "true",
-                                                        ayuda: "false"
-                                                    });
-                                                }//Fin de else Email Existe
-                                            })
-                                        }else{
-                                            this.setState({
-                                                statusNuevaConfirmar: "false",
-                                                statusNuevaContraseña: "true",
-                                                statusNuevoEmail: "true",
-                                                statusEmail: "true",
-                                                statusContraseña: "true"
-                                            });
-                                        }//Fin de else Comparando Nuevas Contraseñas
-                                    }else{
-                                        this.setState({
-                                            statusNuevaConfirmar: "false",
-                                            statusNuevaContraseña: "true",
-                                            statusNuevoEmail: "true",
-                                            statusEmail: "true",
-                                            statusContraseña: "true"
-                                        });
-                                    }//Fin de Confirmar Nueva Contraseña
-                                }else{
-                                    this.setState({
-                                        statusNuevaContraseña: "false",
-                                        statusNuevoEmail: "true",
-                                        statusEmail: "true",
-                                        statusContraseña: "true"
-                                    });
-                                }//Fin de else nueva contraseña
-                            }//Fin de else no esta ingresando emailPerfil
-                        }else{
-                            this.setState({
-                                statusNuevoEmail: "false",
-                                statusEmail: "true",
-                                statusContraseña: "true"
+        //this.changeState();
+    
+        //console.log(this.state.usuario.password + "fuera del  orimer  ")
+            if(this.state.usuario.password==!undefined || this.state.usuario.password.length >= 6){
+                console.log(this.state.usuario.password + "dentro del segundo  ")
+                if(this.state.usuario.password2.length >= 6 || this.state.usuario.password2 ==! undefined){
+                    console.log(this.state.usuario.password2 + "dentro del segundo  if pass 2 ")
+                    if(this.state.usuario.confirmPassword==!undefined || this.state.usuario.confirmPassword=== this.state.usuario.password2){
+                        console.log(this.state.usuario.confirmPassword + "---confirmPassword ")
+                        try{
+                            axios.patch("usuario/update", this.state.usuario)
+                            .then(res => {
+                                this.setState({
+                                    status: true
+                                });
                             });
-                        }//Fin de else Nuevo Email
-                    }else{
-                        this.setState({
-                            statusEmail: "false",
-                            statusContraseña: "true"
-                        });
-                    }//Fin de else Comparando el email ingresado
-                })
-            }else{
-                this.setState({
-                    statusContraseña: "false"
-                });
-            }//Fin de else contraseña
-        }else{
-            this.setState({
-                statusEmail: "false"
-            });
-        }//Fin de Email
-    }//Fin de update
+                        }
+                        finally{
+                            this.setState({
+                                statusContraseña:false,
+                                emailExistente: "true",
+                                status:false
+                            })
+                        }
 
+
+                    }
+                }
+        
+            }
+                                          
+    }//Fin de update
+                                    
     render() {
-        if(this.state.status === 'true'){
-            window.location.href = './' + this.props.redirect
-        }
+     if(this.state.status === true){
+         window.location.reload(false);
+     }
 
         return (
             <div className = "center">
-                <div id="sidebar" className="registroAlumno">
+                <div id="sidebar" className={this.props.clase}>
+                    <br/>
                     <div>
-                    <label htmlFor="email" className="text_login">Email</label>
-                    <input type="email" className="input_login" name="email" ref={this.emailRef} placeholder="Ingresa quí tu correo electrónico" onChange={this.changeState}/>
-                        {(() => {
-                        switch(this.state.statusEmail){   
-                        case "false":
-                        return (
-                        <a className="warning">¡Ingresa tu correo electrónico para verificar que eres tu!</a>
-                            );
-                            break;
-                        default:
-                        break;
-                        }
-                        })()}
-                    </div>
-                    <div>
-                        <label htmlFor="contraseña" className="text_login">Contraseña</label>
+                    <strong>Cambiar Contraseña</strong>
+                        <label htmlFor="contraseña" className="text_login">Contraseña actual</label>
                         <input type="password" className="input_login" name="contraseña" ref={this.contraseñaRef} placeholder="Ingresa aquí tu contraseña" onChange={this.changeState}/>
                             {(() => {
                             switch(this.state.statusContraseña){   
                             case "false":
                                 return (
-                                <a className="warning">¡Ingresa tu contraseña para verificar que eres tu!</a>
+                                <a className="warning">¡Ingresa tu contraseña!</a>
                                 );
                                 break;
                             default:
                                 break;
                                 }   
                                 })()}
+                                <label htmlFor="nuevaContraseña" className="text_login">Nueva Contraseña</label>
+                                <input type="password" className="input_login" name="nuevaContraseña" ref={this.nuevaContraseñaRef} placeholder="Ingresa aquí tu nueva contraseña" onChange={this.changeState}/>
                     </div>
+
                     <div>
-                    <label htmlFor="nuevoEmail" className="text_login">Nuevo Email</label>
-                    <input type="email" className="input_login" name="nuevoEmail" ref={this.nuevoEmailRef} placeholder="Ingresa quí tu nuevo correo electrónico" onChange={this.changeState}/>
-                        {(() => {
-                        switch(this.state.statusNuevoEmail){   
-                        case "false":
-                        return (
-                        <a className="warning">¡Ingresa un correo electronico valido!</a>
-                            );
-                            break;
-                        default:
-                        break;
-                        }
-                        })()}
-                        {(() => {
-                            switch(this.state.emailExistente){   
-                                case "true":
-                                return (
-                                <a className="warning">¡Este correo ya fue registrado!</a>
-                                );
-                                break;
-                                default:
-                                    break;
-                            }
-                        })()}
-                    </div>
-                    <div>
-                        <label htmlFor="nuevaContraseña" className="text_login">Nueva Contraseña</label>
-                        <input type="password" className="input_login" name="nuevaContraseña" ref={this.nuevaContraseñaRef} placeholder="Ingresa aquí tu nueva contraseña" onChange={this.changeState}/>
+                        <label htmlFor="nuevaContraseña" className="text_login">Confirma tu Nueva Contraseña</label>
+                        <input type="password" className="input_login" name="nuevaContraseña" ref={this.confirmarNuevaContraseña} placeholder="Confirma tu nueva contraseña" onChange={this.changeState}/>
                             {(() => {
                             switch(this.state.statusNuevaContraseña){   
                             case "false":
                                 return (
                                 <a className="warning">¡Ingresa una Nueva Contraseña entre 6 y 10 caracteres!</a>
                                 );
-                                break;
+                               
                             default:
                                 break;
                                 }   
                                 })()}
                     </div>
-                    <div>
-                        <label htmlFor="nuevaContraseñaConfirmar" className="text_login">Confirma Nueva Contraseña</label>
-                        <input type="password" className="input_login" name="nuevaContraseñaConfirmar" ref={this.confirmarNuevaContraseña} placeholder="Confirma aquí tu nueva contraseña" onChange={this.changeState}/>
-                        {(() => {
-                        switch(this.state.statusNuevaConfirmar){   
-                        case "false":
-                            return (
-                            <a className="warning">¡Verifica tu Nueva Contraseña!</a>
-                            );
-                            break;
-                        default:
-                            break;
-                            }   
-                            })()}
-                            </div>
-                            <br/>
+ 
+                          <br/>
                             <button  className = "btn" onClick = {this.update}>Aceptar</button>
+                           
                         </div>
-		    </div>
+                        
+                        </div> 
         );
     }
 }//Fin de classs DatosActualizadosEmail

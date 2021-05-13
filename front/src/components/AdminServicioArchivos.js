@@ -26,7 +26,7 @@ class AdminServicioArchivos extends React.Component {
             idServicio: "null"
         },
         alumno: {},
-        statusServicio: "",
+        statusServicio: false,
         cambioEstado: {
             estado:"NUEVO",
 
@@ -35,7 +35,23 @@ class AdminServicioArchivos extends React.Component {
     };
 
     changeState = () =>{
-      this.setState({
+
+     if(this.estadoRef === "undefined"){  
+        this.setState({
+            cambioEstado:{
+                idAlumno:this.props.id,
+                idServicio: this.state.servicio.idServicio,
+                semestre: this.state.servicio.semestre,
+                responsableDirecto: this.state.servicio.responsableDirecto,
+                estado: this.state.servicio.estado,
+                fechaRegistro: this.state.servicio.fechaRegistro,
+                revisado:this.state.servicio.revisado
+            },
+            statusServicio:true,
+        })  
+    }
+    else{
+        this.setState({
             cambioEstado:{
                 idAlumno:this.props.id,
                 idServicio: this.state.servicio.idServicio,
@@ -43,10 +59,11 @@ class AdminServicioArchivos extends React.Component {
                 responsableDirecto: this.state.servicio.responsableDirecto,
                 estado: this.estadoRef.current.value,
                 fechaRegistro: this.state.servicio.fechaRegistro,
-                revisado:this.state.servicio.revisado
-            }
+                revisado:cookies.get('nombre'),
+            },
+            statusServicio:true,
         })  
-      
+    }
     }//Fin de ChangeState
 
     componentWillMount=()=> {
@@ -61,7 +78,7 @@ class AdminServicioArchivos extends React.Component {
         this.setState({
             servicio: response.data,
             cambioEstado: response.data,
-            statusServicio: response.data.idServicio,
+            
         });
         
     });   
@@ -94,7 +111,7 @@ class AdminServicioArchivos extends React.Component {
     }
     cambiarEstado = () => {
        
-        if(this.state.statusServicio ==! undefined){
+        if(this.state.statusServicio === true){
             this.changeState();
             axios.patch("servicioSocial/update", this.state.cambioEstado)
                  .then(res => {
@@ -175,7 +192,7 @@ class AdminServicioArchivos extends React.Component {
                                 <label htmlFor="btn-modal" className="btn" onClick={this.getEmail}>INFORMACIÓN DE LA SOLICITUD</label>
                                  <div className="modal">
                                 <div className="contenedor">
-                                    <h1>Baja de Servicio Social</h1>
+                                    <h1>Servicio Social</h1>
                                     <label htmlFor="btn-modal">X</label>
                                     <div className="contenido">
                                 <div>
@@ -197,6 +214,7 @@ class AdminServicioArchivos extends React.Component {
                                 <strong>cambiar estado de la revision</strong>
                                 <div className="center">
                                     <select name="estado" ref={this.estadoRef} onChange={this.changeState}>
+                                        <option value=""></option>
                                         <option value="NUEVO">NO REVISADO</option>
                                         <option value="PROCESANDO">EN PROCESO</option>
                                         <option value="FINALIZADO">FINALIZADO</option>

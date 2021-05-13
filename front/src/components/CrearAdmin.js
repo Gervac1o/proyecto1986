@@ -29,8 +29,8 @@ class CrearAdmin extends React.Component {
         this.setState({
             usuario: {
                 email: this.emailRef.current.value,
-                password: md5(this.contraseñaRef.current.value),
-                tipoUsuario: "true",
+                password: this.contraseñaRef.current.value,
+                tipoUsuario: true,
                 status:true
             },
             contraseña: this.contraseñaRef.current.value,
@@ -40,6 +40,9 @@ class CrearAdmin extends React.Component {
         console.log(this.state.statusEmail + "status email")
         console.log(this.state.statusContraseña + "status contraseña dentro del if")
                 
+    }
+    reload=()=>{
+        window.location.reload(false)
     }
 
     saveAdmin = () =>{
@@ -161,6 +164,9 @@ class CrearAdmin extends React.Component {
                                             <strong>Email:</strong> {this.state.usuario.email}
                                                 <br/><br/>
                                                 <strong>Contraseña:</strong>  {this.state.contraseña}
+                                                <br/>
+                                                <br/><br/>
+                                            <button className = "btn" onClick= {this.reload}>Aceptar</button>
                                             </div>
                                                 
                                                 </div>

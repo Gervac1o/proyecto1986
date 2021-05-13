@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 import Slider from './Slider';
 import { Link, Redirect } from 'react-router-dom';
 import Cookies from 'universal-cookie';
+import logo from'../assets/images/user.png';
 const cookies = new Cookies();
 
 class DirectorioAdmin extends Component{
 
     state = {
         email: cookies.get('email'),
-        alumno:{}
+        nombre:cookies.get('nombre'),
+       
     }
 
 	cerrarSesion(){
@@ -34,23 +36,27 @@ class DirectorioAdmin extends Component{
 
 
                     <tbody >
-                        <tr >
+                     <tr >
+                     <th className="table">
+                     <Link to={'/admin/Lista'} className="active">Lista de Alumnos</Link>
+                     </th>
                         <th className="table"><div>
                         <ul>
                             <li>
-                                <Link to='#' className="active">Lista de Alumnos</Link>
+                                <Link to='#' className="active">Buscar por trámite</Link>
                                 <ul>
-                                    <li><Link to={'/admin/Lista'} className="active">TODOS</Link></li>
+                                   
                                     <li><Link to={'/admin/BuscarDictamen'} className="active">DICTAMEN DE 70%</Link></li>
                                     <li><Link to={'/admin/BuscarLiberacion'} className="active">LIBERACIÓN EXTEMPORANEA</Link></li>
                                     <li><Link to={'/admin/BuscarBaja'} className="active">BAJA DE SERVICIO SOCIAL</Link></li>
                                     <li><Link to={'/admin/BuscarServicio'} className="active">SERVICIO SOCIAL</Link></li>
                                 </ul>
-                                </li>
-                            </ul>
+                            </li>
+                        </ul>
                         </div>
-                    </th>
-                            <th className="table"><div>
+                         </th>
+                            <th className="table">
+                                <div>
                                 <ul>
                                     <li>
                                         <Link to='#' className="active">Buscar Alumno</Link>
@@ -67,8 +73,29 @@ class DirectorioAdmin extends Component{
                                 </div>
                             </th>
                             <th className="table"><Link to='/admin/Crearadmin' className = "active">Crear Administrador</Link></th>
-                            <th className="table"><Link to='/admin/MisDatosAdmin' className = "active">Datos Personales</Link></th>
-                            <th className="table"><button id ="table-btn" onClick={this.cerrarSesion}>cerrar sesion</button></th>
+                             {/* <th className="table"><Link to='/admin/MisDatosAdmin' className = "active">Datos de Admin</Link></th>*/}
+                            {/*<th className="table"><button id ="table-btn" onClick={this.cerrarSesion}>cerrar sesion</button></th>*/}
+                     <th className="table" >
+                         <div >
+                        
+                        <ul>
+                            <li>
+                                <Link to='#' className="active">{this.state.nombre}...</Link>
+                                <ul>
+                                   
+                                    <li className="active" ><Link to='/admin/MisDatosAdmin' className = "active">Configuración</Link></li>
+                                    <li className="active"  > <button id ="table-btn" onClick={this.cerrarSesion}>cerrar sesion</button></li>
+                                    
+                                </ul>
+                                
+                            </li>
+                            
+                            
+                        </ul>
+                        <img src={logo} id ="user"></img>
+                        </div>
+
+                    </th>
                         </tr>
                     </tbody>
                 </div>

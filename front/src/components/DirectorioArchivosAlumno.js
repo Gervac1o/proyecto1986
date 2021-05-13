@@ -123,7 +123,7 @@ class DirectorioArchivosAlumno extends Component {
                             <td className="table_lista"><button class="btn" id= "btn-table" onClick={this.tramite4} > Servicio Social</button></td>
                         </tr>
                         <tr>
-                            <td className="table_lista"><button class="btn" id= "btn-table" onClick={this.tramite5} > Recuperar contraseña</button></td>
+                            <td className="table_lista"><button class="btn" id= "btn-table" onClick={this.tramite5} > Restablecer contraseña de alumno</button></td>
                         </tr>
                     </tr>
                 </tbody>

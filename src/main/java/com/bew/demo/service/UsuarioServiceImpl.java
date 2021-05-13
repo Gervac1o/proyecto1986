@@ -128,11 +128,27 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public void updateUsuario(UsuarioDTO usuarioDTO) throws EmptyResultException {
-        // TODO Auto-generated method stub
+     
         Usuario usuario;
-        Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-        usuario = (mapper.map(usuarioDTO, Usuario.class));
-        usuarioRepository.save(usuario);
+        Long idUsuario = usuarioDTO.getIdUsuario(); 
+        
+        Optional<Usuario> opUsuario = usuarioRepository.findById(idUsuario);
+        usuario = opUsuario.get();
+        
+        String encPassword = DigestUtils.md5DigestAsHex(usuarioDTO.getPassword().getBytes());
+        usuarioDTO.setPassword(encPassword);
+       
+        System.out.println("id del dot que viene del usuario" + usuario.getPassword());
+        System.out.println("id del dot que viene del usuarioDTO" + usuarioDTO.getPassword());
+        
+        if (usuario.getPassword().equals(usuarioDTO.getPassword())) {
+        	System.out.println("passwor dentro del if " + idUsuario);
+        	usuario.setPassword(DigestUtils.md5DigestAsHex(usuarioDTO.getPassword2().getBytes()));
+        	usuarioRepository.save(usuario);
+        }
+        else {
+        	throw new EmptyResultException("Password incorrecto");
+        }
     }
 
     @Override
@@ -166,5 +182,18 @@ public class UsuarioServiceImpl implements UsuarioService{
         String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
         return usuarioRepository.findByEmailPassword(user.getEmail(),password);
     }
+
+	@Override
+	public void recoveryPassword(UsuarioDTO usuarioDTO) throws EmptyResultException {
+		Usuario usuario = null;
+		usuario=usuarioRepository.findById(usuarioDTO.getIdUsuario()).orElseThrow(() -> new EmptyResultException("Sin Resultados"));
+       
+        String encPassword = DigestUtils.md5DigestAsHex(usuarioDTO.getPassword().getBytes());
+        
+        usuario.setPassword(encPassword);
+        
+        usuarioRepository.save(usuario);
+		
+	}
 
 }

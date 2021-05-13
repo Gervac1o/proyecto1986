@@ -11,6 +11,7 @@ class AdminDictamenArchivos extends React.Component {
 
 
     estadoRef = React.createRef();
+    
 
     comentarioRef = React.createRef();
 
@@ -26,7 +27,7 @@ class AdminDictamenArchivos extends React.Component {
         dictamen: {},
         alumno: {},
         usuario: {},
-        statusDictamen: "null",
+        statusDictamen: false,
         cambioEstado: {},
         
         statusEstado: null,
@@ -60,11 +61,11 @@ class AdminDictamenArchivos extends React.Component {
             .then(response => {
                 this.setState({
                     dictamen: response.data,
-                    statusDictamen: response.data.idDictamen,
+                   
                     cambioEstado:response.data,
                 });
             }); 
-        
+           
     
             
     }//Fin de getDictamen()
@@ -77,6 +78,7 @@ class AdminDictamenArchivos extends React.Component {
                     alumno: response.data,
                 });
             });
+           
     }//Fin de getAlumno()
 
     deleteDictamen = () => {
@@ -87,30 +89,54 @@ class AdminDictamenArchivos extends React.Component {
     }//Fin de deleteDictamen
 
     changeState = () => {
-        this.setState({
+      
+        if(this.estadoRef === "undefined"){
+            this.setState({
    
-            cambioEstado: {
-                idAlumno: this.props.id,
-                idDictamen: this.state.dictamen.idDictamen,
-                semestre: "SEPTIMO",
-                porcentajeCreditos: this.state.dictamen.porcentajeCreditos,
-                estado: this.estadoRef.current.value,
-                fechaRegistro: this.state.dictamen.fechaRegistro,
-                revisado:this.state.dictamen.revisado
-            }
-        });
-       
+                cambioEstado: {
+                    idAlumno: this.props.id,
+                    idDictamen: this.state.dictamen.idDictamen,
+                    semestre: "SEPTIMO",
+                    porcentajeCreditos: this.state.dictamen.porcentajeCreditos,
+                    estado: this.state.dictamen.estado,
+                    fechaRegistro: this.state.dictamen.fechaRegistro,
+                    revisado:this.state.dictamen.revisado
+                },
+            statusDictamen: true,
+            });
+        }
+        else{
+            this.setState({
+   
+                cambioEstado: {
+                    idAlumno: this.props.id,
+                    idDictamen: this.state.dictamen.idDictamen,
+                    semestre: "SEPTIMO",
+                    porcentajeCreditos: this.state.dictamen.porcentajeCreditos,
+                    estado: this.estadoRef.current.value,
+                    fechaRegistro: this.state.dictamen.fechaRegistro,
+                    revisado:cookies.get('nombre'),
+                },
+            statusDictamen: true,
+            });
+
+        }
+      
+
+        console.log("esta en estado ref" +this.estadoRef )
+        console.log("esta en Status dictamen" +this.state.statusDictamen )  
     }
 
     cambiarEstado = () => {
-        if(this.state.statusDictamen ==! undefined){
+        if(this.state.statusDictamen === true){
             this.changeState();
+            console.log(this.state.cambioEstado.estado)
             axios.post("user/dictamen/update", this.state.cambioEstado)
                 .then(res => {
                     this.getDictamen();
                 });
         }else{
-            console.log("esta en undefined el id dictamen")
+            console.log("esta en undefined el id dictamen" )
         }
 
     }//Fin de Cambiar Estado
@@ -185,7 +211,7 @@ class AdminDictamenArchivos extends React.Component {
                         <div>
                             <br />
                             <input type="checkbox" id="btn-modal" />
-                            <label htmlFor="btn-modal" className="btn" onClick={this.getEmail}>INFORMACIÓN DE LA SOLICITUD</label>
+                            <label htmlFor="btn-modal" className="btn" onClick={this.change}>INFORMACIÓN DE LA SOLICITUD</label>
                             <div className="modal">
                                 <div className="contenedor">
                                     <h1>Dictamen de 70%</h1>
@@ -209,6 +235,7 @@ class AdminDictamenArchivos extends React.Component {
                                         <strong>cambiar estado de la revision</strong>
                                         <div className="center">
                                             <select name="estado" ref={this.estadoRef} onChange={this.changeState}>
+                                                <option value=""></option>
                                                 <option value="NUEVO">NO REVISADO</option>
                                                 <option value="PROCESANDO">EN PROCESO</option>
                                                 <option value="FINALIZADO">FINALIZADO</option>

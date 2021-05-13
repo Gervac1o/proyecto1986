@@ -29,6 +29,9 @@ public class Usuario implements Serializable{
 	
 	@Column(name="password")
 	private String password;
+	
+	@Column(name="password2")
+	private String password2;
 
 	@Column(name="tipo_usuario")
 	private Boolean tipoUsuario;
@@ -37,11 +40,12 @@ public class Usuario implements Serializable{
 	private Boolean status;
 	
 	public Usuario() {}
-	public Usuario( Long idUsuario, String email, String password, Boolean tipoUsuario, Boolean status) {
+	public Usuario( Long idUsuario, String email, String password, Boolean tipoUsuario, Boolean status, String password2) {
 		 	
 		this.idUsuario=idUsuario;
 		this.email=email;
 		this.password=password;
+		this.password2=password2;
 		this.tipoUsuario=tipoUsuario;
 		this.status = status;
 		
@@ -64,6 +68,13 @@ public class Usuario implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public void setPassword2(String password2) {
+		this.password2 = password2;
+	}
+	public String getPassword2() {
+		return password2;
+	}
+
 	public Boolean getTipoUsuario() {
 		return tipoUsuario;
 	}

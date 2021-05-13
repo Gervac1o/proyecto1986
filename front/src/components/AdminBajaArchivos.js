@@ -26,11 +26,12 @@ class AdminBajaArchivos extends React.Component {
         alumno: {},
         usuario: {},
         cambioEstado: {},
-        statusBaja: " null",
+        statusBaja: false,
         statusEstado: null,
     };
 
     changeState = () =>{
+        if(this.estadoRef === "undefined"){ 
         this.setState({
             cambioEstado:{
                 idAlumno:this.props.id,
@@ -47,8 +48,31 @@ class AdminBajaArchivos extends React.Component {
                 estado: this.estadoRef.current.value,
                 fechaRegistro: this.state.Baja.fechaRegistro,
                 revisado:this.state.Baja.revisado
-            }
+            },
+            statusBaja:true,
         })
+    }
+    else{
+        this.setState({
+            cambioEstado:{
+                idAlumno:this.props.id,
+                idSolicitud: this.state.Baja.idSolicitud,
+                tipoDeBaja: this.state.Baja.tipoDeBaja,
+                horas: this.state.Baja.horas,
+                semestre: this.state.Baja.semestre,
+                egresado: this.state.Baja.egresado,
+                registroSS: this.state.Baja.registroSS,
+                prestatario: this.state.Baja.prestatario,
+                programaSS: this.state.Baja.programaSS,
+                fechaInicio: this.state.Baja.fechaInicio,
+                fechaTermino: this.state.Baja.fechaTermino,
+                fechaRegistro: this.state.Baja.fechaRegistro,
+                estado: this.estadoRef.current.value,
+                revisado:cookies.get('nombre'),
+            },
+            statusBaja:true,
+        })  
+    }
     }
     componentWillMount = () => {
        this.getLista();
@@ -60,11 +84,10 @@ class AdminBajaArchivos extends React.Component {
         .then(response => {
         this.setState({
             Baja: response.data,
-            statusBaja: response.idSolicitud,
             cambioEstado:response.data,
         });
         } );   
-       
+       console.log("id props " + this.state.Baja.tipoDeBaja)
     }//Fin de getTipoBaja()
 
  
@@ -97,7 +120,7 @@ class AdminBajaArchivos extends React.Component {
     }
 
     cambiarEstado = () => {
-        if(this.state.statusBaja ==! undefined){
+        if(this.state.statusBaja === true){
             
         this.changeState();
         axios.patch("solicitudBaja/update", this.state.cambioEstado)
@@ -106,7 +129,7 @@ class AdminBajaArchivos extends React.Component {
             });
         }
         else{
-            console.log("elid de baaja es undefined")
+            console.log("elid de baaja es " +this.state.statusBaja)
         }
     }//Fin de Cambiar Estado
 
@@ -216,6 +239,7 @@ class AdminBajaArchivos extends React.Component {
                                 <strong>cambiar estado de la revision</strong>
                                 <div className="center">
                                     <select name="estado" ref={this.estadoRef} onChange={this.changeState}>
+                                         <option value=""></option>
                                         <option value="NUEVO">NO REVISADO</option>
                                         <option value="PROCESANDO">EN PROCESO</option>
                                         <option value="FINALIZADO">FINALIZADO</option>
