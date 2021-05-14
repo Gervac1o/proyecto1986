@@ -939,7 +939,7 @@ ul li ul li {
 ul li ul li a {display:block !important;} 
 ul li ul li:hover {background: #343a40;}
 #state_new{
-  background-color:rgb(255, 115, 0);
+  background-color:rgba(0, 195, 255, 0.801);
   color: white;
   width: 80px;
   height: 45px;
@@ -951,7 +951,7 @@ ul li ul li:hover {background: #343a40;}
   text-transform: uppercase;
 }
 #state_processing{
-  background-color:blue;
+  background-color:rgb(255, 235, 58);
   color: white;
   width: 80px;
   height: 45px;
@@ -963,7 +963,7 @@ ul li ul li:hover {background: #343a40;}
   text-transform: uppercase;
 }
 #state_finished{
-  background-color: green;
+  background-color: rgba(77, 197, 47, 0.849);
   color: white;
   width: 80px;
   height: 45px;
@@ -975,7 +975,7 @@ ul li ul li:hover {background: #343a40;}
   text-transform: uppercase;
 }
 #state_rejected{
-  background-color: #343a40;
+  background-color: #ff0000a1;
   color: white;
   width: 80px;
   height: 45px;

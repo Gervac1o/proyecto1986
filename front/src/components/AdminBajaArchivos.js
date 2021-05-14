@@ -226,7 +226,26 @@ class AdminBajaArchivos extends React.Component {
                                     <strong>Fecha de Inicio:</strong>{this.state.Baja.fechaInicio} 
                                 </div>
                                 <div>
-                                    <strong>Fecha de Término:</strong>{this.state.Baja.fechaTermino}
+                                {(() => {  
+                                    switch (this.state.cambioEstado.estado){
+                                        case "NUEVO":
+                                            return (
+                                                <a id="state_new">NUEVO</a>
+                                                    );
+                                            case "PROCESANDO":
+                                                return(
+                                                   <a id="state_processing">EN PROCESO</a>
+                                                );
+                                            case "FINALIZADO":
+                                                return(
+                                                   <a id="state_finished">TERMINADO</a>
+                                                );
+                                            case "RECHAZADO":
+                                                return(
+                                                   <a id="state_rejected">RECHAZADO</a>
+                                                );
+                                    }
+                                })()}
                                 </div>
                                 
                                 <div>

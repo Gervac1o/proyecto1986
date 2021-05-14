@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Slider from './Slider';
 import { Link, Switch } from 'react-router-dom';
 import DirectorioAdmin from './DirectorioAdmin';
 import Cookies from 'universal-cookie';
-import AlumnoDetalle from './AlumnoDetalle';
-import AlumnoDictamen from './AlumnoDictamen';
-import AlumnoBaja from './AlumnoBaja';
-import AlumnoServicio from './AlumnoServicio';
-import AlumnoLiberacion from './AlumnoLiberacion';
 import AdminBajaArchivos from './AdminBajaArchivos';
 import AdminDictamenArchivos from './AdminDictamenArchivos';
 import AdminLiberacionArchivos from './AdminLiberacionArchivos';
