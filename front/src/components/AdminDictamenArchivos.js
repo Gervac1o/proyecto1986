@@ -229,8 +229,26 @@ class AdminDictamenArchivos extends React.Component {
                                         <div>
                                             <strong>Revisado por: </strong> {this.state.dictamen.revisado}
                                         </div>
-                                        <div>
-                                            <strong>Estado:</strong>{this.state.dictamen.estado}
+                                        <div> {(() => {  
+                                        switch (this.state.cambioEstado.estado){
+                                            case "NUEVO":
+                                             return (
+                                                 <a id="state_new">NUEVO</a>
+                                                     );
+                                             case "PROCESANDO":
+                                                 return(
+                                                    <a id="state_processing">EN PROCESO</a>
+                                                 );
+                                             case "FINALIZADO":
+                                                 return(
+                                                    <a id="state_finished">TERMINADO</a>
+                                                 );
+                                             case "RECHAZADO":
+                                                 return(
+                                                    <a id="state_rejected">RECHAZADO</a>
+                                                 );
+                                        }
+                                        })()}
                                         </div>
                                         <strong>cambiar estado de la revision</strong>
                                         <div className="center">
