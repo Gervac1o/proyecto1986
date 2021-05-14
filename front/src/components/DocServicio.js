@@ -22,7 +22,7 @@ class DocServicio extends React.Component{
         if(this.state.status == "true"){
             return(
                 <div>
-                        <iframe  src={this.url + "docServicio/getDoc/" + this.state.docServicio}></iframe>
+                        <iframe  src={"http://localhost:8080/docServicio/getDoc/" + this.state.docServicio}></iframe>
                 </div>
             );
         }

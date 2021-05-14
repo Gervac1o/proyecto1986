@@ -22,7 +22,7 @@ class VerDatosDictamen extends React.Component{
 
         getDictamen = () => {
             console.log("entrando al get dictamen con el idAlumno" + this.state.idAlumno)
-            axios.get("dictamen/findIdAlumno/" + this.state.idAlumno)
+            axios.get("user/dictamen/findIdAlumno/" + this.state.idAlumno)
             .then(res => {
                     this.setState({
                         dictamen: res.data,
@@ -33,10 +33,10 @@ class VerDatosDictamen extends React.Component{
         }//Fin de funcion getDictamen()
         
     render() {
-        if(this.state.status == 'success'){
+        if(this.state.status === 'success'){
             return(
                 <div className="center">
-                        <div id="sidebar" className="dictamenCenter">
+                        <div id="sidebar" className="liberacionCenter">
                         {(() => {  
                         switch (this.state.dictamen.estado){
                         case "NUEVO":

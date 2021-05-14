@@ -48,7 +48,7 @@ class AlumnoBaja extends React.Component{
            this.getTipoBaja();
         }
         getAlumno = () => {
-            axios.get(this.url +"alumno/find/"+ this.props.id)
+            axios.get("alumno/find/"+ this.props.id)
             .then(response => {
             this.setState({
                 alumno: response.data,
@@ -57,7 +57,7 @@ class AlumnoBaja extends React.Component{
         }//Fin de getAlumno()
     
     getTipoBaja = () => {
-        axios.get(this.url +"solicitudBaja/findIdAlumno/"+ this.props.id)
+        axios.get("solicitudBaja/findIdAlumno/"+ this.props.id)
         .then(response => {
         this.setState({
             tipoBaja: response.data,
@@ -67,7 +67,7 @@ class AlumnoBaja extends React.Component{
     }//Fin de getTipoBaja()
 
     getEmail = () => {
-        axios.get(this.url +"usuario/find/"+ this.state.alumno.idUsuario)
+        axios.get("usuario/find/"+ this.state.alumno.idUsuario)
         .then(response => {
         this.setState({
             usuario: response.data,

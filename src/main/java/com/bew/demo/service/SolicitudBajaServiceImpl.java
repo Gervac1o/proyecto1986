@@ -50,10 +50,10 @@ public class SolicitudBajaServiceImpl implements SolicitudBajaService {
 	}
 
 	@Override
-	public SolicitudBajaDTO findByIdAlumno(Long idAlumno) {
+	public SolicitudBajaDTO findByIdAlumno(Long idAlumno)throws EmptyResultException {
 		SolicitudBajaDTO solicitudDTO = new SolicitudBajaDTO(); 
 		SolicitudBaja solicitud = null;
-		Optional<SolicitudBaja> opSolicitud = solicitudRepository.findByIdAlumno(idAlumno);
+		Optional<SolicitudBaja> opSolicitud = Optional.ofNullable(solicitudRepository.findByIdAlumno(idAlumno).orElseThrow(()-> new EmptyResultException ("sin resultados")));
 		solicitud = opSolicitud.get();
 		
 		Mapper mapper = DozerBeanMapperBuilder.buildDefault();

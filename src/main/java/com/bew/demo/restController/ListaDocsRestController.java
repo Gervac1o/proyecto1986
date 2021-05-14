@@ -81,6 +81,7 @@ public class ListaDocsRestController {
 	@PatchMapping(path = "/update", consumes = "application/json")
 	public ResponseEntity<?> update(@RequestBody ListaDocsDTO listaDocsDTO){
 		listaDocsService.updateListaDocs(listaDocsDTO);
+		
 	return ResponseEntity.ok().build();
 	}
 	

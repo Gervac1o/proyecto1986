@@ -1,14 +1,14 @@
 import React from 'react';
 import { Redirect,Link } from 'react-router-dom';
 import axios from 'axios';
-
 import BorrarDoc from './BorrarDoc';
 import ActualizarComentario from './ActualizarComentario';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 class AdminBajaArchivos extends React.Component {
 
-
-    
+    estadoRef = React.createRef();
     comentarioRef=React.createRef();
 
     state = {
@@ -18,19 +18,122 @@ class AdminBajaArchivos extends React.Component {
         status: null,
         lista: {},
         listar:[],
-        fileName: "",
-        comentar: ""
+
+        comentario:{},
+        Baja: {
+            idSolicitud:"null"
+        },
+        alumno: {},
+        usuario: {},
+        cambioEstado: {},
+        statusBaja: false,
+        statusEstado: null,
     };
 
-    componentWillMount = () => {
-        this.getLista();
-    } 
-
-    changeState = () => {
+    changeState = () =>{
+        if(this.estadoRef === "undefined"){ 
         this.setState({
-            comentar: this.comentarioRef.current.value
-        });
+            cambioEstado:{
+                idAlumno:this.props.id,
+                idSolicitud: this.state.Baja.idSolicitud,
+                tipoDeBaja: this.state.Baja.tipoDeBaja,
+                horas: this.state.Baja.horas,
+                semestre: this.state.Baja.semestre,
+                egresado: this.state.Baja.egresado,
+                registroSS: this.state.Baja.registroSS,
+                prestatario: this.state.Baja.prestatario,
+                programaSS: this.state.Baja.programaSS,
+                fechaInicio: this.state.Baja.fechaInicio,
+                fechaTermino: this.state.Baja.fechaTermino,
+                estado: this.estadoRef.current.value,
+                fechaRegistro: this.state.Baja.fechaRegistro,
+                revisado:this.state.Baja.revisado
+            },
+            statusBaja:true,
+        })
     }
+    else{
+        this.setState({
+            cambioEstado:{
+                idAlumno:this.props.id,
+                idSolicitud: this.state.Baja.idSolicitud,
+                tipoDeBaja: this.state.Baja.tipoDeBaja,
+                horas: this.state.Baja.horas,
+                semestre: this.state.Baja.semestre,
+                egresado: this.state.Baja.egresado,
+                registroSS: this.state.Baja.registroSS,
+                prestatario: this.state.Baja.prestatario,
+                programaSS: this.state.Baja.programaSS,
+                fechaInicio: this.state.Baja.fechaInicio,
+                fechaTermino: this.state.Baja.fechaTermino,
+                fechaRegistro: this.state.Baja.fechaRegistro,
+                estado: this.estadoRef.current.value,
+                revisado:cookies.get('nombre'),
+            },
+            statusBaja:true,
+        })  
+    }
+    }
+    componentWillMount = () => {
+       this.getLista();
+        //this.getAlumno();
+           this.getBaja();
+    } 
+    getBaja = () => {
+        axios.get("solicitudBaja/findIdAlumno/"+ this.props.id)
+        .then(response => {
+        this.setState({
+            Baja: response.data,
+            cambioEstado:response.data,
+        });
+        } );   
+       console.log("id props " + this.state.Baja.tipoDeBaja)
+    }//Fin de getTipoBaja()
+
+ 
+
+    
+    getAlumno = () => {
+        axios.get("/alumno/find/" + this.state.idAlumno)
+            .then(response => {
+                this.setState({
+                    alumno: response.data,
+                });
+            });
+    }//Fin de getAlumno()
+
+    deleteTipoBaja = () => {
+        axios.delete("solicitudBaja/delete/"+this.props.id)
+        .then(res => {
+            window.location.href = "./" + this.props.id
+        })
+    }//Fin de deleteTipoBaja
+
+    cancelComentario = () => {
+        this.setState({
+            comentario: {
+                status: "false",
+                texto: ""
+            },
+            statusComentario: "true"
+        })
+    }
+
+    cambiarEstado = () => {
+        if(this.state.statusBaja === true){
+            
+        this.changeState();
+        axios.patch("solicitudBaja/update", this.state.cambioEstado)
+            .then(res => {
+                this.getBaja();
+            });
+        }
+        else{
+            console.log("elid de baaja es " +this.state.statusBaja)
+        }
+    }//Fin de Cambiar Estado
+
+
 
     fileChange = (event) => {
        this.setState({
@@ -39,7 +142,7 @@ class AdminBajaArchivos extends React.Component {
     }
 
     getLista = () => {
-        axios.get(this.url + "lista/findBaja/" + this.props.id)
+        axios.get( "lista/findBaja/" + this.props.id)
             .then(response => {
                 this.setState({
                     listar: response.data,
@@ -48,7 +151,7 @@ class AdminBajaArchivos extends React.Component {
     }
 
     guardarLista = async (e) => {
-        await axios.post(this.url + "lista/save", this.state.lista)
+        await axios.post("lista/save", this.state.lista)
         .then(res => {
             this.setState({
                 status: "true"
@@ -62,7 +165,7 @@ class AdminBajaArchivos extends React.Component {
             console.log(this.state);
             fd.append('file', this.state.file, this.state.file.name)
             console.log(this.state.file.name)
-                axios.post(this.url + "docBaja/upload/" + this.state.file.name + this.props.id, fd)
+                axios.post("docBaja/upload/" + this.state.file.name + this.props.id, fd)
                     .then(res =>{
                         this.setState({
                             lista:{
@@ -75,6 +178,7 @@ class AdminBajaArchivos extends React.Component {
                             statusArchivo: "true"
                         })
                         this.guardarLista();
+                        window.location.reload(false);
                     });
         }else{
             this.setState({
@@ -83,19 +187,77 @@ class AdminBajaArchivos extends React.Component {
         }//Fin de else file
     }//Fin de funcion upLoad
     render() {
-        if(this.state.status == "true"){
-            window.location.href = './' + this.props.id;
-        }
-        if(this.state.listar.length >=1){
-            return (
+        return (
                 <div className="center">
                             <div id="sidebar" className="archivosAdminCenter">
-                            <strong>DOCUMENTACIÓN BAJA DE SERVICIO SOCIAL</strong>
+                            <br />
+                            <strong>BAJA DE SERVICIO SOCIAL</strong>
                                 <div>
                                 <br/>
-                                    <tbody>
+                                <input type="checkbox" id="btn-modal" />
+                            <label htmlFor="btn-modal" className="btn" onClick={this.getEmail}>INFORMACIÓN DE LA SOLICITUD</label>
+                                 <div className="modal">
+                                <div className="contenedor">
+                                    <h1>Baja de Servicio Social</h1>
+                                    <label htmlFor="btn-modal">X</label>
+                                    <div className="contenido">
+                                <div>
+                                    <strong>Fecha de Registro:</strong>{this.state.Baja.fechaRegistro}
+                                </div>
+                                <div>
+                                    <strong>Semestre:</strong> {this.state.Baja.semestre}
+                                </div>
+                                <div>
+                                    <strong>Registro de Servicio Social:</strong>{this.state.Baja.registroSS}
+                                </div>
+                                <div>
+                                    <strong>Tipo de Baja:</strong>{this.state.Baja.tipoDeBaja} 
+                                </div>
+                                <div>
+                                    <strong>Horas:</strong>{this.state.Baja.horas} 
+                                </div>
+                                <div>
+                                    <strong>Programa de Servicio Social:</strong>{this.state.Baja.programaSS}
+                                </div>
+                                <div>
+                                    <strong>Prestatario:</strong> {this.state.Baja.prestatario}
+                                </div>
+                                <div>
+                                    <strong>Fecha de Inicio:</strong>{this.state.Baja.fechaInicio} 
+                                </div>
+                                <div>
+                                    <strong>Fecha de Término:</strong>{this.state.Baja.fechaTermino}
+                                </div>
+                                
+                                <div>
+                                    <strong>Revisado por: </strong> {this.state.Baja.revisado}
+                                </div>
+                                <div>
+                                    <strong>Estado:</strong>{this.state.Baja.estado}
+                                </div>
+                             
+                                <strong>cambiar estado de la revision</strong>
+                                <div className="center">
+                                    <select name="estado" ref={this.estadoRef} onChange={this.changeState}>
+                                         <option value=""></option>
+                                        <option value="NUEVO">NO REVISADO</option>
+                                        <option value="PROCESANDO">EN PROCESO</option>
+                                        <option value="FINALIZADO">FINALIZADO</option>
+                                        <option value="RECHAZADO">RECHAZADO</option>
+                                    </select>
+                                    <button className="btn_join" onClick={this.cambiarEstado}>Actualizar</button>
+                                    <br />
+                                </div>
+                                <br />
+                                <button id="btn_deleteRegistro" onClick={this.deleteDictamen}>Borrar Registro</button>
+                            </div>
+                            </div>
+                        </div>{/**fincontenedor */}
+                        <br />
+                        <br />  
+                                <tbody>
                                         <tr>
-                                            <td className="table_lista"><strong>Archivo</strong></td>
+                                            <td className="table_lista"><strong>Documentos</strong></td>
                                             <td className="table_lista"><strong>Comentario</strong></td>
                                         </tr>
                                     </tbody>
@@ -123,8 +285,8 @@ class AdminBajaArchivos extends React.Component {
                                             </tr>
                                     </tbody>
                                     )}
-                                    <br/>
-                                    <a className="text_login">Subir Archivo</a>
+                                    <br />
+                                    <div  className="archivosAdminCenter" ><strong>Enviar archivo PDF</strong></div> <br />  
                                     <input type="file" name = "file" onChange={this.fileChange} />
                                     {(() => {
                                     switch(this.state.statusArchivo){   
@@ -138,73 +300,16 @@ class AdminBajaArchivos extends React.Component {
                                     }
                                     })()} 
                                 </div>
-                                <div>
-                                    <label htmlFor="comentario" className="text_login">Comentario Informativo</label>
-                                    <input type="text" className="input_login" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onChange={this.changeState}/>
-                                </div>
                                 <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
+                                <button className="btn"  onClick = {this.upLoad}>ENVIAR</button> 
                             </div>
                 </div>
             );
-        }else if(this.state.listar.length == 0){
-            return (
-                <div className="center">
-                            <div id="sidebar" className="archivosAdminCenter">
-                                <div>
-                                <strong>SIN DOCUMENTACION PARA BAJA DE SERVICIO SOCIAL</strong>
-                                <br/>
-                                <a className="text_login">Subir Archivo</a>
-                                    <input type="file" name = "file"  onChange={this.fileChange} />
-                                    {(() => {
-                                    switch(this.state.statusArchivo){   
-                                        case "false":
-                                        return (
-                                        <a className="warning_search">¡Seleccione un Archivo para Registrar!</a>
-                                        );
-                                        break;
-                                        default:
-                                            break;
-                                    }
-                                    })()} 
-                                </div>
-                                <div>
-                                    <label htmlFor="comentario" className="text_login">Comentario Informativo</label>
-                                    <input type="text" className="input_login" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onChange={this.changeState}/>
-                                </div>
-                                <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
-                            </div>
-                </div>
-            );
-        }else{
-            return (
-            <div className="center">
-                        <div id="sidebar" className="archivosAdminCenter">
-                            <div>
-                                Cargando... Espere un momento
-                                <input type="file" name = "file" onChange={this.fileChange} />
-                                {(() => {
-                                    switch(this.state.statusArchivo){   
-                                        case "false":
-                                        return (
-                                        <a className="warning_search">¡Seleccione un Archivo para Registrar!</a>
-                                        );
-                                        break;
-                                        default:
-                                            break;
-                                    }
-                                    })()} 
-                            </div>
-                            <div>
-                                <label htmlFor="comentario" className="text_login">Comentario Informativo</label>
-                                <input type="text" className="input_login" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onClick={this.upLoad}/>
-                            </div>
-                            <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
-                        </div>
-            </div>
-        );
-    }
+     
+           
+
+           
+    
     }//Fin de Render
 }//Fin de Class AdminBajaArchivos
 export default AdminBajaArchivos;

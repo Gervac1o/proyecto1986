@@ -23,7 +23,7 @@ class BuscarDictamenAlumnos extends Component{
     }
 
     getDictamenes = () => {
-        axios.get("dictamen/findAll")
+        axios.get("user/dictamen/findAll")
             .then(response => {
                 this.setState({
                     dictamenes: response.data,
@@ -54,7 +54,7 @@ class BuscarDictamenAlumnos extends Component{
     }
 
     getNew = () => {
-        axios.get("dictamen/findEstado/NUEVO")
+        axios.get("user/dictamen/findEstado/NUEVO")
             .then(response => {
                 this.setState({
                     dictamenes: response.data,
@@ -65,7 +65,7 @@ class BuscarDictamenAlumnos extends Component{
     }//Fin de getNew
 
     getProcessing = () => {
-        axios.get("dictamen/findEstado/PROCESANDO")
+        axios.get("user/dictamen/findEstado/PROCESANDO")
             .then(response => {
                 this.setState({
                     dictamenes: response.data,
@@ -76,7 +76,7 @@ class BuscarDictamenAlumnos extends Component{
     }//Fin de getProcessing
 
     getFinished = () => {
-        axios.get("dictamen/findEstado/FINALIZADO")
+        axios.get("user/dictamen/findEstado/FINALIZADO")
             .then(response => {
                 this.setState({
                     dictamenes: response.data,
@@ -87,7 +87,7 @@ class BuscarDictamenAlumnos extends Component{
     }//Fin de getFinished
 
     getRejected = () => {
-        axios.get("dictamen/findEstado/RECHAZADO")
+        axios.get("user/dictamen/findEstado/RECHAZADO")
             .then(response => {
                 this.setState({
                     dictamenes: response.data,

@@ -29,7 +29,7 @@ class BuscarBoleta extends React.Component {
         this.changeState();
         if(this.boletaRef.current.value && this.boletaRef.current.value != null && this.boletaRef.current.value != undefined)
         {
-            axios.get(this.url + "alumno/findBoleta/" + this.state.boleta)
+            axios.get("alumno/findBoleta/" + this.state.boleta)
             .then(res => {
             this.setState(
                 {
@@ -89,10 +89,7 @@ class BuscarBoleta extends React.Component {
                                             <td className="table_lista">{this.state.alumno.boleta}</td>
                                             <td className="table_lista">{this.state.alumno.programaAcademico}</td>
                                             <td><Link to={'/admin/DirectorioArchivosAlumno/' + this.state.alumno.idAlumno} id="btn_watch">Ver Archivos</Link></td>
-                                            <td>
-                                                <RecuperacionContraseña
-                                                id={this.state.alumno.idUsuario}/>
-                                            </td>
+
                                         </tr>
                                     </tbody>
                 </div>

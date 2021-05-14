@@ -1,6 +1,7 @@
 package com.bew.demo.service;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.bew.demo.dao.DictamenRepository;
 import com.bew.demo.dto.DictamenDTO;
 import com.bew.demo.exception.EmptyResultException;
+import com.bew.demo.exception.MailRepetidoException;
 import com.bew.demo.model.Dictamen;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
 import com.github.dozermapper.core.Mapper;
@@ -51,17 +53,26 @@ public class DictamenServiceImpl implements DictamenService {
 		return dictamenDTO;
 	}
 	@Override
-	public DictamenDTO findByIdAlumno(Long idAlumno) {
+	public DictamenDTO findByIdAlumno(Long idAlumno) throws EmptyResultException{
 		
 		DictamenDTO dictamenDTO = new DictamenDTO();
 		Dictamen dictamen = null;
-		Optional<Dictamen> opDictamen = dictamenRepository.findByIdAlumno(idAlumno);
+		Optional<Dictamen> opDictamen = Optional.ofNullable(dictamenRepository.findByIdAlumno(idAlumno).orElseThrow(() -> new EmptyResultException("Sin Resultados")));
 		dictamen = opDictamen.get();
+		if(dictamen.getIdDictamen().equals(null)){
+			dictamenDTO.setEstado("null");
+			dictamenDTO.setFechaRegistro("null");
+			dictamenDTO.setIdAlumno(idAlumno);
+			return dictamenDTO;
+			
+		}
+		else {
+			Mapper mapper = DozerBeanMapperBuilder.buildDefault();
+			dictamenDTO = (mapper.map(dictamen, DictamenDTO.class));
+			return dictamenDTO;
+		}
 		
-		Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-		dictamenDTO = (mapper.map(dictamen, DictamenDTO.class));
 		
-		return dictamenDTO;
 	}
 	@Override
 	public void saveDictamen(DictamenDTO dictamenDTO) {

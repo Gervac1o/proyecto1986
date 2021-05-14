@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Slider from './Slider';
-import { Link, Switch } from 'react-router-dom';
+import logo from'../assets/images/user.png';
+import {BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
@@ -13,7 +13,8 @@ class DirectorioAlumno extends Component{
 
 	state = {
         email: cookies.get('email'),
-        tipoUsuario: cookies.get('tipoUsuario')
+        tipoUsuario: cookies.get('tipoUsuario'),
+        nombre: cookies.get('nombre')
     }
 
 	cerrarSesion = () => {
@@ -35,8 +36,30 @@ class DirectorioAlumno extends Component{
                         <th className="table"><Link to='/user/CrearLiberacion' className = "active">Liberacion Extemporanea</Link></th>
                         <th className="table"> <Link to='/user/CrearBaja' className = "active">Baja de Servicio Social</Link></th>
                         <th className="table"><Link to='/user/CrearServicio' className = "active">Documentacion de Servicio Social</Link></th>
-{/**FALTA PONER CONTEXTO USER */}<th className="table"><Link to='/MisDatosAlumno' className = "active">Datos Personales</Link></th>
-                        <th className="table " > <button id ="table-btn" onClick={this.cerrarSesion}>cerrar sesion</button></th>
+{/**FALTA PONER CONTEXTO USER <th className="table"><Link to='/MisDatosAlumno' className = "active">Cuenta</Link></th>*/}
+                       
+                    <th className="table" >
+                        <div >
+                        
+                        <ul>
+                            <li>
+                                <Link to='#' className="active">{this.state.nombre}...</Link>
+                                <ul>
+                                   
+                                    <li className="active" ><Link to='/MisDatosAlumno' className = "active">Configuración</Link></li>
+                                    <li className="active"  > <button id ="table-btn" onClick={this.cerrarSesion}>cerrar sesion</button></li>
+                                    
+                                </ul>
+                                
+                            </li>
+                            
+                            
+                        </ul>
+                        <img src={logo} id ="user"></img>
+                        </div>
+
+                    </th>
+                   
                     </tr>
                 </tbody>
                 </div>

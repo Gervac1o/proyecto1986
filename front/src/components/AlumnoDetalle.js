@@ -16,7 +16,7 @@ class AlumnoBaja extends React.Component{
            this.getAlumno();
         }
         getAlumno = () => {
-            axios.get(this.url +"alumno/find/"+ this.props.id)
+            axios.get("alumno/find/"+ this.props.id)
             .then(response => {
             this.setState({
                 alumno: response.data,
@@ -39,6 +39,7 @@ class AlumnoBaja extends React.Component{
                         <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
                         <td className="table_lista">{this.state.alumno.boleta}</td> 
                         <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                                
                     </tr>
                 </tbody>
             </div>

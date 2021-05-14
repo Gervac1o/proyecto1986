@@ -48,7 +48,7 @@ class AlumnoLiberacion extends React.Component{
         }
 
         getAlumno = () => {
-            axios.get(this.url +"alumno/find/"+ this.props.id)
+            axios.get("alumno/find/"+ this.props.id)
             .then(response => {
             this.setState({
                 alumno: response.data,
@@ -58,7 +58,7 @@ class AlumnoLiberacion extends React.Component{
         }//Fin de getAlumno()
     
     getLiberacion = () => {
-        axios.get(this.url +"liberacionExtemporanea/findIdAlumno/"+ this.props.id)
+        axios.get("liberacionExtemporanea/findIdAlumno/"+ this.props.id)
         .then(response => {
         this.setState({
             liberacion: response.data,
@@ -68,7 +68,7 @@ class AlumnoLiberacion extends React.Component{
     }//Fin de getLiberacion()
 
     getEmail = () => {
-        axios.get(this.url +"usuario/find/"+ this.state.alumno.idUsuario)
+        axios.get("usuario/find/"+ this.state.alumno.idUsuario)
         .then(response => {
         this.setState({
             usuario: response.data,
@@ -104,15 +104,16 @@ class AlumnoLiberacion extends React.Component{
     }//Fin de Cambiar Estado
     
     render(){
-        if(this.state.statusLiberacion == 'success'){
+        if(this.state.statusLiberacion === 'success'){
         return(
             <div className="center">
                 <tbody>
                     <tr >
+                        <th className="table_lista"> </th>
                         <th className="table_lista">Alumno</th>
                         <th className="table_lista">Boleta</th>
                         <th className="table_lista">Programa Academico</th>
-                        <th className="table_lista">Estado de la Solicitud</th>
+                        
                         {(() => {  
                                 switch (this.state.liberacion.estado){
                                 case "NUEVO":
@@ -126,15 +127,16 @@ class AlumnoLiberacion extends React.Component{
                                     ); 
                                     break;
                                 }
-                        })()}
+                        })()}  
                     </tr>
                 </tbody>
                 <tbody>
                     <tr>
+                    <td className="table_lista">Trámite</td>
                         <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
                         <td className="table_lista">{this.state.alumno.boleta}</td> 
                         <td className="table_lista">{this.state.alumno.programaAcademico}</td>
-                        <td className="table_lista">{(() => {  
+                     {/**   <td className="table_lista">{(() => {  
                                 switch (this.state.liberacion.estado){
                                 case "NUEVO":
                                     return (
@@ -171,7 +173,7 @@ class AlumnoLiberacion extends React.Component{
                                     ); 
                                     break;
                                 }
-                                })()}
+                             })()}  
                                 <td>
                                 <input type="checkbox" id="btn-modal"/>
                                 <label htmlFor="btn-modal" className="btn" onClick={this.getEmail}>INFORMACIÓN</label>
@@ -210,6 +212,8 @@ class AlumnoLiberacion extends React.Component{
                                     <br/>
                                     <button className="btn_join" onClick={this.estado}>Cambiar Estado</button>
                                     <br/><br/>
+
+                                    
                                 {(() => {  
                                     switch (this.state.statusEstado){
                                     case "true":
@@ -230,13 +234,13 @@ class AlumnoLiberacion extends React.Component{
                                                 break;
                                                 default: break;
                                                 }
-                                            })()}
+                                            })()}  
                                         <br/>
                                         <button id="btn_deleteRegistro" onClick={this.deleteLiberacion}>Borrar Registro</button>
                                         </div>
-                                    </div>
-                                </div>
-                            </td>
+                                    </div>  
+                                </div>  
+                            </td>*/}
                     </tr>
                 </tbody>
             </div>
@@ -246,43 +250,23 @@ class AlumnoLiberacion extends React.Component{
             <div className="center">
                 <tbody>
                     <tr >
+                    <th className="table_lista"> </th>
                         <th className="table_lista">Alumno</th>
                         <th className="table_lista">Boleta</th>
                         <th className="table_lista">Programa Academico</th>
-                        <th className="table_lista">Estado de la Solicitud</th>
                     </tr>
                 </tbody>
                 <tbody>
                     <tr>
-                        <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
-                        <td className="table_lista">{this.state.alumno.boleta}</td> 
-                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
-                        <td className="table_lista">SIN REGISTRO</td>
+                    <td className="table_lista">Trámite</td>
+                            <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
+                            <td className="table_lista">{this.state.alumno.boleta}</td> 
+                            <td className="table_lista">{this.state.alumno.programaAcademico}</td>
+                        
                     </tr>
                 </tbody>
             </div> 
         );   
-    }else{
-        return(
-            <div className="center">
-                <tbody>
-                    <tr >
-                        <th className="table_lista">Alumno</th>
-                        <th className="table_lista">Boleta</th>
-                        <th className="table_lista">Programa Academico</th>
-                        <th className="table_lista">Estado de la Solicitud</th>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
-                        <td className="table_lista">{this.state.alumno.boleta}</td> 
-                        <td className="table_lista">{this.state.alumno.programaAcademico}</td>
-                        <td className="table_lista">Cargando...</td>
-                    </tr>
-                </tbody>
-            </div>
-        );
     }
 }//Fin de Render ()
 }//Fin de Classs AlumnoLiberacion

@@ -42,7 +42,7 @@ class AlumnoServicio extends React.Component{
         }
 
         getAlumno = () => {
-            axios.get(this.url +"alumno/find/"+ this.props.id)
+            axios.get("alumno/find/"+ this.props.id)
             .then(response => {
             this.setState({
                 alumno: response.data,
@@ -52,7 +52,7 @@ class AlumnoServicio extends React.Component{
         }//Fin de getAlumno()
     
     getServicio = () => {
-        axios.get(this.url +"servicioSocial/findIdAlumno/"+ this.props.id)
+        axios.get("servicioSocial/findIdAlumno/"+ this.props.id)
         .then(response => {
         this.setState({
             servicio: response.data,
@@ -62,7 +62,7 @@ class AlumnoServicio extends React.Component{
     }//Fin de getservicio()
 
     getEmail = () => {
-        axios.get(this.url +"usuario/find/"+ this.state.alumno.idUsuario)
+        axios.get("usuario/find/"+ this.state.alumno.idUsuario)
         .then(response => {
         this.setState({
             usuario: response.data,

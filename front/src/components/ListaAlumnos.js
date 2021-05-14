@@ -13,13 +13,7 @@ class ListaAlumnos extends Component{
 
     componentWillMount() {
         this.getAlumnos();
-        /*var id = this.props.search;
-        if(id && id !=null && id != undefined){
-            this.getAlumnosById(id);
-        }
-        else{
-            this.getAlumnos();
-        }*/
+    
     }
 
     getAlumnos = () => {
@@ -32,43 +26,12 @@ class ListaAlumnos extends Component{
                 console.log(this.state.alumnos);
             });
     }
-    //Funcion Buscar por Id
-/*    getAlumnosById = (id) => {
-        axios.get("alumno/find/"+id)
-            .then(res => {
-                this.setState({
-                    alumnos: res.data,
-                    status: 'success'
-                });
-            })
-                .catch(err => {
-                    this.setState({
-                        alumnos: [],
-                        status: 'success'
-                    });
-                });
-                console.log(this.state.alumnos);
-    }*/
+
     
 render() {
     if(this.state.alumnos.length >=1){
         
-        /*var listAlumnos = this.state.alumnos.map((alumno) =>{
-            return(
-                <article className="item-lista">
-                     <tbody>
-                            <tr>
-                                <td className="table_lista"> {alumno.nombre}</td>
-                                <td className="table_lista"> {alumno.apellidoPaterno}</td>
-                                <td className="table_lista"> {alumno.apellidoMaterno}</td>
-                                <td className="table_lista"> {alumno.email}</td>
-                            </tr>
-                        </tbody>
-                </article>
-
-            );
-        });*/
-        
+   
        return (
         <React.Fragment>
             <DirectorioAdmin />
@@ -85,7 +48,7 @@ render() {
                         <td className="table_lista">{alumno.apellidoPaterno} {alumno.apellidoMaterno} {alumno.nombre}</td>
                         <td className="table_lista">{alumno.boleta}</td> 
                         <td className="table_lista">{alumno.programaAcademico}</td>
-                        <td><Link to={'/DirectorioArchivosAlumno/' + alumno.idAlumno} id="btn_watch">Ver Archivos</Link></td>
+                        <td><Link to={'/admin/DirectorioArchivosAlumno/' + alumno.idAlumno} id="btn_watch">Ver Archivos</Link></td>
                     </tr>
                 </tbody>
                 )
@@ -107,33 +70,7 @@ render() {
             </div>
         );
     }
-       /* return (
-            <React.Fragment>
-                <DirectorioAdmin/>
-                <article className="item-lista">
-                    <tbody >
-                        <tr >
-                            <th className="table_lista">Nombre</th>
-                            <th className="table_lista">Apellido Paterno</th>
-                            <th className="table_lista" >Apellido Paterno</th>
-                            <th className="table_lista">Email</th>
-                        </tr>
-                    </tbody>
-
-                    {this.state.alumnos.map((alumno, i) =>
-                     <tbody key={i}>
-                            <tr>
-                                <td className="table_lista"> {alumno.nombre}</td>
-                                <td className="table_lista"> {alumno.apellidoPaterno}</td>
-                                <td className="table_lista"> {alumno.apellidoMaterno}</td>
-                                <td className="table_lista"> {alumno.email}</td>
-                            </tr>
-                        </tbody>
-                    )
-                    }
-                </article>
-            </React.Fragment>
-        );*/
+ 
     }//Fin de Render
 }//Fin de Class ListaAlumnos
 export default ListaAlumnos;

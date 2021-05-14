@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
-
+import { Redirect,Link } from 'react-router-dom';
 import md5 from 'md5';
 
 class RecuperacionContraseña extends React.Component{
@@ -15,20 +15,30 @@ class RecuperacionContraseña extends React.Component{
         contraseña: null,
         statusContraseña: null,
         status: null,
-        email: ""
+        email: "",
+        clase:this.props.className
     }
-
+    /* HAY QUE ACTIVAR EL ID Y EMAIL DEL STATE*/
     changeState = () =>{
         this.setState({
             recuperar:{
-                idUsuario: this.props.id,
-                email: this.state.usuario.email,
-                contraseña: md5("p4SS"+this.props.id+"dEYAe"),
-                tipoUsuario: "false"
+                idUsuario:95,
+                // idUsuario: this.props.id,
+                email:"fer@gmail.com",
+                //email: this.state.usuario.email,
+                password: "p4SS"+this.props.id+"dEYAe",
+                
             }
         });
+        
     }//Fin de changeState
-
+  componentWillMount = () =>{
+    this.getUsuario();
+    this.setState({
+        contraseña: "true"
+    });
+    console.log(this.props.className)
+  }
     getUsuario = () =>{
         axios.get("usuario/find/"+this.props.id)
         .then(res =>{
@@ -37,17 +47,29 @@ class RecuperacionContraseña extends React.Component{
             });
         });
     }//Fin de getUsuario()
-
+    
     updateContraseña = () =>{
         this.changeState();
+        console.log("update contraseña ")
         if(this.cambioRef.current.value === "SI"){
-            axios.patch("usuario/update", this.state.recuperar)
-            .then(res =>{
-                this.setState({
-                    status: "true"
+            console.log("passwoed" + this.state.recuperar.password)
+            console.log("passwoed" + this.state.recuperar.idUsuario)
+            try{
+                axios.post("usuario/reset", this.state.recuperar)
+                .then(res =>{
+                    this.setState({
+                        status: true,
+                        statusContraseña: "true"
+                    });
                 });
-                this.cancelContraseña();
-            });
+            }
+            finally{
+                this.setState({
+                    statusContraseña: "false"
+                })
+            }
+
+           
         }else{
             this.setState({
                 statusContraseña: "false"
@@ -55,61 +77,57 @@ class RecuperacionContraseña extends React.Component{
         }
     }//Fin de updateContraseña
 
-    contraseña = () => {
-        this.getUsuario();
-        this.setState({
-            contraseña: "true"
-        })
-    }
-
-    cancelContraseña = () => {
-        this.setState({
-            contraseña: "false",
-            statusContraseña: "true"
-        })
-    }
-
     render() {
+        if(this.state.status === true){
+            return(
+                <div className="center">
+                <div id="sidebar" className={ this.props.className}>
+                <br/><br/>
+                <strong>Se restableció la contraseña con éxito</strong>
+                </div>
+                </div>
+                
+            );
+        }
+        else{
             return (
-                <div>
-                    <button className="btn_join" onClick={this.contraseña}>Recuperar Contraseña</button>
-                            {(() => {  
-                                    switch (this.state.contraseña){
-                                    case "true":
-                                    return (
-                                            <div className="table_watch">
-                                                <strong>Cambiar Contraseña</strong>
-                                                <br/>
+                <div className="center">
+                <div id="sidebar" className={ this.props.className}>
+                
+                <br/>
+                                                <strong>¿RESTABLECER CONTRASEÑA?</strong>
+                                                <br/>  
                                                 <select name="actualizar" ref={this.cambioRef} onChange={this.changeState}>
                                                     <option value="NO">NO</option>
                                                     <option value="SI">SI</option>
                                                     </select>
-                                                <br/>
-                                                <strong>Email:</strong> {this.state.usuario.email}
-                                                <br/>
-                                                <strong>Nueva Contraseña:</strong> p4SS{this.props.id}dEYAe
+                                                <br/> 
                                                 {(() => {
                                                 switch(this.state.statusContraseña){   
                                                     case "false":
                                                     return (
-                                                    <a className="warning">¡Seleccione "SI" para restablecer la contraseña!</a>
+                                                    <a className="warning_search">¡Seleccione "SI" para restablecer la contraseña!</a>
                                                     );
                                                     break;
                                                     default:
                                                         break;
                                                 }
-                                                })()}
+                                                })()}<br/>
+                                                <strong>Email:</strong> {this.state.usuario.email}
+                                                <br/> <br/>
+                                                <strong>Nueva Contraseña:</strong> p4SS{this.props.id}dEYAe
+
                                                 <br/><br/>
-                                                <button className="btn_join" onClick={this.updateContraseña}>Actualizar</button>
-                                                <button id="btn_delete" onClick={this.cancelContraseña}>Cancelar</button>
-                                                </div>
-                                                    );
-                                                break;
-                                                default: break;
-                                                }
-                                            })()}
+                                                <button className="btn_join" onClick={this.updateContraseña}>ACEPTAR</button>
+                                                
+                                                
+                                                
+                                                
                 </div>
+                </div>
+                
             );
+                                            }
     }//Fin de Render
 }//Fin de Class Recuperacion Contraseña
-export default RecuperacionContraseña
+export default RecuperacionContraseña;

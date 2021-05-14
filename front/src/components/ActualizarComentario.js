@@ -5,8 +5,8 @@ import axios from 'axios';
 class ActualizarComentario extends React.Component {
 
 
-    
-    comentarioRef=React.createRef();
+
+    comentarioRef = React.createRef();
 
     state = {
         status: null,
@@ -17,7 +17,7 @@ class ActualizarComentario extends React.Component {
 
     changeState = () => {
         this.setState({
-            lista:{
+            lista: {
                 idLista: this.props.idLista,
                 idAlumno: this.props.idAlumno,
                 idDoc: this.props.idDoc,
@@ -26,32 +26,35 @@ class ActualizarComentario extends React.Component {
                 comentario: this.comentarioRef.current.value
             }
         });
+        console.log("comentario " + this.state.lista.comentario)
+        console.log("id doc " + this.state.lista.idLista)
     }
 
     comentario = () => {
         this.setState({
-            comentario: "true"
+            comentario: "true",
+
         })
     }
 
     cancelComentario = () => {
         this.setState({
             comentario: "false",
-            statusComentario: "true"
+
         })
     }
 
-    cambiarComentario = () =>{
+    cambiarComentario = () => {
         this.changeState();
-        if(this.state.lista.comentario && this.state.lista.comentario !==null && this.state.lista.comentario !== undefined){
+        if (this.state.lista.comentario && this.state.lista.comentario !== null && this.state.lista.comentario !== undefined) {
             axios.patch("lista/update", this.state.lista)
-            .then(res =>{
-                this.setState({
-                    status: "true",
-                    statusComentario: "true"
+                .then(res => {
+                    this.setState({
+                        status: "true",
+                        statusComentario: "true"
+                    });
                 });
-            });
-        }else{
+        } else {
             this.setState({
                 statusComentario: "false"
             });
@@ -59,40 +62,36 @@ class ActualizarComentario extends React.Component {
     }//Fin de cambiarComentario
 
     render() {
-        if(this.state.status == "true"){
-            window.location.href = './' + this.props.idAlumno;
+        if (this.state.status == "true") {
+            window.location.reload()
         }
-            return (
-                <div>
-                            <button className="btn_join" onClick={this.comentario}>Status</button>
-                            {(() => {  
-                                    switch (this.state.comentario){
-                                    case "true":
-                                    return (
-                                            <div className="table_watch">
-                                                <label htmlFor="comentario">Actualizar Comentario</label>
-                                                <textarea className="table_watch_text" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onChange={this.changeState}/>
-                                                {(() => {
-                                                switch(this.state.statusComentario){   
-                                                    case "false":
-                                                    return (
-                                                    <a className="warning">¡Ingresa un comentario!</a>
-                                                    );
-                                                    break;
-                                                    default:
-                                                        break;
-                                                }
-                                                })()}
-                                                <button className="btn_join" onClick={this.cambiarComentario}>Actualizar</button>
-                                                <button id="btn_delete" onClick={this.cancelComentario}>Cancelar</button>
-                                                </div>
-                                                    );
-                                                break;
-                                                default: break;
-                                                }
-                                            })()}
-                </div>
-            );
+        return (
+            <div>
+
+                <button className="btn_join" onClick={this.comentario}>comentario</button>
+                
+                {(() => {
+                    switch (this.state.comentario) {
+                        case "true":
+                            return (
+                                <div class="window-notice" id="window-notice">
+                                    <div class="content">
+                                        <h1>Actualizar comentario</h1>
+                                        <textarea className="table_watch_text" name="comentario" placeholder="Ingrese un mensaje informativo" ref={this.comentarioRef} onChange={this.changeState} />
+                                        <br />
+                                        <button className="btn_join" onClick={this.cambiarComentario}>Aceptar</button>
+                                        <br />
+                                        <button className="btn_join_red" onClick={this.cancelComentario}>Cancelar</button>
+                                    </div>
+                                </div>
+                            );
+
+                        default: break;
+                    }
+                })()}
+
+            </div>
+        );
     }//Fin de Render
 }//Fin de Class ActualizarComentario
 export default ActualizarComentario;

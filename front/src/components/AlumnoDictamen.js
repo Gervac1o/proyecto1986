@@ -19,7 +19,7 @@ class AlumnoDictamen extends React.Component{
         dictamen: {},
         alumno: {},
         usuario:{},
-        statusDictamen: null,
+        statusDictamen: 'success',
         cambioEstado: {},
         statusEstado: null,
     };
@@ -43,39 +43,40 @@ class AlumnoDictamen extends React.Component{
             this.getAlumno();
         }
        
-        
+      
         getAlumno = () => {
-            axios.get(this.url +"alumno/find/"+ this.props.id)
+           /*   axios.get("/alumno/find/"+ this.props.id)
             .then(response => {
             this.setState({
                 alumno: response.data,
             });
-            } );   
-        }//Fin de getAlumno()
+            } ); */  
+        }//Fin de getAlumno()   
     
     getDictamen = () => {
-        axios.get(this.url +"dictamen/findIdAlumno/"+ this.props.id)
+        axios.get("user/dictamen/findIdAlumno/"+ this.props.id)
         .then(response => {
         this.setState({
             dictamen: response.data,
-            statusDictamen: 'success'
+            
         });
         } );   
     }//Fin de getDictamen()
 
     getEmail = () => {
-        axios.get(this.url +"usuario/find/"+ this.state.alumno.idUsuario)
+        axios.get("alumno/find/"+ this.state.alumno.idUsuario)
         .then(response => {
         this.setState({
             usuario: response.data,
             });
-        });   
+        }); 
+        alert(this.state.dictamen.revisado)  
     }//Fin de getEmail()
 
     deleteDictamen = () => {
-        axios.delete("dictamen/delete/"+this.props.id)
+        axios.delete("user/dictamen/delete/"+this.props.id)
         .then(res => {
-            window.location.href = "./" + this.props.id
+            window.location.reload()
         })
     }//Fin de deleteDictamen
 
@@ -93,89 +94,26 @@ class AlumnoDictamen extends React.Component{
 
     cambiarEstado = () => {
         this.changeState();
-        axios.post("dictamen/update", this.state.cambioEstado)
+        axios.post("user/dictamen/update", this.state.cambioEstado)
         .then(res =>{
             this.getDictamen();
         });
     }//Fin de Cambiar Estado
 
     render(){
-        if(this.state.statusDictamen == 'success'){
-            return(
-                <div className="center">
-                    <tbody>
-                        <tr >
-                            <th className="table_lista">Alumno</th>
-                            <th className="table_lista">Boleta</th>
-                            <th className="table_lista">Programa Academico</th>
-                            <th className="table_lista">Estado de la Solicitud</th>
-                            {(() => {  
-                                switch (this.state.dictamen.estado){
-                                case "NUEVO":
-                                    return(
-                                        null
-                                    ); 
-                                    break;  
-                                default:
-                                    return(
-                                        <th className="table_lista">Revisado por</th>
-                                    ); 
-                                    break;
-                                }
-                            })()} 
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
-                            <td className="table_lista">{this.state.alumno.boleta}</td> 
-                            <td className="table_lista">{this.state.alumno.programaAcademico}</td>
-                            <td className="table_lista">{(() => {  
-                                switch (this.state.dictamen.estado){
-                                case "NUEVO":
-                                    return (
-                                        <a id="state_new">NO REVISADO</a>
-                                    );
-                                break;
-                                case "PROCESANDO":
-                                    return(
-                                        <a id="state_processing">EN PROCESO</a>
-                                    ); 
-                                    break;  
-                                case "FINALIZADO":
-                                    return(
-                                        <a id="state_finished">FINALIZADO</a>   
-                                    );
-                                case "RECHAZADO":
-                                    return(
-                                        <a id="state_rejected">RECHAZADO</a>
-                                    )
-                                default: 
-                                    break;
-                                }
-                                })()}</td>
-                            {(() => {  
-                                switch (this.state.dictamen.estado){
-                                case "NUEVO":
-                                    return(
-                                        null
-                                    ); 
-                                    break;  
-                                default:
-                                    return(
-                                        <th className="table_lista">{this.state.dictamen.revisado}</th>
-                                    ); 
-                                    break;
-                                }
-                                })()}
-                                <td>
+       
+       
+                           {/* <td className="table_lista">
+                                
+                                
+                             
                                 <input type="checkbox" id="btn-modal"/>
                                 <label htmlFor="btn-modal" className="btn" onClick={this.getEmail}>INFORMACIÓN</label>
                                 <div className="modal">
-                                <div className="contenedor">
+                                  <div className="contenedor">
                                     <h1>Dictamen de 70%</h1>
                                     <label htmlFor="btn-modal">X</label>
-                                    <div className="contenido">
+                                        <div className="contenido">
                                     <div>
                                         <strong>Fecha de Registro:</strong> {this.state.dictamen.fechaRegistro}
                                     </div>
@@ -185,12 +123,17 @@ class AlumnoDictamen extends React.Component{
                                     <div>
                                         <strong>Porcentaje de Creditos:</strong> {this.state.dictamen.porcentajeCreditos}%
                                     </div>
-                                    <div>
-                                        <strong>Correo electrónico:</strong> {this.state.usuario.email}
-                                    </div>
-                                    <br/>
+                    <div>
+                            <strong>Estado:</strong>         {this.state.dictamen.estado}
+                                
+                    </div>
+                    <div>
+                            <strong>Revisado por: </strong>         {this.state.dictamen.revisado}
+                                
+                    </div>
+                                   
                                     <button className="btn_join" onClick={this.estado}>Cambiar Estado</button>
-                                    <br/><br/>
+                                   
                                 {(() => {  
                                     switch (this.state.statusEstado){
                                     case "true":
@@ -208,7 +151,7 @@ class AlumnoDictamen extends React.Component{
                                                 <br/>
                                                 </div>
                                                     );
-                                                break;
+                                                
                                                 default: break;
                                                 }
                                             })()}
@@ -216,55 +159,33 @@ class AlumnoDictamen extends React.Component{
                                         <button id="btn_deleteRegistro" onClick={this.deleteDictamen}>Borrar Registro</button>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </div>
-            );
-        }else if(this.state.statusDictamen != 'success'){
+                                </div>{/**fin del contenedor 
+                            </td>*/}
+        
+       
             return(
                 <div className="center">
                     <tbody>
                         <tr >
+                        <th className="table_lista"> </th>
                             <th className="table_lista">Alumno</th>
                             <th className="table_lista">Boleta</th>
                             <th className="table_lista">Programa Academico</th>
-                            <th className="table_lista">Estado de la Solicitud</th> 
+                            
                         </tr>
                     </tbody>
                     <tbody>
-                        <tr>
+                        <tr>        
+                            <td className="table_lista">Trámite</td>
                             <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
                             <td className="table_lista">{this.state.alumno.boleta}</td> 
                             <td className="table_lista">{this.state.alumno.programaAcademico}</td>
-                            <td className="table_lista">SIN REGISTRO</td>
-                        </tr>
-                    </tbody>
-                </div>
-            );
-        }else{
-            return(
-                <div className="center">
-                    <tbody>
-                        <tr >
-                            <th className="table_lista">Alumno</th>
-                            <th className="table_lista">Boleta</th>
-                            <th className="table_lista">Programa Academico</th> 
-                            <th className="table_lista">Estado de la Solicitud</th>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <td className="table_lista">{this.state.alumno.apellidoPaterno} {this.state.alumno.apellidoMaterno} {this.state.alumno.nombre}</td>
-                            <td className="table_lista">{this.state.alumno.boleta}</td> 
-                            <td className="table_lista">{this.state.alumno.programaAcademico}</td>
-                            <td className="table_lista">Cargando...</td>
+                            
                         </tr>
                     </tbody>
                 </div>
             );
         }
-}//Fin de Render ()
+//Fin de Render ()
 }//Fin de Classs AlumnoDictamen
 export default AlumnoDictamen;

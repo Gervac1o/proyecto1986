@@ -25,9 +25,12 @@ class ServicioSocial extends React.Component {
     state = {
         idAlumno: cookies.get('idAlumno'),
         statusResponsable: null,
-        servicio: {},
-        status: "null",
-        estado: null
+        servicio: {
+            semestre:"SEPTIMO", 
+        },
+
+        status:"false"
+
     };
 
     componentWillMount = () =>{
@@ -35,26 +38,15 @@ class ServicioSocial extends React.Component {
     }
 
     searchServicio = () => {
-        axios.get("servicioSocial/findIdAlumno/"+this.servicioRef)
+        axios.get("servicioSocial/findIdAlumno/"+ this.servicioRef)
         .then(res =>{
             this.setState({
-                servicio: res.data
+                servicio: res.data,
+                //estado: res.data.idServicio,
             });
         })
-        .then(res => {
-            this.setState({
-                estado: this.state.servicio.estado,
-                servicio: {
-                    semestre: null,
-                    responsableDirecto: null,
-                    estado: "NUEVO",
-                    fechaRegistro: null,
-                    revisado: null,
-                    idAlumno: null,
-                    idServicio: null
-                }
-            });
-        });
+       
+       
     }//Fin de search Servicio
 
     changeState = () => {
@@ -64,24 +56,25 @@ class ServicioSocial extends React.Component {
                 responsableDirecto: "",
                 estado: "NUEVO",
                 fechaRegistro: this.fechaRegistroRef,
-                revisado: null,
+                revisado: "null",
                 idAlumno: this.state.idAlumno,
                 idServicio: this.state.idAlumno
             }
         });
-       // console.log(this.state + "Cambiando datos a usuario");
+
     }
 
     saveServicio = (e) => {
-        this.changeState();
-            axios.post(this.url + "servicioSocial/save", this.state.servicio)
+       // this.changeState();
+            axios.post( "servicioSocial/save", this.state.servicio)
             .then(res => {
                 this.setState(
                     {
                         status: "true"
                     }
                 );
-            })
+            });
+
     }//Fin de funcion saveServicio()
     render() {
         if(this.state.status == 'true'){
@@ -96,6 +89,7 @@ class ServicioSocial extends React.Component {
                             <div>
                                 <label htmlFor="semestre" className="text_login">Semestre</label>
                                 <select name="semestre" className="input_login" ref={this.semestreRef} onChange={this.changeState}>
+                                <option label="" ></option>
                                     <option value="SEPTIMO">SEPTIMO</option>
                                     <option value="OCTAVO">OCTAVO</option>
                                     <option value="NOVENO">NOVENO</option>
@@ -103,27 +97,7 @@ class ServicioSocial extends React.Component {
                                     </select>
                             </div>
                             <br/>
-                            {(() => {
-                                switch(this.state.estado){   
-                                    case "NUEVO":
-                                    return (
-                                        <button className="btn" onClick = {this.saveServicio}>Solicitar Constancia de Creditos</button>
-                                    );
-                                    break;
-                                    case undefined:
-                                    return (
-                                        <button className="btn" onClick = {this.saveServicio}>Solicitar Constancia de Creditos</button>
-                                    );
-                                    break;
-                                    case null:
-                                    return (
-                                        <button className="btn" onClick = {this.saveServicio}>Solicitar Constancia de Creditos</button>
-                                    );
-                                    break;
-                                    default:
-                                        break;
-                                }
-                            })()}
+                            <button className="btn" onClick = {this.saveServicio}>Solicitar Constancia de Creditos</button>
                           </div>
                           <SubirServicio/>
                           <VerDatosServicio/>

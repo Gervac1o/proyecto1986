@@ -7,6 +7,7 @@ import Slider from './Slider';
 import Cookies from 'universal-cookie';
 import DatosActualizadosAdmin from './DatosActualizadosAdmin';
 import DatosActualizadosEmail from './DatosActualizadosEmail';
+import RecuperacionContraseña from './RecuperacionContraseña';
 
 const cookies = new Cookies();
 
@@ -24,10 +25,11 @@ class MisDatosAdmin extends React.Component{
     };
         componentWillMount() {
             this.getAdmin();
+           
         }
 
         getAdmin = () => {
-            axios.get(this.url +"admin/findIdUsuario/"+ this.state.idUsuario)
+            axios.get("admin/findIdUsuario/"+ this.state.idUsuario)
        
             .then(res => {
                     this.setState({
@@ -48,6 +50,11 @@ class MisDatosAdmin extends React.Component{
                 actualizar: "EMAIL"
             })
         }
+        recuperarContraseña=()=>{
+            this.setState({
+                actualizar: "contraseña"
+            })
+        }
         cancel=()=>{
             this.setState({
                 actualizar: "false"
@@ -57,12 +64,9 @@ class MisDatosAdmin extends React.Component{
     render() {
             return(
                 <div className="center">
-                <Slider
-                title="DATOS PERSONALES"
-                size="slider-small"
-                />
+  
                 <DirectorioAdmin/>
-                <br/>
+               
                     <tbody >
                         <tr >
                             <th className="table_lista">Nombre</th>
@@ -75,32 +79,66 @@ class MisDatosAdmin extends React.Component{
                             <td className="table_lista"> {this.state.admin.nombre} {this.state.admin.apellidos}</td>
                             <td className="table_lista"> {this.state.admin.telefono}</td>
                             <td className="table_lista"> {this.state.email}</td>
-                            <td><button  className = "btn" onClick={this.updateDatos} >Actualizar Información Personal</button></td>
-                            <td><button  className = "btn" onClick={this.updateEmail} >Actualizar Email ó Contraseña</button></td>
                         </tr>
                         </tbody>
+
+                    <tbody>
+                        <tr>
+                            <tr>
+                            <td className="table_lista"><button  className="btn" id= "btn-table" onClick={this.updateDatos} >Actualizar Información Personal</button></td>
+                            </tr>
+                            <tr>
+                            <td className="table_lista"><button  className="btn" id= "btn-table"onClick={this.updateEmail} >Cambiar Contraseña</button></td>
+                            </tr>
+                            <tr>
+                            <td className="table_lista"><button   className="btn" id= "btn-table"onClick={this.recuperarContraseña} >Restablecer contraseña de Administrador</button></td>
+                            </tr>
+                            <tr>
+                            <td className="table_lista"><button   className="btn" id= "btn-table"onClick={this.recuperarContraseña} >Eliminar cuenta</button></td>
+                            </tr>
+                        </tr>
+                    </tbody>
                         {(() => {  
                             switch (this.state.actualizar){
                             case "DATOS":
                                 return (
                                     <div>
-                                    <DatosActualizadosAdmin/>
-                                    <button  id="btn_delete" onClick={this.cancel} >Cancelar</button>
+                                         <button className ="btnCancel" onClick={this.cancel} >Cancelar</button>
+                                    <DatosActualizadosAdmin
+                                    clase = "archivosAdminCenter3"/>
+                                   
                                     </div>
                                   );
                             break;
                             case "EMAIL":
                                 return (
                                     <div>
+                                         <button  className ="btnCancel" onClick={this.cancel} >Cancelar</button>
                                     <DatosActualizadosEmail
                                     redirect="MisDatosAdmin"
                                     tipoUsuario="true"
+                                    clase="archivosAdminCenter3"
                                     />
-                                    <button  id="btn_delete" onClick={this.cancel} >Cancelar</button>
+                                   
                                     </div>
                                   );
                                 break;
-                             default: break;
+                                    case "contraseña":
+                                        return(
+                                            <div>
+                                                <button  className ="btnCancel" onClick={this.cancel} >Cancelar</button>
+                                            <RecuperacionContraseña
+                                            redirect="MisDatosAdmin"
+                                            tipoUsuario="true"
+                                            id= {this.state.idUsuario}
+                                            className="archivosAdminCenter3"
+                                            />
+                                           
+                                            </div>
+                                        );
+                                        break;
+                             default: 
+                             break;
                             }
                             })()}
                 </div>

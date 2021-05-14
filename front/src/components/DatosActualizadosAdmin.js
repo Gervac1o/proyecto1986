@@ -72,17 +72,7 @@ class DatosActualizadosAdmin extends React.Component {
         }//Fin de else NOMBRE
     }//Fin de funcion saveAdmin()
 
-    componentDidMount= () =>{
-        // if(cookies.get('email') == null || cookies.get('email') == undefined){
-        //     window.location.href = './IniciarSesion';
-        // }
-    }
 
-    componentWillMount=()=>{
-        // if(cookies.get('email') == null || cookies.get('email') == undefined){
-        //     window.location.href = './IniciarSesion';
-        // }
-    }
     render() {
         if(this.state.status === 'true'){
             window.location.reload(false);
@@ -90,8 +80,10 @@ class DatosActualizadosAdmin extends React.Component {
 
         return (
             <div className = "center">
-                <div id="sidebar" className="datosAdmin">
+                <div id="sidebar" className="archivosAdminCenter3">
                     <div>
+                    <br/>
+                    <strong>Actualizar información personal </strong>
                         <label htmlFor="nombre" className="text_login">Nombre(s)</label>
                         <input type="text" className="input_login" name="nombre" ref={this.nombreRef} placeholder="Nombre(s)" onChange={this.changeState}/>
                         {(() => {
@@ -136,7 +128,7 @@ class DatosActualizadosAdmin extends React.Component {
                                 }
                             })()}
                     </div>
-                    <br/>
+                    <br/> <br/> <br/>
                     <button  className = "btn" onClick = {this.saveAdmin}>Aceptar</button>
                     </div>
         </div>

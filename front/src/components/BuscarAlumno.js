@@ -28,7 +28,7 @@ class BuscarAlumno extends React.Component {
         this.changeState();
         if(this.nombreRef.current.value && this.nombreRef.current.value != null && this.nombreRef.current.value != undefined)
         {
-            axios.get(this.url + "alumno/findNombre/" + this.state.nombre)
+            axios.get( "alumno/findNombre/" + this.state.nombre)
             .then(res => {
                 this.setState(
                     {
@@ -103,10 +103,7 @@ class BuscarAlumno extends React.Component {
                                             <td className="table_lista">{alumno.boleta}</td>
                                             <td className="table_lista">{alumno.programaAcademico}</td>
                                             <td><Link to={'/admin/DirectorioArchivosAlumno/' + alumno.idAlumno} id="btn_watch">Ver Archivos</Link></td>
-                                            <td>
-                                                <RecuperacionContraseña
-                                                id={alumno.idUsuario}/>
-                                            </td>
+     
                                         </tr>
                                     </tbody>
                                 )}
