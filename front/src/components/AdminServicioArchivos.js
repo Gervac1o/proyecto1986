@@ -117,6 +117,7 @@ class AdminServicioArchivos extends React.Component {
                  .then(res => {
                      this.getServicio();
                  }); 
+                 window.location.reload(true);
         }
         else{
             console.log("el cambio estado esta en undefined")
@@ -243,7 +244,7 @@ class AdminServicioArchivos extends React.Component {
                                     <br />
                                 </div>
                                 <br />
-                                <button id="btn_deleteRegistro" onClick={this.deleteDictamen}>Borrar Registro</button>
+                               {/* <button id="btn_deleteRegistro" onClick={this.deleteDictamen}>Borrar Registro</button>*/} 
                             </div>
                             </div>
                             </div>

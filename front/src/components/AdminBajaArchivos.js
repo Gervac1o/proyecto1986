@@ -127,6 +127,7 @@ class AdminBajaArchivos extends React.Component {
             .then(res => {
                 this.getBaja();
             });
+            window.location.reload(true);
         }
         else{
             console.log("elid de baaja es " +this.state.statusBaja)
@@ -268,7 +269,7 @@ class AdminBajaArchivos extends React.Component {
                                     <br />
                                 </div>
                                 <br />
-                                <button id="btn_deleteRegistro" onClick={this.deleteDictamen}>Borrar Registro</button>
+                               {/**  <button id="btn_deleteRegistro" onClick={this.deleteDictamen}>Borrar Registro</button>*/}
                             </div>
                             </div>
                         </div>{/**fincontenedor */}

@@ -134,6 +134,7 @@ class AdminLiberacionArchivos extends React.Component {
             .then(res => {
                 this.getLiberacion();
             });
+            window.location.reload(true);
        }
        else{
            console.log("el id de liberacion esta en undefined")
@@ -250,26 +251,6 @@ class AdminLiberacionArchivos extends React.Component {
                         <strong>Revisado por: </strong> {this.state.liberacion.revisado}
                     </div>
                     <div>
-<<<<<<< HEAD
-                    {(() => { 
-                        switch (this.state.cambioEstado.estado){
-                            case "NUEVO":
-                             return (
-                                 <a id="state_new">NUEVO</a>
-                                     );
-                             case "PROCESANDO":
-                                 return(
-                                    <a id="state_processing">EN PROCESO</a>
-                                 );
-                             case "FINALIZADO":
-                                 return(
-                                    <a id="state_finished">TERMINADO</a>
-                                 );
-                             case "RECHAZADO":
-                                 return(
-                                    <a id="state_rejected">RECHAZADO</a>
-                                 );
-=======
                     {(() => {  
                         switch (this.state.cambioEstado.estado){
                             case "NUEVO":
@@ -288,7 +269,6 @@ class AdminLiberacionArchivos extends React.Component {
                                     return(
                                        <a id="state_rejected">RECHAZADO</a>
                                     );
->>>>>>> cambiosLuis
                         }
                     })()}
                     </div>
@@ -305,7 +285,7 @@ class AdminLiberacionArchivos extends React.Component {
                                             <br />
                                         </div>
                                         <br />
-                                        <button id="btn_deleteRegistro" onClick={this.deleteDictamen}>Borrar Registro</button>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -355,7 +335,7 @@ class AdminLiberacionArchivos extends React.Component {
                                         return (
                                         <a className="warning_search">¡Seleccione un Archivo para Registrar!</a>
                                         );
-                                        break;
+                                      
                                         default:
                                             break;
                                     }

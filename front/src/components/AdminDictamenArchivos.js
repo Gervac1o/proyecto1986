@@ -135,6 +135,7 @@ class AdminDictamenArchivos extends React.Component {
                 .then(res => {
                     this.getDictamen();
                 });
+                window.location.reload(true);
         }else{
             console.log("esta en undefined el id dictamen" )
         }
@@ -263,7 +264,8 @@ class AdminDictamenArchivos extends React.Component {
                                             <br />
                                         </div>
                                         <br />
-                                        <button id="btn_deleteRegistro" onClick={this.deleteDictamen}>Borrar Registro</button>
+                                       {/**  <button id="btn_deleteRegistro" onClick={this.deleteDictamen}>Borrar Registro</button>
+                                    */}
                                     </div>
                                 </div>
                             </div>
