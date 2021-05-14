@@ -250,6 +250,7 @@ class AdminLiberacionArchivos extends React.Component {
                         <strong>Revisado por: </strong> {this.state.liberacion.revisado}
                     </div>
                     <div>
+<<<<<<< HEAD
                     {(() => { 
                         switch (this.state.cambioEstado.estado){
                             case "NUEVO":
@@ -268,6 +269,26 @@ class AdminLiberacionArchivos extends React.Component {
                                  return(
                                     <a id="state_rejected">RECHAZADO</a>
                                  );
+=======
+                    {(() => {  
+                        switch (this.state.cambioEstado.estado){
+                            case "NUEVO":
+                                return (
+                                    <a id="state_new">NUEVO</a>
+                                        );
+                                case "PROCESANDO":
+                                    return(
+                                       <a id="state_processing">EN PROCESO</a>
+                                    );
+                                case "FINALIZADO":
+                                    return(
+                                       <a id="state_finished">TERMINADO</a>
+                                    );
+                                case "RECHAZADO":
+                                    return(
+                                       <a id="state_rejected">RECHAZADO</a>
+                                    );
+>>>>>>> cambiosLuis
                         }
                     })()}
                     </div>

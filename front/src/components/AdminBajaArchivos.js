@@ -195,7 +195,7 @@ class AdminBajaArchivos extends React.Component {
                                 <div>
                                 <br/>
                                 <input type="checkbox" id="btn-modal" />
-                            <label htmlFor="btn-modal" className="btn" onClick={this.getEmail}>INFORMACIÓN DE LA SOLICITUD</label>
+                                <label htmlFor="btn-modal" className="btn" onClick={this.getEmail}>INFORMACIÓN DE LA SOLICITUD</label>
                                  <div className="modal">
                                 <div className="contenedor">
                                     <h1>Baja de Servicio Social</h1>
