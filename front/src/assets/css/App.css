@@ -747,15 +747,15 @@ input[type="radio"]{
   font-size: 25px;
 }
 .table{
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding-bottom: 15px;
+  padding-top: 12px;
   margin-top: 1px;
   padding-right: 15px;
   padding-left: 15px;
   text-align: center;
   background: #343a40;
   width: 280px; bottom: 1px solid #000000;
-  max-height: 15px;
+  max-height: 10px;
   
   
 }

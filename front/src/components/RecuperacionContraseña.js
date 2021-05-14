@@ -55,7 +55,7 @@ class RecuperacionContraseña extends React.Component{
             console.log("passwoed" + this.state.recuperar.password)
             console.log("passwoed" + this.state.recuperar.idUsuario)
             try{
-                axios.post("usuario/recovery", this.state.recuperar)
+                axios.post("usuario/reset", this.state.recuperar)
                 .then(res =>{
                     this.setState({
                         status: true,

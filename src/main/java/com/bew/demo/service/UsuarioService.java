@@ -18,5 +18,5 @@ public interface UsuarioService {
 
 	Boolean findByUser(UsuarioDTO user);
 	
-	void recoveryPassword (UsuarioDTO usuarioDTO)throws EmptyResultException;
+	void resetPassword (UsuarioDTO usuarioDTO)throws EmptyResultException;
 }

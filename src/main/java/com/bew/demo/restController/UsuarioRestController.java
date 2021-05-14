@@ -81,10 +81,10 @@ public class UsuarioRestController {
 	//System.out.println(usuarioDTO.getIdUsuario());
 	return ResponseEntity.ok(usuarioDTO);
 	}
-	@PostMapping(path = "/recovery", consumes = "application/json")
+	@PostMapping(path = "/reset", consumes = "application/json")
 	public ResponseEntity<?> recovery(@RequestBody UsuarioDTO usuarioDTO) throws  EmptyResultException {
 		
-			usuarioService.recoveryPassword (usuarioDTO);
+			usuarioService.resetPassword (usuarioDTO);
 			return ResponseEntity.ok(usuarioDTO);
 	}
 	

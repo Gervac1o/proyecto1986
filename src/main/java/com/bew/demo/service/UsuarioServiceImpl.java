@@ -184,7 +184,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
 	@Override
-	public void recoveryPassword(UsuarioDTO usuarioDTO) throws EmptyResultException {
+	public void resetPassword(UsuarioDTO usuarioDTO) throws EmptyResultException {
 		Usuario usuario = null;
 		usuario=usuarioRepository.findById(usuarioDTO.getIdUsuario()).orElseThrow(() -> new EmptyResultException("Sin Resultados"));
        
