@@ -102,8 +102,8 @@ class MisDatosAlumno extends React.Component{
                         case "DATOS":
                             return (
                                 <div>
-                                <DatosActualizadosAlumno/>
-                                <button  id="btn_delete" onClick={this.cancel} >Cancelar</button>
+                                <DatosActualizadosAlumno
+                                cancel = {this.cancel}/>
                                 </div>
                               );
                         break;
@@ -111,11 +111,11 @@ class MisDatosAlumno extends React.Component{
                             return (
                                 <div>
                                 <DatosActualizadosEmail
+                                cancel = {this.cancel}
                                 redirect="MisDatosAlumno"
                                 tipoUsuario="false"
-                                clase = "archivosAdminCenter2"
+                                clase = "datosAlumno"
                                 />
-                                <button  id="btn_delete" onClick={this.cancel} >Cancelar</button>
                                 </div>
                               );
                             break;

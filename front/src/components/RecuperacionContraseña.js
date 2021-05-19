@@ -78,6 +78,7 @@ class RecuperacionContraseña extends React.Component{
     }//Fin de updateContraseña
 
     render() {
+        const {cancel} = this.props
         if(this.state.status === true){
             return(
                 <div className="center">
@@ -91,6 +92,7 @@ class RecuperacionContraseña extends React.Component{
         }
         else{
             return (
+                
                 <div className="center">
                 <div id="sidebar" className={ this.props.className}>
                 
@@ -118,8 +120,9 @@ class RecuperacionContraseña extends React.Component{
                                                 <strong>Nueva Contraseña:</strong> p4SS{this.props.id}dEYAe
 
                                                 <br/><br/>
-                                                <button className="btn_join" onClick={this.updateContraseña}>ACEPTAR</button>
                                                 
+                                                <button className="btn" onClick={this.updateContraseña}>ACEPTAR</button>
+                                                <button  className ="btnCancel" onClick={cancel} >Cancelar</button>
                                                 
                                                 
                                                 

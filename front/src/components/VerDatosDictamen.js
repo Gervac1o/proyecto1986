@@ -36,7 +36,7 @@ class VerDatosDictamen extends React.Component{
         if(this.state.status === 'success'){
             return(
                 <div className="center">
-                        <div id="sidebar" className="liberacionCenter">
+                        <div id="sidebar" className="dictamenCenter">
                             
                         {(() => {  
                         switch (this.state.dictamen.estado){
@@ -87,7 +87,7 @@ class VerDatosDictamen extends React.Component{
                                 <strong>Semestre:</strong> {this.state.dictamen.semestre}
                             </div>
                             <br/>
-                            <PdfDictamenAlumno
+                         <PdfDictamenAlumno
                             creditos={this.state.dictamen.porcentajeCreditos}
                             semestre={this.state.dictamen.semestre}
                             email={this.state.email}

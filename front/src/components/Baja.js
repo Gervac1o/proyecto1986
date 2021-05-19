@@ -200,7 +200,6 @@ class Baja extends React.Component {
                                         return (
                                         <a className="warning">¡Ingresa tu número de registro de Servicio Social!</a>
                                         );
-                                        break;
                                         default:
                                             break;
                                     }
@@ -215,7 +214,6 @@ class Baja extends React.Component {
                                         return (
                                         <a className="warning">¡Ingresa el programa al que perteneces!</a>
                                         );
-                                        break;
                                         default:
                                             break;
                                     }
@@ -230,7 +228,6 @@ class Baja extends React.Component {
                                         return (
                                         <a className="warning">¡Ingresa el nombre de la unidad donde realizas Servicio Social!</a>
                                         );
-                                        break;
                                         default:
                                         break;
                                     }
@@ -245,7 +242,6 @@ class Baja extends React.Component {
                                         return (
                                         <a className="warning">¡Ingresa la Fecha de Inicio de tu Servicio Social!</a>
                                         );
-                                        break;
                                         default:
                                             break;
                                     }
@@ -260,7 +256,6 @@ class Baja extends React.Component {
                                         return (
                                         <a className="warning">¡Ingresa la Fecha de Término de tu Servicio Social!</a>
                                         );
-                                        break;
                                         default:
                                             break;
                                     }
@@ -301,17 +296,14 @@ class Baja extends React.Component {
                                     return (
                                         <button className="btn" onClick = {this.saveBaja}>Aceptar</button>
                                     );
-                                    break;
                                     case undefined:
                                     return (
                                         <button className="btn" onClick = {this.saveBaja}>Aceptar</button>
                                     );
-                                    break;
                                     case null:
                                     return (
                                         <button className="btn" onClick = {this.saveBaja}>Aceptar</button>
                                     );
-                                    break;
                                     default:
                                         break;
                                 }

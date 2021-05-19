@@ -82,79 +82,80 @@ class SubirDictamen extends React.Component {
     }
 render() {
 
-        if(this.state.status == "true"){
+        if(this.state.status === "true"){
             window.location.reload(false);
         }
         if(this.state.listar.length >=1){
             return (
                 <div className="center">
-                            <div id="sidebar" className="dictamenRight">
-                            <strong>DOCUMENTACIÓN DICTAMEN DE MENOS DE 70% DE CREDITOS</strong>
-                                <div>
-                                <br/>
-                                    <tbody>
-                                        <tr>
-                                            <td className="table_lista"><strong>Archivo</strong></td>
-                                            <td className="table_lista"><strong>Comentario</strong></td>
-                                        </tr>
-                                    </tbody>
-                                    {this.state.listar.map((lista1, i) =>
-                                        <tbody key={i}>
+                            <div id="sidebar" className="servicioRight">
+                            <strong>DOCUMENTACIÓN DICTAMEN</strong>
+                                    <div>
+                                    <br/>
+                                      {/** */}  <tbody>
                                             <tr>
-                                                <td className="table_lista">{lista1.nombreDoc}</td>
-                                                <td className="table_lista">{lista1.comentario}</td>
-                                                <td><Link to={'/PdfDictamen/' + lista1.idDoc}target="_blank" id="btn_watch">Visualizar</Link></td>
-                                                <td><Link to={'/DocDictamen/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
-                                                <td><BorrarDoc
-                                                idLista={lista1.idLista}
-                                                idDoc={lista1.idDoc}
-                                                url= "docDictamen/deleteDoc/"
-                                                redirect= "CrearDictamen"
-                                                /></td>
+                                                <td className="table_lista"><strong>Archivo</strong></td>
+                                                <td className="table_lista"><strong>Comentario</strong></td>
                                             </tr>
-                                    </tbody>
-                                    )}
-                                    <input type="file" name = "file" onChange={this.fileChange} />
-                                    {(() => {
-                                    switch(this.state.statusArchivo){   
-                                        case "false":
-                                        return (
-                                        <a className="warning">¡Seleccione un Archivo para Registrar!</a>
-                                        );
-                                        break;
-                                        default:
+                                        </tbody>
+                                        {this.state.listar.map((lista1, i) =>
+                                            <tbody key={i}>
+                                                <tr>
+                                                    <td className="table_lista">{lista1.nombreDoc}</td>
+                                                    <td className="table_lista">{lista1.comentario}</td>
+                                                    <td><Link to={'/PdfServicio/' + lista1.idDoc}target="_blank" id="btn_watch">Visualizar</Link></td>
+                                                    <td><Link to={'/DocServicio/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
+                                                    <td><BorrarDoc
+                                                    idLista={lista1.idLista}
+                                                    idDoc={lista1.idDoc}
+                                                    url= "docServicio/deleteDoc/"
+                                                    redirect= "CrearServicio"
+                                                    /></td>
+                                                </tr>
+                                        </tbody>
+                                        )}
+                                        <input type="file" name = "file" onChange={this.fileChange} />
+                                        {(() => {
+                                        switch(this.state.statusArchivo){   
+                                            case "false":
+                                            return (
+                                            <a className="warning">¡Seleccione un Archivo para Registrar!</a>
+                                            );
                                             break;
-                                    }
-                                    })()}  
-                                </div>
-                                <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
-                            </div>
+                                            default:
+                                                break;
+                                        }
+                                        })()}
+                                    </div>
+                                    <br/>
+                                    <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button>
+                            </div>                
                 </div>
             );
-        }else if(this.state.listar.length == 0){
+        }else if(this.state.listar.length === 0){
             return (
                 <div className="center">
-                            <div id="sidebar" className="dictamenRight">
+                            <div id="sidebar" className="servicioRight">
                                 <div>
                                     <strong>Aun no hay archivos guardados</strong>
                                     <br/>
                                     <a className="text_login">Subir Archivo</a>
-                                    <input type="file" name = "file"  onChange={this.fileChange} />
+                                    <input type="file" name = "file" onChange={this.fileChange} />
                                     {(() => {
-                                    switch(this.state.statusArchivo){   
-                                        case "false":
-                                        return (
-                                        <a className="warning">¡Seleccione un Archivo para Registrar!</a>
-                                        );
-                                        default:
+                                        switch(this.state.statusArchivo){   
+                                            case "false":
+                                            return (
+                                            <a className="warning">¡Seleccione un Archivo para Registrar!</a>
+                                            );
                                             break;
-                                    }
-                                    })()}  
+                                            default:
+                                                break;
+                                        }
+                                        })()}
                                 </div>
                                 <br/>
-                                <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button> 
-                            </div>
+                                <button className="btn"  onClick = {this.upLoad}>Subir Archivo</button>
+                            </div>                
                 </div>
             );
         }else{

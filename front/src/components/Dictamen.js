@@ -8,7 +8,7 @@ import DirectorioAlumno from './DirectorioAlumno';
 import SubirDictamen from './SubirDictamen';
 import VerDatosDictamen from './VerDatosDictamen';
 import Cookies from 'universal-cookie';
-import Footer from './Footer';
+
 
 const cookies = new Cookies();
 
@@ -34,20 +34,6 @@ class Dictamen extends React.Component {
         this.searchDictamen();
     }
 
-    changeState = () => {
-        this.setState({
-            dictamen: {
-                porcentajeCreditos: this.creditosRef.current.value,
-                semestre: "SEPTIMO",
-                estado: "NUEVO",
-                fechaRegistro: this.fechaRegistroRef,
-                revisado: null,
-                idAlumno: this.state.idAlumno,
-                idDictamen: this.state.idAlumno
-            }
-        });
-    }
-
     searchDictamen = () => {
         axios.get("user/dictamen/findIdAlumno/" + this.dictamenRef)
         .then(res =>{
@@ -70,6 +56,19 @@ class Dictamen extends React.Component {
             });
         });
     }//Fin de search Dictamen
+    changeState = () => {
+        this.setState({
+            dictamen: {
+                porcentajeCreditos: this.creditosRef.current.value,
+                semestre: "SEPTIMO",
+                estado: "NUEVO",
+                fechaRegistro: this.fechaRegistroRef,
+                revisado: null,
+                idAlumno: this.state.idAlumno,
+                idDictamen: this.state.idAlumno
+            }
+        });
+    }
 
     saveDictamen = async (e) => {
         this.changeState();
@@ -99,28 +98,15 @@ class Dictamen extends React.Component {
             window.location.reload();
        
         }
-         
-        
-     
         return (
             <div className="center">
             <HeaderDEyAE />
                 <DirectorioAlumno />
-                        <div id="sidebar" className="liberacionLeft">
+                        <div id="sidebar" className="servicioLeft">
                             <div>
                                 <label htmlFor="creditos" className="text_login">Porcentaje de Creditos</label>
                                 <input type="text" className="input_login" name="creditos" placeholder="Ingresa el % de creditos sin decimales" ref={this.creditosRef} onChange={this.changeState}/>
-                                {(() => {
-                                    switch(this.state.statusCreditos){   
-                                        case "false":
-                                        return (
-                                        <a className="warning">¡Ingresa tu porcentaje de creditos sin decimales!</a>
-                                        );
                                      
-                                        default:
-                                            break;
-                                    }
-                                })()}       
                             </div>
                             <br/>
                             
@@ -128,12 +114,15 @@ class Dictamen extends React.Component {
                                         <button className="btn" onClick = {this.saveDictamen}>Aceptar</button>
      
                           </div>
+                         
+                          <SubirDictamen/>
                           <VerDatosDictamen/>
-                       
-                        <SubirDictamen/>
-                    
             </div>
         );
+         
+        
+     
+      
                         
     }
 }

@@ -103,6 +103,7 @@ class DatosActualizadosAlumno extends React.Component {
     }//Fin de funcion saveAlumno()
 
     render() {
+        const {cancel} = this.props
         if (this.state.status === 'true') {
             window.location.reload(false);
 
@@ -212,6 +213,7 @@ class DatosActualizadosAlumno extends React.Component {
                     </div>
                     <br/>
                     <button className="btn" onClick={this.saveAlumno}>Aceptar</button>
+                    <button  className ="btnCancel" onClick={cancel} >Cancelar</button>
                 </div>
             </div>
         );

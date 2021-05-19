@@ -93,6 +93,7 @@ class DatosActualizadosEmail extends React.Component {
     }//Fin de update
                                     
     render() {
+        const {cancel} = this.props
      if(this.state.status === true){
          window.location.reload(false);
      }
@@ -138,7 +139,7 @@ class DatosActualizadosEmail extends React.Component {
  
                           <br/>
                             <button  className = "btn" onClick = {this.update}>Aceptar</button>
-                           
+                            <button  className ="btnCancel" onClick={cancel} >Cancelar</button>
                         </div>
                         
                         </div> 

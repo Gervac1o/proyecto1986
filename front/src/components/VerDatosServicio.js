@@ -31,7 +31,7 @@ class VerDatosServicio extends React.Component{
         }//Fin de funcion getServicio()
         
     render() {
-        if(this.state.status == 'success'){
+        if(this.state.status === 'success'){
             if(this.state.servicio.semestre != "EGRESADO")
             {
                 return(
@@ -82,13 +82,8 @@ class VerDatosServicio extends React.Component{
                                 <div >
                                     <strong>Semestre:</strong> {this.state.servicio.semestre}
                                 </div>
-                                <br/>
-                            {/*    <PdfServicioAlumno
-                                    responsable={this.state.servicio.responsableDirecto}
-                                    redaccion={" alumno del " + this.state.servicio.semestre + " semestre "}
-                                    email={this.state.email}
-                                    idAlumno={this.state.idAlumno}
-                                    />*/}
+                             <br/>
+               
                             </div>          
                 </div>
                 );
@@ -142,12 +137,7 @@ class VerDatosServicio extends React.Component{
                                     <strong>Soy Egresado</strong>
                                 </div>
                                 <br/>
-                                {/*<PdfServicioAlumno
-                                    responsable={this.state.servicio.responsableDirecto}
-                                    redaccion={" egresado "}
-                                    email={this.state.email}
-                                    idAlumno={this.state.idAlumno}
-                                    />*/}
+                               
                             </div>
                 </div>
                 );

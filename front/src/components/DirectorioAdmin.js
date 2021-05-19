@@ -84,7 +84,7 @@ class DirectorioAdmin extends Component{
                                 <ul>
                                    
                                     <li className="active" ><Link to='/admin/MisDatosAdmin' className = "active">Configuración</Link></li>
-                                    <li className="active"  > <button id ="table-btn" onClick={this.cerrarSesion}>cerrar sesion</button></li>
+                                    <li className="active"  > <p id ="table-btn" onClick={this.cerrarSesion}>cerrar sesion</p></li>
                                     
                                 </ul>
                                 

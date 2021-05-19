@@ -103,8 +103,8 @@ class MisDatosAdmin extends React.Component{
                             case "DATOS":
                                 return (
                                     <div>
-                                         <button className ="btnCancel" onClick={this.cancel} >Cancelar</button>
                                     <DatosActualizadosAdmin
+                                    cancel = {this.cancel}
                                     clase = "archivosAdminCenter3"/>
                                    
                                     </div>
@@ -113,8 +113,8 @@ class MisDatosAdmin extends React.Component{
                             case "EMAIL":
                                 return (
                                     <div>
-                                         <button  className ="btnCancel" onClick={this.cancel} >Cancelar</button>
                                     <DatosActualizadosEmail
+                                    cancel = {this.cancel}
                                     redirect="MisDatosAdmin"
                                     tipoUsuario="true"
                                     clase="archivosAdminCenter3"
@@ -122,12 +122,13 @@ class MisDatosAdmin extends React.Component{
                                    
                                     </div>
                                   );
-                                break;
+                              
                                     case "contraseña":
                                         return(
                                             <div>
-                                                <button  className ="btnCancel" onClick={this.cancel} >Cancelar</button>
+                                               
                                             <RecuperacionContraseña
+                                            cancel = {this.cancel}
                                             redirect="MisDatosAdmin"
                                             tipoUsuario="true"
                                             id= {this.state.idUsuario}
@@ -136,7 +137,7 @@ class MisDatosAdmin extends React.Component{
                                            
                                             </div>
                                         );
-                                        break;
+                                       
                              default: 
                              break;
                             }

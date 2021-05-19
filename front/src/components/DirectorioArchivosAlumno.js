@@ -68,6 +68,11 @@ class DirectorioArchivosAlumno extends Component {
             idTramite: 5
         })
     }
+    cancel=()=>{
+        this.setState({
+            idTramite: 1
+        })
+    }
 
     render() {
 
@@ -149,6 +154,7 @@ class DirectorioArchivosAlumno extends Component {
                             case 5:
                             return (
                                 <RecuperacionContraseña
+                                cancel ={this.tramite1}
                                     id={this.state.idAlumno} 
                                     className="archivosAdminCenter"
                                     />

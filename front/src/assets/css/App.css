@@ -170,6 +170,7 @@ div {
   color: #e0e0e0;
   font-weight: 100;
   font-size: 15px;
+  box-shadow: none;
   
 }
 .active:hover{
@@ -276,7 +277,7 @@ div {
 }
 #sidebar{
   width: 30%;
-  height: 460px;
+height: 500px;
   margin-top: 2px;
   margin-left:  480px;
   margin-bottom: 32px;
@@ -292,10 +293,9 @@ div {
   margin-top: -200px;
 }
 #sidebar.datosAlumno{
-  margin-top: -100px;
+  margin-top: -130px;
   height: 600px;
   float: center;
- 
   height: auto;
   width: 400px;
   color: #135081;
@@ -309,45 +309,38 @@ div {
   height: 370px;
   margin-top: -220px;
 }
-#sidebar.dictamenLeft{
-  min-height: 500px;
-  height: auto;
-  margin-left: 5px;
-  width: 25%;
-}
+
 #sidebar.dictamenRight{
  
-  margin-top: -265px;
-  margin-right: 5px;
-  margin-left: 765px;
+  float: right;
+  margin-top:  -165px;
+  margin-right: 2px;
   min-height: 220px;
-  height: auto;  
- width: 575px;
- float: right;
- /*
- margin-top: -812px;
- margin-right: 2px;
- min-height: 220px;
- height: auto;
- width: 578px; */
+  height: auto;
+  width: 595px
+}
+#dictamenLeft{
 
-
-
-
+  width: 30%;
+height: 220px;
+  margin-top: 2px;
+  margin-left:  5px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  background: rgba(255, 255, 255, 0.404);
+  border-radius: 1px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 20px;
+  font-weight:300;
 }
 #sidebar.dictamenCenter{
   margin-left: 350px;
-  margin-top: -530px;
+  margin-top: -232px;
   min-height: 120px;
   height: auto;
   max-width: 30%;
- 
- /* margin-left: 350px;
-  margin-top: -812px;
-  min-height: 120px;
-  height: auto;
-  max-width: 30%;  */
 }
+
 #sidebar.infoAdminLeft{
   height: auto;
   margin-left: 15px;
@@ -395,15 +388,16 @@ div {
   height: auto;
   max-width: 300px;
 }
+
 #sidebar.liberacionLeft{
-  min-height: 780px;
-  height: auto;
+  min-height: 650px;
+  max-height:720px;
   margin-left: 5px;
   max-width: 25%;
 }
 #sidebar.liberacionRight{
   float: right;
-  margin-top: -812px;
+  margin-top: -680px;
   margin-right: 2px;
   min-height: 220px;
   height: auto;
@@ -411,52 +405,55 @@ div {
 }
 #sidebar.liberacionCenter{
   margin-left: 350px;
-  margin-top: -812px;
+  margin-top: -680px;
   min-height: 120px;
   height: auto;
   max-width: 30%;
 }
 #sidebar.bajaLeft{
-  min-height: 1000px;
-  
-  margin-left: 15px;
-  max-width: 40%;
+  min-height: 900px;
+  max-height:870px;
+  height: auto;
+  margin-left: 5px;
+  max-width: 25%;
+
+ 
 }
 #sidebar.bajaRight{
   float: right;
-  margin-top: -1032px;
-  margin-right: 8px;
+  margin-top:  -930px;
+  margin-right: 2px;
   min-height: 220px;
   height: auto;
-  width: 575px;
+  width: 578px;
 }
 #sidebar.bajaCenter{
-  margin-left: 430px;
-  margin-top: -1032px;
+  margin-left: 350px;
+  margin-top: -930px;
   min-height: 120px;
   height: auto;
-  max-width: 24%;
+  max-width: 30%;
 }
 #sidebar.servicioLeft{
-  min-height: 250px;
-  height: auto;
-  margin-left: 15px;
-  max-width: 40%;
+  min-height: 170px;
+  max-height:200px;
+  margin-left: 5px;
+  max-width: 336px;
 }
 #sidebar.servicioRight{
   float: right;
-  margin-top: -282px;
-  margin-right: 8px;
+  margin-top:  -232px;
+  margin-right: 2px;
   min-height: 220px;
   height: auto;
-  width: 585px;
+  width: 595px;
 }
 #sidebar.servicioCenter{
-  margin-left: 435px;
-  margin-top: -282px;
-  min-height: 90px;
+  margin-left: 350px;
+  margin-top: -232px;
+  min-height: 120px;
   height: auto;
-  max-width: 24%;
+  max-width: 400px;
 }
 .warning{
   display: block;
@@ -788,38 +785,43 @@ input[type="radio"]{
 
 }
 #table-btn{
-  background: #464c52;
+  background: #343a40;;
   font-size: 16px;
   height: 35px;
   color: #ffffff;
- margin-top: 10px;
- transition: 300ms;
+  margin-top: 10px;
+   transition: 200ms;
+   box-shadow: none;
+   text-decoration: none;
+   cursor: pointer;
+  border-radius: 2px;
+ 
 }
 #table-btn:hover{
-  background: #727272;
+  
   cursor: pointer;
+  color: #858585;
 }
 .btnCancel{
-  background: rgba(221, 35, 35, 0.829);
+  background: #b30000;
   color: rgb(255, 255, 255);
-  width: 92px;
-  height: 45px;
-  position: fixed;
-  margin-top: 270px;
-  margin-left: 70px;
-  float: none;
-  font-size: 20px;
-  font-weight: 200;
-  font-family:unset;
-  text-shadow: none;
+  margin-left: 50px;
+  padding:15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
   text-decoration: none;
-  box-shadow: none;
-  border-radius: 0px;
+  max-width: 1220px;
+  transition: 200ms;
   border: none;
-  transition: 300ms;
+  border-radius: 2px;
   cursor: pointer;
+  float: center;
 }
-
+.btnCancel:hover{
+  background: #5e0202;
+  color: white;
+}
 #btn_delete{
   background: rgba(221, 35, 35, 0.829);
   color: rgb(255, 255, 255);
