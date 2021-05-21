@@ -391,7 +391,8 @@ height: 220px;
 
 #sidebar.liberacionLeft{
   min-height: 650px;
-  max-height:720px;
+  height: auto;
+  
   margin-left: 5px;
   max-width: 25%;
 }
@@ -412,7 +413,7 @@ height: 220px;
 }
 #sidebar.bajaLeft{
   min-height: 900px;
-  max-height:870px;
+  height: auto;
   height: auto;
   margin-left: 5px;
   max-width: 25%;
