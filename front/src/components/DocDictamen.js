@@ -23,7 +23,7 @@ class DocDictamen extends React.Component{
             return(
                 <div>
                     <a>descarga completa</a>
-                        <iframe  src={"https://proyectofinal1986.herokuapp.com/docDictamen/getDoc/" + this.state.docDictamen}></iframe>
+                        <a download  href={"https://proyectofinal1986.herokuapp.com/docDictamen/getDoc/" + this.state.docDictamen}>*</a>
                 </div>
             );
         }
