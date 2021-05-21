@@ -103,8 +103,8 @@ render() {
                                                 <tr>
                                                     <td className="table_lista">{lista1.nombreDoc}</td>
                                                     <td className="table_lista">{lista1.comentario}</td>
-                                                    <td><Link to={'/PdfServicio/' + lista1.idDoc}target="_blank" id="btn_watch">Visualizar</Link></td>
-                                                    <td><Link to={'/DocServicio/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
+                                                    <td><Link to={'/PdfDictamen/' + lista1.idDoc}target="_blank" id="btn_watch">Visualizar</Link></td>
+                                                    <td><Link to={'/DocDictamen/' + lista1.idDoc}target="_blank" id="btn_downLoad">Descargar</Link></td>
                                                     <td><BorrarDoc
                                                     idLista={lista1.idLista}
                                                     idDoc={lista1.idDoc}
