@@ -1,18 +1,11 @@
 package com.bew.demo.model;
 
 import java.io.Serializable;
-//import java.util.List;
-//import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-//import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToOne;
-//import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -29,13 +22,16 @@ public class Usuario implements Serializable{
 	@SequenceGenerator(name = "usuario_sec", sequenceName = "usuario_seq", allocationSize = 1, initialValue=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_sec")
 	@Column(name="id_usuario")
-	private Integer idUsuario;
+	private Long idUsuario;
 	
-	@Column(name="email")
+	@Column(name="email", unique = true)
 	private String email;
 	
-	@Column(name="contraseña")
-	private String contraseña;
+	@Column(name="password")
+	private String password;
+	
+	@Column(name="password2")
+	private String password2;
 
 	@Column(name="tipo_usuario")
 	private Boolean tipoUsuario;
@@ -44,44 +40,44 @@ public class Usuario implements Serializable{
 	private Boolean status;
 	
 	public Usuario() {}
-	public Usuario( Integer idUsuario, String email, String contraseña, Boolean tipoUsuario, Boolean status) {
+	public Usuario( Long idUsuario, String email, String password, Boolean tipoUsuario, Boolean status, String password2) {
 		 	
 		this.idUsuario=idUsuario;
 		this.email=email;
-		this.contraseña=contraseña;
+		this.password=password;
+		this.password2=password2;
 		this.tipoUsuario=tipoUsuario;
 		this.status = status;
 		
 	}
-
-    
-	public Integer getIdUsuario() {
+	public Long getIdUsuario() {
 		return idUsuario;
 	}
-
-	public void setIdUsuario(Integer idUsuario) {
+	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	
 	public String getEmail() {
 		return email;
 	}
-	
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getContraseña() {
-		return contraseña;
+	public String getPassword() {
+		return password;
 	}
-	
-	public void setContraseña(String contraseña) {
-		this.contraseña= contraseña;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	
+	public void setPassword2(String password2) {
+		this.password2 = password2;
+	}
+	public String getPassword2() {
+		return password2;
+	}
+
 	public Boolean getTipoUsuario() {
 		return tipoUsuario;
 	}
-	
 	public void setTipoUsuario(Boolean tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
@@ -91,5 +87,6 @@ public class Usuario implements Serializable{
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
+
 	
 }

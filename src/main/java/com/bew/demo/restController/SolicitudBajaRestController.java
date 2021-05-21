@@ -1,8 +1,12 @@
 package com.bew.demo.restController;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,16 +36,26 @@ public class SolicitudBajaRestController {
 		return ResponseEntity.ok(solicitudes);
 	}
 	@GetMapping(path = "/find/{idSolicitud}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("idSolicitud") Integer idSolicitud){
+	public ResponseEntity<?>find(@PathVariable("idSolicitud") Long idSolicitud){
 	SolicitudBajaDTO solicitudDTO;
 	solicitudDTO = solicitudService.findById(idSolicitud);
 	return ResponseEntity.ok(solicitudDTO);		
 	}
 	@GetMapping(path = "/findIdAlumno/{idAlumno}", produces = "application/json")
-	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Integer idAlumno){
+	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Long idAlumno)throws IOException, EmptyResultException{
 	SolicitudBajaDTO solicitudDTO;
-	solicitudDTO = solicitudService.findByIdAlumno(idAlumno);
-	return ResponseEntity.ok(solicitudDTO);		
+	try {
+		solicitudDTO = solicitudService.findByIdAlumno(idAlumno);
+		return ResponseEntity.ok(solicitudDTO);	
+		
+	}catch(EmptyResultException e) {
+		HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.setContentType(MediaType.TEXT_HTML);
+        return new ResponseEntity<>(
+                e.getMessage(),
+                HttpStatus.ACCEPTED);
+	}
+	
 	}
 	@GetMapping(path = "/findEstado/{estado}", produces = "application/json")
 	public ResponseEntity<?>findEstado(@PathVariable("estado") String estado){
@@ -62,7 +76,7 @@ public class SolicitudBajaRestController {
 	}
 	
 	@DeleteMapping(path = "/delete/{idSolicitud}")
-	public ResponseEntity<?> delete(@PathVariable("idSolicitud") Integer idSolicitud) throws EmptyResultException{
+	public ResponseEntity<?> delete(@PathVariable("idSolicitud") Long idSolicitud) throws EmptyResultException{
 	solicitudService.deleteSolicitudBaja(idSolicitud);
 	return ResponseEntity.ok().build();
 	}

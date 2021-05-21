@@ -5,10 +5,10 @@ import com.bew.demo.exception.EmptyResultException;
 
 public interface SolicitudBajaService {
 	List<SolicitudBajaDTO> findAll();
-	SolicitudBajaDTO findById(Integer idSolicitud);
+	SolicitudBajaDTO findById(Long idSolicitud);
 	void saveSolicitudBaja(SolicitudBajaDTO solicitudDTO);
 	void updateSolicitudBaja(SolicitudBajaDTO solicitudDTO)throws EmptyResultException;
-	void deleteSolicitudBaja(Integer idSolicitud)throws EmptyResultException;
-	SolicitudBajaDTO findByIdAlumno(Integer idAlumno);
+	void deleteSolicitudBaja(Long idSolicitud)throws EmptyResultException;
+	SolicitudBajaDTO findByIdAlumno(Long idAlumno) throws EmptyResultException;
 	List<SolicitudBajaDTO> findByEstado(String estado);
 }

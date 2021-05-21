@@ -1,5 +1,7 @@
 package com.bew.demo.model;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -14,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+@Data
 @Entity
 @Table(name = "docs_liberacion")
 public class DocsLiberacion implements Serializable {
@@ -22,7 +25,7 @@ public class DocsLiberacion implements Serializable {
 	@Id
 	@SequenceGenerator(name = "doc_sec", sequenceName = "doc_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "doc_sec")
-	private Integer fileId;  
+	private Long fileId;
 	
     @Column(name = "file_name")
     private String fileName;
@@ -50,11 +53,12 @@ public class DocsLiberacion implements Serializable {
 	@JoinColumn(name="id_liberacion",insertable=false, updatable = false)
 	private LiberacionExtemp liberacionExtemp;
 
-	public Integer getFileId() {
+
+	public Long getFileId() {
 		return fileId;
 	}
 
-	public void setFileId(Integer fileId) {
+	public void setFileId(Long fileId) {
 		this.fileId = fileId;
 	}
 

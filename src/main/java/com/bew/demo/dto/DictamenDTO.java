@@ -1,5 +1,8 @@
 package com.bew.demo.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 public class DictamenDTO implements Serializable {
@@ -8,12 +11,11 @@ public class DictamenDTO implements Serializable {
 	
 	private Long porcentajeCreditos;
 	private String semestre;
-	private Integer idDictamen;
+	private Long idDictamen;
 	private String estado;
 	private String fechaRegistro;
 	private String revisado;
-	private Integer idAlumno;
-	
+	private Long idAlumno;
 
 	public Long getPorcentajeCreditos() {
 		return porcentajeCreditos;
@@ -31,11 +33,11 @@ public class DictamenDTO implements Serializable {
 		this.semestre = semestre;
 	}
 
-	public Integer getIdDictamen() {
+	public Long getIdDictamen() {
 		return idDictamen;
 	}
 
-	public void setIdDictamen(Integer idDictamen) {
+	public void setIdDictamen(Long idDictamen) {
 		this.idDictamen = idDictamen;
 	}
 
@@ -63,12 +65,15 @@ public class DictamenDTO implements Serializable {
 		this.revisado = revisado;
 	}
 
-	public Integer getIdAlumno() {
+	public Long getIdAlumno() {
 		return idAlumno;
 	}
 
-	public void setIdAlumno(Integer idAlumno) {
+	public void setIdAlumno(Long idAlumno) {
 		this.idAlumno = idAlumno;
 	}
+
+
+
 
 }

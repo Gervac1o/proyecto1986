@@ -23,7 +23,7 @@ public class SolicitudBaja implements Serializable{
 	
 	@Id
 	@Column(name="id_solicitud")
-	private Integer idSolicitud;
+	private Long idSolicitud;
 	
 	@Column(name="tipo_de_baja")
 	private String tipoDeBaja;
@@ -62,12 +62,12 @@ public class SolicitudBaja implements Serializable{
 	private String revisado;
 	
 	@Column(name="id_alumno")
-	private Integer idAlumno;
+	private Long idAlumno;
 	
 	public SolicitudBaja() {}
-	public SolicitudBaja( Integer idSolicitud, String tipoDeBaja, Integer horas, String semestre, Boolean egresado, String registroSS, 
+	public SolicitudBaja( Long idSolicitud, String tipoDeBaja, Integer horas, String semestre, Boolean egresado, String registroSS,
 	String prestatario, String programaSS, String fechaInicio, String fechaTermino, String estado, String fechaRegistro, String revisado, 
-	Integer idAlumno) {
+	Long idAlumno) {
 
 		this.idSolicitud=idSolicitud;
 		this.tipoDeBaja=tipoDeBaja;
@@ -88,90 +88,4 @@ public class SolicitudBaja implements Serializable{
 	@JoinColumn(name="id_alumno",insertable=false, updatable = false)
 	private Alumno alumno;
 
-	public Integer getIdSolicitud() {
-		return idSolicitud;
-	}
-	public void setIdSolicitud(Integer idSolicitud) {
-		this.idSolicitud = idSolicitud;
-	}
-	public String getTipoDeBaja() {
-		return tipoDeBaja;
-	}
-	public void setTipoDeBaja(String tipoDeBaja) {
-		this.tipoDeBaja = tipoDeBaja;
-	}
-	public Integer getHoras() {
-		return horas;
-	}
-	public void setHoras(Integer horas) {
-		this.horas = horas;
-	}
-	public String getSemestre() {
-		return semestre;
-	}
-	public void setSemestre(String semestre) {
-		this.semestre = semestre;
-	}
-	public Boolean getEgresado() {
-		return egresado;
-	}
-	public void setEgresado(Boolean egresado) {
-		this.egresado = egresado;
-	}
-	public String getRegistroSS() {
-		return registroSS;
-	}
-	public void setRegistroSS(String registroSS) {
-		this.registroSS = registroSS;
-	}
-	public String getPrestatario() {
-		return prestatario;
-	}
-	public void setPrestatario(String prestatario) {
-		this.prestatario = prestatario;
-	}
-	public String getProgramaSS() {
-		return programaSS;
-	}
-	public void setProgramaSS(String programaSS) {
-		this.programaSS = programaSS;
-	}
-	public String getFechaInicio() {
-		return fechaInicio;
-	}
-	public void setFechaInicio(String fechaInicio) {
-		this.fechaInicio = fechaInicio;
-	}
-	public String getFechaTermino() {
-		return fechaTermino;
-	}
-	public void setFechaTermino(String fechaTermino) {
-		this.fechaTermino = fechaTermino;
-	}
-	public String getEstado() {
-		return estado;
-	}
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-	public String getFechaRegistro() {
-		return fechaRegistro;
-	}
-	public void setFechaRegistro(String fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
-	}
-	public String getRevisado() {
-		return revisado;
-	}
-	public void setRevisado(String revisado) {
-		this.revisado = revisado;
-	}
-	public Integer getIdAlumno() {
-		return idAlumno;
-	}
-	public void setIdAlumno(Integer idAlumno) {
-		this.idAlumno = idAlumno;
-	}
-	
-	
 }

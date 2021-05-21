@@ -1,5 +1,6 @@
 package com.bew.demo.dao;
 
+import com.bew.demo.dto.UsuarioDTO;
 import org.springframework.stereotype.Repository;
 
 import com.bew.demo.model.Usuario;
@@ -11,7 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository <Usuario,Integer>{
+public interface UsuarioRepository extends JpaRepository <Usuario,Long>{
 
 	@Query(
             value = "SELECT s FROM Usuario s WHERE s.email = :email",
@@ -19,12 +20,17 @@ public interface UsuarioRepository extends JpaRepository <Usuario,Integer>{
     Optional<Usuario> findByEmail(@Param("email") String email);
 	
 	@Query(
-            value = "SELECT s FROM Usuario s WHERE s.contraseña = :contraseña",
+            value = "SELECT s FROM Usuario s WHERE s.password = :password",
             nativeQuery = false)
-    Optional<Usuario> findByContraseña(@Param("contraseña") String contraseña);
+    Optional<Usuario> findByContraseña(@Param("password") String password);
 	
 	@Query(
             value = "SELECT s FROM Usuario s WHERE s.tipoUsuario = :tipoUsuario",
             nativeQuery = false)
     Optional<Usuario> findByTipo(@Param("tipoUsuario") Boolean tipoUsuario);
+
+    @Query(
+            value = "SELECT exists (SELECT s FROM Usuario s WHERE s.password = :password and s.email = :email)",
+            nativeQuery = true)
+    Boolean findByEmailPassword(@Param("email") String email,@Param("password")  String password);
 }

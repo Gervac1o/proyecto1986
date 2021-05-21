@@ -26,7 +26,7 @@ public class Alumno implements Serializable{
 	@SequenceGenerator(name = "alumno_sec", sequenceName = "alumno_seq", allocationSize = 1, initialValue=1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "alumno_sec")
 	@Column(name="id_alumno")
-	private Integer idAlumno;
+	private Long idAlumno;
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -38,7 +38,7 @@ public class Alumno implements Serializable{
 	private String apellidoMaterno;
 	
 	@Column(name="boleta")
-	private Integer boleta;
+	private String boleta;
 	
 	@Column(name="programa_academico")
 	private String programaAcademico;
@@ -47,13 +47,13 @@ public class Alumno implements Serializable{
 	private String sexo;
 	
 	@Column(name="id_usuario")
-	private Integer idUsuario;
+	private Long idUsuario;
 	
 
 	
 	public Alumno() {}
-	public Alumno( Integer idAlumno, String nombre, String apellidoPaterno, String apellidoMaterno, 
-			Integer boleta, String programaAcademico, String sexo, Integer idUsuario) {
+	public Alumno( Long idAlumno, String nombre, String apellidoPaterno, String apellidoMaterno,
+			String boleta, String programaAcademico, String sexo, Long idUsuario) {
 		
 		
 		this.nombre=nombre;	
@@ -69,69 +69,6 @@ public class Alumno implements Serializable{
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_usuario",insertable=false, updatable = false)
 	private Usuario usuario;
-	
-	public Integer getIdAlumno() {
-		return idAlumno;
-	}
 
-	public void setIdAlumno(Integer idAlumno) {
-		this.idAlumno = idAlumno;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-	
-	public String getApellidoPaterno() {
-		return apellidoPaterno;
-	}
-	
-	public void setApellidoPaterno(String apellidoPaterno) {
-		this.apellidoPaterno = apellidoPaterno;
-	}
-	
-	public String getApellidoMaterno() {
-		return apellidoMaterno;
-	}
-	
-	public void setApellidoMaterno(String apellidoMaterno) {
-		this.apellidoMaterno = apellidoMaterno;
-	}
-	
-	public Integer getBoleta() {
-		return boleta;
-	}
-	
-	public void setBoleta(Integer boleta) {
-		this.boleta = boleta;
-	}
-	
-	public String getProgramaAcademico() {
-		return programaAcademico;
-	}
-	
-	public void setProgramaAcademico(String programaAcademico) {
-		this.programaAcademico = programaAcademico;
-	}
-	
-	public String getSexo() {
-		return sexo;
-	}
-	
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-	
-	public Integer getIdUsuario() {
-		return idUsuario;
-	}
-	
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
-	}
 	
 }

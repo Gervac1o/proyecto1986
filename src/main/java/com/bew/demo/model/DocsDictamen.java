@@ -1,5 +1,7 @@
 package com.bew.demo.model;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -14,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+@Data
 @Entity
 @Table(name = "docs_dictamen")
 public class DocsDictamen implements Serializable {
@@ -23,7 +26,7 @@ public class DocsDictamen implements Serializable {
 	@Id
 	@SequenceGenerator(name = "doc_sec", sequenceName = "doc_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "doc_sec")
-	private Integer fileId;
+	private Long fileId;
 	
     @Column(name = "file_name")
     private String fileName;
@@ -36,8 +39,7 @@ public class DocsDictamen implements Serializable {
     
     @Column(name = "id_doc")
     private String idDoc;
-
-
+    
 	public DocsDictamen() {}
     
     public DocsDictamen (String fileName, String fileType, byte[] data, String idDoc) {
@@ -45,16 +47,18 @@ public class DocsDictamen implements Serializable {
         this.fileType = fileType;
         this.data = data; 
         this.idDoc=idDoc;
+        
     }
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="id_dictamen",insertable=false, updatable = false)
+	@JoinColumn(name="id_dictamen",insertable=true, updatable = true)
 	private Dictamen dictamen;
 
-	public Integer getFileId() {
+
+	public Long getFileId() {
 		return fileId;
 	}
 
-	public void setFileId(Integer fileId) {
+	public void setFileId(Long fileId) {
 		this.fileId = fileId;
 	}
 
@@ -82,12 +86,12 @@ public class DocsDictamen implements Serializable {
 		this.data = data;
 	}
 
-	public String getIdDoc() {
-		return idDoc;
+	public Dictamen getDictamen() {
+		return dictamen;
 	}
 
-	public void setIdDoc(String idDoc) {
-		this.idDoc = idDoc;
+	public void setDictamen(Dictamen dictamen) {
+		this.dictamen = dictamen;
 	}
 
     

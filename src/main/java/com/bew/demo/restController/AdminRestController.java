@@ -1,9 +1,11 @@
 package com.bew.demo.restController;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +20,9 @@ import com.bew.demo.dto.AdminDTO;
 import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.service.AdminService;
 
+import javax.annotation.security.RolesAllowed;
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 @RequestMapping("/admin")
 @CrossOrigin("*")
@@ -25,6 +30,12 @@ public class AdminRestController {
 	
 	@Autowired
 	AdminService adminService;
+
+	@RolesAllowed("USER")
+	@GetMapping(path = "/home")
+	public void welcome(HttpServletResponse servletResponse) throws IOException {
+		servletResponse.sendRedirect("/");
+	}
 	
 	@GetMapping(path = "/findAll", produces = "application/json")
 	public ResponseEntity<?> buscar(){
@@ -33,7 +44,7 @@ public class AdminRestController {
 		return ResponseEntity.ok(admins);
 	}
 	@GetMapping(path = "/find/{idAdmin}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("idAdmin") Integer idAdmin){
+	public ResponseEntity<?>find(@PathVariable("idAdmin") Long idAdmin){
 		AdminDTO adminDTO;
 		adminDTO = adminService.findById(idAdmin);
 		return ResponseEntity.ok(adminDTO);		
@@ -60,7 +71,7 @@ public class AdminRestController {
 		return ResponseEntity.ok(adminDTO);
 	}
 	@GetMapping(path = "/findIdUsuario/{idUsuario}", produces = "application/json")
-	public ResponseEntity<?>findIdUsuario(@PathVariable("idUsuario") Integer idUsuario){
+	public ResponseEntity<?>findIdUsuario(@PathVariable("idUsuario") Long idUsuario){
 		AdminDTO adminDTO;
 		System.out.println(idUsuario);
 		adminDTO = adminService.findByIdUsuario(idUsuario);
@@ -78,7 +89,7 @@ public class AdminRestController {
 	}
 	
 	@DeleteMapping(path = "/delete/{idAdmin}")
-	public ResponseEntity<?> delete(@PathVariable("idAdmin") Integer idAdmin) throws EmptyResultException{
+	public ResponseEntity<?> delete(@PathVariable("idAdmin") Long idAdmin) throws EmptyResultException{
 	adminService.deleteAdmin(idAdmin);
 	return ResponseEntity.ok().build();
 	}

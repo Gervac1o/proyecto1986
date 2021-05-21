@@ -38,7 +38,7 @@ public class DocsBajaServiceImpl implements DocsBajaService {
 }
 
 	@Override
-	public ResponseEntity<ByteArrayResource> load(Integer idFile) throws EmptyResultException {
+	public ResponseEntity<ByteArrayResource> load(Long idFile) throws EmptyResultException {
 		DocsBaja file = docsBajaRepository.findById(idFile).orElseThrow(() -> new   EmptyResultException("File not found with id " + idFile));
 	
 

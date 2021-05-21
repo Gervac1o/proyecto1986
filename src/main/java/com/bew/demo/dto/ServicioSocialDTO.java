@@ -1,22 +1,23 @@
 package com.bew.demo.dto;
 
+
+
 import java.io.Serializable;
 
 public class ServicioSocialDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Integer idServicio;
+	private Long idServicio;
 	private String semestre;
 	private String responsableDirecto;
 	private String estado;
 	private String fechaRegistro;
 	private String revisado;
-	private Integer idAlumno;
-	
-	public Integer getIdServicio() {
+	private Long idAlumno;
+	public Long getIdServicio() {
 		return idServicio;
 	}
-	public void setIdServicio(Integer idServicio) {
+	public void setIdServicio(Long idServicio) {
 		this.idServicio = idServicio;
 	}
 	public String getSemestre() {
@@ -49,11 +50,12 @@ public class ServicioSocialDTO implements Serializable {
 	public void setRevisado(String revisado) {
 		this.revisado = revisado;
 	}
-	public Integer getIdAlumno() {
+	public Long getIdAlumno() {
 		return idAlumno;
 	}
-	public void setIdAlumno(Integer idAlumno) {
+	public void setIdAlumno(Long idAlumno) {
 		this.idAlumno = idAlumno;
 	}
+	
 	
 }

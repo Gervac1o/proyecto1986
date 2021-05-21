@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.bew.demo.model.Alumno;
 
 @Repository
-public interface AlumnoRepository extends JpaRepository <Alumno,Integer>{
+public interface AlumnoRepository extends JpaRepository <Alumno,Long>{
 
 	@Query(
             value = "SELECT s FROM Alumno s WHERE s.nombre = :nombre",
@@ -37,9 +37,9 @@ public interface AlumnoRepository extends JpaRepository <Alumno,Integer>{
 	@Query(
             value = "SELECT s FROM Alumno s WHERE s.boleta = :boleta",
             nativeQuery = false)
-    Optional<Alumno> findByBoleta(@Param("boleta") Integer boleta);
+    Optional<Alumno> findByBoleta(@Param("boleta") String boleta);
 	@Query(
             value = "SELECT s FROM Alumno s WHERE s.idUsuario = :idUsuario",
             nativeQuery = false)
-    Optional<Alumno> findByIdUsuario(@Param("idUsuario") Integer idUsuario);
+    Optional<Alumno> findByIdUsuario(@Param("idUsuario") Long idUsuario);
 }

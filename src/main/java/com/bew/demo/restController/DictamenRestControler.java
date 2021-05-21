@@ -1,8 +1,13 @@
 package com.bew.demo.restController;
 
+import java.io.IOException;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +23,7 @@ import com.bew.demo.exception.EmptyResultException;
 import com.bew.demo.service.DictamenService;
 
 @RestController
-@RequestMapping("/dictamen")
+@RequestMapping("user/dictamen")
 @CrossOrigin("*")
 public class DictamenRestControler {
 	
@@ -32,16 +37,28 @@ public class DictamenRestControler {
 		return ResponseEntity.ok(dictamen);
 	}
 	@GetMapping(path = "/find/{idDictamen}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("idDictamen") Integer idDictamen){
+	public ResponseEntity<?>find(@PathVariable("idDictamen") Long idDictamen){
 		DictamenDTO dictamenDTO;
 		dictamenDTO = dictamenService.findById(idDictamen);
 		return ResponseEntity.ok(dictamenDTO);		
 	}
 	@GetMapping(path = "/findIdAlumno/{idAlumno}", produces = "application/json")
-	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Integer idAlumno){
+	public ResponseEntity<?>findByIdAlumno(@PathVariable("idAlumno") Long idAlumno) throws IOException, EmptyResultException{
 		DictamenDTO dictamenDTO;
-		dictamenDTO = dictamenService.findByIdAlumno(idAlumno);
-		return ResponseEntity.ok(dictamenDTO);
+		try {
+			
+			dictamenDTO = dictamenService.findByIdAlumno(idAlumno);
+			return ResponseEntity.ok(dictamenDTO);
+		} catch (EmptyResultException e){ 
+			  HttpHeaders responseHeaders = new HttpHeaders();
+	            responseHeaders.setContentType(MediaType.TEXT_HTML);
+	            return new ResponseEntity<>(
+	                    e.getMessage(),
+	                    HttpStatus.ACCEPTED);
+		}
+		
+		//dictamenDTO = dictamenService.findByIdAlumno(idAlumno);
+		//return  new ResponseEntity<>(dictamenDTO, HttpStatus.ACCEPTED);
 	}
 	@GetMapping(path = "/findEstado/{estado}", produces = "application/json")
 	public ResponseEntity<?>findEstado(@PathVariable("estado") String estado){
@@ -62,7 +79,7 @@ public class DictamenRestControler {
 	}
 	
 	@DeleteMapping(path = "/delete/{idDictamen}")
-	public ResponseEntity<?> delete(@PathVariable("idDictamen") Integer idDictamen) throws EmptyResultException{
+	public ResponseEntity<?> delete(@PathVariable("idDictamen") Long idDictamen) throws EmptyResultException{
 		dictamenService.deleteDictamen(idDictamen);
 	return ResponseEntity.ok().build();
 	}

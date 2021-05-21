@@ -23,8 +23,8 @@ import java.util.List;
 public class AlumnoRestController {
 	
 	@Autowired
-	AlumnoService alumnoService;
-	
+	private AlumnoService alumnoService;
+
 	@GetMapping(path = "/findAll", produces = "application/json")
 	public ResponseEntity<?> buscar(){
 		List<AlumnoDTO> alumnos;
@@ -32,7 +32,7 @@ public class AlumnoRestController {
 		return ResponseEntity.ok(alumnos);
 	}
 	@GetMapping(path = "/find/{idAlumno}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("idAlumno") Integer idAlumno){
+	public ResponseEntity<?>find(@PathVariable("idAlumno") Long idAlumno){
 		AlumnoDTO alumnoDTO;
 		alumnoDTO = alumnoService.findById(idAlumno);
 		return ResponseEntity.ok(alumnoDTO);		
@@ -66,14 +66,13 @@ public class AlumnoRestController {
 		return ResponseEntity.ok(alumnoDTO);
 	}
 	@GetMapping(path = "/findBoleta/{boleta}", produces = "application/json")
-	public ResponseEntity<?>findB(@PathVariable("boleta") Integer boleta){
+	public ResponseEntity<?>findB(@PathVariable("boleta") String boleta){
 		AlumnoDTO alumnoDTO;
 		alumnoDTO = alumnoService.AlumnoBoleta(boleta);
-		
 		return ResponseEntity.ok(alumnoDTO);
 	}
 	@GetMapping(path = "/findIdUsuario/{idUsuario}", produces = "application/json")
-	public ResponseEntity<?>findIdUsuario(@PathVariable("idUsuario") Integer idUsuario){
+	public ResponseEntity<?>findIdUsuario(@PathVariable("idUsuario") Long idUsuario){
 		AlumnoDTO alumnoDTO;
 		alumnoDTO = alumnoService.findByIdUsuario(idUsuario);
 		return ResponseEntity.ok(alumnoDTO);		
@@ -90,7 +89,7 @@ public class AlumnoRestController {
 	}
 	
 	@DeleteMapping(path = "/delete/{idAlumno}")
-	public ResponseEntity<?> delete(@PathVariable("idAlumno") Integer idAlumno) throws EmptyResultException{
+	public ResponseEntity<?> delete(@PathVariable("idAlumno") Long idAlumno) throws EmptyResultException{
 	alumnoService.deleteAlumno(idAlumno);
 	return ResponseEntity.ok().build();
 	}

@@ -32,14 +32,14 @@ public class DocsDictamenRestController {
 
     	docsDictamenService.store(file,idDoc);
     	String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-    	System.out.println(fileName + " <-- Luis esta borracho y lo hizo llorar el Damenso");
+    	System.out.println(fileName );
     	
     	return fileName;
     }
 
     @GetMapping("/getFile/{idFile}")
     @ResponseBody
-    public ResponseEntity<ByteArrayResource> serveFile(@PathVariable Integer idFile) throws EmptyResultException {
+    public ResponseEntity<ByteArrayResource> serveFile(@PathVariable Long idFile) throws EmptyResultException {
    	
         return  docsDictamenService.load(idFile);
     }

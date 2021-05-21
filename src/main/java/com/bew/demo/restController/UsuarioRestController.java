@@ -1,8 +1,13 @@
 package com.bew.demo.restController;
 
+import java.io.IOException;
 import java.util.List;
 
+import com.bew.demo.exception.MailRepetidoException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,7 +38,7 @@ public class UsuarioRestController {
 		return ResponseEntity.ok(usuarios);
 	}
 	@GetMapping(path = "/find/{idUsuario}", produces = "application/json")
-	public ResponseEntity<?>find(@PathVariable("idUsuario") Integer idUsuario){
+	public ResponseEntity<?>find(@PathVariable("idUsuario") Long idUsuario){
 		UsuarioDTO usuarioDTO;
 		usuarioDTO = usuarioService.findById(idUsuario);
 		return ResponseEntity.ok(usuarioDTO);		
@@ -46,7 +51,7 @@ public class UsuarioRestController {
 		return ResponseEntity.ok(usuarioRes);
 	}
 	@GetMapping(path = "/findByEmail/{email}", produces = "application/json")
-	public ResponseEntity<?>findE(@PathVariable("email") String email){
+	public ResponseEntity<?>findE(@PathVariable("email") String email) throws EmptyResultException {
 		UsuarioDTO usuarioRes;
 		usuarioRes = usuarioService.findUsuarioByEmail(email);
 		return ResponseEntity.ok(usuarioRes);
@@ -65,19 +70,26 @@ public class UsuarioRestController {
 		return ResponseEntity.ok(usuarioDTO);	
 	}
 	@PostMapping(path = "/save", consumes = "application/json")
-	public ResponseEntity<?> save(@RequestBody UsuarioDTO usuarioDTO){
-	usuarioService.saveUsuario (usuarioDTO);
-	return ResponseEntity.ok().build();
+	public ResponseEntity<?> save(@RequestBody UsuarioDTO usuarioDTO) throws  MailRepetidoException {
+		
+			usuarioService.saveUsuario (usuarioDTO);
+			return ResponseEntity.ok(usuarioDTO);
 	}
 	@PatchMapping(path = "/update", consumes = "application/json")
 	public ResponseEntity<?> update(@RequestBody UsuarioDTO usuarioDTO)throws EmptyResultException{
 	usuarioService.updateUsuario(usuarioDTO);
-	System.out.println(usuarioDTO.getIdUsuario());
+	//System.out.println(usuarioDTO.getIdUsuario());
 	return ResponseEntity.ok(usuarioDTO);
+	}
+	@PostMapping(path = "/reset", consumes = "application/json")
+	public ResponseEntity<?> recovery(@RequestBody UsuarioDTO usuarioDTO) throws  EmptyResultException {
+		
+			usuarioService.resetPassword (usuarioDTO);
+			return ResponseEntity.ok(usuarioDTO);
 	}
 	
 	@DeleteMapping(path = "/delete/{idUsuario}")
-	public ResponseEntity<?> delete(@PathVariable("idUsuario") Integer idUsuario) throws EmptyResultException{
+	public ResponseEntity<?> delete(@PathVariable("idUsuario") Long idUsuario) throws EmptyResultException{
 	usuarioService.deleteUsuario(idUsuario);
 	return ResponseEntity.ok().build();
 	}
