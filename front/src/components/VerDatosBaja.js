@@ -27,12 +27,12 @@ class VerDatosBaja extends React.Component{
                         tipoBaja: res.data,
                         status: 'success'
                        });
-                       console.log(this.state.tipoBaja.tipoBaja)
+                       console.log(this.state.tipoBaja.tipoBaja + "tipo baja ")
             });
         }//Fin de funcion getBaja()
         
     render() {
-        if(this.state.status == 'success'){
+        if(this.state.tipoBaja ){
             if(this.state.tipoBaja.egresado == "false"){
                 return(
                     <div className="center">

@@ -22,7 +22,7 @@ class DocBaja extends React.Component{
         if(this.state.status == "true"){
             return(
                 <div>
-                        <iframe name="X-Frame-Options" value="SAMEORIGIN" src={ "http://localhost:8080/docBaja/getDoc/" + this.state.docBaja}></iframe>
+                        <iframe  src={ "http://localhost:8080/docBaja/getDoc/" + this.state.docBaja}></iframe>
                 </div>
             );
         }

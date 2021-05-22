@@ -422,7 +422,7 @@ height: 220px;
 }
 #sidebar.bajaRight{
   float: right;
-  margin-top:  -930px;
+  margin-top:  -945px;
   margin-right: 2px;
   min-height: 220px;
   height: auto;
@@ -430,7 +430,7 @@ height: 220px;
 }
 #sidebar.bajaCenter{
   margin-left: 350px;
-  margin-top: -930px;
+  margin-top: -945px;
   min-height: 120px;
   height: auto;
   max-width: 30%;
