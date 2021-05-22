@@ -22,7 +22,6 @@ class DocDictamen extends React.Component{
         if(this.state.status == "true"){
             return(
                 <div>
-                    <a>descarga completa</a>
                         <a download  href={"https://proyectofinal1986.herokuapp.com/docDictamen/getDoc/" + this.state.docDictamen}>*</a>
                 </div>
             );
