@@ -23,7 +23,7 @@ class DocDictamen extends React.Component{
             return(
                 <div>
                     <a>descarga completa</a>
-                        <iframe  src={"http://localhost:8080/docDictamen/getDoc/" + this.state.docDictamen}></iframe>
+                        <iframe download src={"http://localhost:8080/docDictamen/getDoc/" + this.state.docDictamen}>descarga completa</iframe>
                 </div>
             );
         }
