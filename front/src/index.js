@@ -4,7 +4,7 @@ import './assets/css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { BrowserRouter, Route, Switch,HashRouter } from 'react-router-dom';
+import {BrowserRouter, Route, Switch, HashRouter} from 'react-router-dom';
 
 import Error from './components/Error';
 import DirectorioAdmin from './components/DirectorioAdmin';
@@ -46,72 +46,66 @@ import BuscarLiberacionAlumnos from './components/BuscarLiberacionAlumnos';
 import BuscarServicioAlumnos from './components/BuscarServicioAlumnos';
 
 
-
 ReactDOM.render(
     <React.StrictMode>
-         <HashRouter basename={'/'}>
-           
-         <Switch>
-                   
+        <HashRouter basename={'/'}>
 
-                     {/**RUTAS ADMINISTRADOR  */}
-                     
-{/**RUTA PRINCIPAL  */}<Route exact path = "/admin/MisDatosAdmin" component = {MisDatosAdmin}/>
-                    <Route exact path = "/admin/Lista" component = {ListaAlumnos}/>
-                    <Route exact path = "/admin/BuscarNombre" component ={BuscarAlumno}/>
-                    <Route exact path = "/admin/BuscarBoleta" component = {BuscarBoleta}/>
-                    <Route exact path = "/admin/Crearadmin" component = {CrearAdmin}/>
-                    <Route exact path = "/admin/BuscarICE" component = {BuscarICE}/>
-                    <Route exact path = "/admin/BuscarICA" component = {BuscarICA}/>
-                    <Route exact path = "/admin/BuscarIE" component = {BuscarIE}/>
-                    <Route exact path = '/admin/BuscarISISA' component = {BuscarISISA}/>
-                    <Route exact path = "/admin/BuscarDictamen" component = {BuscarDictamenAlumnos}/>
-                    <Route exact path = "/admin/BuscarBaja" component = {BuscarBajaAlumnos}/>
-                    <Route exact path = "/admin/BuscarLiberacion" component = {BuscarLiberacionAlumnos}/>
-                    <Route exact path = "/admin/BuscarServicio" component = {BuscarServicioAlumnos}/>
-                    <Route exact path = "/admin/DirectorioArchivosAlumno/:id" component = {DirectorioArchivosAlumno}/>
-                   
+            <Switch>
 
-                     {/**RUTAS USUARIO  */}
 
-{/*RUTA PRINCIPAL, falta poner el "user", PARA QUE NO TRUENE en el back */ }
-                    <Route exact path = "/MisDatosAlumno" component = {MisDatosAlumno}/> 
+                {/**RUTAS ADMINISTRADOR  */}
 
-                    <Route exact path = "/user/CrearDictamen" component = {Dictamen}/>
-                    <Route exact path = "/user/CrearLiberacion" component = {Liberacion}/>
-                    <Route exact path = "/user/CrearBaja" component = {Baja}/>
-                    <Route exact path = "/user/CrearServicio" component = {ServicioSocial}/>
+                {/**RUTA PRINCIPAL  */}<Route exact path="/admin/MisDatosAdmin" component={MisDatosAdmin}/>
+                <Route exact path="/admin/Lista" component={ListaAlumnos}/>
+                <Route exact path="/admin/BuscarNombre" component={BuscarAlumno}/>
+                <Route exact path="/admin/BuscarBoleta" component={BuscarBoleta}/>
+                <Route exact path="/admin/Crearadmin" component={CrearAdmin}/>
+                <Route exact path="/admin/BuscarICE" component={BuscarICE}/>
+                <Route exact path="/admin/BuscarICA" component={BuscarICA}/>
+                <Route exact path="/admin/BuscarIE" component={BuscarIE}/>
+                <Route exact path='/admin/BuscarISISA' component={BuscarISISA}/>
+                <Route exact path="/admin/BuscarDictamen" component={BuscarDictamenAlumnos}/>
+                <Route exact path="/admin/BuscarBaja" component={BuscarBajaAlumnos}/>
+                <Route exact path="/admin/BuscarLiberacion" component={BuscarLiberacionAlumnos}/>
+                <Route exact path="/admin/BuscarServicio" component={BuscarServicioAlumnos}/>
+                <Route exact path="/admin/DirectorioArchivosAlumno/:id" component={DirectorioArchivosAlumno}/>
 
-                    {/**esta ruta lleva a llenar un frmulario de nuevo usuario */} 
-                    <Route exact path = "/DatosAlumno" component = {DatosAlumno}/>
 
-                   
-                     {/**RUTAS PARA LOS DOCUMENTOS, LAS COMPARTEN AMBAS PARTES  */}
-                   
-                    <Route exact path = "/DocDictamen/:doc" component = {DocDictamen}/>
-                    <Route exact path = "/DocLiberacion/:doc" component = {DocLiberacion}/>
-                    <Route exact path = "/DocBaja/:doc" component = {DocBaja}/>
-                    <Route exact path = "/DocServicio/:doc" component = {DocServicio}/>
+                {/**RUTAS USUARIO  */}
 
-                    <Route exact path = "/PdfDictamen/:doc" component = {PdfDictamen}/>
-                    <Route exact path = "/PdfBaja/:doc" component = {PdfBaja}/>
-                    <Route exact path = "/PdfLiberacion/:doc" component = {PdfLiberacion}/>
-                    <Route exact path = "/PdfServicio/:doc" component = {PdfServicio}/>
-                   
-                    {/**esta ruta lleva a llenar un frmulario de nuevo usuario */} 
-                    <Route exact path = "/DatosAlumno" component = {DatosAlumno}/>
+                {/*RUTA PRINCIPAL, falta poner el "user", PARA QUE NO TRUENE en el back */}
+                <Route exact path="/user/MisDatosAlumno" component={MisDatosAlumno}/>
 
-                    {/*falta poner el "user" como default en el back */ }
-                    <Route exact path = "/MisDatosAlumno" component = {MisDatosAlumno}/>  
-                   
-                    <Route component={Error} />
-                    <Route exact path = "/AlumnoServicio/:id" component = {AlumnoServicio}/>
-                    
-                </Switch>
+                <Route exact path="/user/CrearDictamen" component={Dictamen}/>
+                <Route exact path="/user/CrearLiberacion" component={Liberacion}/>
+                <Route exact path="/user/CrearBaja" component={Baja}/>
+                <Route exact path="/user/CrearServicio" component={ServicioSocial}/>
 
-        
-            
-         </HashRouter>
+                {/**esta ruta lleva a llenar un frmulario de nuevo usuario */}
+                <Route exact path="/" component={DatosAlumno}/>
+
+
+                {/**RUTAS PARA LOS DOCUMENTOS, LAS COMPARTEN AMBAS PARTES  */}
+
+                <Route exact path="/doc/ambos/DocDictamen/:doc" component={DocDictamen}/>
+                <Route exact path="/doc/DocLiberacion/:doc" component={DocLiberacion}/>
+                <Route exact path="/doc/DocBaja/:doc" component={DocBaja}/>
+                <Route exact path="/doc/DocServicio/:doc" component={DocServicio}/>
+
+                <Route exact path="/doc/PdfDictamen/:doc" component={PdfDictamen}/>
+                <Route exact path="/doc/PdfBaja/:doc" component={PdfBaja}/>
+                <Route exact path="/doc/PdfLiberacion/:doc" component={PdfLiberacion}/>
+                <Route exact path="/doc/PdfServicio/:doc" component={PdfServicio}/>
+
+                {/**esta ruta lleva a llenar un frmulario de nuevo usuario */}
+
+                <Route component={Error}/>
+                <Route exact path="/user/AlumnoServicio/:id" component={AlumnoServicio}/>
+
+            </Switch>
+
+
+        </HashRouter>
     </React.StrictMode>,
     document.getElementById('root')
 );
