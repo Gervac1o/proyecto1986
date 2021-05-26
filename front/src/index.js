@@ -82,7 +82,7 @@ ReactDOM.render(
                 <Route exact path="/user/CrearServicio" component={ServicioSocial}/>
 
                 {/**esta ruta lleva a llenar un frmulario de nuevo usuario */}
-                <Route exact path="/" component={DatosAlumno}/>
+                <Route exact path="/user/DatosAlumno" component={DatosAlumno}/>
 
 
                 {/**RUTAS PARA LOS DOCUMENTOS, LAS COMPARTEN AMBAS PARTES  */}
