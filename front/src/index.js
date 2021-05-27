@@ -87,7 +87,7 @@ ReactDOM.render(
 
                 {/**RUTAS PARA LOS DOCUMENTOS, LAS COMPARTEN AMBAS PARTES  */}
 
-                <Route exact path="/doc/ambos/DocDictamen/:doc" component={DocDictamen}/>
+                <Route exact path="/doc/DocDictamen/:doc" component={DocDictamen}/>
                 <Route exact path="/doc/DocLiberacion/:doc" component={DocLiberacion}/>
                 <Route exact path="/doc/DocBaja/:doc" component={DocBaja}/>
                 <Route exact path="/doc/DocServicio/:doc" component={DocServicio}/>

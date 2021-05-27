@@ -101,7 +101,7 @@ class SubirServicio extends React.Component {
                                             <tr>
                                                 <td className="table_lista">{lista1.nombreDoc}</td>
                                                 <td className="table_lista">{lista1.comentario}</td>
-                                                <td><Link to={'/PdfServicio/' + lista1.idDoc}target="_blank" id="btn_watch">Visualizar</Link></td>
+                                                <td><Link to={'/doc/PdfServicio/' + lista1.idDoc}target="_blank" id="btn_watch">Visualizar</Link></td>
                                                 <td><a  href={ "http://localhost:8080/docServicio/getDoc/" + lista1.idDoc} download  id="btn_downLoad">Descargar</a></td>
                                                 <td><BorrarDoc
                                                 idLista={lista1.idLista}

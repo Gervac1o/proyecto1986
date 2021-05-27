@@ -30,6 +30,7 @@ class MisDatosAlumno extends React.Component {
         cookies.set('idUsuario', 1, {path: "/"})
         cookies.set('idAlumno', 1, {path: "/"})
         cookies.set('email', "dummy@prueba.com", {path: "/"})
+        cookies.set('password', "0", {path: "/"})
     }
 
     getAlumno = () => {

@@ -47,7 +47,7 @@ class DirectorioAlumno extends Component{
                                 <Link to='#' className="active">{this.state.nombre}...</Link>
                                 <ul>
                                    
-                                    <li className="active" ><Link to='/MisDatosAlumno' className = "active">Configuración</Link></li>
+                                    <li className="active" ><Link to='/user/MisDatosAlumno' className = "active">Configuración</Link></li>
                                     <li className="active"  > <p id ="table-btn" onClick={this.cerrarSesion}>cerrar sesion</p></li>
                                     
                                 </ul>
