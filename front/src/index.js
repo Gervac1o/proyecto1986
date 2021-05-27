@@ -44,6 +44,7 @@ import BuscarDictamenAlumnos from './components/BuscarDictamenAlumnos';
 import BuscarBajaAlumnos from './components/BuscarBajaAlumnos';
 import BuscarLiberacionAlumnos from './components/BuscarLiberacionAlumnos';
 import BuscarServicioAlumnos from './components/BuscarServicioAlumnos';
+import Default from "./components/Default";
 
 
 ReactDOM.render(
@@ -51,7 +52,8 @@ ReactDOM.render(
         <HashRouter basename={'/'}>
 
             <Switch>
-
+                {/**RUTA DEFAULT QUE EVALUA HACIA DONDE SE REDIRIGE  */}
+                <Route exact path="/" component={Default}/>
 
                 {/**RUTAS ADMINISTRADOR  */}
 
