@@ -14,7 +14,9 @@ class SubirDictamen extends React.Component {
     state = {
         idDictamen: cookies.get('idAlumno'),
         statusArchivo: null,
-        file: null,
+        file: {
+            name:"selecciona archivo"
+        },
         status: null,
         lista: {},
         listar:[],
@@ -114,7 +116,12 @@ render() {
                                                 </tr>
                                         </tbody>
                                         )}
-                                        <input type="file" name = "file" onChange={this.fileChange} />
+                                        <br/>
+                                        <a className="text_login">Subir Archivo</a>
+                                    <div  >
+                                 <label for="file" id = "input-size"  >{this.state.file.name}</label>
+                                    <input type="file" name = "file" id = "file"  onChange={this.fileChange} />
+                                    </div>
                                         {(() => {
                                         switch(this.state.statusArchivo){   
                                             case "false":
@@ -140,7 +147,10 @@ render() {
                                     <strong>Aun no hay archivos guardados</strong>
                                     <br/>
                                     <a className="text_login">Subir Archivo</a>
-                                    <input type="file" name = "file" onChange={this.fileChange} />
+                                    <div  >
+                                 <label for="file" id = "input-size"  >{this.state.file.name}</label>
+                                    <input type="file" name = "file" id = "file"  onChange={this.fileChange} />
+                                    </div>
                                     {(() => {
                                         switch(this.state.statusArchivo){   
                                             case "false":
@@ -164,7 +174,12 @@ render() {
                         <div id="sidebar" className="dictamenRight">
                             <div>
                                 Cargando... Espere un momento
-                                <input type="file" name = "file" onChange={this.fileChange} />
+                                <div  >
+                                    <br/>
+                                    <a className="text_login">Subir Archivo</a>
+                                 <label for="file" id = "input-size"  >{this.state.file.name}</label>
+                                    <input type="file" name = "file" id = "file"  onChange={this.fileChange} />
+                                    </div>
                                 {(() => {
                                 switch(this.state.statusArchivo){   
                                     case "false":

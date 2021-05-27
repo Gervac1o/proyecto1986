@@ -14,7 +14,8 @@ class DirectorioAlumno extends Component{
 	state = {
         email: cookies.get('email'),
         tipoUsuario: cookies.get('tipoUsuario'),
-        nombre: cookies.get('nombre')
+        //nombre: cookies.get('nombre')
+        nombre: "luis fernando"
     }
 
 	cerrarSesion = () => {
@@ -55,7 +56,7 @@ class DirectorioAlumno extends Component{
                             
                             
                         </ul>
-                        <img src={logo} id ="user"></img>
+                        <img src={logo} className ="user"></img>
                         </div>
 
                     </th>

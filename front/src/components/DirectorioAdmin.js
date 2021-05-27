@@ -92,7 +92,7 @@ class DirectorioAdmin extends Component{
                             
                             
                         </ul>
-                        <img src={logo} id ="user"></img>
+                        <img src={logo} className ="user"></img>
                         </div>
 
                     </th>
