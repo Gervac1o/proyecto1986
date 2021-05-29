@@ -10,7 +10,7 @@ class RecuperacionContraseña extends React.Component{
 
 
     state = {
-        usuario:{},
+        alumno:{},
         recuperar:{},
         contraseña: null,
         statusContraseña: null,
@@ -22,29 +22,29 @@ class RecuperacionContraseña extends React.Component{
     changeState = () =>{
         this.setState({
             recuperar:{
-                idUsuario:95,
-                // idUsuario: this.props.id,
-                email:"fer@gmail.com",
-                //email: this.state.usuario.email,
-                password: "p4SS"+this.props.id+"dEYAe",
+                idUsuario: this.props.id,
+               
+                email: this.state.usuario.email,
+                password: "p4S"+this.props.id+"dEYAe",
                 
             }
         });
         
     }//Fin de changeState
   componentWillMount = () =>{
-    this.getUsuario();
+    this.getAlumno();
     this.setState({
         contraseña: "true"
     });
     console.log(this.props.className)
   }
-    getUsuario = () =>{
-        axios.get("usuario/find/"+this.props.id)
+     getAlumno = () =>{
+        axios.get("alumno/find/"+this.props.id)
         .then(res =>{
             this.setState({
-                usuario: res.data,
+                alumno: res.data,
             });
+            console.log(this.state.alumno.idUsuario + " id del usuario -a lumno que regresa de axios ")
         });
     }//Fin de getUsuario()
     

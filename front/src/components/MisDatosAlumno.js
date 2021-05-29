@@ -13,7 +13,9 @@ class MisDatosAlumno extends React.Component {
 
 
     state = {
-        alumno: {},
+        alumno: {
+            nombre:"null"
+        },
         usuario: {},
         idUsuario: cookies.get('idUsuario'),
         idAlumno: cookies.get('idAlumno'),
@@ -38,6 +40,7 @@ class MisDatosAlumno extends React.Component {
                 });
                 cookies.set('idAlumno', this.state.alumno.idAlumno, {path: "/"})
                 cookies.set('boleta', this.state.alumno.boleta, {path: "/"})
+                cookies.set('nombre', this.state.alumno.nombre, {path: "/"})
             })
             .catch(err => {
                 // window.location.reload(false);

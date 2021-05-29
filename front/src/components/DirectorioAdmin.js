@@ -9,9 +9,22 @@ class DirectorioAdmin extends Component{
 
     state = {
         email: cookies.get('email'),
-        nombre:cookies.get('nombre'),
+        
+
+
+        nombre:"null"
+       
        
     }
+    componentWillMount=()=>{
+        this.setState({
+            nombre: cookies.get('nombre')
+        });
+
+
+    }
+       
+    
 
 	cerrarSesion(){
         cookies.remove('idUsuario', {path:"/"});
@@ -20,6 +33,7 @@ class DirectorioAdmin extends Component{
         cookies.remove('tipoUsuario', {path:"/"});
         cookies.remove('idAdmin', {path:"/"});
         cookies.remove('idAlumno', {path:"/"});
+        cookies.remove('nombre', {path:"/"});
         window.location.href = '/auth/logout';
     }
 

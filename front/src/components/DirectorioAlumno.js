@@ -14,7 +14,17 @@ class DirectorioAlumno extends Component{
 	state = {
         email: cookies.get('email'),
         tipoUsuario: cookies.get('tipoUsuario'),
-        nombre: cookies.get('nombre')
+        tipoUsuario: cookies.get('tipoUsuario'),  
+        nombre:"null"
+    }
+    componentWillMount=()=>{
+        this.setState({
+            nombre: cookies.get('nombre')
+        });
+
+
+    
+
        
     }
 
@@ -25,6 +35,8 @@ class DirectorioAlumno extends Component{
         cookies.remove('tipoUsuario', {path:"/"});
         cookies.remove('idAlumno', {path:"/"});
         cookies.remove('boleta', {path:"/"});
+        cookies.remove('nombre', {path:"/"});
+    
         window.location.href = '/auth/logout';
     }//Fin de Cerrar SesiON 
     
