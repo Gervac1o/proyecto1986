@@ -9,13 +9,13 @@ class DirectorioAlumno extends Component{
 
 
     usuraioRef=React.createRef();
-    usuraioRef=cookies.remove('tipoUsuario', {path:"/"});
+    
 
 	state = {
         email: cookies.get('email'),
         tipoUsuario: cookies.get('tipoUsuario'),
-        //nombre: cookies.get('nombre')
-        nombre: "luis fernando"
+        nombre: cookies.get('nombre')
+       
     }
 
 	cerrarSesion = () => {

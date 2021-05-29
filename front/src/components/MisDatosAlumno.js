@@ -18,19 +18,14 @@ class MisDatosAlumno extends React.Component {
         idUsuario: cookies.get('idUsuario'),
         idAlumno: cookies.get('idAlumno'),
         email: cookies.get('email'),
-        // idUsuario: "1",
-        // email: "dummy@prueba.com",
         actualizar: null,
         status: null
     };
 
     componentWillMount() {
         this.getAlumno();
-        //alert(cookies.get('idUsuario'));
-        cookies.set('idUsuario', 1, {path: "/"})
-        cookies.set('idAlumno', 1, {path: "/"})
-        cookies.set('email', "dummy@prueba.com", {path: "/"})
-        cookies.set('password', "0", {path: "/"})
+       
+       
     }
 
     getAlumno = () => {
