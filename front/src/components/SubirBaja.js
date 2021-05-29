@@ -80,17 +80,6 @@ class SubirBaja extends React.Component {
         
     }//Fin de funcion upLoad
 
-/*    downLoad = () =>{
-        const archivo = new FormData();
-        axios.get("http://localhost:8080/file/getFile/5")
-        .then(res =>{
-            archivo.append('file', this.state.res, this.state.res.name);
-            this.setState({
-                file: this.archivo
-            })
-            console.log(this.state.file.name)
-        });
-    } */
     render() {
         if(this.state.status == 'true'){
             window.location.reload(false);

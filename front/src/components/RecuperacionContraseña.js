@@ -24,7 +24,7 @@ class RecuperacionContraseña extends React.Component{
             recuperar:{
                 idUsuario: this.props.id,
                
-                email: this.state.usuario.email,
+                email: this.state.alumno.email,
                 password: "p4S"+this.props.id+"dEYAe",
                 
             }
@@ -33,19 +33,21 @@ class RecuperacionContraseña extends React.Component{
     }//Fin de changeState
   componentWillMount = () =>{
     this.getAlumno();
-    this.setState({
-        contraseña: "true"
-    });
+
     console.log(this.props.className)
   }
      getAlumno = () =>{
-        axios.get("alumno/find/"+this.props.id)
+        console.log(this.props.id+ " id del usuario de las props ")
+        axios.get("usuario/findByAlumno/"+ this.props.id)
         .then(res =>{
             this.setState({
                 alumno: res.data,
+                contraseña: "true"
             });
-            console.log(this.state.alumno.idUsuario + " id del usuario -a lumno que regresa de axios ")
+            console.log(this.state.alumno.email + " id del usuario -a lumno que regresa de axios ")
+            console.log(this.state.alumno.email + " id del usuario -a lumno que regresa de axios ")
         });
+
     }//Fin de getUsuario()
     
     updateContraseña = () =>{
@@ -54,6 +56,7 @@ class RecuperacionContraseña extends React.Component{
         if(this.cambioRef.current.value === "SI"){
             console.log("passwoed" + this.state.recuperar.password)
             console.log("passwoed" + this.state.recuperar.idUsuario)
+            console.log("passwoed" + this.state.recuperar.email)
             try{
                 axios.post("usuario/reset", this.state.recuperar)
                 .then(res =>{
@@ -115,9 +118,9 @@ class RecuperacionContraseña extends React.Component{
                                                         break;
                                                 }
                                                 })()}<br/>
-                                                <strong>Email:</strong> {this.state.usuario.email}
+                                                <strong>Email:</strong> {this.state.alumno.email}
                                                 <br/> <br/>
-                                                <strong>Nueva Contraseña:</strong> p4SS{this.props.id}dEYAe
+                                                <strong>Nueva Contraseña:</strong> p4S{this.props.id}dEYAe
 
                                                 <br/><br/>
                                                 

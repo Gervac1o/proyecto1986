@@ -17,9 +17,9 @@ class DirectorioAdmin extends Component{
        
     }
     componentWillMount=()=>{
-        this.setState({
-            nombre: cookies.get('nombre')
-        });
+        if(cookies.get('nombre') ==="null"){
+            alert("Registra tu información personal en la sección Actualizar Información Personal")
+        }
 
 
     }
@@ -94,7 +94,7 @@ class DirectorioAdmin extends Component{
                         
                         <ul>
                             <li>
-                                <Link to='#' className="active">{this.state.nombre}...</Link>
+                                <Link to='#' className="active">{cookies.get('nombre')}...</Link>
                                 <ul>
                                    
                                     <li className="active" ><Link to='/admin/MisDatosAdmin' className = "active">Configuración</Link></li>

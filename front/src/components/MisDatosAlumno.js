@@ -26,7 +26,9 @@ class MisDatosAlumno extends React.Component {
 
     componentWillMount() {
         this.getAlumno();
-       
+      //  if(cookies.get('nombre') ==="null"){
+       //     alert("Registra tu información personal en la sección Actualizar Información Personal")
+    //    }
        
     }
 

@@ -1120,22 +1120,22 @@ ul li ul li:hover {background: #343a40;}
 @media(max-width:1000px){
   body{
       background: rgba(26, 95, 104, 0.925);
-      max-width: 100px;;
+      max-width: 1000px;;
   }
 
   .table{
    
-    height: 400px;
+    height: 350px;
     min-width: 100px;
-    max-width: 380px;
-    font-size: 30px;
+    max-width: 600px;
+    font-size: 22px;
   }
 
   .active{
-    font-weight: 80;
-    font-size: 60px;
+    font-weight: 100;
+    font-size: 45px;
     box-shadow: none;
-    
+   
   }
   #sidebar.servicioLeft{
     min-height: 700px;
@@ -1238,7 +1238,7 @@ ul li ul li:hover {background: #343a40;}
   .jumbotron {
 
   
-    min-width: 1570px;
+    min-width: 1520px;
     height: 400px;
     
     
@@ -1253,7 +1253,7 @@ ul li ul li:hover {background: #343a40;}
 }
 .btn{
  
-max-width: 800px;
+max-width: 900px;
 font-size: 60px;
 }
 .input_login{
@@ -1320,12 +1320,12 @@ label[for="file"]#input-size{
 
   width: 600px; bottom: 1px solid #000000;
   padding: 10px;
-  font-size: 45px;;
+  font-size: 35px;;
  
 }
 #btn-table{
 
-  min-height: 100px;
+  min-height: 280px;
   font-size: 30px;
 
 }
